@@ -1,0 +1,22 @@
+@use "../setting" as *;
+
+//コンテンツ幅
+@mixin contents-width {
+
+
+  @media screen and (min-width: 768px) {
+
+  }
+
+  @media screen and (min-width: 1024px) {
+
+  }
+}
+
+//見出しスタイル
+@mixin section-title {
+
+  @media screen and (min-width: 768px) {
+
+  }
+}
