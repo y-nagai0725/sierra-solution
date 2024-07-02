@@ -60,8 +60,7 @@ textarea {
 /* minimum style to allow to style meter element */
 meter {
   -webkit-appearance: revert;
-  -moz-appearance: revert;
-       appearance: revert;
+  appearance: revert;
 }
 
 /* preformatted text - use only for this feature */
@@ -71,9 +70,6 @@ meter {
 }
 
 /* reset default text opacity of input placeholder */
-::-moz-placeholder {
-  color: unset;
-}
 ::placeholder {
   color: unset;
 }
@@ -111,8 +107,105 @@ meter {
   display: none;
 }
 
+html {
+  font-size: 2.6666666667vw;
+}
+@media screen and (min-width: 1024px) {
+  html {
+    font-size: 0.5208333333vw;
+  }
+}
+
 body {
   background: #EFEFEF;
+  color: #000;
   font-family: "Noto Sans JP", sans-serif;
   font-weight: 400;
+}
+
+img {
+  display: block;
+  width: 100%;
+  object-fit: cover;
+}
+
+a {
+  display: block;
+}
+
+.header {
+  padding: 1.5rem;
+}
+@media screen and (min-width: 1024px) {
+  .header {
+    position: fixed;
+    padding: 4rem;
+  }
+}
+.header__logo-link {
+  width: 15.6rem;
+}
+@media screen and (min-width: 1024px) {
+  .header__logo-link {
+    width: 20rem;
+  }
+}
+
+.gnav__wrapper {
+  width: calc(100% - 6.5rem);
+  padding-top: 8rem;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.gnav__logo {
+  width: 20rem;
+  margin-bottom: 8rem;
+}
+.gnav__list {
+  margin-bottom: 4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4rem;
+}
+.gnav__link--button {
+  width: 15rem;
+  padding: 1.7rem 2rem;
+  border-radius: 2.5rem;
+  background-color: #000;
+  position: relative;
+}
+.gnav__link--button::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 2.8rem;
+  translate: 0 -50%;
+  width: 0.4rem;
+  height: 0.4rem;
+  border-radius: 9999px;
+  background-color: #82BE28;
+}
+.gnav__link--button::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 2rem;
+  translate: 0 -50%;
+  width: 0.4rem;
+  height: 0.4rem;
+  border-radius: 9999px;
+  background-color: #CC0033;
+}
+.gnav__title {
+  font-family: "Montserrat", sans-serif;
+  font-size: clamp(17px, 1.7rem, 30px);
+}
+.gnav__title--white {
+  color: #fff;
+}
+.gnav__title--small {
+  font-size: clamp(12px, 1.2rem, 20px);
 }/*# sourceMappingURL=style.css.map */

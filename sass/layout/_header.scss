@@ -1,5 +1,21 @@
 @use "../global" as *;
 
 .header {
+  padding: 1.5rem;
 
+  @media screen and (min-width: 1024px) {
+    position: fixed;
+    padding: 4rem;
+  }
+
+  &__logo {
+  }
+
+  &__logo-link {
+    width: 15.6rem;
+
+    @media screen and (min-width: 1024px) {
+      width: 20rem;
+    }
+  }
 }

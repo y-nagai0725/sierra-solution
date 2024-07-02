@@ -1,1 +1,75 @@
 @use "../global" as *;
+
+.gnav {
+
+  &__wrapper{
+    width: calc(100% - 6.5rem);
+    padding-top: 8rem;
+    background-color: $white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__logo {
+    width: 20rem;
+    margin-bottom: 8rem;
+  }
+
+  &__list {
+    margin-bottom: 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4rem;
+  }
+
+  &__link {
+
+    &--button {
+      width: 15rem;
+      padding: 1.7rem 2rem;
+      border-radius: 2.5rem;
+      background-color: $black;
+      position: relative;
+
+      &::before{
+        content: "";
+        position: absolute;
+        top: 50%;
+        right: 2.8rem;
+        translate: 0 -50%;
+        width: 0.4rem;
+        height: 0.4rem;
+        border-radius: 9999px;
+        background-color: $green;
+      }
+
+      &::after{
+        content: "";
+        position: absolute;
+        top: 50%;
+        right: 2rem;
+        translate: 0 -50%;
+        width: 0.4rem;
+        height: 0.4rem;
+        border-radius: 9999px;
+        background-color: $red;
+      }
+    }
+  }
+
+  &__title {
+    font-family: $montserrat;
+    font-size: clamp(17px, 1.7rem, 30px);
+
+    &--white {
+      color: $white;
+    }
+
+    &--small {
+      font-size: clamp(12px, 1.2rem, 20px);
+    }
+  }
+
+}

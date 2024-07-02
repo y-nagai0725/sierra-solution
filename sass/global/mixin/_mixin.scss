@@ -1,5 +1,11 @@
 @use "../setting" as *;
 
+@mixin img-base {
+  display: block;
+  width: 100%;
+  object-fit: cover;
+}
+
 //コンテンツ幅
 @mixin contents-width {
 

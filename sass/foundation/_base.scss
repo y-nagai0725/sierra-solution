@@ -1,11 +1,25 @@
 @use "../global" as *;
 
+html {
+  font-size: calc(10vw * calc(100 / 375));
+
+  @media screen and (min-width: 1024px) {
+    font-size: calc(10vw * calc(100 / 1920));
+  }
+
+}
+
 body {
   background: $bg-gray;
+  color: $black;
   font-family: $noto-sans;
   font-weight: 400;
 }
 
-.wrapper {
+img {
+  @include img-base;
+}
 
+a {
+  display: block;
 }
