@@ -1,8 +1,11 @@
 //TOPページ用JS
 document.addEventListener('DOMContentLoaded', function () {
 
-  //ページ全体
-  const pageWrapper = document.getElementById("wrapper");
+  //PC表示ブレイクポイント
+  const breakPoint = 1024;
+
+  //グローバルナビゲーション
+  const gnav = document.getElementById("gnav");
 
   //グローバルナビゲーションメニュー
   const gnavMenu = document.getElementById("gnav__menu");
@@ -16,7 +19,15 @@ document.addEventListener('DOMContentLoaded', function () {
   gnavButton.addEventListener("click", function () {
     this.classList.toggle("js-opened");
     gnavMenu.classList.toggle("js-opened");
-    pageWrapper.classList.toggle("js-blur");
+    gnav.classList.toggle("js-blur");
+  });
+
+  window.addEventListener("resize", function () {
+    if (window.innerWidth >= breakPoint) {
+      gnavButton.classList.remove("js-opened");
+      gnavMenu.classList.remove("js-opened");
+      gnav.classList.remove("js-blur");
+    }
   });
 
 

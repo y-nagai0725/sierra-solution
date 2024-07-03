@@ -2,6 +2,7 @@
 
 .header {
   padding: 1.5rem;
+  position: absolute;
 
   @media screen and (min-width: 1024px) {
     position: fixed;
@@ -13,9 +14,12 @@
 
   &__logo-link {
     width: 15.6rem;
+    height: 3.2rem;
+    background: $dummy;
 
     @media screen and (min-width: 1024px) {
       width: 20rem;
+      height: 4rem;
     }
   }
 }
