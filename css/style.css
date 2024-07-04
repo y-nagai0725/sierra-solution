@@ -355,6 +355,10 @@ a {
     height: 100vh;
   }
 }
+#top .main {
+  position: relative;
+  z-index: 101;
+}
 @media screen and (min-width: 1024px) {
   #top .main {
     height: 100%;
@@ -362,11 +366,13 @@ a {
 }
 #top .fv {
   height: 100svh;
+  margin-bottom: 16rem;
   position: relative;
 }
 @media screen and (min-width: 1024px) {
   #top .fv {
     height: 100%;
+    margin-bottom: 24rem;
   }
 }
 #top .fv__inner {
@@ -430,4 +436,71 @@ a {
   width: 1.2rem;
   height: 0.9rem;
   background: url(../images/top/arrow.svg) center center/cover;
+}
+#top .index__inner {
+  padding: 0 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+@media screen and (min-width: 1024px) {
+  #top .index__inner {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 22rem;
+  }
+}
+#top .index__title {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: clamp(50px, 5rem, 74px);
+}
+@media screen and (min-width: 1024px) {
+  #top .index__title {
+    font-size: clamp(74px, 9.8rem, 98px);
+  }
+}
+#top .index__list {
+  display: flex;
+  flex-direction: column;
+  gap: 3.2rem;
+  counter-reset: number 1;
+  margin-bottom: 16rem;
+}
+@media screen and (min-width: 1024px) {
+  #top .index__list {
+    width: 51rem;
+  }
+}
+#top .index__item {
+  position: relative;
+}
+#top .index__item::after {
+  content: "Section " counter(number);
+  counter-increment: number;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  translate: 0 -50%;
+  font-family: "Montserrat", sans-serif;
+  font-size: clamp(11px, 1.1rem, 18px);
+  color: #939393;
+  z-index: -1;
+}
+#top .index__link {
+  font-family: "Montserrat", sans-serif;
+  font-size: clamp(16px, 1.6rem, 24px);
+}
+#top .index__link-text {
+  position: relative;
+}
+#top .index__link-text::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  translate: calc(100% + 1.5rem) -50%;
+  width: 100%;
+  height: 1px;
+  background-color: #D0D0D0;
 }/*# sourceMappingURL=style.css.map */

@@ -8,6 +8,7 @@
 
 //コンテンツ幅
 @mixin contents-width {
+  padding: 0 2.5rem;
 
 
   @media screen and (min-width: 768px) {
@@ -21,8 +22,11 @@
 
 //見出しスタイル
 @mixin section-title {
+  font-family: $montserrat;
+  font-weight: 700;
+  font-size: clamp(50px, 5rem, 74px);
 
-  @media screen and (min-width: 768px) {
-
+  @media screen and (min-width: 1024px) {
+    font-size: clamp(74px, 9.8rem, 98px);
   }
 }
