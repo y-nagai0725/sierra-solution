@@ -465,42 +465,45 @@ a {
   display: flex;
   flex-direction: column;
   gap: 3.2rem;
-  counter-reset: number 1;
   margin-bottom: 16rem;
 }
 @media screen and (min-width: 1024px) {
   #top .index__list {
     width: 51rem;
+    margin-bottom: 0;
   }
 }
-#top .index__item {
-  position: relative;
-}
-#top .index__item::after {
-  content: "Section " counter(number);
-  counter-increment: number;
-  position: absolute;
-  right: 0;
-  top: 50%;
-  translate: 0 -50%;
-  font-family: "Montserrat", sans-serif;
-  font-size: clamp(11px, 1.1rem, 18px);
-  color: #939393;
-  z-index: -1;
-}
 #top .index__link {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+#top .index__link:hover .index__line::before {
+  scale: 1;
+  transform-origin: left;
+}
+#top .index__text {
   font-family: "Montserrat", sans-serif;
   font-size: clamp(16px, 1.6rem, 24px);
 }
-#top .index__link-text {
-  position: relative;
-}
-#top .index__link-text::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  translate: calc(100% + 1.5rem) -50%;
-  width: 100%;
+#top .index__line {
+  flex-grow: 1;
   height: 1px;
   background-color: #D0D0D0;
+  position: relative;
+}
+#top .index__line::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  scale: 0;
+  transform-origin: right;
+  transition: scale 0.4s ease-out;
+  background-color: #000;
+}
+#top .index__section-number {
+  font-family: "Montserrat", sans-serif;
+  font-size: clamp(11px, 1.1rem, 18px);
+  color: #939393;
 }/*# sourceMappingURL=style.css.map */
