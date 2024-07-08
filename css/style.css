@@ -362,17 +362,20 @@ a {
 @media screen and (min-width: 1024px) {
   #top .main {
     height: 100%;
+    display: flex;
   }
 }
 #top .fv {
-  height: 100svh;
   margin-bottom: 16rem;
+  height: 100svh;
   position: relative;
 }
 @media screen and (min-width: 1024px) {
   #top .fv {
-    height: 100%;
-    margin-bottom: 24rem;
+    height: calc(100% - 100px);
+    margin-bottom: 0;
+    margin-right: 22rem;
+    flex-shrink: 0;
   }
 }
 #top .fv__inner {
@@ -437,6 +440,17 @@ a {
   height: 0.9rem;
   background: url(../images/top/arrow.svg) center center/cover;
 }
+#top .index {
+  margin-bottom: 16rem;
+}
+@media screen and (min-width: 1024px) {
+  #top .index {
+    height: calc(100% - 100px);
+    margin-bottom: 0;
+    margin-right: 22rem;
+    flex-shrink: 0;
+  }
+}
 #top .index__inner {
   padding: 0 2.5rem;
   display: flex;
@@ -445,6 +459,7 @@ a {
 }
 @media screen and (min-width: 1024px) {
   #top .index__inner {
+    height: 100%;
     flex-direction: row;
     align-items: center;
     justify-content: center;
@@ -458,19 +473,17 @@ a {
 }
 @media screen and (min-width: 1024px) {
   #top .index__title {
-    font-size: clamp(74px, 9.8rem, 98px);
+    font-size: clamp(84px, 9.8rem, 98px);
   }
 }
 #top .index__list {
   display: flex;
   flex-direction: column;
   gap: 3.2rem;
-  margin-bottom: 16rem;
 }
 @media screen and (min-width: 1024px) {
   #top .index__list {
     width: 51rem;
-    margin-bottom: 0;
   }
 }
 #top .index__link {
@@ -485,6 +498,11 @@ a {
 #top .index__text {
   font-family: "Montserrat", sans-serif;
   font-size: clamp(16px, 1.6rem, 24px);
+}
+@media screen and (min-width: 1024px) {
+  #top .index__text {
+    font-size: clamp(24px, 2.8rem, 28px);
+  }
 }
 #top .index__line {
   flex-grow: 1;
@@ -504,6 +522,115 @@ a {
 }
 #top .index__section-number {
   font-family: "Montserrat", sans-serif;
-  font-size: clamp(11px, 1.1rem, 18px);
+  font-size: clamp(11px, 1.1rem, 14px);
   color: #939393;
+}
+@media screen and (min-width: 1024px) {
+  #top .index__section-number {
+    font-size: clamp(14px, 1.7rem, 17px);
+  }
+}
+#top .movie {
+  margin-bottom: 16rem;
+  height: 52rem;
+  background-color: #6e6e6e;
+}
+@media screen and (min-width: 1024px) {
+  #top .movie {
+    height: calc(100% - 100px);
+    margin-bottom: 0;
+    margin-right: 22rem;
+    flex-shrink: 0;
+  }
+}
+@media screen and (min-width: 1024px) {
+  #top .movie {
+    width: 192rem;
+    height: 100%;
+  }
+}
+#top .who {
+  margin-bottom: 16rem;
+}
+@media screen and (min-width: 1024px) {
+  #top .who {
+    height: calc(100% - 100px);
+    margin-bottom: 0;
+    margin-right: 22rem;
+    flex-shrink: 0;
+  }
+}
+#top .who__inner {
+  padding: 0 2.5rem;
+  display: flex;
+  flex-direction: column;
+}
+@media screen and (min-width: 1024px) {
+  #top .who__inner {
+    flex-direction: row;
+    align-items: center;
+    height: 100%;
+  }
+}
+#top .who__title {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: clamp(50px, 5rem, 74px);
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 6rem;
+}
+@media screen and (min-width: 1024px) {
+  #top .who__title {
+    font-size: clamp(84px, 9.8rem, 98px);
+  }
+}
+@media screen and (min-width: 1024px) {
+  #top .who__title {
+    margin-bottom: 0;
+    margin-right: 50rem;
+  }
+}
+#top .who__section-number {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+@media screen and (min-width: 1024px) {
+  #top .who__section-number {
+    gap: 4rem;
+  }
+}
+#top .who__section-number span:nth-of-type(1),
+#top .who__section-number span:nth-of-type(3) {
+  font-family: "Montserrat", sans-serif;
+  font-size: clamp(11px, 1.1rem, 20px);
+  font-weight: 400;
+  color: #939393;
+}
+@media screen and (min-width: 1024px) {
+  #top .who__section-number span:nth-of-type(1),
+  #top .who__section-number span:nth-of-type(3) {
+    font-size: clamp(24px, 3.6rem, 36px);
+  }
+}
+#top .who__section-number span:nth-of-type(2) {
+  flex-grow: 1;
+  height: 1px;
+  background-color: #D0D0D0;
+}
+#top .who__message {
+  font-weight: 700;
+  font-size: clamp(16px, 1.6rem, 28px);
+  letter-spacing: 0.05em;
+  line-height: 2;
+  text-align: center;
+  margin-bottom: 8rem;
+}
+@media screen and (min-width: 1024px) {
+  #top .who__message {
+    font-size: clamp(30px, 4.2rem, 42px);
+    margin-bottom: 0;
+    margin-right: 20rem;
+  }
 }/*# sourceMappingURL=style.css.map */

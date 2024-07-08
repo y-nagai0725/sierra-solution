@@ -38,8 +38,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-  //ScrollTrigger使用
-  gsap.registerPlugin(ScrollTrigger);
 
   //gsapのメディアクエリ設定
   function setGsapMatchMedia() {

@@ -10,13 +10,21 @@
 @mixin contents-width {
   padding: 0 2.5rem;
 
-
   @media screen and (min-width: 768px) {
-
   }
 
   @media screen and (min-width: 1024px) {
+  }
+}
 
+@mixin section-common {
+  margin-bottom: 16rem;
+
+  @media screen and (min-width: 1024px) {
+    height: calc(100% - 100px);
+    margin-bottom: 0;
+    margin-right: 22rem;
+    flex-shrink: 0;
   }
 }
 
@@ -27,6 +35,34 @@
   font-size: clamp(50px, 5rem, 74px);
 
   @media screen and (min-width: 1024px) {
-    font-size: clamp(74px, 9.8rem, 98px);
+    font-size: clamp(84px, 9.8rem, 98px);
+  }
+}
+
+@mixin section-number {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+
+  @media screen and (min-width: 1024px) {
+    gap: 4rem;
+  }
+
+  span:nth-of-type(1),
+  span:nth-of-type(3) {
+    font-family: $montserrat;
+    font-size: clamp(11px, 1.1rem, 20px);
+    font-weight: 400;
+    color: $char-gray;
+
+    @media screen and (min-width: 1024px) {
+      font-size: clamp(24px, 3.6rem, 36px);
+    }
+  }
+
+  span:nth-of-type(2) {
+    flex-grow: 1;
+    height: 1px;
+    background-color: $line-gray;
   }
 }

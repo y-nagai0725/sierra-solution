@@ -17,17 +17,15 @@
 
     @media screen and (min-width: 1024px) {
       height: 100%;
+      display: flex;
+      //overflow: hidden;
     }
   }
-  .fv {
-    height: 100svh;
-    margin-bottom: 16rem;
-    position: relative;
 
-    @media screen and (min-width: 1024px) {
-      height: 100%;
-      margin-bottom: 24rem;
-    }
+  .fv {
+    @include section-common;
+    height: 100svh;
+    position: relative;
 
     &__inner {
       height: 100%;
@@ -94,6 +92,8 @@
   }
 
   .index {
+    @include section-common;
+
     &__inner {
       @include contents-width;
       display: flex;
@@ -101,6 +101,7 @@
       gap: 4rem;
 
       @media screen and (min-width: 1024px) {
+        height: 100%;
         flex-direction: row;
         align-items: center;
         justify-content: center;
@@ -116,11 +117,9 @@
       display: flex;
       flex-direction: column;
       gap: 3.2rem;
-      margin-bottom: 16rem;
 
       @media screen and (min-width: 1024px) {
         width: 51rem;
-        margin-bottom: 0;
       }
     }
 
@@ -140,6 +139,10 @@
     &__text {
       font-family: $montserrat;
       font-size: clamp(16px, 1.6rem, 24px);
+
+      @media screen and (min-width: 1024px) {
+        font-size: clamp(24px, 2.8rem, 28px);
+      }
     }
 
     &__line {
@@ -162,8 +165,70 @@
 
     &__section-number {
       font-family: $montserrat;
-      font-size: clamp(11px, 1.1rem, 18px);
+      font-size: clamp(11px, 1.1rem, 14px);
       color: $char-gray;
+
+      @media screen and (min-width: 1024px) {
+        font-size: clamp(14px, 1.7rem, 17px);
+      }
+    }
+  }
+
+  .movie {
+    @include section-common;
+    height: 52rem;
+    background-color: $dummy;
+
+    @media screen and (min-width: 1024px) {
+      width: 192rem;
+      height: 100%;
+    }
+  }
+
+  .who {
+    @include section-common;
+
+    &__inner {
+      @include contents-width;
+      display: flex;
+      flex-direction: column;
+
+      @media screen and (min-width: 1024px) {
+        flex-direction: row;
+        align-items: center;
+        height: 100%;
+      }
+    }
+
+    &__title {
+      @include section-title;
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 6rem;
+
+      @media screen and (min-width: 1024px) {
+        margin-bottom: 0;
+        margin-right: 50rem;
+      }
+    }
+
+    &__section-number {
+      @include section-number;
+    }
+
+    &__message {
+      font-weight: 700;
+      font-size: clamp(16px, 1.6rem, 28px);
+      letter-spacing: 0.05em;
+      line-height: 2;
+      text-align: center;
+      margin-bottom: 8rem;
+
+      @media screen and (min-width: 1024px) {
+        font-size: clamp(30px, 4.2rem, 42px);
+        margin-bottom: 0;
+        margin-right: 20rem;
+      }
     }
   }
 }
