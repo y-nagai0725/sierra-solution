@@ -27,6 +27,10 @@
     height: 100svh;
     position: relative;
 
+    @media screen and (min-width: 1024px) {
+      margin-left: 22rem;
+    }
+
     &__inner {
       height: 100%;
       display: flex;
@@ -189,9 +193,9 @@
     @include section-common;
 
     &__inner {
-      @include contents-width;
       display: flex;
       flex-direction: column;
+      overflow: hidden;
 
       @media screen and (min-width: 1024px) {
         flex-direction: row;
@@ -202,6 +206,7 @@
 
     &__title {
       @include section-title;
+      padding: 0 2.5rem;
       display: flex;
       flex-direction: column;
       margin-bottom: 6rem;
@@ -217,6 +222,7 @@
     }
 
     &__message {
+      padding: 0 2.5rem;
       font-weight: 700;
       font-size: clamp(16px, 1.6rem, 28px);
       letter-spacing: 0.05em;
@@ -228,6 +234,268 @@
         font-size: clamp(30px, 4.2rem, 42px);
         margin-bottom: 0;
         margin-right: 20rem;
+      }
+    }
+
+    &__introduction {
+      padding: 8rem 2.5rem 0 2.5rem;
+      margin-bottom: 8rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4rem;
+      position: relative;
+      overflow: hidden;
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 50%;
+        translate: -50% 0;
+        width: 60rem;
+        height: 60rem;
+        border-radius: 9999px;
+        box-shadow: $drop-shadow;
+      }
+
+      @media screen and (min-width: 1024px) {
+        height: 100%;
+        flex-direction: row;
+        gap: 24rem;
+        padding: 0 0 0 30rem;
+        margin-bottom: 0;
+        margin-right: 30rem;
+
+        &::before {
+          width: 180rem;
+          height: 180rem;
+          top: 50%;
+          left: 0;
+          translate: 0 -50%;
+        }
+      }
+    }
+
+    &__figure-area {
+      width: 100%;
+      padding-bottom: 19rem;
+      display: flex;
+      justify-content: space-between;
+      position: relative;
+
+      @media screen and (min-width: 1024px) {
+        width: auto;
+        height: 60rem;
+        padding-bottom: 0;
+        flex-direction: column;
+      }
+    }
+
+    &__figure {
+      padding: 0 2.5rem;
+      width: 15rem;
+      height: 5rem;
+      border-radius: 9999px;
+      background-color: $white;
+      display: flex;
+      align-items: center;
+      position: relative;
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        translate: -50% 0;
+        transform-origin: top;
+        width: 1px;
+        height: 8rem;
+        background-size: 1px 6px;
+        background-image: linear-gradient(to bottom, $line-gray 3px, transparent 3px);
+        background-repeat: repeat-y;
+        z-index: -1;
+      }
+
+      &.figure-1::before {
+        rotate: -45deg;
+      }
+
+      &.figure-2::before {
+        rotate: 45deg;
+      }
+
+      @media screen and (min-width: 1024px) {
+        padding: 0 6rem;
+        width: 30rem;
+        height: 8.5rem;
+
+        &.figure-1::before {
+          rotate: 0deg;
+        }
+
+        &.figure-2::before {
+          top: 0;
+          rotate: 180deg;
+        }
+      }
+    }
+
+    &__figure-image {
+      background-color: $dummy;
+      height: 1.6rem;
+
+      @media screen and (min-width: 1024px) {
+        height: 2.8rem;
+      }
+    }
+
+    &__circle {
+      padding: 0 3rem;
+      width: 15rem;
+      height: 15rem;
+      border-radius: 9999px;
+      background-color: $white;
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      translate: -50% 0;
+      display: flex;
+      align-items: center;
+
+      @media screen and (min-width: 1024px) {
+        padding: 0 6.7rem;
+        width: 30rem;
+        height: 30rem;
+        bottom: 50%;
+        left: 0;
+        translate: 0 50%;
+      }
+    }
+
+    &__circle-image {
+      background-color: $dummy;
+      height: 6.5rem;
+
+      @media screen and (min-width: 1024px) {
+        height: 11rem;
+      }
+    }
+
+    &__description {
+      font-size: clamp(13px, 1.3rem, 18px);
+      letter-spacing: 0.05em;
+      line-height: 2;
+
+      @media screen and (min-width: 1024px) {
+        width: 76rem;
+        font-size: clamp(20px, 2.5rem, 25px);
+      }
+    }
+
+    &__value {
+      padding: 8rem 2.5rem 0 2.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4rem;
+      position: relative;
+      overflow: hidden;
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 50%;
+        translate: -50% 0;
+        width: 60rem;
+        height: 60rem;
+        border-radius: 9999px;
+        box-shadow: $drop-shadow;
+      }
+
+      @media screen and (min-width: 1024px) {
+        height: 100%;
+        flex-direction: row;
+        gap: 15rem;
+        padding: 0 0 0 30rem;
+
+        &::before {
+          width: 180rem;
+          height: 180rem;
+          top: 50%;
+          left: 0;
+          translate: 0 -50%;
+        }
+      }
+    }
+
+    &__value-subtitle {
+      font-family: $montserrat;
+      font-weight: 700;
+      font-size: clamp(40px, 4rem, 68px);
+
+      @media screen and (min-width: 1024px) {
+        font-size: clamp(70px, 9.8rem, 98px);
+      }
+    }
+
+    &__value-text-area {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+
+      @media screen and (min-width: 1024px) {
+        gap: 2.4rem;
+      }
+    }
+
+    &__text-row {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+
+      @media screen and (min-width: 1024px) {
+        gap: 1.2rem;
+      }
+    }
+
+    &__value-text {
+      font-size: clamp(13px, 1.3rem, 20px);
+      letter-spacing: 0.05em;
+
+      @media screen and (min-width: 1024px) {
+        font-size: clamp(20px, 2.5rem, 25px);
+      }
+
+      &--box {
+        padding: 0.8rem 1.6rem;
+        border-radius: 9999px;
+        box-shadow: $drop-shadow;
+        transition:
+          border-radius,
+          box-shadow 0.4s ease-out;
+
+        span {
+          position: relative;
+          font-weight: 700;
+          bottom: -10px;
+          opacity: 0;
+          transition:
+            opacity,
+            bottom 0.4s ease-out;
+        }
+
+        &.js-show-box {
+          background-color: $white;
+          box-shadow: none;
+
+          span {
+            bottom: 0;
+            opacity: 1;
+          }
+        }
       }
     }
   }
