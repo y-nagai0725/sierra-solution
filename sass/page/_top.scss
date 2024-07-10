@@ -113,8 +113,8 @@
       }
     }
 
-    &__title {
-      @include section-title;
+    &__subtitle {
+      @include section-subtitle;
     }
 
     &__list {
@@ -460,13 +460,7 @@
     }
 
     &__value-subtitle {
-      font-family: $montserrat;
-      font-weight: 700;
-      font-size: clamp(40px, 4rem, 68px);
-
-      @media screen and (min-width: 1024px) {
-        font-size: clamp(70px, 9.8rem, 98px);
-      }
+      @include section-subtitle;
     }
 
     &__value-text-area {
@@ -555,6 +549,7 @@
       margin-bottom: 6rem;
 
       @media screen and (min-width: 1024px) {
+        width: 107rem;
         margin-bottom: 0;
         margin-right: 40rem;
       }
@@ -596,6 +591,7 @@
 
     &__select-wrapper {
       position: relative;
+      cursor: pointer;
 
       &::before {
         content: "";
@@ -607,6 +603,13 @@
         width: 0.8rem;
         height: 0.8rem;
         background-color: $black;
+      }
+
+      @media screen and (min-width: 1024px) {
+        &::before {
+          width: 1.3rem;
+          height: 1.3rem;
+        }
       }
     }
 
@@ -637,17 +640,68 @@
 
     &__card {
       height: 16rem;
-      padding: 2.5rem;
       border-radius: 1.5rem;
       background-color: $bg-gray;
       box-shadow: $card-drop-shadow;
+      transition:
+        background-color,
+        scale 0.4s ease-out;
+      position: relative;
+
+      &:hover {
+        background-color: $white;
+        scale: 1.05;
+      }
+
+      &::before,
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 0.5rem;
+        height: 0.5rem;
+        border-radius: 9999px;
+      }
+
+      &::before {
+        background-color: $green;
+        translate: -2.5rem -1.5rem;
+      }
+
+      &::after {
+        background-color: $red;
+        translate: -1.5rem -1.5rem;
+      }
+
+      @media screen and (min-width: 1024px) {
+        width: 46rem;
+        height: 30rem;
+
+        &::before,
+        &::after {
+          width: 0.6rem;
+          height: 0.6rem;
+        }
+
+        &::before {
+          translate: -4.2rem -3rem;
+        }
+
+        &::after {
+          translate: -3rem -3rem;
+        }
+      }
+    }
+
+    &__card-link {
+      height: 100%;
+      padding: 2.5rem;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
 
       @media screen and (min-width: 1024px) {
-        width: 46rem;
-        height: 30rem;
         padding: 5rem;
       }
     }
@@ -691,12 +745,91 @@
       padding: 1.7rem 2rem;
       border: 1px solid $black;
       border-radius: 2.5rem;
+      position: relative;
+      transition: background-color 0.4s ease-out;
+
+      &:hover {
+        background-color: $black;
+
+        .news__more-link {
+          span {
+            top: -15px;
+
+            &::before {
+              opacity: 1;
+            }
+          }
+        }
+      }
+
+      &::before,
+      &::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        right: 0;
+        width: 0.5rem;
+        height: 0.5rem;
+        border-radius: 9999px;
+      }
+
+      &::before {
+        background-color: $green;
+        translate: -3rem -50%;
+      }
+
+      &::after {
+        background-color: $red;
+        translate: -2rem -50%;
+      }
+
+      @media screen and (min-width: 1024px) {
+        width: 19rem;
+        margin: 0;
+        padding: 2rem 2.5rem;
+        border-radius: 5rem;
+
+        &::before,
+        &::after {
+          width: 0.6rem;
+          height: 0.6rem;
+        }
+
+        &::before {
+          translate: -3.5rem -50%;
+        }
+
+        &::after {
+          translate: -2.5rem -50%;
+        }
+      }
     }
 
     &__more-link {
       font-family: $montserrat;
-      font-size: clamp(13px, 1.3rem, 18px);
+      font-size: clamp(13px, 1.3rem, 16px);
       letter-spacing: -0.04em;
+      overflow: hidden;
+
+      span {
+        position: relative;
+        top: 0;
+        transition: top 0.4s ease-out;
+
+        &::before {
+          content: "View more";
+          position: absolute;
+          top: 15px;
+          left: 0;
+          color: $white;
+          opacity: 0;
+          transition: opacity 0.4s ease-out;
+        }
+      }
+
+      @media screen and (min-width: 1024px) {
+        font-size: clamp(16px, 1.8rem, 18px);
+      }
     }
   }
 }

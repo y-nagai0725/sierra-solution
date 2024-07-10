@@ -32,10 +32,20 @@
 @mixin section-title {
   font-family: $montserrat;
   font-weight: 700;
-  font-size: clamp(50px, 5rem, 74px);
+  font-size: clamp(50px, 5rem, 80px);
 
   @media screen and (min-width: 1024px) {
-    font-size: clamp(84px, 9.8rem, 98px);
+    font-size: clamp(130px, 17rem, 170px);
+  }
+}
+
+@mixin section-subtitle {
+  font-family: $montserrat;
+  font-weight: 700;
+  font-size: clamp(50px, 5rem, 70px);
+
+  @media screen and (min-width: 1024px) {
+    font-size: clamp(70px, 9.8rem, 98px);
   }
 }
 
