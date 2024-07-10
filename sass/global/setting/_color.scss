@@ -7,6 +7,9 @@ $line-gray: #d0d0d0;
 $green: #82be28;
 $red: #cc0033;
 $dummy: #6e6e6e;
-$drop-shadow:
+$bg-drop-shadow:
   inset 0 1px 6px 0 rgba(0, 0, 0, 0.16),
   0 -5px 10px 0 rgba(255, 255, 255, 0.44);
+$card-drop-shadow:
+  -5px -5px 10px 0 rgba(255, 255, 255, 1),
+  3px 3px 5px 0 rgba(0, 0, 0, 0.08);

@@ -920,4 +920,205 @@ a {
 #top .who__value-text--box.js-show-box span {
   bottom: 0;
   opacity: 1;
+}
+#top .news {
+  margin-bottom: 16rem;
+}
+@media screen and (min-width: 1024px) {
+  #top .news {
+    height: calc(100% - 100px);
+    margin-bottom: 0;
+    margin-right: 22rem;
+    flex-shrink: 0;
+  }
+}
+#top .news__inner {
+  padding: 0 2.5rem;
+  display: flex;
+  flex-direction: column;
+}
+@media screen and (min-width: 1024px) {
+  #top .news__inner {
+    flex-direction: row;
+    align-items: center;
+    height: 100%;
+  }
+}
+#top .news__title {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: clamp(50px, 5rem, 74px);
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 6rem;
+}
+@media screen and (min-width: 1024px) {
+  #top .news__title {
+    font-size: clamp(84px, 9.8rem, 98px);
+  }
+}
+@media screen and (min-width: 1024px) {
+  #top .news__title {
+    margin-bottom: 0;
+    margin-right: 40rem;
+  }
+}
+#top .news__section-number {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+@media screen and (min-width: 1024px) {
+  #top .news__section-number {
+    gap: 4rem;
+  }
+}
+#top .news__section-number span:nth-of-type(1),
+#top .news__section-number span:nth-of-type(3) {
+  font-family: "Montserrat", sans-serif;
+  font-size: clamp(11px, 1.1rem, 20px);
+  font-weight: 400;
+  color: #939393;
+}
+@media screen and (min-width: 1024px) {
+  #top .news__section-number span:nth-of-type(1),
+  #top .news__section-number span:nth-of-type(3) {
+    font-size: clamp(24px, 3.6rem, 36px);
+  }
+}
+#top .news__section-number span:nth-of-type(2) {
+  flex-grow: 1;
+  height: 1px;
+  background-color: #d0d0d0;
+}
+#top .news__contents {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+@media screen and (min-width: 1024px) {
+  #top .news__contents {
+    gap: 10rem;
+  }
+}
+#top .news__category {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+}
+@media screen and (min-width: 1024px) {
+  #top .news__category {
+    gap: 7rem;
+  }
+}
+#top .news__subtitle {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: clamp(14px, 1.4rem, 18px);
+}
+@media screen and (min-width: 1024px) {
+  #top .news__subtitle {
+    font-size: clamp(18px, 2.5rem, 25px);
+  }
+}
+#top .news__select-wrapper {
+  position: relative;
+}
+#top .news__select-wrapper::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 0;
+  translate: 0 -50%;
+  clip-path: polygon(50% 100%, 0 0, 100% 0);
+  width: 0.8rem;
+  height: 0.8rem;
+  background-color: #000;
+}
+#top .news__select {
+  padding: 0.5rem 0;
+  width: 16rem;
+  border-bottom: 1px solid #000;
+  font-size: clamp(14px, 1.4rem, 18px);
+  position: relative;
+}
+@media screen and (min-width: 1024px) {
+  #top .news__select {
+    padding: 0.7rem 0;
+    width: 22rem;
+    font-size: clamp(18px, 2.2rem, 22px);
+  }
+}
+#top .news__card-area {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+@media screen and (min-width: 1024px) {
+  #top .news__card-area {
+    flex-direction: row;
+    gap: 8rem;
+  }
+}
+#top .news__card {
+  height: 16rem;
+  padding: 2.5rem;
+  border-radius: 1.5rem;
+  background-color: #efefef;
+  box-shadow: -5px -5px 10px 0 rgb(255, 255, 255), 3px 3px 5px 0 rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+@media screen and (min-width: 1024px) {
+  #top .news__card {
+    width: 46rem;
+    height: 30rem;
+    padding: 5rem;
+  }
+}
+#top .news__date {
+  font-family: "Montserrat", sans-serif;
+  font-size: clamp(13px, 1.3rem, 18px);
+  color: #939393;
+}
+@media screen and (min-width: 1024px) {
+  #top .news__date {
+    font-size: clamp(16px, 2.2rem, 22px);
+  }
+}
+#top .news__text {
+  font-size: clamp(13px, 1.3rem, 18px);
+  letter-spacing: 0.05em;
+  line-height: 1.85;
+}
+@media screen and (min-width: 1024px) {
+  #top .news__text {
+    font-size: clamp(16px, 2.2rem, 22px);
+  }
+}
+#top .news__tag {
+  width: fit-content;
+  padding: 0.3rem 0.5rem;
+  border: 1px solid #000;
+  border-radius: 3px;
+  font-size: clamp(10px, 1rem, 12px);
+  letter-spacing: 0.05em;
+}
+@media screen and (min-width: 1024px) {
+  #top .news__tag {
+    font-size: clamp(10px, 1.4rem, 14px);
+  }
+}
+#top .news__more-button {
+  width: 15rem;
+  margin-left: auto;
+  padding: 1.7rem 2rem;
+  border: 1px solid #000;
+  border-radius: 2.5rem;
+}
+#top .news__more-link {
+  font-family: "Montserrat", sans-serif;
+  font-size: clamp(13px, 1.3rem, 18px);
+  letter-spacing: -0.04em;
 }/*# sourceMappingURL=style.css.map */
