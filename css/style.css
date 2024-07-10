@@ -594,6 +594,7 @@ a {
 }
 @media screen and (min-width: 1024px) {
   #top .who__title {
+    padding: 0;
     margin-bottom: 0;
     margin-right: 50rem;
   }
@@ -637,6 +638,7 @@ a {
 }
 @media screen and (min-width: 1024px) {
   #top .who__message {
+    padding: 0;
     font-size: clamp(30px, 4.2rem, 42px);
     margin-bottom: 0;
     margin-right: 20rem;
@@ -673,8 +675,8 @@ a {
     margin-right: 30rem;
   }
   #top .who__introduction::before {
-    width: 180rem;
-    height: 180rem;
+    width: 220rem;
+    height: 220rem;
     top: 50%;
     left: 0;
     translate: 0 -50%;
@@ -704,39 +706,13 @@ a {
   display: flex;
   align-items: center;
   position: relative;
-}
-#top .who__figure::before {
-  content: "";
-  position: absolute;
-  top: 100%;
-  left: 50%;
-  translate: -50% 0;
-  transform-origin: top;
-  width: 1px;
-  height: 8rem;
-  background-size: 1px 6px;
-  background-image: linear-gradient(to bottom, #d0d0d0 3px, transparent 3px);
-  background-repeat: repeat-y;
-  z-index: -1;
-}
-#top .who__figure.figure-1::before {
-  rotate: -45deg;
-}
-#top .who__figure.figure-2::before {
-  rotate: 45deg;
+  z-index: 2;
 }
 @media screen and (min-width: 1024px) {
   #top .who__figure {
     padding: 0 6rem;
     width: 30rem;
     height: 8.5rem;
-  }
-  #top .who__figure.figure-1::before {
-    rotate: 0deg;
-  }
-  #top .who__figure.figure-2::before {
-    top: 0;
-    rotate: 180deg;
   }
 }
 #top .who__figure-image {
@@ -760,6 +736,7 @@ a {
   translate: -50% 0;
   display: flex;
   align-items: center;
+  z-index: 1;
 }
 @media screen and (min-width: 1024px) {
   #top .who__circle {
@@ -778,6 +755,58 @@ a {
 @media screen and (min-width: 1024px) {
   #top .who__circle-image {
     height: 11rem;
+  }
+}
+#top .who__circle-line {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform-origin: top;
+  width: 1px;
+  height: 8rem;
+  background-size: 1px 6px;
+  background-image: linear-gradient(to bottom, #d0d0d0 3px, transparent 3px);
+  background-repeat: repeat-y;
+}
+#top .who__circle-line::before {
+  content: "";
+  position: absolute;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 9999px;
+  translate: -50% -50%;
+}
+@media screen and (min-width: 1024px) {
+  #top .who__circle-line::before {
+    width: 1.3rem;
+    height: 1.3rem;
+  }
+}
+#top .who__circle-line:nth-of-type(1) {
+  translate: calc(-50% - 3.5rem) 1rem;
+  rotate: 135deg;
+}
+#top .who__circle-line:nth-of-type(1)::before {
+  background-color: #82be28;
+}
+@media screen and (min-width: 1024px) {
+  #top .who__circle-line:nth-of-type(1) {
+    translate: -50% 0;
+    rotate: 180deg;
+  }
+}
+#top .who__circle-line:nth-of-type(2) {
+  translate: calc(-50% + 3.5rem) 1rem;
+  rotate: 225deg;
+}
+#top .who__circle-line:nth-of-type(2)::before {
+  background-color: #cc0033;
+}
+@media screen and (min-width: 1024px) {
+  #top .who__circle-line:nth-of-type(2) {
+    top: 100%;
+    translate: -50% 0;
+    rotate: 0deg;
   }
 }
 #top .who__description {
@@ -819,8 +848,8 @@ a {
     padding: 0 0 0 30rem;
   }
   #top .who__value::before {
-    width: 180rem;
-    height: 180rem;
+    width: 220rem;
+    height: 220rem;
     top: 50%;
     left: 0;
     translate: 0 -50%;
@@ -871,6 +900,11 @@ a {
   border-radius: 9999px;
   box-shadow: inset 0 1px 6px 0 rgba(0, 0, 0, 0.16), 0 -5px 10px 0 rgba(255, 255, 255, 0.44);
   transition: border-radius, box-shadow 0.4s ease-out;
+}
+@media screen and (min-width: 1024px) {
+  #top .who__value-text--box {
+    padding: 1.3rem 2.2rem;
+  }
 }
 #top .who__value-text--box span {
   position: relative;
