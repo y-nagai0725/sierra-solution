@@ -1484,4 +1484,56 @@ a {
 #top .company__list-wrapper {
   display: flex;
   flex-direction: column;
+}
+@media screen and (min-width: 1024px) {
+  #top .company__list-wrapper {
+    flex-direction: row;
+    gap: 8rem;
+  }
+}
+@media screen and (min-width: 1024px) {
+  #top .company__list {
+    width: 75rem;
+  }
+}
+#top .company__item {
+  padding: 2.5rem 0;
+  border-top: 1px solid #d0d0d0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+#top .company__item.last {
+  border-bottom: 1px solid #d0d0d0;
+}
+@media screen and (min-width: 1024px) {
+  #top .company__item {
+    padding: 4rem 0;
+    flex-direction: row;
+    gap: 9.4rem;
+  }
+  #top .company__item.last-pc {
+    border-bottom: 1px solid #d0d0d0;
+  }
+}
+#top .company__subtitle {
+  font-weight: 700;
+  font-size: clamp(13px, 1.3rem, 16px);
+  letter-spacing: 0.05em;
+}
+@media screen and (min-width: 1024px) {
+  #top .company__subtitle {
+    flex-shrink: 0;
+    width: 12rem;
+    font-size: clamp(16px, 2rem, 20px);
+  }
+}
+#top .company__text {
+  font-size: clamp(13px, 1.3rem, 16px);
+  letter-spacing: 0.05em;
+}
+@media screen and (min-width: 1024px) {
+  #top .company__text {
+    font-size: clamp(16px, 2rem, 20px);
+  }
 }/*# sourceMappingURL=style.css.map */
