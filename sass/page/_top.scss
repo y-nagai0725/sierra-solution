@@ -978,4 +978,42 @@
       }
     }
   }
+
+  .company {
+    @include section-common;
+
+    &__inner {
+      @include contents-width;
+      display: flex;
+      flex-direction: column;
+
+      @media screen and (min-width: 1024px) {
+        flex-direction: row;
+        align-items: center;
+        height: 100%;
+      }
+    }
+
+    &__title {
+      @include section-title;
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 6rem;
+
+      @media screen and (min-width: 1024px) {
+        width: 107rem;
+        margin-bottom: 0;
+        margin-right: 40rem;
+      }
+    }
+
+    &__section-number {
+      @include section-number;
+    }
+
+    &__list-wrapper {
+      display: flex;
+      flex-direction: column;
+    }
+  }
 }
