@@ -77,3 +77,96 @@
     background-color: $line-gray;
   }
 }
+
+@mixin button-style($bg-color, $hovered-bg-color) {
+  width: 15rem;
+  padding: 1.7rem 2rem;
+  border: 1px solid $black;
+  border-radius: 2.5rem;
+  background-color: $bg-color;
+  position: relative;
+  transition: background-color 0.4s ease-out;
+
+  &:hover {
+    background-color: $hovered-bg-color;
+
+    a {
+      span {
+        top: -15px;
+
+        &::before {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 0;
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 9999px;
+  }
+
+  &::before {
+    background-color: $green;
+    translate: -3rem -50%;
+  }
+
+  &::after {
+    background-color: $red;
+    translate: -2rem -50%;
+  }
+
+  @media screen and (min-width: 1024px) {
+    width: 21rem;
+    padding: 2rem 2.5rem;
+    border-radius: 5rem;
+
+    &::before,
+    &::after {
+      width: 0.6rem;
+      height: 0.6rem;
+    }
+
+    &::before {
+      translate: -3.5rem -50%;
+    }
+
+    &::after {
+      translate: -2.5rem -50%;
+    }
+  }
+}
+
+@mixin button-link($hovered-text, $hovered-text-color, $text-color) {
+  font-family: $montserrat;
+  font-size: clamp(13px, 1.3rem, 16px);
+  letter-spacing: -0.04em;
+  overflow: hidden;
+
+  span {
+    color: $text-color;
+    position: relative;
+    top: 0;
+    transition: top 0.4s ease-out;
+
+    &::before {
+      content: $hovered-text;
+      position: absolute;
+      top: 15px;
+      left: 0;
+      color: $hovered-text-color;
+      opacity: 0;
+      transition: opacity 0.4s ease-out;
+    }
+  }
+
+  @media screen and (min-width: 1024px) {
+    font-size: clamp(16px, 1.8rem, 18px);
+  }
+}

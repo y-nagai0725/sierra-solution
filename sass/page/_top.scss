@@ -740,96 +740,16 @@
     }
 
     &__more-button {
-      width: 15rem;
+      @include button-style(transparent, $black);
       margin-left: auto;
-      padding: 1.7rem 2rem;
-      border: 1px solid $black;
-      border-radius: 2.5rem;
-      position: relative;
-      transition: background-color 0.4s ease-out;
-
-      &:hover {
-        background-color: $black;
-
-        .news__more-link {
-          span {
-            top: -15px;
-
-            &::before {
-              opacity: 1;
-            }
-          }
-        }
-      }
-
-      &::before,
-      &::after {
-        content: "";
-        position: absolute;
-        top: 50%;
-        right: 0;
-        width: 0.5rem;
-        height: 0.5rem;
-        border-radius: 9999px;
-      }
-
-      &::before {
-        background-color: $green;
-        translate: -3rem -50%;
-      }
-
-      &::after {
-        background-color: $red;
-        translate: -2rem -50%;
-      }
 
       @media screen and (min-width: 1024px) {
-        width: 19rem;
         margin: 0;
-        padding: 2rem 2.5rem;
-        border-radius: 5rem;
-
-        &::before,
-        &::after {
-          width: 0.6rem;
-          height: 0.6rem;
-        }
-
-        &::before {
-          translate: -3.5rem -50%;
-        }
-
-        &::after {
-          translate: -2.5rem -50%;
-        }
       }
     }
 
     &__more-link {
-      font-family: $montserrat;
-      font-size: clamp(13px, 1.3rem, 16px);
-      letter-spacing: -0.04em;
-      overflow: hidden;
-
-      span {
-        position: relative;
-        top: 0;
-        transition: top 0.4s ease-out;
-
-        &::before {
-          content: "View more";
-          position: absolute;
-          top: 15px;
-          left: 0;
-          color: $white;
-          opacity: 0;
-          transition: opacity 0.4s ease-out;
-        }
-      }
-
-      @media screen and (min-width: 1024px) {
-        font-size: clamp(16px, 1.8rem, 18px);
-      }
+      @include button-link("View more", $white, $black);
     }
   }
 
@@ -1043,7 +963,7 @@
         flex-direction: row;
         gap: 9.4rem;
 
-        &.last-pc{
+        &.last-pc {
           border-bottom: 1px solid $line-gray;
         }
       }
@@ -1067,6 +987,74 @@
 
       @media screen and (min-width: 1024px) {
         font-size: clamp(16px, 2rem, 20px);
+      }
+    }
+  }
+
+  .contact {
+    @include section-common;
+
+    &__inner {
+      @include contents-width;
+      display: flex;
+      flex-direction: column;
+
+      @media screen and (min-width: 1024px) {
+        height: 100%;
+        justify-content: center;
+      }
+    }
+
+    &__title {
+      @include section-title;
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 5rem;
+      text-align: center;
+
+      @media screen and (min-width: 1024px) {
+        width: 107rem;
+      }
+    }
+
+    &__text {
+      font-size: clamp(13px, 1.3rem, 16px);
+      letter-spacing: 0.05em;
+      line-height: 1.85;
+      text-align: center;
+      margin-bottom: 4rem;
+
+      .no-pc {
+        @media screen and (min-width: 1024px) {
+          display: none;
+        }
+      }
+
+      @media screen and (min-width: 1024px) {
+        font-size: clamp(18px, 2rem, 20px);
+        margin-bottom: 8rem;
+      }
+    }
+
+    &__button {
+      @include button-style($black, transparent);
+      margin-inline: auto;
+      margin-bottom: 4rem;
+    }
+
+    &__button-link {
+      @include button-link("Contact Form", $black, $white);
+    }
+
+    &__privacy-policy {
+      width: fit-content;
+      border-bottom: 1px solid $black;
+      margin-inline: auto;
+      font-family: $montserrat;
+      font-size: clamp(12px, 1.2rem, 14px);
+
+      @media screen and (min-width: 1024px) {
+        font-size: clamp(15px, 1.7rem, 17px);
       }
     }
   }
