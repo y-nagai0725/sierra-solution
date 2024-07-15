@@ -740,16 +740,12 @@
     }
 
     &__more-button {
-      @include button-style(transparent, $black);
+      @include button-style($black, transparent, $black, "View more", $bg-gray);
       margin-left: auto;
 
       @media screen and (min-width: 1024px) {
         margin: 0;
       }
-    }
-
-    &__more-link {
-      @include button-link("View more", $white, $black);
     }
   }
 
@@ -1036,14 +1032,10 @@
       }
     }
 
-    &__button {
-      @include button-style($black, transparent);
+    &__button-link {
+      @include button-style($bg-gray, $black, transparent, "Contact Form", $black);
       margin-inline: auto;
       margin-bottom: 4rem;
-    }
-
-    &__button-link {
-      @include button-link("Contact Form", $black, $white);
     }
 
     &__privacy-policy {

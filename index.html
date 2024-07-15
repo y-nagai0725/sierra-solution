@@ -131,11 +131,11 @@
         <div class="who__inner">
           <h2 class="who__title">
             Who we are
-            <div class="who__section-number">
+            <span class="who__section-number">
               <span>Section</span>
               <span></span>
               <span>2</span>
-            </div>
+            </span>
           </h2>
           <p class="who__message">
             サンプルサンプルサンプルサンプル<br>
@@ -205,11 +205,11 @@
         <div class="news__inner">
           <h2 class="news__title">
             News
-            <div class="news__section-number">
+            <span class="news__section-number">
               <span>Section</span>
               <span></span>
               <span>3</span>
-            </div>
+            </span>
           </h2>
           <div class="news__contents">
             <div class="news__category">
@@ -261,9 +261,7 @@
                 </a>
               </li>
             </ul>
-            <button class="news__more-button">
-              <a href="#" class="news__more-link"><span>View more</span></a>
-            </button>
+            <a href="#" class="news__more-button"><span>View more</span></a>
           </div>
         </div>
       </section>
@@ -272,11 +270,11 @@
           <div class="service__title-wrapper">
             <h2 class="service__title">
               Service
-              <div class="service__section-number">
+              <span class="service__section-number">
                 <span>Section</span>
                 <span></span>
                 <span>4</span>
-              </div>
+              </span>
             </h2>
           </div>
           <div class="service__service-menu">
@@ -300,11 +298,11 @@
         <div class="company__inner">
           <h2 class="company__title">
             Company
-            <div class="company__section-number">
+            <span class="company__section-number">
               <span>Section</span>
               <span></span>
               <span>5</span>
-            </div>
+            </span>
           </h2>
           <div class="company__list-wrapper">
             <dl class="company__list">
@@ -347,18 +345,53 @@
             お問い合わせいただいた内容につきましては、<br class="no-pc">
             担当者より折り返しご連絡いたします。
           </p>
-          <button class="contact__button">
-            <a href="#" class="contact__button-link"><span>Contact Form</span></a>
-          </button>
+          <a href="#" class="contact__button-link"><span>Contact Form</span></a>
           <a href="#" class="contact__privacy-policy">Privacy Policy</a>
         </div>
       </section>
+      <footer class="footer">
+        <div class="footer__inner">
+          <div class="footer__top">
+            <a href="" class="footer__logo-link">
+              <img class="footer__logo-image" src="" alt="">
+            </a>
+            <dl class="footer__dl">
+              <dt class="footer__dt">Office</dt>
+              <dd class="footer__dd">サンプルサンプルサンプルサンプル　サンプルサンプルサンプルサンプル</dd>
+            </dl>
+          </div>
+          <div class="footer__bottom">
+            <ul class="footer__link-list">
+              <li class="footer__item">
+                <a href="#who" class="footer__link">Who we are</a>
+              </li>
+              <li class="footer__item">
+                <a href="#news" class="footer__link">News</a>
+              </li>
+              <li class="footer__item">
+                <a href="#service" class="footer__link">Service</a>
+              </li>
+              <li class="footer__item">
+                <a href="#company" class="footer__link">Company</a>
+              </li>
+              <li class="footer__item">
+                <a href="#contact" class="footer__link">Contact</a>
+              </li>
+            </ul>
+            <div class="footer__note">
+              <a href="#" class="footer__privacy-policy">Privacy Policy</a>
+              <p class="footer__copyright"><small>Copyright &copy; Sierra Solutions</small></p>
+            </div>
+          </div>
+          <button id="footer__page-top-button" class="footer__page-top-button">
+            <span class="footer__page-top-arrow">
+              <img class="footer__page-top-image" src="images/common/footer_arrow.svg" alt="">
+            </span>
+            <span class="footer__page-top-text">PAGE TOP</span>
+          </button>
+        </div>
+      </footer>
     </main>
-    <footer class="footer">
-      <div class="footer__inner">
-
-      </div>
-    </footer>
   </div>
   <script src="js/gsap.min.js"></script>
   <script src="js/ScrollTrigger.min.js"></script>
