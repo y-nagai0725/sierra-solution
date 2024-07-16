@@ -1,6 +1,5 @@
 //TOPページ用JS
 document.addEventListener('DOMContentLoaded', function () {
-
   //PC表示ブレイクポイント
   const breakPoint = 1024;
 
@@ -16,6 +15,9 @@ document.addEventListener('DOMContentLoaded', function () {
   //GSAPメディアクエリ
   const mm = gsap.matchMedia();
 
+  //トップへ戻るボタン
+  const pageTopButton = document.getElementById("footer__page-top-button");
+
   gnavButton.addEventListener("click", function () {
     this.classList.toggle("js-opened");
     gnavMenu.classList.toggle("js-opened");
@@ -28,6 +30,13 @@ document.addEventListener('DOMContentLoaded', function () {
       gnavMenu.classList.remove("js-opened");
       gnav.classList.remove("js-blur");
     }
+  });
+
+  pageTopButton.addEventListener("click", function () {
+    window.scroll({
+      top: 0,
+      behavior: "smooth",
+    });
   });
 
 
