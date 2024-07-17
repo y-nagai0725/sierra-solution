@@ -893,6 +893,49 @@
         color: $green;
       }
     }
+
+    &__first,
+    &__second {
+      @include contents-width;
+      display: flex;
+      flex-direction: column;
+
+      @media screen and (min-width: 1024px) {
+        flex-direction: row;
+      }
+    }
+
+    &__summary {
+    }
+
+    &__summary-number {
+      display: block;
+      font-family: $montserrat;
+      font-size: clamp(34px, 3.4rem, 50px);
+      color: $red;
+      margin-bottom: 1rem;
+    }
+
+    &__summary-title-en {
+      font-family: $montserrat;
+      font-size: clamp(34px, 3.4rem, 50px);
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 1rem;
+    }
+
+    &__summary-title-ja {
+      display: block;
+      font-size: clamp(16px, 1.6rem, 26px);
+      color: $red;
+      margin-bottom: 3rem;
+    }
+
+    &__summary-text {
+      font-size: clamp(13px, 1.3rem, 24px);
+      line-height: 1.85;
+      letter-spacing: 0.05em;
+    }
   }
 
   .company {
