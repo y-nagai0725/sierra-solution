@@ -987,6 +987,7 @@
 
     &__detail-item {
       width: 19rem;
+      flex-shrink: 0;
     }
 
     &__detail-card {

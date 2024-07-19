@@ -1735,6 +1735,7 @@ a {
 }
 #top .service__detail-item {
   width: 19rem;
+  flex-shrink: 0;
 }
 #top .service__detail-card {
   padding: 3.5rem;

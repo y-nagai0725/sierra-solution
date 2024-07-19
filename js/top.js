@@ -39,6 +39,19 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
+  gsap.to(".service__detail-slide", {
+    x: -500,
+    scrollTrigger: {
+      trigger: '.service__detail',
+      start: 'top top',
+      scrub: true,
+      pin: true,
+      aniticipatePin: 1,
+      invalidateOnRefresh: true,
+      markers: true,  // マーカーを表示させる
+    }
+  });
+
 
 
 
