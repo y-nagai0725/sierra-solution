@@ -12,11 +12,20 @@ document.addEventListener('DOMContentLoaded', function () {
   //グローバルナビゲーションボタン
   const gnavButton = document.getElementById("gnav__button");
 
+  //トップへ戻るボタン
+  const pageTopButton = document.getElementById("footer__page-top-button");
+
   //GSAPメディアクエリ
   const mm = gsap.matchMedia();
 
-  //トップへ戻るボタン
-  const pageTopButton = document.getElementById("footer__page-top-button");
+  let serviceScrollValue1;
+  let serviceScrollValue2;
+
+  const serviceDetail1 = document.getElementById("service__detail-1");
+  const serviceSlide1 = document.getElementById("service__detail-slide-1");
+
+  const serviceDetail2 = document.getElementById("service__detail-2");
+  const serviceSlide2 = document.getElementById("service__detail-slide-2");
 
   gnavButton.addEventListener("click", function () {
     this.classList.toggle("js-opened");
@@ -39,41 +48,40 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  gsap.to(".service__detail-slide", {
-    x: -500,
-    scrollTrigger: {
-      trigger: '.service__detail',
-      start: 'top top',
-      scrub: true,
-      pin: true,
-      aniticipatePin: 1,
-      invalidateOnRefresh: true,
-      markers: true,  // マーカーを表示させる
-    }
+  //SP,TAB用gsap設定
+  mm.add("(max-width: 1023px)", () => {
+    gsap.to(serviceSlide1, {
+      x: "-83rem",
+      scrollTrigger: {
+        trigger: serviceDetail1,
+        start: 'top top',
+        //end: "",
+        scrub: true,
+        pin: true,
+        aniticipatePin: 1,
+        invalidateOnRefresh: true,
+        //markers: true,  // マーカーを表示させる
+      }
+    });
+
+    gsap.to(serviceSlide2, {
+      x: "-50rem",
+      scrollTrigger: {
+        trigger: serviceDetail2,
+        start: 'top top',
+        //end: "",
+        scrub: true,
+        pin: true,
+        aniticipatePin: 1,
+        invalidateOnRefresh: true,
+        //markers: true,  // マーカーを表示させる
+      }
+    });
   });
 
+  //PC用gsap設定
+  mm.add("(min-width: 1024px)", () => {
 
-
-
-
-
-
-
-
-
-  //gsapのメディアクエリ設定
-  function setGsapMatchMedia() {
-    mm.add("(max-width: 767px)", () => {
-
-    });
-
-    mm.add("(min-width: 768px) and (max-width: 1023px)", () => {
-
-    });
-
-    mm.add("(min-width: 1024px)", () => {
-
-    });
-  }
+  });
 
 }, false);

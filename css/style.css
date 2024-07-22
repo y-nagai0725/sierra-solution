@@ -1491,6 +1491,7 @@ a {
 }
 #top .service {
   margin-bottom: 16rem;
+  margin-bottom: 0;
 }
 @media screen and (min-width: 1024px) {
   #top .service {
@@ -1664,7 +1665,7 @@ a {
   color: #82be28;
 }
 #top .service__first, #top .service__second {
-  margin-bottom: 11rem;
+  margin-bottom: 55rem;
   display: flex;
   flex-direction: column;
   gap: 6rem;
@@ -1736,6 +1737,9 @@ a {
 #top .service__detail-item {
   width: 19rem;
   flex-shrink: 0;
+}
+#top .service__detail-item:last-of-type .service__detail-card::after {
+  display: none;
 }
 #top .service__detail-card {
   padding: 3.5rem;

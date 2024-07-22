@@ -751,6 +751,7 @@
 
   .service {
     @include section-common;
+    margin-bottom: 0;
 
     &__inner {
       display: flex;
@@ -896,7 +897,7 @@
 
     &__first,
     &__second {
-      margin-bottom: 11rem;
+      margin-bottom: 55rem;
       display: flex;
       flex-direction: column;
       gap: 6rem;
@@ -977,6 +978,7 @@
     }
 
     &__detail-slide {
+
     }
 
     &__detail-list {
@@ -988,6 +990,12 @@
     &__detail-item {
       width: 19rem;
       flex-shrink: 0;
+
+      &:last-of-type {
+        .service__detail-card::after {
+          display: none;
+        }
+      }
     }
 
     &__detail-card {
