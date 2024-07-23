@@ -10,15 +10,18 @@
   }
 
   .main {
+    height: 100%;
     //後で消す ページ制作用
     position: relative;
     z-index: 101;
     //後で消す ページ制作用
+  }
+
+  .contents-wrapper {
 
     @media screen and (min-width: 1024px) {
       height: 100%;
       display: flex;
-      //overflow: hidden;
     }
   }
 
@@ -978,7 +981,6 @@
     }
 
     &__detail-slide {
-
     }
 
     &__detail-list {

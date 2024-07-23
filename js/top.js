@@ -21,6 +21,8 @@ document.addEventListener('DOMContentLoaded', function () {
   let serviceScrollValue1;
   let serviceScrollValue2;
 
+  const contentsWrapper = document.getElementById("contents-wrapper");
+
   const serviceDetail1 = document.getElementById("service__detail-1");
   const serviceSlide1 = document.getElementById("service__detail-slide-1");
 
@@ -81,7 +83,19 @@ document.addEventListener('DOMContentLoaded', function () {
 
   //PC用gsap設定
   mm.add("(min-width: 1024px)", () => {
-
+    gsap.to(contentsWrapper, {
+      x: -9999,
+      scrollTrigger: {
+        trigger: contentsWrapper,
+        start: 'top top',
+        //end: "",
+        scrub: true,
+        pin: true,
+        aniticipatePin: 1,
+        invalidateOnRefresh: true,
+        markers: true,  // マーカーを表示させる
+      }
+    });
   });
 
 }, false);
