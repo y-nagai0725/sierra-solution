@@ -754,7 +754,6 @@
 
   .service {
     @include section-common;
-    margin-bottom: 0;
 
     &__inner {
       display: flex;
@@ -900,18 +899,19 @@
 
     &__first,
     &__second {
-      margin-bottom: 11rem;
-      display: flex;
-      flex-direction: column;
-      gap: 6rem;
-
       @media screen and (min-width: 1024px) {
+        display: flex;
         flex-direction: row;
       }
     }
 
+    &__first {
+      margin-bottom: 11rem;
+    }
+
     &__summary {
       padding: 0 2.5rem;
+      margin-bottom: 6rem;
     }
 
     &__summary-number {

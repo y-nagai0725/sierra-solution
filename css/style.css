@@ -1492,7 +1492,6 @@ a {
 }
 #top .service {
   margin-bottom: 16rem;
-  margin-bottom: 0;
 }
 @media screen and (min-width: 1024px) {
   #top .service {
@@ -1665,19 +1664,18 @@ a {
 #top .service__menu-jp--green {
   color: #82be28;
 }
-#top .service__first, #top .service__second {
-  margin-bottom: 11rem;
-  display: flex;
-  flex-direction: column;
-  gap: 6rem;
-}
 @media screen and (min-width: 1024px) {
   #top .service__first, #top .service__second {
+    display: flex;
     flex-direction: row;
   }
 }
+#top .service__first {
+  margin-bottom: 11rem;
+}
 #top .service__summary {
   padding: 0 2.5rem;
+  margin-bottom: 6rem;
 }
 #top .service__summary-number {
   display: block;

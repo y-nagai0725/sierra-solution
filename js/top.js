@@ -18,16 +18,10 @@ document.addEventListener('DOMContentLoaded', function () {
   //GSAPメディアクエリ
   const mm = gsap.matchMedia();
 
-  let serviceScrollValue1;
-  let serviceScrollValue2;
-
   const contentsWrapper = document.getElementById("contents-wrapper");
-
   const serviceDetail1 = document.getElementById("service__detail-1");
-  const serviceList1 = document.getElementById("service__detail-list-1");
-
-
   const serviceDetail2 = document.getElementById("service__detail-2");
+  const serviceList1 = document.getElementById("service__detail-list-1");
   const serviceList2 = document.getElementById("service__detail-list-2");
 
   gnavButton.addEventListener("click", function () {
@@ -59,29 +53,27 @@ document.addEventListener('DOMContentLoaded', function () {
       scrollTrigger: {
         trigger: serviceDetail1,
         start: 'top top',
-        end: () => `+=${serviceList1.scrollWidth - serviceList1.offsetWidth}`,
-        //end: () => `+=200`,
+        end: () => "+=" + (serviceList1.scrollWidth - serviceList1.offsetWidth),
         scrub: true,
         pin: true,
         aniticipatePin: 1,
         invalidateOnRefresh: true,
-        markers: true,  // マーカーを表示させる
       }
     });
 
-    // gsap.to(serviceList2, {
-    //   x: "-50rem",
-    //   scrollTrigger: {
-    //     trigger: serviceDetail2,
-    //     start: 'top top',
-    //     //end: "",
-    //     scrub: true,
-    //     pin: true,
-    //     aniticipatePin: 1,
-    //     invalidateOnRefresh: true,
-    //     //markers: true,  // マーカーを表示させる
-    //   }
-    // });
+    gsap.to(serviceList2, {
+      x: () => -(serviceList2.scrollWidth - serviceList2.offsetWidth),
+      ease: "none",
+      scrollTrigger: {
+        trigger: serviceDetail2,
+        start: 'top top',
+        end: () => "+=" + (serviceList2.scrollWidth - serviceList2.offsetWidth),
+        scrub: true,
+        pin: true,
+        aniticipatePin: 1,
+        invalidateOnRefresh: true,
+      }
+    });
   });
 
   //PC用gsap設定
@@ -92,12 +84,11 @@ document.addEventListener('DOMContentLoaded', function () {
       scrollTrigger: {
         trigger: contentsWrapper,
         start: "top top",
-        end: () => `+=${contentsWrapper.scrollWidth - window.innerWidth}`,
+        end: () => "+=" + (contentsWrapper.scrollWidth - window.innerWidth),
         scrub: true,
         pin: true,
         aniticipatePin: 1,
         invalidateOnRefresh: true,
-        markers: true,  // マーカーを表示させる
       }
     });
   });
