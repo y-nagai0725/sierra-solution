@@ -24,10 +24,11 @@ document.addEventListener('DOMContentLoaded', function () {
   const contentsWrapper = document.getElementById("contents-wrapper");
 
   const serviceDetail1 = document.getElementById("service__detail-1");
-  const serviceSlide1 = document.getElementById("service__detail-slide-1");
+  const serviceList1 = document.getElementById("service__detail-list-1");
+
 
   const serviceDetail2 = document.getElementById("service__detail-2");
-  const serviceSlide2 = document.getElementById("service__detail-slide-2");
+  const serviceList2 = document.getElementById("service__detail-list-2");
 
   gnavButton.addEventListener("click", function () {
     this.classList.toggle("js-opened");
@@ -52,43 +53,46 @@ document.addEventListener('DOMContentLoaded', function () {
 
   //SP,TAB用gsap設定
   mm.add("(max-width: 1023px)", () => {
-    gsap.to(serviceSlide1, {
-      x: "-83rem",
+    gsap.to(serviceList1, {
+      x: () => -(serviceList1.scrollWidth - serviceList1.offsetWidth),
+      ease: "none",
       scrollTrigger: {
         trigger: serviceDetail1,
         start: 'top top',
-        //end: "",
+        end: () => `+=${serviceList1.scrollWidth - serviceList1.offsetWidth}`,
+        //end: () => `+=200`,
         scrub: true,
         pin: true,
         aniticipatePin: 1,
         invalidateOnRefresh: true,
-        //markers: true,  // マーカーを表示させる
+        markers: true,  // マーカーを表示させる
       }
     });
 
-    gsap.to(serviceSlide2, {
-      x: "-50rem",
-      scrollTrigger: {
-        trigger: serviceDetail2,
-        start: 'top top',
-        //end: "",
-        scrub: true,
-        pin: true,
-        aniticipatePin: 1,
-        invalidateOnRefresh: true,
-        //markers: true,  // マーカーを表示させる
-      }
-    });
+    // gsap.to(serviceList2, {
+    //   x: "-50rem",
+    //   scrollTrigger: {
+    //     trigger: serviceDetail2,
+    //     start: 'top top',
+    //     //end: "",
+    //     scrub: true,
+    //     pin: true,
+    //     aniticipatePin: 1,
+    //     invalidateOnRefresh: true,
+    //     //markers: true,  // マーカーを表示させる
+    //   }
+    // });
   });
 
   //PC用gsap設定
   mm.add("(min-width: 1024px)", () => {
     gsap.to(contentsWrapper, {
-      x: -9999,
+      x: () => -(contentsWrapper.scrollWidth - window.innerWidth),
+      ease: "none",
       scrollTrigger: {
         trigger: contentsWrapper,
-        start: 'top top',
-        //end: "",
+        start: "top top",
+        end: () => `+=${contentsWrapper.scrollWidth - window.innerWidth}`,
         scrub: true,
         pin: true,
         aniticipatePin: 1,
