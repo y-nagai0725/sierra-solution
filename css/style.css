@@ -162,15 +162,6 @@ a {
   top: 0;
   z-index: 100;
 }
-@media screen and (min-width: 1024px) {
-  .gnav {
-    height: 100px;
-    top: initial;
-    bottom: 0;
-    left: 0;
-    border-top: 1px solid #d0d0d0;
-  }
-}
 .gnav::before {
   content: "";
   position: absolute;
@@ -182,6 +173,18 @@ a {
 }
 .gnav.js-blur::before {
   backdrop-filter: blur(2px);
+}
+@media screen and (min-width: 1024px) {
+  .gnav {
+    height: 100px;
+    top: initial;
+    bottom: 0;
+    left: 0;
+    border-top: 1px solid #d0d0d0;
+  }
+  .gnav::before {
+    display: none;
+  }
 }
 .gnav__menu {
   width: calc(100% - 6.5rem);
@@ -611,7 +614,7 @@ a {
 #top .main {
   height: 100%;
   position: relative;
-  z-index: 101;
+  z-index: 99;
 }
 @media screen and (min-width: 1024px) {
   #top .contents-wrapper {

@@ -7,14 +7,6 @@
   top: 0;
   z-index: 100;
 
-  @media screen and (min-width: 1024px) {
-    height: 100px;
-    top: initial;
-    bottom: 0;
-    left: 0;
-    border-top: 1px solid $line-gray;
-  }
-
   &::before {
     content: "";
     position: absolute;
@@ -27,6 +19,18 @@
 
   &.js-blur::before {
     backdrop-filter: blur(2px);
+  }
+
+  @media screen and (min-width: 1024px) {
+    height: 100px;
+    top: initial;
+    bottom: 0;
+    left: 0;
+    border-top: 1px solid $line-gray;
+
+    &::before {
+      display: none;
+    }
   }
 
   &__menu {

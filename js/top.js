@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  //SP,TAB用gsap設定
+  //横スクロールGSAP設定:SP,TAB
   mm.add("(max-width: 1023px)", () => {
     gsap.to(serviceList1, {
       x: () => -(serviceList1.scrollWidth - serviceList1.offsetWidth),
@@ -76,7 +76,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  //PC用gsap設定
+  //横スクロールGSAP設定:PC
   mm.add("(min-width: 1024px)", () => {
     gsap.to(contentsWrapper, {
       x: () => -(contentsWrapper.scrollWidth - window.innerWidth),
@@ -89,6 +89,47 @@ document.addEventListener('DOMContentLoaded', function () {
         pin: true,
         aniticipatePin: 1,
         invalidateOnRefresh: true,
+      }
+    });
+  });
+
+  //アンカーリンクのクリック処理設定
+  const links = document.querySelectorAll("a[href^='#']");
+  links.forEach(link => {
+    link.addEventListener("click", e => {
+      e.preventDefault();
+      const anchorName = link.getAttribute("href");
+
+      if (anchorName === "#") {
+        gsap.to(window, {
+          duration: 0.8,
+          ease: "power2.out",
+          scrollTo: {
+            y: 0,
+          }
+        });
+      } else {
+        mm.add("(max-width: 1023px)", () => {
+          gsap.to(window, {
+            duration: 0.8,
+            ease: "power2.out",
+            scrollTo: {
+              y: anchorName,
+            }
+          });
+        });
+
+        mm.add("(min-width: 1024px)", () => {
+          const target = document.getElementById(anchorName.slice(1));
+          const targetPosition = target.getBoundingClientRect().left + window.scrollY;
+          gsap.to(window, {
+            duration: 0.8,
+            ease: "power2.out",
+            scrollTo: {
+              y: targetPosition,
+            }
+          });
+        });
       }
     });
   });
