@@ -13,7 +13,7 @@
     height: 100%;
     //後で消す ページ制作用
     position: relative;
-    z-index: 99;
+    z-index: 101;
     //後で消す ページ制作用
   }
 
@@ -814,6 +814,7 @@
         width: 21rem;
         padding: 0 4rem 0 0;
         gap: 7rem;
+        align-self: flex-start;
 
         &::before {
           content: "";
@@ -821,7 +822,7 @@
           top: 0;
           right: 0;
           width: 1px;
-          height: 100%;
+          height: calc(100vh - 100px - 12rem);
           background-color: $line-gray;
         }
       }
@@ -864,6 +865,10 @@
         height: 1px;
         background-color: $line-gray;
       }
+
+      @media screen and (min-width: 1024px) {
+        padding-bottom: 2rem;
+      }
     }
 
     &__menu-number {
@@ -877,16 +882,24 @@
       &--green {
         color: $green;
       }
+
+      @media screen and (min-width: 1024px) {
+        font-size: clamp(18px, 2.2rem, 22px);
+      }
     }
 
     &__menu-en {
       font-family: $montserrat;
       font-size: clamp(18px, 1.8rem, 24px);
       font-weight: 700;
+
+      @media screen and (min-width: 1024px) {
+        font-size: clamp(24px, 2.8rem, 28px);
+      }
     }
 
     &__menu-jp {
-      font-size: clamp(14px, 1.4rem, 18px);
+      font-size: clamp(14px, 1.4rem, 16px);
 
       &--red {
         color: $red;
@@ -894,6 +907,10 @@
 
       &--green {
         color: $green;
+      }
+
+      @media screen and (min-width: 1024px) {
+        font-size: clamp(16px, 1.8rem, 18px);
       }
     }
 

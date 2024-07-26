@@ -614,7 +614,7 @@ a {
 #top .main {
   height: 100%;
   position: relative;
-  z-index: 99;
+  z-index: 101;
 }
 @media screen and (min-width: 1024px) {
   #top .contents-wrapper {
@@ -1595,6 +1595,7 @@ a {
     width: 21rem;
     padding: 0 4rem 0 0;
     gap: 7rem;
+    align-self: flex-start;
   }
   #top .service__service-menu::before {
     content: "";
@@ -1602,7 +1603,7 @@ a {
     top: 0;
     right: 0;
     width: 1px;
-    height: 100%;
+    height: calc(100vh - 100px - 12rem);
     background-color: #d0d0d0;
   }
 }
@@ -1643,6 +1644,11 @@ a {
   height: 1px;
   background-color: #d0d0d0;
 }
+@media screen and (min-width: 1024px) {
+  #top .service__menu-link {
+    padding-bottom: 2rem;
+  }
+}
 #top .service__menu-number {
   font-family: "Montserrat", sans-serif;
   font-size: clamp(14px, 1.4rem, 18px);
@@ -1653,19 +1659,34 @@ a {
 #top .service__menu-number--green {
   color: #82be28;
 }
+@media screen and (min-width: 1024px) {
+  #top .service__menu-number {
+    font-size: clamp(18px, 2.2rem, 22px);
+  }
+}
 #top .service__menu-en {
   font-family: "Montserrat", sans-serif;
   font-size: clamp(18px, 1.8rem, 24px);
   font-weight: 700;
 }
+@media screen and (min-width: 1024px) {
+  #top .service__menu-en {
+    font-size: clamp(24px, 2.8rem, 28px);
+  }
+}
 #top .service__menu-jp {
-  font-size: clamp(14px, 1.4rem, 18px);
+  font-size: clamp(14px, 1.4rem, 16px);
 }
 #top .service__menu-jp--red {
   color: #cc0033;
 }
 #top .service__menu-jp--green {
   color: #82be28;
+}
+@media screen and (min-width: 1024px) {
+  #top .service__menu-jp {
+    font-size: clamp(16px, 1.8rem, 18px);
+  }
 }
 @media screen and (min-width: 1024px) {
   #top .service__first, #top .service__second {
