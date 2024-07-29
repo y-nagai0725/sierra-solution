@@ -23,6 +23,9 @@ document.addEventListener('DOMContentLoaded', function () {
   const serviceDetail2 = document.getElementById("service__detail-2");
   const serviceList1 = document.getElementById("service__detail-list-1");
   const serviceList2 = document.getElementById("service__detail-list-2");
+  const serviceWrapper = document.getElementById("service__service-wrapper");
+  const headerNav = document.getElementById("header__nav");
+
 
   gnavButton.addEventListener("click", function () {
     this.classList.toggle("js-opened");
@@ -36,6 +39,10 @@ document.addEventListener('DOMContentLoaded', function () {
       gnavMenu.classList.remove("js-opened");
       gnav.classList.remove("js-blur");
     }
+  });
+
+  window.addEventListener("scroll", function(){
+    checkServiceArea();
   });
 
   pageTopButton.addEventListener("click", function () {
@@ -133,5 +140,17 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
   });
+
+  function checkServiceArea() {
+    const startPoint = serviceWrapper.getBoundingClientRect().left + window.scrollY;
+    const endPoint = serviceWrapper.getBoundingClientRect().right + window.scrollY;
+    const currentScroll = window.scrollY;
+
+    if (startPoint <= currentScroll && currentScroll <= endPoint) {
+      headerNav.classList.add("js-opened");
+    } else {
+      headerNav.classList.remove("js-opened");
+    }
+  }
 
 }, false);

@@ -1,12 +1,15 @@
 @use "../global" as *;
 
 .header {
-  padding: 1.5rem;
+  padding: 1.5rem 0 0 1.5rem;
   position: absolute;
 
   @media screen and (min-width: 1024px) {
     position: fixed;
-    padding: 4rem;
+    padding: 4rem 0 0 4rem;
+    display: flex;
+    gap: 15rem;
+    z-index: 200;
   }
 
   &__logo {
@@ -20,6 +23,49 @@
     @media screen and (min-width: 1024px) {
       width: 20rem;
       height: 4rem;
+    }
+  }
+
+  &__nav {
+    display: none;
+
+    @media screen and (min-width: 1024px) {
+      display: flex;
+      align-items: center;
+      gap: 4rem;
+      position: relative;
+      top: -150px;
+      left: 0;
+      transition: top 0.4s ease-out;
+
+      &.js-opened {
+        top: 0;
+      }
+    }
+  }
+
+  &__nav-title {
+    font-family: $montserrat;
+    font-size: clamp(13px, 1.5rem, 15px);
+  }
+
+  &__nav-link {
+    display: flex;
+    align-items: center;
+    gap: 1.4rem;
+    font-size: clamp(16px, 1.8rem, 18px);
+  }
+
+  &__nav-number {
+    font-family: $montserrat;
+    font-size: clamp(16px, 1.8rem, 18px);
+
+    &--red {
+      color: $red;
+    }
+
+    &--green {
+      color: $green;
     }
   }
 }

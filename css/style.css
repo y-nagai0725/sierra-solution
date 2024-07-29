@@ -134,13 +134,16 @@ a {
 }
 
 .header {
-  padding: 1.5rem;
+  padding: 1.5rem 0 0 1.5rem;
   position: absolute;
 }
 @media screen and (min-width: 1024px) {
   .header {
     position: fixed;
-    padding: 4rem;
+    padding: 4rem 0 0 4rem;
+    display: flex;
+    gap: 15rem;
+    z-index: 200;
   }
 }
 .header__logo-link {
@@ -153,6 +156,43 @@ a {
     width: 20rem;
     height: 4rem;
   }
+}
+.header__nav {
+  display: none;
+}
+@media screen and (min-width: 1024px) {
+  .header__nav {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+    position: relative;
+    top: -150px;
+    left: 0;
+    transition: top 0.4s ease-out;
+  }
+  .header__nav.js-opened {
+    top: 0;
+  }
+}
+.header__nav-title {
+  font-family: "Montserrat", sans-serif;
+  font-size: clamp(13px, 1.5rem, 15px);
+}
+.header__nav-link {
+  display: flex;
+  align-items: center;
+  gap: 1.4rem;
+  font-size: clamp(16px, 1.8rem, 18px);
+}
+.header__nav-number {
+  font-family: "Montserrat", sans-serif;
+  font-size: clamp(16px, 1.8rem, 18px);
+}
+.header__nav-number--red {
+  color: #cc0033;
+}
+.header__nav-number--green {
+  color: #82be28;
 }
 
 .gnav {
@@ -1593,17 +1633,18 @@ a {
 @media screen and (min-width: 1024px) {
   #top .service__service-menu {
     width: 21rem;
-    padding: 0 4rem 0 0;
+    height: 100%;
+    padding: 16rem 4rem 0 0;
     gap: 7rem;
-    align-self: flex-start;
   }
   #top .service__service-menu::before {
     content: "";
     position: absolute;
-    top: 0;
+    top: 50%;
     right: 0;
+    translate: 0 -50%;
     width: 1px;
-    height: calc(100vh - 100px - 12rem);
+    height: calc(100% - 12rem);
     background-color: #d0d0d0;
   }
 }
@@ -1689,17 +1730,38 @@ a {
   }
 }
 @media screen and (min-width: 1024px) {
+  #top .service__service-wrapper {
+    display: flex;
+    padding-left: 22rem;
+    height: 100%;
+  }
+}
+@media screen and (min-width: 1024px) {
   #top .service__first, #top .service__second {
     display: flex;
     flex-direction: row;
+    gap: 20rem;
   }
 }
 #top .service__first {
   margin-bottom: 11rem;
 }
+@media screen and (min-width: 1024px) {
+  #top .service__first {
+    margin-bottom: 0;
+    margin-right: 44rem;
+  }
+}
 #top .service__summary {
   padding: 0 2.5rem;
   margin-bottom: 6rem;
+}
+@media screen and (min-width: 1024px) {
+  #top .service__summary {
+    padding: 14rem 0 0 0;
+    margin-bottom: 0;
+    width: 61rem;
+  }
 }
 #top .service__summary-number {
   display: block;
@@ -1713,6 +1775,12 @@ a {
 #top .service__summary-number--green {
   color: #82be28;
 }
+@media screen and (min-width: 1024px) {
+  #top .service__summary-number {
+    font-size: clamp(56px, 7.4rem, 74px);
+    margin-bottom: 2rem;
+  }
+}
 #top .service__summary-title-en {
   font-family: "Montserrat", sans-serif;
   font-size: clamp(34px, 3.4rem, 50px);
@@ -1720,9 +1788,15 @@ a {
   line-height: 1.15;
   margin-bottom: 1rem;
 }
+@media screen and (min-width: 1024px) {
+  #top .service__summary-title-en {
+    font-size: clamp(66px, 9rem, 90px);
+  }
+}
 #top .service__summary-title-ja {
   display: block;
   font-size: clamp(16px, 1.6rem, 26px);
+  font-weight: 700;
   margin-bottom: 3rem;
 }
 #top .service__summary-title-ja--red {
@@ -1731,10 +1805,21 @@ a {
 #top .service__summary-title-ja--green {
   color: #82be28;
 }
+@media screen and (min-width: 1024px) {
+  #top .service__summary-title-ja {
+    font-size: clamp(26px, 3rem, 30px);
+    margin-bottom: 15rem;
+  }
+}
 #top .service__summary-text {
-  font-size: clamp(13px, 1.3rem, 24px);
+  font-size: clamp(13px, 1.3rem, 18px);
   line-height: 1.85;
   letter-spacing: 0.05em;
+}
+@media screen and (min-width: 1024px) {
+  #top .service__summary-text {
+    font-size: clamp(16px, 2rem, 20px);
+  }
 }
 #top .service__detail {
   padding: 11rem 2.5rem 0 2.5rem;
@@ -1752,10 +1837,30 @@ a {
   border-radius: 9999px;
   box-shadow: inset 0 1px 6px 0 rgba(0, 0, 0, 0.16), 0 -5px 10px 0 rgba(255, 255, 255, 0.44);
 }
+@media screen and (min-width: 1024px) {
+  #top .service__detail {
+    padding: 0 0 0 24rem;
+    display: flex;
+    align-items: center;
+  }
+  #top .service__detail::before {
+    top: 50%;
+    left: 0;
+    translate: 0 -50%;
+    width: 160rem;
+    height: 160rem;
+  }
+}
 #top .service__detail-list {
   display: flex;
   gap: 13rem;
   counter-reset: card-number;
+}
+@media screen and (min-width: 1024px) {
+  #top .service__detail-list {
+    gap: 26rem;
+    padding-right: 1rem;
+  }
 }
 #top .service__detail-item {
   width: 19rem;
@@ -1763,6 +1868,11 @@ a {
 }
 #top .service__detail-item:last-of-type .service__detail-card::after {
   display: none;
+}
+@media screen and (min-width: 1024px) {
+  #top .service__detail-item {
+    width: 37rem;
+  }
 }
 #top .service__detail-card {
   padding: 3.5rem;
@@ -1787,7 +1897,7 @@ a {
   justify-content: center;
   align-items: center;
   font-family: "Montserrat", sans-serif;
-  font-size: clamp(20px, 2rem, 30px);
+  font-size: clamp(20px, 2rem, 26px);
 }
 #top .service__detail-card::after {
   content: "";
@@ -1805,6 +1915,23 @@ a {
 #top .service__detail-card--green::before {
   color: #82be28;
 }
+@media screen and (min-width: 1024px) {
+  #top .service__detail-card {
+    padding: 10rem;
+    aspect-ratio: 370/480;
+    margin-bottom: 3.2rem;
+  }
+  #top .service__detail-card::before {
+    width: 9rem;
+    height: 9rem;
+    font-size: clamp(26px, 3rem, 30px);
+  }
+  #top .service__detail-card::after {
+    translate: calc(100% + 3rem) -50%;
+    width: 20rem;
+    height: 2.5rem;
+  }
+}
 #top .service__card-svg-wrapper {
   height: 100%;
   background-color: #6e6e6e;
@@ -1812,13 +1939,23 @@ a {
 #top .service__detail-subtitle {
   display: block;
   font-weight: 700;
-  font-size: clamp(16px, 1.6rem, 24px);
+  font-size: clamp(16px, 1.6rem, 22px);
   letter-spacing: 0.05em;
   margin-bottom: 0.5rem;
 }
+@media screen and (min-width: 1024px) {
+  #top .service__detail-subtitle {
+    font-size: clamp(22px, 2.6rem, 26px);
+  }
+}
 #top .service__detail-text {
-  font-size: clamp(13px, 1.3rem, 20px);
+  font-size: clamp(13px, 1.3rem, 16px);
   letter-spacing: 0.05em;
+}
+@media screen and (min-width: 1024px) {
+  #top .service__detail-text {
+    font-size: clamp(16px, 2rem, 20px);
+  }
 }
 #top .company {
   margin-bottom: 16rem;

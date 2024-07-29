@@ -18,7 +18,6 @@
   }
 
   .contents-wrapper {
-
     @media screen and (min-width: 1024px) {
       height: 100%;
       display: flex;
@@ -812,17 +811,18 @@
 
       @media screen and (min-width: 1024px) {
         width: 21rem;
-        padding: 0 4rem 0 0;
+        height: 100%;
+        padding: 16rem 4rem 0 0;
         gap: 7rem;
-        align-self: flex-start;
 
         &::before {
           content: "";
           position: absolute;
-          top: 0;
+          top: 50%;
           right: 0;
+          translate: 0 -50%;
           width: 1px;
-          height: calc(100vh - 100px - 12rem);
+          height: calc(100% - 12rem);
           background-color: $line-gray;
         }
       }
@@ -914,21 +914,41 @@
       }
     }
 
+    &__service-wrapper {
+      @media screen and (min-width: 1024px) {
+        display: flex;
+        padding-left: 22rem;
+        height: 100%;
+      }
+    }
+
     &__first,
     &__second {
       @media screen and (min-width: 1024px) {
         display: flex;
         flex-direction: row;
+        gap: 20rem;
       }
     }
 
     &__first {
       margin-bottom: 11rem;
+
+      @media screen and (min-width: 1024px) {
+        margin-bottom: 0;
+        margin-right: 44rem;
+      }
     }
 
     &__summary {
       padding: 0 2.5rem;
       margin-bottom: 6rem;
+
+      @media screen and (min-width: 1024px) {
+        padding: 14rem 0 0 0;
+        margin-bottom: 0;
+        width: 61rem;
+      }
     }
 
     &__summary-number {
@@ -944,6 +964,11 @@
       &--green {
         color: $green;
       }
+
+      @media screen and (min-width: 1024px) {
+        font-size: clamp(56px, 7.4rem, 74px);
+        margin-bottom: 2rem;
+      }
     }
 
     &__summary-title-en {
@@ -952,11 +977,16 @@
       font-weight: 700;
       line-height: 1.15;
       margin-bottom: 1rem;
+
+      @media screen and (min-width: 1024px) {
+        font-size: clamp(66px, 9rem, 90px);
+      }
     }
 
     &__summary-title-ja {
       display: block;
       font-size: clamp(16px, 1.6rem, 26px);
+      font-weight: 700;
       margin-bottom: 3rem;
 
       &--red {
@@ -966,12 +996,21 @@
       &--green {
         color: $green;
       }
+
+      @media screen and (min-width: 1024px) {
+        font-size: clamp(26px, 3rem, 30px);
+        margin-bottom: 15rem;
+      }
     }
 
     &__summary-text {
-      font-size: clamp(13px, 1.3rem, 24px);
+      font-size: clamp(13px, 1.3rem, 18px);
       line-height: 1.85;
       letter-spacing: 0.05em;
+
+      @media screen and (min-width: 1024px) {
+        font-size: clamp(16px, 2rem, 20px);
+      }
     }
 
     &__detail {
@@ -992,7 +1031,16 @@
       }
 
       @media screen and (min-width: 1024px) {
+        padding: 0 0 0 24rem;
+        display: flex;
+        align-items: center;
+
         &::before {
+          top: 50%;
+          left: 0;
+          translate: 0 -50%;
+          width: 160rem;
+          height: 160rem;
         }
       }
     }
@@ -1001,6 +1049,11 @@
       display: flex;
       gap: 13rem;
       counter-reset: card-number;
+
+      @media screen and (min-width: 1024px) {
+        gap: 26rem;
+        padding-right: 1rem;
+      }
     }
 
     &__detail-item {
@@ -1011,6 +1064,10 @@
         .service__detail-card::after {
           display: none;
         }
+      }
+
+      @media screen and (min-width: 1024px) {
+        width: 37rem;
       }
     }
 
@@ -1037,7 +1094,7 @@
         justify-content: center;
         align-items: center;
         font-family: $montserrat;
-        font-size: clamp(20px, 2rem, 30px);
+        font-size: clamp(20px, 2rem, 26px);
       }
 
       &::after {
@@ -1058,24 +1115,53 @@
       &--green::before {
         color: $green;
       }
+
+      @media screen and (min-width: 1024px) {
+        padding: 10rem;
+        aspect-ratio: 370/480;
+        margin-bottom: 3.2rem;
+
+        &::before {
+          width: 9rem;
+          height: 9rem;
+          font-size: clamp(26px, 3rem, 30px);
+        }
+
+        &::after {
+          translate: calc(100% + 3rem) -50%;
+          width: 20rem;
+          height: 2.5rem;
+        }
+      }
     }
 
     &__card-svg-wrapper {
       height: 100%;
       background-color: $dummy;
+
+      @media screen and (min-width: 1024px) {
+      }
     }
 
     &__detail-subtitle {
       display: block;
       font-weight: 700;
-      font-size: clamp(16px, 1.6rem, 24px);
+      font-size: clamp(16px, 1.6rem, 22px);
       letter-spacing: 0.05em;
       margin-bottom: 0.5rem;
+
+      @media screen and (min-width: 1024px) {
+        font-size: clamp(22px, 2.6rem, 26px);
+      }
     }
 
     &__detail-text {
-      font-size: clamp(13px, 1.3rem, 20px);
+      font-size: clamp(13px, 1.3rem, 16px);
       letter-spacing: 0.05em;
+
+      @media screen and (min-width: 1024px) {
+        font-size: clamp(16px, 2rem, 20px);
+      }
     }
   }
 
