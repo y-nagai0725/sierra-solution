@@ -242,26 +242,13 @@
     }
 
     &__introduction {
+      @include background-semicircle-style;
       padding: 8rem 2.5rem 0 2.5rem;
       margin-bottom: 8rem;
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 4rem;
-      position: relative;
-      overflow: hidden;
-
-      &::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 50%;
-        translate: -50% 0;
-        width: 60rem;
-        height: 60rem;
-        border-radius: 9999px;
-        box-shadow: $bg-drop-shadow;
-      }
 
       @media screen and (min-width: 1024px) {
         height: 100%;
@@ -270,14 +257,6 @@
         padding: 0 0 0 30rem;
         margin-bottom: 0;
         margin-right: 30rem;
-
-        &::before {
-          width: 220rem;
-          height: 220rem;
-          top: 50%;
-          left: 0;
-          translate: 0 -50%;
-        }
       }
     }
 
@@ -425,39 +404,18 @@
     }
 
     &__value {
+      @include background-semicircle-style;
       padding: 8rem 2.5rem 0 2.5rem;
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 4rem;
-      position: relative;
-      overflow: hidden;
-
-      &::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 50%;
-        translate: -50% 0;
-        width: 60rem;
-        height: 60rem;
-        border-radius: 9999px;
-        box-shadow: $bg-drop-shadow;
-      }
 
       @media screen and (min-width: 1024px) {
         height: 100%;
         flex-direction: row;
         gap: 15rem;
         padding: 0 0 0 30rem;
-
-        &::before {
-          width: 220rem;
-          height: 220rem;
-          top: 50%;
-          left: 0;
-          translate: 0 -50%;
-        }
       }
     }
 
@@ -1014,34 +972,13 @@
     }
 
     &__detail {
+      @include background-semicircle-style;
       padding: 11rem 2.5rem 0 2.5rem;
-      position: relative;
-      overflow: hidden;
-
-      &::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 50%;
-        translate: -50% 0;
-        width: 60rem;
-        height: 60rem;
-        border-radius: 9999px;
-        box-shadow: $bg-drop-shadow;
-      }
 
       @media screen and (min-width: 1024px) {
         padding: 0 0 0 24rem;
         display: flex;
         align-items: center;
-
-        &::before {
-          top: 50%;
-          left: 0;
-          translate: 0 -50%;
-          width: 160rem;
-          height: 160rem;
-        }
       }
     }
 

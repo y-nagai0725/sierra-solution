@@ -164,3 +164,32 @@
     }
   }
 }
+
+@mixin background-semicircle-style {
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    translate: -50% 0;
+    width: 60rem;
+    height: 60rem;
+    clip-path: circle(50% at top);
+    border-radius: 9999px;
+    box-shadow: $bg-drop-shadow;
+  }
+
+  @media screen and (min-width: 1024px) {
+    &::before {
+      top: 50%;
+      left: 0;
+      translate: 0 -50%;
+      width: 160rem;
+      height: 160rem;
+      clip-path: circle(50% at left);
+    }
+  }
+}
