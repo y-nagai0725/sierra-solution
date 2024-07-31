@@ -457,7 +457,7 @@
         border-radius: 9999px;
         box-shadow: $bg-drop-shadow;
         transition:
-          border-radius,
+          background-color,
           box-shadow 0.4s ease-out;
 
         @media screen and (min-width: 1024px) {
@@ -481,6 +481,17 @@
           span {
             bottom: 0;
             opacity: 1;
+          }
+        }
+
+        @for $i from 0 to 10 {
+          &.js-delay#{$i} {
+            $delay: $i * 0.2;
+            transition-delay: #{$delay}s;
+
+            span {
+              transition-delay: #{$delay}s;
+            }
           }
         }
       }

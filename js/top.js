@@ -25,6 +25,9 @@ document.addEventListener('DOMContentLoaded', function () {
   const serviceList2 = document.getElementById("service__detail-list-2");
   const serviceWrapper = document.getElementById("service__service-wrapper");
   const headerNav = document.getElementById("header__nav");
+  const whoValue = document.getElementById("who__value");
+  const whoValueTextArea = document.getElementById("who__value-text-area");
+  const whoValueTextBox = gsap.utils.toArray(".who__value-text--box");
 
 
   gnavButton.addEventListener("click", function () {
@@ -41,7 +44,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
-  window.addEventListener("scroll", function(){
+  window.addEventListener("scroll", function () {
     checkServiceArea();
   });
 
@@ -151,6 +154,27 @@ document.addEventListener('DOMContentLoaded', function () {
     } else {
       headerNav.classList.remove("js-opened");
     }
+  }
+
+  ScrollTrigger.create({
+    trigger: whoValue,
+    start: "top top",
+    end: "bottom top",
+    pin: true,
+    aniticipatePin: 1,
+    invalidateOnRefresh: true,
+    onUpdate: (self) => {
+      if(self.progress >= 0.4){
+        showValueTextBox();
+      }
+    },
+  });
+
+  function showValueTextBox(){
+    whoValueTextBox.forEach((box, index) => {
+      box.classList.add("js-show-box");
+      box.classList.add("js-delay" + index);
+    });
   }
 
 }, false);
