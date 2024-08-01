@@ -1120,6 +1120,11 @@ a {
     font-size: clamp(20px, 2.5rem, 25px);
   }
 }
+@media screen and (min-width: 1024px) {
+  #top .who__value-wrapper {
+    height: 100%;
+  }
+}
 #top .who__value {
   position: relative;
   overflow: hidden;
@@ -1155,8 +1160,8 @@ a {
   #top .who__value {
     height: 100%;
     flex-direction: row;
-    gap: 15rem;
-    padding: 0 0 0 30rem;
+    gap: 30rem;
+    padding: 0 30rem 0;
   }
 }
 #top .who__value-subtitle {

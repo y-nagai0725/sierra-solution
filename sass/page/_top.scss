@@ -403,6 +403,12 @@
       }
     }
 
+    &__value-wrapper {
+      @media screen and (min-width: 1024px) {
+        height: 100%;
+      }
+    }
+
     &__value {
       @include background-semicircle-style;
       padding: 8rem 2.5rem 0 2.5rem;
@@ -414,8 +420,8 @@
       @media screen and (min-width: 1024px) {
         height: 100%;
         flex-direction: row;
-        gap: 15rem;
-        padding: 0 0 0 30rem;
+        gap: 30rem;
+        padding: 0 30rem 0;
       }
     }
 

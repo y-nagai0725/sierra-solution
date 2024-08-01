@@ -68,6 +68,7 @@ document.addEventListener('DOMContentLoaded', function () {
         pin: true,
         aniticipatePin: 1,
         invalidateOnRefresh: true,
+        markers: true,
       }
     });
 
@@ -156,18 +157,37 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
-  ScrollTrigger.create({
-    trigger: whoValue,
-    start: "top top",
-    end: "bottom top",
-    pin: true,
-    aniticipatePin: 1,
-    invalidateOnRefresh: true,
-    onUpdate: (self) => {
-      if(self.progress >= 0.4){
-        showValueTextBox();
-      }
-    },
+  //Whoセクションのgsap設定
+  mm.add("(max-width: 1023px)", () => {
+    ScrollTrigger.create({
+      trigger: whoValue,
+      start: "top top",
+      end: "bottom top",
+      pin: true,
+      aniticipatePin: 1,
+      invalidateOnRefresh: true,
+      markers: true,
+      onUpdate: (self) => {
+        if(self.progress >= 0.4){
+          showValueTextBox();
+        }
+      },
+    });
+  });
+
+  mm.add("(min-width: 1024px)", () => {
+    ScrollTrigger.create({
+      pinnedContainer: contentsWrapper,
+      trigger: whoValue,
+      start: () => whoValue.getBoundingClientRect().left + window.scrollY,
+      end: () => "+=500",
+      invalidateOnRefresh: true,
+      onUpdate: (self) => {
+        if(self.progress >= 0.1){
+          showValueTextBox();
+        }
+      },
+    });
   });
 
   function showValueTextBox(){
