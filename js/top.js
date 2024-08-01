@@ -158,39 +158,28 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   //Whoセクションのgsap設定
-  mm.add("(max-width: 1023px)", () => {
-    ScrollTrigger.create({
-      trigger: whoValue,
-      start: "top top",
-      end: "bottom top",
-      pin: true,
-      aniticipatePin: 1,
-      invalidateOnRefresh: true,
-      markers: true,
-      onUpdate: (self) => {
-        if(self.progress >= 0.4){
-          showValueTextBox();
-        }
-      },
-    });
-  });
-
   mm.add("(min-width: 1024px)", () => {
-    ScrollTrigger.create({
-      pinnedContainer: contentsWrapper,
-      trigger: whoValue,
-      start: () => whoValue.getBoundingClientRect().left + window.scrollY,
-      end: () => "+=500",
-      invalidateOnRefresh: true,
-      onUpdate: (self) => {
-        if(self.progress >= 0.1){
-          showValueTextBox();
-        }
+    gsap.to(whoValue, {
+      x: 700,
+      ease: "none",
+      scrollTrigger: {
+        pinnedContainer: contentsWrapper,
+        trigger: whoValue,
+        start: () => whoValue.getBoundingClientRect().left + window.scrollY,
+        end: () => "+=700",
+        scrub: true,
+        invalidateOnRefresh: true,
+        onUpdate: (self) => {
+          console.log(self.progress);
+          if (self.progress >= 0.5) {
+            showValueTextBox();
+          }
+        },
       },
     });
   });
 
-  function showValueTextBox(){
+  function showValueTextBox() {
     whoValueTextBox.forEach((box, index) => {
       box.classList.add("js-show-box");
       box.classList.add("js-delay" + index);

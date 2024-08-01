@@ -197,7 +197,6 @@
     &__inner {
       display: flex;
       flex-direction: column;
-      overflow: hidden;
 
       @media screen and (min-width: 1024px) {
         flex-direction: row;
@@ -404,6 +403,7 @@
     }
 
     &__value-wrapper {
+      height: 150svh;
       @media screen and (min-width: 1024px) {
         height: 100%;
       }
@@ -416,12 +416,14 @@
       flex-direction: column;
       align-items: center;
       gap: 4rem;
+      position: sticky;
+      top: 0;
 
       @media screen and (min-width: 1024px) {
         height: 100%;
         flex-direction: row;
         gap: 30rem;
-        padding: 0 30rem 0;
+        padding: 0 100rem 0 30rem;
       }
     }
 
