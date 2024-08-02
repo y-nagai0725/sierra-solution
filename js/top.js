@@ -26,7 +26,6 @@ document.addEventListener('DOMContentLoaded', function () {
   const serviceWrapper = document.getElementById("service__service-wrapper");
   const headerNav = document.getElementById("header__nav");
   const whoValue = document.getElementById("who__value");
-  const whoValueTextArea = document.getElementById("who__value-text-area");
   const whoValueTextBox = gsap.utils.toArray(".who__value-text--box");
 
 
@@ -45,7 +44,16 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   window.addEventListener("scroll", function () {
-    checkServiceArea();
+    //ウィンドウ幅
+    const windowWidth = window.innerWidth;
+
+    if (windowWidth >= breakPoint) {
+      //PC表示時
+      checkServiceArea();
+    } else {
+      //SP,TAB表示時
+      checkWhoValueArea();
+    }
   });
 
   pageTopButton.addEventListener("click", function () {
@@ -170,7 +178,6 @@ document.addEventListener('DOMContentLoaded', function () {
         scrub: true,
         invalidateOnRefresh: true,
         onUpdate: (self) => {
-          console.log(self.progress);
           if (self.progress >= 0.5) {
             showValueTextBox();
           }
@@ -178,6 +185,15 @@ document.addEventListener('DOMContentLoaded', function () {
       },
     });
   });
+
+  function checkWhoValueArea() {
+    const startPoint = whoValue.getBoundingClientRect().top + window.scrollY;
+    const currentScroll = window.scrollY;
+
+    if (startPoint <= currentScroll) {
+      showValueTextBox();
+    }
+  }
 
   function showValueTextBox() {
     whoValueTextBox.forEach((box, index) => {
