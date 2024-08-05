@@ -198,7 +198,7 @@ document.addEventListener('DOMContentLoaded', function () {
         //追加クラス名が存在しない場合
         if (!gnavInformationList.classList.contains(addClassName)) {
           //既存の追加されたクラス名を削除
-          const regExp = new RegExp(/js-show-section-.+/, 'g');
+          const regExp = new RegExp(baseClassName + ".+", 'g');
           const matchedList = targetClassName.match(regExp) || [];
           for (let j = 0; j < matchedList.length; j++) {
             gnavInformationList.classList.remove(matchedList[j]);
