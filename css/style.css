@@ -390,6 +390,57 @@ a {
   translate: -50% -50%;
   rotate: -45deg;
 }
+.gnav__information-list {
+  display: none;
+}
+@media screen and (min-width: 1024px) {
+  .gnav__information-list {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    transform: translateY(100%);
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+  .gnav__information-list.js-show-section-1 {
+    transform: translateY(80%);
+  }
+  .gnav__information-list.js-show-section-2 {
+    transform: translateY(60%);
+  }
+  .gnav__information-list.js-show-section-3 {
+    transform: translateY(40%);
+  }
+  .gnav__information-list.js-show-section-4 {
+    transform: translateY(20%);
+  }
+  .gnav__information-list.js-show-section-5 {
+    transform: translateY(0);
+  }
+}
+.gnav__information-item {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  scale: 0.75;
+  opacity: 1;
+  transition: scale, opacity 0.4s ease-out;
+}
+.gnav__information-item.js-focused {
+  scale: 1;
+  opacity: 1;
+}
+.gnav__information-section {
+  color: #939393;
+  font-family: "Montserrat", sans-serif;
+  font-size: clamp(13px, 1.5rem, 15px);
+}
+.gnav__information-title {
+  font-family: "Montserrat", sans-serif;
+  font-size: clamp(17px, 2rem, 20px);
+  font-weight: 700;
+}
 
 .footer {
   padding: 10rem 2.5rem;

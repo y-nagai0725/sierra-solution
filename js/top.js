@@ -50,6 +50,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (windowWidth >= breakPoint) {
       //PC表示時
       checkServiceArea();
+      checkSectionArea();
     } else {
       //SP,TAB表示時
       checkWhoValueArea();
@@ -153,18 +154,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  function checkServiceArea() {
-    const startPoint = serviceWrapper.getBoundingClientRect().left + window.scrollY;
-    const endPoint = serviceWrapper.getBoundingClientRect().right + window.scrollY;
-    const currentScroll = window.scrollY;
-
-    if (startPoint <= currentScroll && currentScroll <= endPoint) {
-      headerNav.classList.add("js-opened");
-    } else {
-      headerNav.classList.remove("js-opened");
-    }
-  }
-
   //Whoセクションのgsap設定
   mm.add("(min-width: 1024px)", () => {
     gsap.to(whoValue, {
@@ -185,6 +174,55 @@ document.addEventListener('DOMContentLoaded', function () {
       },
     });
   });
+
+  const gnavInformationList = document.getElementById("gnav__information-list");
+  const sectionList = [...document.getElementsByTagName("section")];
+
+  function checkSectionArea() {
+    const currentScroll = window.scrollY;
+    let targetPointList = [];
+    sectionList.forEach(section => {
+      const sectionPoint = section.getBoundingClientRect().left;
+      targetPointList.push(sectionPoint);
+    });
+
+    for (let i = 0; i < targetPointList.length - 1; i++) {
+      const sectionStartPoint = targetPointList[i];
+      const sectionEndPoint = targetPointList[i + 1];
+
+      if (sectionStartPoint <= currentScroll && currentScroll < sectionEndPoint) {
+        const baseClassName = "js-show-section-";
+        const addClassName = baseClassName + (i + 1);
+        const targetClassName = gnavInformationList.className;
+
+        //追加クラス名が存在しない場合
+        if (!gnavInformationList.classList.contains(addClassName)) {
+          //既存の追加されたクラス名を削除
+          const regExp = new RegExp(/js-show-section-.+/, 'g');
+          const matchedList = targetClassName.match(regExp) || [];
+          for (let j = 0; j < matchedList.length; j++) {
+            gnavInformationList.classList.remove(matchedList[j]);
+          }
+
+          //クラス名追加
+          gnavInformationList.classList.add(addClassName);
+        }
+        break;
+      }
+    }
+  }
+
+  function checkServiceArea() {
+    const startPoint = serviceWrapper.getBoundingClientRect().left + window.scrollY;
+    const endPoint = serviceWrapper.getBoundingClientRect().right + window.scrollY;
+    const currentScroll = window.scrollY;
+
+    if (startPoint <= currentScroll && currentScroll <= endPoint) {
+      headerNav.classList.add("js-opened");
+    } else {
+      headerNav.classList.remove("js-opened");
+    }
+  }
 
   function checkWhoValueArea() {
     const startPoint = whoValue.getBoundingClientRect().top + window.scrollY;
