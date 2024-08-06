@@ -177,39 +177,41 @@ document.addEventListener('DOMContentLoaded', function () {
 
   const gnavInformationList = document.getElementById("gnav__information-list");
   const sectionList = [...document.getElementsByTagName("section")];
+  const footer = document.getElementById("footer");
 
   function checkSectionArea() {
-    const currentScroll = window.scrollY;
+    const adjustmentValue = window.innerWidth * 0.5;
+    const currentScroll = window.scrollY + adjustmentValue;
     let targetPointList = [];
     sectionList.forEach(section => {
-      const sectionPoint = section.getBoundingClientRect().left;
+      const sectionPoint = section.getBoundingClientRect().left + window.scrollY;
       targetPointList.push(sectionPoint);
     });
+    const footerPoint = footer.getBoundingClientRect().left + window.scrollY;
+    targetPointList.push(footerPoint);
 
     for (let i = 0; i < targetPointList.length - 1; i++) {
       const sectionStartPoint = targetPointList[i];
       const sectionEndPoint = targetPointList[i + 1];
+      const baseClassName = "js-show-section-";
 
       if (sectionStartPoint <= currentScroll && currentScroll < sectionEndPoint) {
-        const baseClassName = "js-show-section-";
         const addClassName = baseClassName + (i + 1);
-        const targetClassName = gnavInformationList.className;
-
         //追加クラス名が存在しない場合
         if (!gnavInformationList.classList.contains(addClassName)) {
           //既存の追加されたクラス名を削除
-          const regExp = new RegExp(baseClassName + ".+", 'g');
-          const matchedList = targetClassName.match(regExp) || [];
-          for (let j = 0; j < matchedList.length; j++) {
-            gnavInformationList.classList.remove(matchedList[j]);
-          }
+          removeClass(gnavInformationList, baseClassName + ".+", "g");
 
           //クラス名追加
           gnavInformationList.classList.add(addClassName);
         }
         break;
+      } else if ((i === 0 && currentScroll < sectionStartPoint) || (i === targetPointList.length - 2 && sectionEndPoint <= currentScroll)) {
+        removeClass(gnavInformationList, baseClassName + ".+", "g");
+        break;
       }
     }
+
   }
 
   function checkServiceArea() {
@@ -238,6 +240,15 @@ document.addEventListener('DOMContentLoaded', function () {
       box.classList.add("js-show-box");
       box.classList.add("js-delay" + index);
     });
+  }
+
+  function removeClass(targetElement, regExpString, option) {
+    const targetClassName = targetElement.className;
+    const regExp = new RegExp(regExpString, option);
+    const matchedList = targetClassName.match(regExp) || [];
+    for (let i = 0; i < matchedList.length; i++) {
+      targetElement.classList.remove(matchedList[i]);
+    }
   }
 
 }, false);
