@@ -27,6 +27,8 @@ document.addEventListener('DOMContentLoaded', function () {
   const headerNav = document.getElementById("header__nav");
   const whoValue = document.getElementById("who__value");
   const whoValueTextBox = gsap.utils.toArray(".who__value-text--box");
+  const gnavProgressBar = document.getElementById("gnav__progress-bar");
+  const gnavProgressBarProperty = "--bar-scale";
 
 
   gnavButton.addEventListener("click", function () {
@@ -109,6 +111,9 @@ document.addEventListener('DOMContentLoaded', function () {
         pin: true,
         aniticipatePin: 1,
         invalidateOnRefresh: true,
+        onUpdate: self => {
+          gnavProgressBar.style.setProperty(gnavProgressBarProperty, self.progress + " 1");
+        },
       }
     });
   });

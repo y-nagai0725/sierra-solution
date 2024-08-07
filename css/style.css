@@ -200,7 +200,7 @@ a {
   height: 100svh;
   position: fixed;
   top: 0;
-  z-index: 100;
+  z-index: 102;
 }
 .gnav::before {
   content: "";
@@ -220,11 +220,37 @@ a {
     top: initial;
     bottom: 0;
     left: 0;
-    border-top: 1px solid #d0d0d0;
     overflow: hidden;
   }
   .gnav::before {
     display: none;
+  }
+}
+.gnav__progress-bar {
+  display: none;
+}
+@media screen and (min-width: 1024px) {
+  .gnav__progress-bar {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: #d0d0d0;
+    --bar-scale: 0;
+  }
+  .gnav__progress-bar::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: #000;
+    transform-origin: left;
+    scale: var(--bar-scale) 1;
+    transition: scale 0.15s linear;
   }
 }
 .gnav__menu {
@@ -233,7 +259,7 @@ a {
   padding-top: 8rem;
   background-color: #fff;
   position: absolute;
-  left: 100%;
+  left: 100vw;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -274,7 +300,17 @@ a {
   .gnav__list {
     margin-bottom: 0;
     flex-direction: row;
-    gap: 40px;
+    gap: 10px;
+  }
+}
+@media screen and (min-width: 1024px) {
+  .gnav__link {
+    padding: 10px 15px;
+    overflow: hidden;
+  }
+  .gnav__link:hover span {
+    transition: top 0.4s ease-out;
+    top: -35px;
   }
 }
 .gnav__link--button {
@@ -287,7 +323,7 @@ a {
 @media screen and (min-width: 1024px) {
   .gnav__link--button {
     width: auto;
-    padding: 0;
+    padding: 10px 15px;
     border-radius: none;
     background-color: transparent;
     position: static;
@@ -316,10 +352,18 @@ a {
 .gnav__title {
   font-family: "Montserrat", sans-serif;
   font-size: clamp(17px, 1.7rem, 30px);
+  position: relative;
 }
 @media screen and (min-width: 1024px) {
   .gnav__title {
     font-size: 17px;
+    top: 0;
+  }
+  .gnav__title::before {
+    content: attr(data-text);
+    position: absolute;
+    top: 35px;
+    left: 0;
   }
 }
 .gnav__title--white {
@@ -863,7 +907,7 @@ a {
   gap: 1.5rem;
 }
 #top .index__link:hover .index__line::before {
-  scale: 1;
+  scale: 1 1;
   transform-origin: left;
 }
 #top .index__text {
@@ -886,7 +930,7 @@ a {
   position: absolute;
   width: 100%;
   height: 1px;
-  scale: 0;
+  scale: 0 1;
   transform-origin: right;
   transition: scale 0.4s ease-out;
   background-color: #000;
