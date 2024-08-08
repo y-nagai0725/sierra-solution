@@ -627,12 +627,12 @@ a {
   width: 100%;
   height: 1px;
   background-color: #fff;
-  scale: 0;
+  scale: 0 1;
   transform-origin: right;
   transition: scale 0.4s ease-out;
 }
 .footer__link:hover::before {
-  scale: 1;
+  scale: 1 1;
   transform-origin: left;
 }
 @media screen and (min-width: 1024px) {
@@ -681,12 +681,12 @@ a {
   width: 100%;
   height: 1px;
   background-color: #fff;
-  scale: 0;
+  scale: 0 1;
   transform-origin: right;
   transition: scale 0.4s ease-out;
 }
 .footer__privacy-policy:hover::before {
-  scale: 1;
+  scale: 1 1;
   transform-origin: left;
 }
 @media screen and (min-width: 1024px) {
@@ -894,7 +894,7 @@ a {
 #top .index__list {
   display: flex;
   flex-direction: column;
-  gap: 3.2rem;
+  gap: 1.2rem;
 }
 @media screen and (min-width: 1024px) {
   #top .index__list {
@@ -902,13 +902,18 @@ a {
   }
 }
 #top .index__link {
+  padding: 1rem;
   display: flex;
   align-items: center;
   gap: 1.5rem;
 }
 #top .index__link:hover .index__line::before {
   scale: 1 1;
-  transform-origin: left;
+  transition-delay: 0s;
+}
+#top .index__link:hover .index__section-number::before {
+  clip-path: inset(0);
+  transition-delay: 0.2s;
 }
 #top .index__text {
   font-family: "Montserrat", sans-serif;
@@ -931,8 +936,9 @@ a {
   width: 100%;
   height: 1px;
   scale: 0 1;
-  transform-origin: right;
-  transition: scale 0.4s ease-out;
+  transform-origin: left;
+  transition: scale 0.2s ease-out;
+  transition-delay: 0.2s;
   background-color: #000;
 }
 #top .index__section-number {
@@ -943,6 +949,17 @@ a {
 @media screen and (min-width: 1024px) {
   #top .index__section-number {
     font-size: clamp(14px, 1.7rem, 17px);
+    position: relative;
+  }
+  #top .index__section-number::before {
+    content: attr(data-mask);
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: #000;
+    clip-path: inset(0 100% 0 0);
+    transition: clip-path 0.2s linear;
+    transition-delay: 0s;
   }
 }
 #top .movie {
@@ -2414,10 +2431,21 @@ a {
 }
 #top .contact__privacy-policy {
   width: fit-content;
-  border-bottom: 1px solid #000;
   margin-inline: auto;
   font-family: "Montserrat", sans-serif;
   font-size: clamp(12px, 1.2rem, 14px);
+  position: relative;
+}
+#top .contact__privacy-policy::before {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: #000;
+  transform-origin: left;
+  scale: 1 1;
 }
 @media screen and (min-width: 1024px) {
   #top .contact__privacy-policy {
