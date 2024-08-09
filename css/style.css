@@ -1578,13 +1578,13 @@ a {
     font-size: clamp(18px, 2.2rem, 22px);
   }
 }
-#top .news__card-area {
+#top .news__card-list {
   display: flex;
   flex-direction: column;
   gap: 2rem;
 }
 @media screen and (min-width: 1024px) {
-  #top .news__card-area {
+  #top .news__card-list {
     flex-direction: row;
     gap: 8rem;
   }

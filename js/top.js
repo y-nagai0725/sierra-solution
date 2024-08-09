@@ -29,6 +29,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const whoValueTextBox = gsap.utils.toArray(".who__value-text--box");
   const gnavProgressBar = document.getElementById("gnav__progress-bar");
   const gnavProgressBarProperty = "--bar-scale";
+  const newsCardList = document.getElementById("news__card-list");
 
 
   gnavButton.addEventListener("click", function () {
@@ -255,5 +256,48 @@ document.addEventListener('DOMContentLoaded', function () {
       targetElement.classList.remove(matchedList[i]);
     }
   }
+
+  function getNewsData(category) {
+    //----------------------------------
+    //実際はapi呼び出しでjsonデータ取得想定
+    //----------------------------------
+
+    //今回はカテゴリー別にjsonファイル読み込みで仮実装
+    fetch("js/" + category + ".json")
+      .then(response => response.json())
+      .then(data => {
+        //リストの要素削除
+        while(newsCardList.firstChild){
+          newsCardList.removeChild(newsCardList.firstChild);
+        }
+
+        //
+        for(let i=0; i<5;i++){
+          const date = data[i].date;
+          const text = data[i].text;
+          const categoryJp = data[i].category;
+          const temp = `<a href="#" class="news__card-link">
+                          <span class="news__date">${date}</span>
+                          <p class="news__text">
+                            ${text}
+                          </p>
+                          <span class="news__tag" data-tag="${category}">${categoryJp}</span>
+                        </a>`;
+          const li = document.createElement("li");
+          li.classList.add("news__card");
+          li.innerHTML = temp;
+          newsCardList.appendChild(li);
+        }
+
+        //DOM削除と追加による調整の為
+        ScrollTrigger.refresh();
+
+      })
+      .catch(error => {
+        //
+      });
+  }
+
+  getNewsData("all");
 
 }, false);
