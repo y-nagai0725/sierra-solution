@@ -30,7 +30,16 @@ document.addEventListener('DOMContentLoaded', function () {
   const gnavProgressBar = document.getElementById("gnav__progress-bar");
   const gnavProgressBarProperty = "--bar-scale";
   const newsCardList = document.getElementById("news__card-list");
-
+  const gnavInformationList = document.getElementById("gnav__information-list");
+  const sectionList = [...document.getElementsByTagName("section")];
+  const footer = document.getElementById("footer");
+  const categorySelectBox = document.getElementById("news__select");
+  const categoryList = {
+    "all": "All",
+    "event": "イベント",
+    "notice": "お知らせ",
+    "release": "プレリリース",
+  }
 
   gnavButton.addEventListener("click", function () {
     this.classList.toggle("js-opened");
@@ -65,6 +74,15 @@ document.addEventListener('DOMContentLoaded', function () {
       top: 0,
       behavior: "smooth",
     });
+  });
+
+  categorySelectBox.addEventListener("change", function () {
+    const selectedCategory = this.value;
+    if (categoryList[selectedCategory]) {
+      getNewsData(selectedCategory);
+    } else {
+      console.error("不正な値が選択されています。");
+    }
   });
 
   //横スクロールGSAP設定:SP,TAB
@@ -181,10 +199,6 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  const gnavInformationList = document.getElementById("gnav__information-list");
-  const sectionList = [...document.getElementsByTagName("section")];
-  const footer = document.getElementById("footer");
-
   function checkSectionArea() {
     const adjustmentValue = window.innerWidth * 0.5;
     const currentScroll = window.scrollY + adjustmentValue;
@@ -267,15 +281,15 @@ document.addEventListener('DOMContentLoaded', function () {
       .then(response => response.json())
       .then(data => {
         //リストの要素削除
-        while(newsCardList.firstChild){
+        while (newsCardList.firstChild) {
           newsCardList.removeChild(newsCardList.firstChild);
         }
 
-        //
-        for(let i=0; i<5;i++){
+        //リスト作成
+        for (let i = 0; i < 5; i++) {
           const date = data[i].date;
           const text = data[i].text;
-          const categoryJp = data[i].category;
+          const categoryJp = categoryList[data[i].category];
           const temp = `<a href="#" class="news__card-link">
                           <span class="news__date">${date}</span>
                           <p class="news__text">
@@ -298,6 +312,11 @@ document.addEventListener('DOMContentLoaded', function () {
       });
   }
 
-  getNewsData("all");
+  //初期実行処理
+  function init() {
+    getNewsData("all");
+  }
+
+  init();
 
 }, false);
