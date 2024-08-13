@@ -54,6 +54,13 @@
     align-items: center;
     gap: 1.4rem;
     font-size: clamp(16px, 1.8rem, 18px);
+    transition: opacity 0.2s ease-out;
+
+    @media (any-hover: hover) {
+      &:hover {
+        opacity: 0.6;
+      }
+    }
   }
 
   &__nav-number {

@@ -199,6 +199,26 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
+  const newsContents = document.getElementById("news__contents");
+  const newsScrollTarget = gsap.utils.toArray(".js-news-scroll");
+
+  mm.add("(min-width: 1024px)", () => {
+    gsap.to(newsScrollTarget, {
+      x: () => (newsContents.getBoundingClientRect().right + window.scrollY) - (newsContents.getBoundingClientRect().left + window.scrollY) -500,
+      ease: "none",
+      scrollTrigger: {
+        pinnedContainer: contentsWrapper,
+        trigger: newsContents,
+        start: () => newsContents.getBoundingClientRect().left + window.scrollY,
+        end: () => newsContents.getBoundingClientRect().right + window.scrollY - 500,
+        scrub: true,
+        invalidateOnRefresh: true,
+        markers: true,
+      },
+    });
+  });
+
+
   function checkSectionArea() {
     const adjustmentValue = window.innerWidth * 0.5;
     const currentScroll = window.scrollY + adjustmentValue;
