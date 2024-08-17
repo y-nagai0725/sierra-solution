@@ -204,7 +204,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   mm.add("(min-width: 1024px)", () => {
     gsap.to(newsScrollTarget, {
-      x: () => (newsContents.getBoundingClientRect().right + window.scrollY) - (newsContents.getBoundingClientRect().left + window.scrollY) -500,
+      x: () => (newsContents.getBoundingClientRect().right + window.scrollY) - (newsContents.getBoundingClientRect().left + window.scrollY) - 500,
       ease: "none",
       scrollTrigger: {
         pinnedContainer: contentsWrapper,
@@ -325,6 +325,18 @@ document.addEventListener('DOMContentLoaded', function () {
 
         //DOM削除と追加による調整の為
         ScrollTrigger.refresh();
+
+        //PC表示時、スクロール位置をリストの先頭へ
+        if (window.innerWidth >= breakPoint) {
+          const targetPosition = newsContents.getBoundingClientRect().left + window.scrollY;
+          gsap.to(window, {
+            duration: 0.8,
+            ease: "power2.out",
+            scrollTo: {
+              y: targetPosition,
+            }
+          });
+        }
 
       })
       .catch(error => {
