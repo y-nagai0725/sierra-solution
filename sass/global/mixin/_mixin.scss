@@ -10,11 +10,8 @@
 @mixin contents-width {
   padding: 0 2.5rem;
 
-  @media screen and (min-width: 768px) {
-  }
-
   @media screen and (min-width: 1024px) {
-    //padding: 0 0 0 40rem;
+    padding: 0;
   }
 }
 
@@ -54,6 +51,12 @@
   display: flex;
   align-items: center;
   gap: 1.5rem;
+  // clip-path: polygon(0% 0%, 0% 0%, 0% 100%, 0% 100%);
+  // transition: clip-path 0.4s ease-out;
+
+  // &.js-visible {
+  //   clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+  // }
 
   @media screen and (min-width: 1024px) {
     gap: 4rem;

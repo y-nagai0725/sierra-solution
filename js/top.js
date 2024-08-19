@@ -39,14 +39,13 @@ document.addEventListener('DOMContentLoaded', function () {
     "event": "イベント",
     "notice": "お知らせ",
     "release": "プレリリース",
-  }
+  };
+  const newsContents = document.getElementById("news__contents");
+  const newsScrollTarget = gsap.utils.toArray(".js-news-scroll");
+  const links = document.querySelectorAll("a[href^='#']");
+  let horizontalScrollTween;
 
-  gnavButton.addEventListener("click", function () {
-    this.classList.toggle("js-opened");
-    gnavMenu.classList.toggle("js-opened");
-    gnav.classList.toggle("js-blur");
-  });
-
+  //ウィンドウリサイズ時処理
   window.addEventListener("resize", function () {
     if (window.innerWidth >= breakPoint) {
       gnavButton.classList.remove("js-opened");
@@ -55,6 +54,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
+  //スクロール時処理
   window.addEventListener("scroll", function () {
     //ウィンドウ幅
     const windowWidth = window.innerWidth;
@@ -69,6 +69,14 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
+  //グローバルナビゲーションボタンクリック時処理
+  gnavButton.addEventListener("click", function () {
+    this.classList.toggle("js-opened");
+    gnavMenu.classList.toggle("js-opened");
+    gnav.classList.toggle("js-blur");
+  });
+
+  //ページトップボタンクリック時処理
   pageTopButton.addEventListener("click", function () {
     window.scroll({
       top: 0,
@@ -76,6 +84,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
+  //カテゴリーセレクトボックス選択時処理
   categorySelectBox.addEventListener("change", function () {
     const selectedCategory = this.value;
     if (categoryList[selectedCategory]) {
@@ -85,60 +94,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
-  //横スクロールGSAP設定:SP,TAB
-  mm.add("(max-width: 1023px)", () => {
-    gsap.to(serviceList1, {
-      x: () => -(serviceList1.scrollWidth - serviceList1.offsetWidth),
-      ease: "none",
-      scrollTrigger: {
-        trigger: serviceDetail1,
-        start: 'top top',
-        end: () => "+=" + (serviceList1.scrollWidth - serviceList1.offsetWidth),
-        scrub: true,
-        pin: true,
-        aniticipatePin: 1,
-        invalidateOnRefresh: true,
-        markers: true,
-      }
-    });
-
-    gsap.to(serviceList2, {
-      x: () => -(serviceList2.scrollWidth - serviceList2.offsetWidth),
-      ease: "none",
-      scrollTrigger: {
-        trigger: serviceDetail2,
-        start: 'top top',
-        end: () => "+=" + (serviceList2.scrollWidth - serviceList2.offsetWidth),
-        scrub: true,
-        pin: true,
-        aniticipatePin: 1,
-        invalidateOnRefresh: true,
-      }
-    });
-  });
-
-  //横スクロールGSAP設定:PC
-  mm.add("(min-width: 1024px)", () => {
-    gsap.to(contentsWrapper, {
-      x: () => -(contentsWrapper.scrollWidth - window.innerWidth),
-      ease: "none",
-      scrollTrigger: {
-        trigger: contentsWrapper,
-        start: "top top",
-        end: () => "+=" + (contentsWrapper.scrollWidth - window.innerWidth),
-        scrub: true,
-        pin: true,
-        aniticipatePin: 1,
-        invalidateOnRefresh: true,
-        onUpdate: self => {
-          gnavProgressBar.style.setProperty(gnavProgressBarProperty, self.progress + " 1");
-        },
-      }
-    });
-  });
-
   //アンカーリンクのクリック処理設定
-  const links = document.querySelectorAll("a[href^='#']");
   links.forEach(link => {
     link.addEventListener("click", e => {
       e.preventDefault();
@@ -178,16 +134,37 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  //Whoセクションのgsap設定
+  //横スクロールGSAP設定:PC
+  mm.add("(min-width: 1024px)", () => {
+    horizontalScrollTween = gsap.to(contentsWrapper, {
+      x: () => -(contentsWrapper.scrollWidth - window.innerWidth),
+      ease: "none",
+      scrollTrigger: {
+        trigger: contentsWrapper,
+        start: "top top",
+        end: () => "+=" + (contentsWrapper.scrollWidth - window.innerWidth),
+        scrub: true,
+        pin: true,
+        aniticipatePin: 1,
+        invalidateOnRefresh: true,
+        onUpdate: self => {
+          gnavProgressBar.style.setProperty(gnavProgressBarProperty, self.progress + " 1");
+        },
+      }
+    });
+  });
+
+  //WhoセクションのGSAP設定:PC
   mm.add("(min-width: 1024px)", () => {
     gsap.to(whoValue, {
       x: 700,
       ease: "none",
       scrollTrigger: {
         pinnedContainer: contentsWrapper,
+        containerAnimation: horizontalScrollTween,
         trigger: whoValue,
-        start: () => whoValue.getBoundingClientRect().left + window.scrollY,
-        end: () => "+=700",
+        start: "left left",
+        end: "+=700",
         scrub: true,
         invalidateOnRefresh: true,
         onUpdate: (self) => {
@@ -199,25 +176,54 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  const newsContents = document.getElementById("news__contents");
-  const newsScrollTarget = gsap.utils.toArray(".js-news-scroll");
-
+  //NewsセクションのGSAP設定:PC
   mm.add("(min-width: 1024px)", () => {
     gsap.to(newsScrollTarget, {
-      x: () => (newsContents.getBoundingClientRect().right + window.scrollY) - (newsContents.getBoundingClientRect().left + window.scrollY) - 500,
+      x: () => newsContents.offsetWidth * 0.6,
       ease: "none",
       scrollTrigger: {
         pinnedContainer: contentsWrapper,
+        containerAnimation: horizontalScrollTween,
         trigger: newsContents,
-        start: () => newsContents.getBoundingClientRect().left + window.scrollY,
-        end: () => newsContents.getBoundingClientRect().right + window.scrollY - 500,
+        start: "left left",
+        end: () => "+=" + (newsContents.offsetWidth * 0.6),
         scrub: true,
         invalidateOnRefresh: true,
-        markers: true,
       },
     });
   });
 
+  //ServciceセクションのGSAP設定:SP
+  mm.add("(max-width: 1023px)", () => {
+    gsap.to(serviceList1, {
+      x: () => -(serviceList1.scrollWidth - serviceList1.offsetWidth),
+      ease: "none",
+      scrollTrigger: {
+        trigger: serviceDetail1,
+        start: 'top top',
+        end: () => "+=" + (serviceList1.scrollWidth - serviceList1.offsetWidth),
+        scrub: true,
+        pin: true,
+        aniticipatePin: 1,
+        invalidateOnRefresh: true,
+        markers: true,
+      }
+    });
+
+    gsap.to(serviceList2, {
+      x: () => -(serviceList2.scrollWidth - serviceList2.offsetWidth),
+      ease: "none",
+      scrollTrigger: {
+        trigger: serviceDetail2,
+        start: 'top top',
+        end: () => "+=" + (serviceList2.scrollWidth - serviceList2.offsetWidth),
+        scrub: true,
+        pin: true,
+        aniticipatePin: 1,
+        invalidateOnRefresh: true,
+      }
+    });
+  });
 
   function checkSectionArea() {
     const adjustmentValue = window.innerWidth * 0.5;
@@ -291,7 +297,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
-  function getNewsData(category) {
+  function getNewsData(category, canScroll = true) {
     //----------------------------------
     //実際はapi呼び出しでjsonデータ取得想定
     //----------------------------------
@@ -300,13 +306,16 @@ document.addEventListener('DOMContentLoaded', function () {
     fetch("js/" + category + ".json")
       .then(response => response.json())
       .then(data => {
-        //リストの要素削除
+        //リストの既存要素削除
         while (newsCardList.firstChild) {
           newsCardList.removeChild(newsCardList.firstChild);
         }
 
         //リスト作成
-        for (let i = 0; i < 5; i++) {
+        for (let i = 0; i < data.length; i++) {
+          //上限5件
+          if (i === 5) break;
+
           const date = data[i].date;
           const text = data[i].text;
           const categoryJp = categoryList[data[i].category];
@@ -327,7 +336,7 @@ document.addEventListener('DOMContentLoaded', function () {
         ScrollTrigger.refresh();
 
         //PC表示時、スクロール位置をリストの先頭へ
-        if (window.innerWidth >= breakPoint) {
+        if (canScroll && window.innerWidth >= breakPoint) {
           const targetPosition = newsContents.getBoundingClientRect().left + window.scrollY;
           gsap.to(window, {
             duration: 0.8,
@@ -340,13 +349,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
       })
       .catch(error => {
-        //
+        console.error("データ取得に失敗しました。", error);
       });
   }
 
   //初期実行処理
   function init() {
-    getNewsData("all");
+    //Newsデータを取得
+    getNewsData("all", false);
   }
 
   init();
