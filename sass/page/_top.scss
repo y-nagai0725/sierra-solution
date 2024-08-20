@@ -11,16 +11,156 @@
 
   .main {
     height: 100%;
-    //後で消す ページ制作用
     position: relative;
-    z-index: 101;
-    //後で消す ページ制作用
+    z-index: 100;
+    transition: filter 0.2s ease-out;
+
+    &.js-blur {
+      filter: blur(2px);
+    }
+  }
+
+  .sub-menu-area {
+    display: none;
+
+    @media screen and (min-width: 1024px) {
+      display: block;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100px;
+      overflow: hidden;
+      z-index: 1001;
+    }
+
+    .progress-bar {
+      display: none;
+
+      @media screen and (min-width: 1024px) {
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 1px;
+        background-color: $line-gray;
+        --bar-scale: 0;
+
+        &::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 1px;
+          background-color: $black;
+          transform-origin: left;
+          scale: var(--bar-scale) 1;
+          transition: scale 0.15s linear;
+        }
+      }
+    }
+
+    .anchor-list {
+      display: none;
+
+      @media screen and (min-width: 1024px) {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        height: 100%;
+        padding-left: 25px;
+      }
+
+      &__link {
+        @media screen and (min-width: 1024px) {
+          padding: 10px 15px;
+          overflow: hidden;
+
+          &:hover {
+            span {
+              transition: top 0.4s ease-out;
+              top: -35px;
+            }
+          }
+        }
+      }
+
+      &__title {
+        @media screen and (min-width: 1024px) {
+          font-family: $montserrat;
+          font-size: 17px;
+          position: relative;
+          top: 0;
+
+          &::before {
+            content: attr(data-text);
+            position: absolute;
+            top: 35px;
+            left: 0;
+          }
+        }
+      }
+    }
+
+    .information {
+      display: none;
+
+      @media screen and (min-width: 1024px) {
+        position: absolute;
+        bottom: 0;
+        right: 40px;
+        transform: translateY(100%);
+        display: flex;
+        flex-direction: column;
+        transition: transform 0.4s ease-out;
+
+        @for $i from 1 through 5 {
+          &.js-show-section-#{$i} {
+            $value: 100 - (20 * $i);
+            transform: translateY($value * 1%);
+
+            li:nth-of-type(#{$i}) {
+              scale: 1;
+              opacity: 1;
+            }
+          }
+        }
+      }
+
+      &__item {
+        height: 100px;
+        display: flex;
+        align-items: center;
+        gap: 3rem;
+        scale: 0.7;
+        opacity: 0;
+        transition:
+          scale 0.4s ease-out,
+          opacity 0.4s ease-out;
+      }
+
+      &__section-text {
+        color: $char-gray;
+        font-family: $montserrat;
+        font-size: clamp(13px, 1.5rem, 15px);
+      }
+
+      &__title {
+        font-family: $montserrat;
+        font-size: clamp(17px, 2rem, 20px);
+        font-weight: 700;
+      }
+    }
   }
 
   .contents-wrapper {
     @media screen and (min-width: 1024px) {
       height: 100%;
       display: flex;
+      position: relative;
+      z-index: 1000;
     }
   }
 
@@ -751,7 +891,7 @@
     }
 
     &__more-button {
-      @include button-style($black, transparent, $black, "View more", $bg-gray);
+      @include button-style($black, transparent, $black, attr(data-text), $bg-gray);
       margin-left: auto;
 
       @media screen and (min-width: 1024px) {
@@ -1320,7 +1460,7 @@
     }
 
     &__button-link {
-      @include button-style($bg-gray, $black, transparent, "Contact Form", $black);
+      @include button-style($bg-gray, $black, transparent, attr(data-text), $black);
       margin-inline: auto;
       margin-bottom: 4rem;
     }

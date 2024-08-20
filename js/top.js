@@ -3,14 +3,20 @@ document.addEventListener('DOMContentLoaded', function () {
   //PC表示ブレイクポイント
   const breakPoint = 1024;
 
-  //グローバルナビゲーション
-  const gnav = document.getElementById("gnav");
+  //main要素
+  const main = document.getElementById("main");
+
+  //header要素
+  const header = document.getElementById("header");
+
+  //footer要素
+  const footer = document.getElementById("footer");
 
   //グローバルナビゲーションメニュー
   const gnavMenu = document.getElementById("gnav__menu");
 
   //グローバルナビゲーションボタン
-  const gnavButton = document.getElementById("gnav__button");
+  const hamburgerButton = document.getElementById("hamburger-button");
 
   //トップへ戻るボタン
   const pageTopButton = document.getElementById("footer__page-top-button");
@@ -27,12 +33,11 @@ document.addEventListener('DOMContentLoaded', function () {
   const headerNav = document.getElementById("header__nav");
   const whoValue = document.getElementById("who__value");
   const whoValueTextBox = gsap.utils.toArray(".who__value-text--box");
-  const gnavProgressBar = document.getElementById("gnav__progress-bar");
-  const gnavProgressBarProperty = "--bar-scale";
+  const progressBar = document.getElementById("progress-bar");
+  const progressBarProperty = "--bar-scale";
   const newsCardList = document.getElementById("news__card-list");
-  const gnavInformationList = document.getElementById("gnav__information-list");
+  const information = document.getElementById("information");
   const sectionList = [...document.getElementsByTagName("section")];
-  const footer = document.getElementById("footer");
   const categorySelectBox = document.getElementById("news__select");
   const categoryList = {
     "all": "All",
@@ -48,9 +53,7 @@ document.addEventListener('DOMContentLoaded', function () {
   //ウィンドウリサイズ時処理
   window.addEventListener("resize", function () {
     if (window.innerWidth >= breakPoint) {
-      gnavButton.classList.remove("js-opened");
-      gnavMenu.classList.remove("js-opened");
-      gnav.classList.remove("js-blur");
+      gnavMenuClose();
     }
   });
 
@@ -70,10 +73,14 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   //グローバルナビゲーションボタンクリック時処理
-  gnavButton.addEventListener("click", function () {
-    this.classList.toggle("js-opened");
-    gnavMenu.classList.toggle("js-opened");
-    gnav.classList.toggle("js-blur");
+  hamburgerButton.addEventListener("click", function () {
+    if (this.classList.contains('js-opened')) {
+      //閉じる処理
+      gnavMenuClose();
+    } else {
+      //開く処理
+      gnavMenuOpen();
+    }
   });
 
   //ページトップボタンクリック時処理
@@ -106,7 +113,8 @@ document.addEventListener('DOMContentLoaded', function () {
           ease: "power2.out",
           scrollTo: {
             y: 0,
-          }
+          },
+          onComplete: gnavMenuClose(),
         });
       } else {
         mm.add("(max-width: 1023px)", () => {
@@ -115,7 +123,8 @@ document.addEventListener('DOMContentLoaded', function () {
             ease: "power2.out",
             scrollTo: {
               y: anchorName,
-            }
+            },
+            onComplete: gnavMenuClose(),
           });
         });
 
@@ -148,7 +157,7 @@ document.addEventListener('DOMContentLoaded', function () {
         aniticipatePin: 1,
         invalidateOnRefresh: true,
         onUpdate: self => {
-          gnavProgressBar.style.setProperty(gnavProgressBarProperty, self.progress + " 1");
+          progressBar.style.setProperty(progressBarProperty, self.progress + " 1");
         },
       }
     });
@@ -225,6 +234,37 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
+  //イベント処理禁止用
+  function noScroll(e) {
+    e.preventDefault();
+  }
+
+  function gnavMenuOpen() {
+    if (!hamburgerButton.classList.contains("js-opened")) {
+      hamburgerButton.classList.add("js-opened");
+      gnavMenu.classList.add("js-opened");
+      main.classList.add("js-blur");
+      header.classList.add("js-blur");
+
+      //メニューが開かれているときはスクロール禁止
+      document.addEventListener('touchmove', noScroll, { passive: false });
+      document.addEventListener('wheel', noScroll, { passive: false });
+    }
+  }
+
+  function gnavMenuClose() {
+    if (hamburgerButton.classList.contains("js-opened")) {
+      hamburgerButton.classList.remove("js-opened");
+      gnavMenu.classList.remove("js-opened");
+      main.classList.remove("js-blur");
+      header.classList.remove("js-blur");
+
+      //スクロール禁止を解除
+      document.removeEventListener('touchmove', noScroll);
+      document.removeEventListener('wheel', noScroll);
+    }
+  }
+
   function checkSectionArea() {
     const adjustmentValue = window.innerWidth * 0.5;
     const currentScroll = window.scrollY + adjustmentValue;
@@ -244,16 +284,16 @@ document.addEventListener('DOMContentLoaded', function () {
       if (sectionStartPoint <= currentScroll && currentScroll < sectionEndPoint) {
         const addClassName = baseClassName + (i + 1);
         //追加クラス名が存在しない場合
-        if (!gnavInformationList.classList.contains(addClassName)) {
+        if (!information.classList.contains(addClassName)) {
           //既存の追加されたクラス名を削除
-          removeClass(gnavInformationList, baseClassName + ".+", "g");
+          removeClass(information, baseClassName + ".+", "g");
 
           //クラス名追加
-          gnavInformationList.classList.add(addClassName);
+          information.classList.add(addClassName);
         }
         break;
       } else if ((i === 0 && currentScroll < sectionStartPoint) || (i === targetPointList.length - 2 && sectionEndPoint <= currentScroll)) {
-        removeClass(gnavInformationList, baseClassName + ".+", "g");
+        removeClass(information, baseClassName + ".+", "g");
         break;
       }
     }

@@ -154,6 +154,10 @@ a {
 .header {
   padding: 1.5rem 0 0 1.5rem;
   position: absolute;
+  transition: filter 0.2s ease-out;
+}
+.header.js-blur {
+  filter: blur(2px);
 }
 @media screen and (min-width: 1024px) {
   .header {
@@ -221,65 +225,19 @@ a {
 
 .gnav {
   width: 100%;
-  height: 100svh;
   position: fixed;
   top: 0;
-  z-index: 102;
-}
-.gnav::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  transition: backdrop-filter 0.4s ease-out;
-}
-.gnav.js-blur::before {
-  backdrop-filter: blur(2px);
+  z-index: 101;
+  display: block;
 }
 @media screen and (min-width: 1024px) {
   .gnav {
-    height: 100px;
-    top: initial;
-    bottom: 0;
-    left: 0;
-    overflow: hidden;
-  }
-  .gnav::before {
     display: none;
-  }
-}
-.gnav__progress-bar {
-  display: none;
-}
-@media screen and (min-width: 1024px) {
-  .gnav__progress-bar {
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 1px;
-    background-color: #d0d0d0;
-    --bar-scale: 0;
-  }
-  .gnav__progress-bar::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 1px;
-    background-color: #000;
-    transform-origin: left;
-    scale: var(--bar-scale) 1;
-    transition: scale 0.15s linear;
   }
 }
 .gnav__menu {
   width: calc(100% - 6.5rem);
-  height: 100%;
+  height: 100svh;
   padding-top: 8rem;
   background-color: #fff;
   position: absolute;
@@ -288,16 +246,6 @@ a {
   flex-direction: column;
   align-items: center;
   transition: left 0.4s ease-out;
-}
-@media screen and (min-width: 1024px) {
-  .gnav__menu {
-    width: 100%;
-    padding: 0 0 0 40px;
-    background-color: initial;
-    position: static;
-    align-items: baseline;
-    justify-content: center;
-  }
 }
 .gnav__menu.js-opened {
   left: 6.5rem;
@@ -308,130 +256,122 @@ a {
   background: #6e6e6e;
   margin-bottom: 8rem;
 }
-@media screen and (min-width: 1024px) {
-  .gnav__logo {
-    display: none;
-  }
-}
 .gnav__list {
-  margin-bottom: 4rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 4rem;
+  gap: 2rem;
 }
-@media screen and (min-width: 1024px) {
-  .gnav__list {
-    margin-bottom: 0;
-    flex-direction: row;
-    gap: 10px;
-  }
-}
-@media screen and (min-width: 1024px) {
-  .gnav__link {
-    padding: 10px 15px;
-    overflow: hidden;
-  }
-  .gnav__link:hover span {
-    transition: top 0.4s ease-out;
-    top: -35px;
-  }
+.gnav__link {
+  padding: 1rem;
 }
 .gnav__link--button {
   width: 15rem;
   padding: 1.7rem 2rem;
+  border: 1px solid #000;
   border-radius: 2.5rem;
   background-color: #000;
   position: relative;
+  transition: background-color 0.4s ease-out;
 }
-@media screen and (min-width: 1024px) {
-  .gnav__link--button {
-    width: auto;
-    padding: 10px 15px;
-    border-radius: none;
-    background-color: transparent;
-    position: static;
-  }
-  .gnav__link--button::before, .gnav__link--button::after {
-    display: none;
-  }
+.gnav__link--button span {
+  font-family: "Montserrat", sans-serif;
+  font-size: clamp(13px, 1.3rem, 16px);
+  letter-spacing: -0.04em;
+  color: #efefef;
+  position: relative;
+  top: 0;
+  transition: top 0.4s ease-out;
+}
+.gnav__link--button span::before {
+  content: attr(data-text);
+  position: absolute;
+  top: 15px;
+  left: 0;
+  color: #000;
+  opacity: 0;
+  transition: opacity 0.4s ease-out;
+}
+.gnav__link--button:hover {
+  background-color: transparent;
+}
+.gnav__link--button:hover span {
+  top: -15px;
+}
+.gnav__link--button:hover span::before {
+  opacity: 1;
 }
 .gnav__link--button::before, .gnav__link--button::after {
   content: "";
   position: absolute;
   top: 50%;
-  translate: 0 -50%;
-  width: 0.4rem;
-  height: 0.4rem;
+  right: 0;
+  width: 0.5rem;
+  height: 0.5rem;
   border-radius: 9999px;
 }
 .gnav__link--button::before {
-  right: 2.8rem;
   background-color: #82be28;
+  translate: -3rem -50%;
 }
 .gnav__link--button::after {
-  right: 2rem;
   background-color: #cc0033;
+  translate: -2rem -50%;
+}
+@media screen and (min-width: 1024px) {
+  .gnav__link--button {
+    padding: 2rem 2.5rem;
+    width: 21rem;
+    border-radius: 5rem;
+  }
+  .gnav__link--button span {
+    font-size: clamp(16px, 1.8rem, 18px);
+  }
+  .gnav__link--button::before, .gnav__link--button::after {
+    width: 0.6rem;
+    height: 0.6rem;
+  }
+  .gnav__link--button::before {
+    translate: -3.5rem -50%;
+  }
+  .gnav__link--button::after {
+    translate: -2.5rem -50%;
+  }
 }
 .gnav__title {
   font-family: "Montserrat", sans-serif;
   font-size: clamp(17px, 1.7rem, 30px);
   position: relative;
 }
-@media screen and (min-width: 1024px) {
-  .gnav__title {
-    font-size: 17px;
-    top: 0;
-  }
-  .gnav__title::before {
-    content: attr(data-text);
-    position: absolute;
-    top: 35px;
-    left: 0;
-  }
-}
 .gnav__title--white {
   color: #fff;
-}
-@media screen and (min-width: 1024px) {
-  .gnav__title--white {
-    color: #000;
-  }
 }
 .gnav__title--small {
   font-size: clamp(12px, 1.2rem, 20px);
 }
-@media screen and (min-width: 1024px) {
-  .gnav__title--small {
-    font-size: 17px;
-  }
-}
 .gnav__title--narrow {
   letter-spacing: -0.04em;
 }
-@media screen and (min-width: 1024px) {
-  .gnav__title--narrow {
-    letter-spacing: 0;
-  }
-}
-.gnav__button {
+
+.hamburger-button {
   width: 4.8rem;
   height: 4.8rem;
   border-radius: 9999px;
   border: 1px solid #fff;
   background-color: #fff;
-  position: absolute;
+  position: fixed;
   right: 1.5rem;
   bottom: 1.5rem;
   cursor: pointer;
   transition: border 0.4s ease-out;
+  z-index: 102;
 }
 @media screen and (min-width: 1024px) {
-  .gnav__button {
+  .hamburger-button {
     display: none;
   }
 }
-.gnav__button::before, .gnav__button::after {
+.hamburger-button::before, .hamburger-button::after {
   width: 2rem;
   height: 1px;
   content: "";
@@ -440,92 +380,24 @@ a {
   left: 50%;
   transition: translate, rotate 0.4s ease-out;
 }
-.gnav__button::before {
+.hamburger-button::before {
   background-color: #82be28;
   translate: -50% calc(-50% - 0.4rem);
 }
-.gnav__button::after {
+.hamburger-button::after {
   background-color: #cc0033;
   translate: -50% calc(-50% + 0.4rem);
 }
-.gnav__button.js-opened {
+.hamburger-button.js-opened {
   border: 1px solid #000;
 }
-.gnav__button.js-opened::before {
+.hamburger-button.js-opened::before {
   translate: -50% -50%;
   rotate: 45deg;
 }
-.gnav__button.js-opened::after {
+.hamburger-button.js-opened::after {
   translate: -50% -50%;
   rotate: -45deg;
-}
-.gnav__information-list {
-  display: none;
-}
-@media screen and (min-width: 1024px) {
-  .gnav__information-list {
-    position: absolute;
-    bottom: 0;
-    right: 40px;
-    transform: translateY(100%);
-    display: flex;
-    flex-direction: column;
-    transition: transform 0.4s ease-out;
-  }
-  .gnav__information-list.js-show-section-1 {
-    transform: translateY(80%);
-  }
-  .gnav__information-list.js-show-section-1 li:nth-of-type(1) {
-    scale: 1;
-    opacity: 1;
-  }
-  .gnav__information-list.js-show-section-2 {
-    transform: translateY(60%);
-  }
-  .gnav__information-list.js-show-section-2 li:nth-of-type(2) {
-    scale: 1;
-    opacity: 1;
-  }
-  .gnav__information-list.js-show-section-3 {
-    transform: translateY(40%);
-  }
-  .gnav__information-list.js-show-section-3 li:nth-of-type(3) {
-    scale: 1;
-    opacity: 1;
-  }
-  .gnav__information-list.js-show-section-4 {
-    transform: translateY(20%);
-  }
-  .gnav__information-list.js-show-section-4 li:nth-of-type(4) {
-    scale: 1;
-    opacity: 1;
-  }
-  .gnav__information-list.js-show-section-5 {
-    transform: translateY(0%);
-  }
-  .gnav__information-list.js-show-section-5 li:nth-of-type(5) {
-    scale: 1;
-    opacity: 1;
-  }
-}
-.gnav__information-item {
-  height: 100px;
-  display: flex;
-  align-items: center;
-  gap: 3rem;
-  scale: 0.7;
-  opacity: 0;
-  transition: scale 0.4s ease-out, opacity 0.4s ease-out;
-}
-.gnav__information-section {
-  color: #939393;
-  font-family: "Montserrat", sans-serif;
-  font-size: clamp(13px, 1.5rem, 15px);
-}
-.gnav__information-title {
-  font-family: "Montserrat", sans-serif;
-  font-size: clamp(17px, 2rem, 20px);
-  font-weight: 700;
 }
 
 .footer {
@@ -791,12 +663,164 @@ a {
 #top .main {
   height: 100%;
   position: relative;
-  z-index: 101;
+  z-index: 100;
+  transition: filter 0.2s ease-out;
+}
+#top .main.js-blur {
+  filter: blur(2px);
+}
+#top .sub-menu-area {
+  display: none;
+}
+@media screen and (min-width: 1024px) {
+  #top .sub-menu-area {
+    display: block;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    overflow: hidden;
+    z-index: 1001;
+  }
+}
+#top .sub-menu-area .progress-bar {
+  display: none;
+}
+@media screen and (min-width: 1024px) {
+  #top .sub-menu-area .progress-bar {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: #d0d0d0;
+    --bar-scale: 0;
+  }
+  #top .sub-menu-area .progress-bar::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background-color: #000;
+    transform-origin: left;
+    scale: var(--bar-scale) 1;
+    transition: scale 0.15s linear;
+  }
+}
+#top .sub-menu-area .anchor-list {
+  display: none;
+}
+@media screen and (min-width: 1024px) {
+  #top .sub-menu-area .anchor-list {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    height: 100%;
+    padding-left: 25px;
+  }
+}
+@media screen and (min-width: 1024px) {
+  #top .sub-menu-area .anchor-list__link {
+    padding: 10px 15px;
+    overflow: hidden;
+  }
+  #top .sub-menu-area .anchor-list__link:hover span {
+    transition: top 0.4s ease-out;
+    top: -35px;
+  }
+}
+@media screen and (min-width: 1024px) {
+  #top .sub-menu-area .anchor-list__title {
+    font-family: "Montserrat", sans-serif;
+    font-size: 17px;
+    position: relative;
+    top: 0;
+  }
+  #top .sub-menu-area .anchor-list__title::before {
+    content: attr(data-text);
+    position: absolute;
+    top: 35px;
+    left: 0;
+  }
+}
+#top .sub-menu-area .information {
+  display: none;
+}
+@media screen and (min-width: 1024px) {
+  #top .sub-menu-area .information {
+    position: absolute;
+    bottom: 0;
+    right: 40px;
+    transform: translateY(100%);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.4s ease-out;
+  }
+  #top .sub-menu-area .information.js-show-section-1 {
+    transform: translateY(80%);
+  }
+  #top .sub-menu-area .information.js-show-section-1 li:nth-of-type(1) {
+    scale: 1;
+    opacity: 1;
+  }
+  #top .sub-menu-area .information.js-show-section-2 {
+    transform: translateY(60%);
+  }
+  #top .sub-menu-area .information.js-show-section-2 li:nth-of-type(2) {
+    scale: 1;
+    opacity: 1;
+  }
+  #top .sub-menu-area .information.js-show-section-3 {
+    transform: translateY(40%);
+  }
+  #top .sub-menu-area .information.js-show-section-3 li:nth-of-type(3) {
+    scale: 1;
+    opacity: 1;
+  }
+  #top .sub-menu-area .information.js-show-section-4 {
+    transform: translateY(20%);
+  }
+  #top .sub-menu-area .information.js-show-section-4 li:nth-of-type(4) {
+    scale: 1;
+    opacity: 1;
+  }
+  #top .sub-menu-area .information.js-show-section-5 {
+    transform: translateY(0%);
+  }
+  #top .sub-menu-area .information.js-show-section-5 li:nth-of-type(5) {
+    scale: 1;
+    opacity: 1;
+  }
+}
+#top .sub-menu-area .information__item {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  scale: 0.7;
+  opacity: 0;
+  transition: scale 0.4s ease-out, opacity 0.4s ease-out;
+}
+#top .sub-menu-area .information__section-text {
+  color: #939393;
+  font-family: "Montserrat", sans-serif;
+  font-size: clamp(13px, 1.5rem, 15px);
+}
+#top .sub-menu-area .information__title {
+  font-family: "Montserrat", sans-serif;
+  font-size: clamp(17px, 2rem, 20px);
+  font-weight: 700;
 }
 @media screen and (min-width: 1024px) {
   #top .contents-wrapper {
     height: 100%;
     display: flex;
+    position: relative;
+    z-index: 1000;
   }
 }
 #top .fv {
@@ -1730,7 +1754,7 @@ a {
   transition: top 0.4s ease-out;
 }
 #top .news__more-button span::before {
-  content: "View more";
+  content: attr(data-text);
   position: absolute;
   top: 15px;
   left: 0;
@@ -2462,7 +2486,7 @@ a {
   transition: top 0.4s ease-out;
 }
 #top .contact__button-link span::before {
-  content: "Contact Form";
+  content: attr(data-text);
   position: absolute;
   top: 15px;
   left: 0;

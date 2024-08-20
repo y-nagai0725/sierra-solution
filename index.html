@@ -36,9 +36,8 @@
       </nav>
     </header>
     <nav id="gnav" class="gnav">
-      <div id="gnav__progress-bar" class="gnav__progress-bar"></div>
       <div id="gnav__menu" class="gnav__menu">
-        <a href="" class="gnav__logo">
+        <a href="#" class="gnav__logo">
           <img src="" alt="Sierra Solutions" class="gnav__logo-image">
         </a>
         <ul class="gnav__list">
@@ -75,31 +74,61 @@
           </li>
         </ul>
       </div>
-      <button id="gnav__button" class="gnav__button"></button>
-      <ul id="gnav__information-list" class="gnav__information-list">
-        <li class="gnav__information-item">
-          <span class="gnav__information-section">Section 1</span>
-          <span class="gnav__information-title">Who we are</span>
-        </li>
-        <li class="gnav__information-item">
-          <span class="gnav__information-section">Section 2</span>
-          <span class="gnav__information-title">News</span>
-        </li>
-        <li class="gnav__information-item">
-          <span class="gnav__information-section">Section 3</span>
-          <span class="gnav__information-title">Service</span>
-        </li>
-        <li class="gnav__information-item">
-          <span class="gnav__information-section">Section 4</span>
-          <span class="gnav__information-title">Company</span>
-        </li>
-        <li class="gnav__information-item">
-          <span class="gnav__information-section">Section 5</span>
-          <span class="gnav__information-title">Contact</span>
-        </li>
-      </ul>
     </nav>
-    <main class="main">
+    <button id="hamburger-button" class="hamburger-button"></button>
+    <main id="main" class="main">
+      <div class="sub-menu-area">
+        <div id="progress-bar" class="progress-bar"></div>
+        <ul class="anchor-list">
+          <li class="anchor-list__item">
+            <a href="#who" class="anchor-list__link">
+              <span class="anchor-list__title" data-text="Who we are">Who we are</span>
+            </a>
+          </li>
+          <li class="anchor-list__item">
+            <a href="#news" class="anchor-list__link">
+              <span class="anchor-list__title" data-text="News">News</span>
+            </a>
+          </li>
+          <li class="anchor-list__item">
+            <a href="#service" class="anchor-list__link">
+              <span class="anchor-list__title" data-text="Service">Service</span>
+            </a>
+          </li>
+          <li class="anchor-list__item">
+            <a href="#company" class="anchor-list__link">
+              <span class="anchor-list__title" data-text="Company">Company</span>
+            </a>
+          </li>
+          <li class="anchor-list__item">
+            <a href="#contact" class="anchor-list__link">
+              <span class="anchor-list__title" data-text="Contact">Contact</span>
+            </a>
+          </li>
+        </ul>
+        <ul id="information" class="information">
+          <li class="information__item">
+            <span class="information__section-text">Section 1</span>
+            <span class="information__title">Who we are</span>
+          </li>
+          <li class="information__item">
+            <span class="information__section-text">Section 2</span>
+            <span class="information__title">News</span>
+          </li>
+          <li class="information__item">
+            <span class="information__section-text">Section 3</span>
+            <span class="information__title">Service</span>
+          </li>
+          <li class="information__item">
+            <span class="information__section-text">Section 4</span>
+            <span class="information__title">Company</span>
+          </li>
+          <li class="information__item">
+            <span class="information__section-text">Section 5</span>
+            <span class="information__title">Contact</span>
+          </li>
+        </ul>
+      </div>
       <div id="contents-wrapper" class="contents-wrapper">
         <div class="fv">
           <div class="fv__inner">
@@ -257,7 +286,7 @@
                 </div>
               </div>
               <ul id="news__card-list" class="news__card-list"></ul>
-              <a href="#" class="news__more-button js-news-scroll"><span>View more</span></a>
+              <a href="#" class="news__more-button js-news-scroll"><span data-text="View more">View more</span></a>
             </div>
           </div>
         </section>
@@ -448,7 +477,7 @@
               お問い合わせいただいた内容につきましては、<br class="no-pc">
               担当者より折り返しご連絡いたします。
             </p>
-            <a href="#" class="contact__button-link"><span>Contact Form</span></a>
+            <a href="#" class="contact__button-link"><span data-text="Contact Form">Contact Form</span></a>
             <a href="#" class="contact__privacy-policy">Privacy Policy</a>
           </div>
         </section>

@@ -3,6 +3,11 @@
 .header {
   padding: 1.5rem 0 0 1.5rem;
   position: absolute;
+  transition: filter 0.2s ease-out;
+
+  &.js-blur {
+    filter: blur(2px);
+  }
 
   @media screen and (min-width: 1024px) {
     position: fixed;
