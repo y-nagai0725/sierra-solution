@@ -161,6 +161,18 @@ document.addEventListener('DOMContentLoaded', function () {
         },
       }
     });
+    gsap.to(".sub-menu-area", {
+      x: () => (contentsWrapper.scrollWidth - window.innerWidth),
+      ease: "none",
+      scrollTrigger: {
+        containerAnimation: horizontalScrollTween,
+        trigger: contentsWrapper,
+        start: "left left",
+        end: () => "+=" + (contentsWrapper.scrollWidth - window.innerWidth),
+        scrub: true,
+        invalidateOnRefresh: true,
+      }
+    });
   });
 
   //WhoセクションのGSAP設定:PC

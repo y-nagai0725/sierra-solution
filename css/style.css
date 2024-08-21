@@ -410,6 +410,8 @@ a {
     height: 100%;
     padding: 14rem 18rem;
     flex-shrink: 0;
+    position: relative;
+    z-index: 3;
   }
 }
 .footer__inner {
@@ -669,6 +671,12 @@ a {
 #top .main.js-blur {
   filter: blur(2px);
 }
+@media screen and (min-width: 1024px) {
+  #top .contents-wrapper {
+    height: 100%;
+    display: flex;
+  }
+}
 #top .sub-menu-area {
   display: none;
 }
@@ -681,7 +689,7 @@ a {
     width: 100%;
     height: 100px;
     overflow: hidden;
-    z-index: 1001;
+    z-index: 2;
   }
 }
 #top .sub-menu-area .progress-bar {
@@ -814,14 +822,6 @@ a {
   font-family: "Montserrat", sans-serif;
   font-size: clamp(17px, 2rem, 20px);
   font-weight: 700;
-}
-@media screen and (min-width: 1024px) {
-  #top .contents-wrapper {
-    height: 100%;
-    display: flex;
-    position: relative;
-    z-index: 1000;
-  }
 }
 #top .fv {
   margin-bottom: 16rem;
