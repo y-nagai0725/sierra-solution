@@ -24,6 +24,9 @@ document.addEventListener('DOMContentLoaded', function () {
   //GSAPメディアクエリ
   const mm = gsap.matchMedia();
 
+  //画面下部メニューエリア:PC
+  const subMenuArea = document.getElementById("sub-menu-area");
+
   const contentsWrapper = document.getElementById("contents-wrapper");
   const serviceDetail1 = document.getElementById("service__detail-1");
   const serviceDetail2 = document.getElementById("service__detail-2");
@@ -145,9 +148,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   //横スクロールGSAP設定:PC
   mm.add("(min-width: 1024px)", () => {
-    horizontalScrollTween = gsap.to(contentsWrapper, {
-      x: () => -(contentsWrapper.scrollWidth - window.innerWidth),
-      ease: "none",
+    horizontalScrollTween = gsap.timeline({
       scrollTrigger: {
         trigger: contentsWrapper,
         start: "top top",
@@ -160,19 +161,13 @@ document.addEventListener('DOMContentLoaded', function () {
           progressBar.style.setProperty(progressBarProperty, self.progress + " 1");
         },
       }
-    });
-    gsap.to(".sub-menu-area", {
+    }).to(contentsWrapper, {
+      x: () => -(contentsWrapper.scrollWidth - window.innerWidth),
+      ease: "none",
+    }, "horizontalScroll").to(subMenuArea, {
       x: () => (contentsWrapper.scrollWidth - window.innerWidth),
       ease: "none",
-      scrollTrigger: {
-        containerAnimation: horizontalScrollTween,
-        trigger: contentsWrapper,
-        start: "left left",
-        end: () => "+=" + (contentsWrapper.scrollWidth - window.innerWidth),
-        scrub: true,
-        invalidateOnRefresh: true,
-      }
-    });
+    }, "horizontalScroll");
   });
 
   //WhoセクションのGSAP設定:PC
