@@ -155,17 +155,14 @@ a {
   padding: 1.5rem 0 0 1.5rem;
   position: absolute;
   transition: filter 0.2s ease-out;
+  z-index: 101;
 }
 .header.js-blur {
   filter: blur(2px);
 }
 @media screen and (min-width: 1024px) {
   .header {
-    position: fixed;
-    padding: 4rem 0 0 4rem;
-    display: flex;
-    gap: 15rem;
-    z-index: 200;
+    display: none;
   }
 }
 .header__logo-link {
@@ -175,52 +172,13 @@ a {
 }
 @media screen and (min-width: 1024px) {
   .header__logo-link {
-    width: 20rem;
-    height: 4rem;
+    display: none;
   }
-}
-.header__nav {
-  display: none;
 }
 @media screen and (min-width: 1024px) {
-  .header__nav {
-    display: flex;
-    align-items: center;
-    gap: 4rem;
-    position: relative;
-    top: -150px;
-    left: 0;
-    transition: top 0.4s ease-out;
+  .header__logo-image {
+    display: none;
   }
-  .header__nav.js-opened {
-    top: 0;
-  }
-}
-.header__nav-title {
-  font-family: "Montserrat", sans-serif;
-  font-size: clamp(13px, 1.5rem, 15px);
-}
-.header__nav-link {
-  display: flex;
-  align-items: center;
-  gap: 1.4rem;
-  font-size: clamp(16px, 1.8rem, 18px);
-  transition: opacity 0.2s ease-out;
-}
-@media (any-hover: hover) {
-  .header__nav-link:hover {
-    opacity: 0.6;
-  }
-}
-.header__nav-number {
-  font-family: "Montserrat", sans-serif;
-  font-size: clamp(16px, 1.8rem, 18px);
-}
-.header__nav-number--red {
-  color: #cc0033;
-}
-.header__nav-number--green {
-  color: #82be28;
 }
 
 .gnav {
@@ -677,11 +635,76 @@ a {
     display: flex;
   }
 }
-#top .sub-menu-area {
+#top .top-menu {
   display: none;
 }
 @media screen and (min-width: 1024px) {
-  #top .sub-menu-area {
+  #top .top-menu {
+    position: fixed;
+    padding: 4rem 0 0 4rem;
+    display: flex;
+    gap: 15rem;
+    z-index: 2;
+  }
+}
+@media screen and (min-width: 1024px) {
+  #top .top-menu__logo-link {
+    width: 20rem;
+    height: 4rem;
+    background: #6e6e6e;
+  }
+}
+@media screen and (min-width: 1024px) {
+  #top .top-menu__nav {
+    display: flex;
+    align-items: center;
+    gap: 4rem;
+    position: relative;
+    top: -150px;
+    left: 0;
+    transition: top 0.4s ease-out;
+  }
+  #top .top-menu__nav.js-opened {
+    top: 0;
+  }
+}
+@media screen and (min-width: 1024px) {
+  #top .top-menu__nav-title {
+    font-family: "Montserrat", sans-serif;
+    font-size: clamp(13px, 1.5rem, 15px);
+  }
+}
+@media screen and (min-width: 1024px) {
+  #top .top-menu__nav-link {
+    display: flex;
+    align-items: center;
+    gap: 1.4rem;
+    font-size: clamp(16px, 1.8rem, 18px);
+    transition: opacity 0.2s ease-out;
+  }
+}
+@media screen and (min-width: 1024px) and (any-hover: hover) {
+  #top .top-menu__nav-link:hover {
+    opacity: 0.6;
+  }
+}
+@media screen and (min-width: 1024px) {
+  #top .top-menu__nav-number {
+    font-family: "Montserrat", sans-serif;
+    font-size: clamp(16px, 1.8rem, 18px);
+  }
+  #top .top-menu__nav-number--red {
+    color: #cc0033;
+  }
+  #top .top-menu__nav-number--green {
+    color: #82be28;
+  }
+}
+#top .bottom-menu {
+  display: none;
+}
+@media screen and (min-width: 1024px) {
+  #top .bottom-menu {
     display: block;
     position: fixed;
     bottom: 0;
@@ -692,11 +715,11 @@ a {
     z-index: 2;
   }
 }
-#top .sub-menu-area .progress-bar {
+#top .bottom-menu .progress-bar {
   display: none;
 }
 @media screen and (min-width: 1024px) {
-  #top .sub-menu-area .progress-bar {
+  #top .bottom-menu .progress-bar {
     display: block;
     position: absolute;
     top: 0;
@@ -706,7 +729,7 @@ a {
     background-color: #d0d0d0;
     --bar-scale: 0;
   }
-  #top .sub-menu-area .progress-bar::before {
+  #top .bottom-menu .progress-bar::before {
     content: "";
     position: absolute;
     top: 0;
@@ -719,11 +742,11 @@ a {
     transition: scale 0.15s linear;
   }
 }
-#top .sub-menu-area .anchor-list {
+#top .bottom-menu .anchor-list {
   display: none;
 }
 @media screen and (min-width: 1024px) {
-  #top .sub-menu-area .anchor-list {
+  #top .bottom-menu .anchor-list {
     display: flex;
     align-items: center;
     gap: 10px;
@@ -732,34 +755,34 @@ a {
   }
 }
 @media screen and (min-width: 1024px) {
-  #top .sub-menu-area .anchor-list__link {
+  #top .bottom-menu .anchor-list__link {
     padding: 10px 15px;
     overflow: hidden;
   }
-  #top .sub-menu-area .anchor-list__link:hover span {
+  #top .bottom-menu .anchor-list__link:hover span {
     transition: top 0.4s ease-out;
     top: -35px;
   }
 }
 @media screen and (min-width: 1024px) {
-  #top .sub-menu-area .anchor-list__title {
+  #top .bottom-menu .anchor-list__title {
     font-family: "Montserrat", sans-serif;
     font-size: 17px;
     position: relative;
     top: 0;
   }
-  #top .sub-menu-area .anchor-list__title::before {
+  #top .bottom-menu .anchor-list__title::before {
     content: attr(data-text);
     position: absolute;
     top: 35px;
     left: 0;
   }
 }
-#top .sub-menu-area .information {
+#top .bottom-menu .information {
   display: none;
 }
 @media screen and (min-width: 1024px) {
-  #top .sub-menu-area .information {
+  #top .bottom-menu .information {
     position: absolute;
     bottom: 0;
     right: 40px;
@@ -768,43 +791,43 @@ a {
     flex-direction: column;
     transition: transform 0.4s ease-out;
   }
-  #top .sub-menu-area .information.js-show-section-1 {
+  #top .bottom-menu .information.js-show-section-1 {
     transform: translateY(80%);
   }
-  #top .sub-menu-area .information.js-show-section-1 li:nth-of-type(1) {
+  #top .bottom-menu .information.js-show-section-1 li:nth-of-type(1) {
     scale: 1;
     opacity: 1;
   }
-  #top .sub-menu-area .information.js-show-section-2 {
+  #top .bottom-menu .information.js-show-section-2 {
     transform: translateY(60%);
   }
-  #top .sub-menu-area .information.js-show-section-2 li:nth-of-type(2) {
+  #top .bottom-menu .information.js-show-section-2 li:nth-of-type(2) {
     scale: 1;
     opacity: 1;
   }
-  #top .sub-menu-area .information.js-show-section-3 {
+  #top .bottom-menu .information.js-show-section-3 {
     transform: translateY(40%);
   }
-  #top .sub-menu-area .information.js-show-section-3 li:nth-of-type(3) {
+  #top .bottom-menu .information.js-show-section-3 li:nth-of-type(3) {
     scale: 1;
     opacity: 1;
   }
-  #top .sub-menu-area .information.js-show-section-4 {
+  #top .bottom-menu .information.js-show-section-4 {
     transform: translateY(20%);
   }
-  #top .sub-menu-area .information.js-show-section-4 li:nth-of-type(4) {
+  #top .bottom-menu .information.js-show-section-4 li:nth-of-type(4) {
     scale: 1;
     opacity: 1;
   }
-  #top .sub-menu-area .information.js-show-section-5 {
+  #top .bottom-menu .information.js-show-section-5 {
     transform: translateY(0%);
   }
-  #top .sub-menu-area .information.js-show-section-5 li:nth-of-type(5) {
+  #top .bottom-menu .information.js-show-section-5 li:nth-of-type(5) {
     scale: 1;
     opacity: 1;
   }
 }
-#top .sub-menu-area .information__item {
+#top .bottom-menu .information__item {
   height: 100px;
   display: flex;
   align-items: center;
@@ -813,12 +836,12 @@ a {
   opacity: 0;
   transition: scale 0.4s ease-out, opacity 0.4s ease-out;
 }
-#top .sub-menu-area .information__section-text {
+#top .bottom-menu .information__section-text {
   color: #939393;
   font-family: "Montserrat", sans-serif;
   font-size: clamp(13px, 1.5rem, 15px);
 }
-#top .sub-menu-area .information__title {
+#top .bottom-menu .information__title {
   font-family: "Montserrat", sans-serif;
   font-size: clamp(17px, 2rem, 20px);
   font-weight: 700;

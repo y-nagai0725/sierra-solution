@@ -27,7 +27,86 @@
     }
   }
 
-  .sub-menu-area {
+  .top-menu {
+    display: none;
+
+    @media screen and (min-width: 1024px) {
+      position: fixed;
+      padding: 4rem 0 0 4rem;
+      display: flex;
+      gap: 15rem;
+      z-index: 2;
+    }
+
+    &__logo-link {
+      @media screen and (min-width: 1024px) {
+        width: 20rem;
+        height: 4rem;
+        background: $dummy;
+      }
+    }
+
+    &__logo-image {
+      @media screen and (min-width: 1024px) {
+      }
+    }
+
+    &__nav {
+      @media screen and (min-width: 1024px) {
+        display: flex;
+        align-items: center;
+        gap: 4rem;
+        position: relative;
+        top: -150px;
+        left: 0;
+        transition: top 0.4s ease-out;
+
+        &.js-opened {
+          top: 0;
+        }
+      }
+    }
+
+    &__nav-title {
+      @media screen and (min-width: 1024px) {
+        font-family: $montserrat;
+        font-size: clamp(13px, 1.5rem, 15px);
+      }
+    }
+
+    &__nav-link {
+      @media screen and (min-width: 1024px) {
+        display: flex;
+        align-items: center;
+        gap: 1.4rem;
+        font-size: clamp(16px, 1.8rem, 18px);
+        transition: opacity 0.2s ease-out;
+
+        @media (any-hover: hover) {
+          &:hover {
+            opacity: 0.6;
+          }
+        }
+      }
+    }
+
+    &__nav-number {
+      @media screen and (min-width: 1024px) {
+        font-family: $montserrat;
+        font-size: clamp(16px, 1.8rem, 18px);
+
+        &--red {
+          color: $red;
+        }
+
+        &--green {
+          color: $green;
+        }
+      }
+    }
+  }
+
+  .bottom-menu {
     display: none;
 
     @media screen and (min-width: 1024px) {

@@ -24,8 +24,11 @@ document.addEventListener('DOMContentLoaded', function () {
   //GSAPメディアクエリ
   const mm = gsap.matchMedia();
 
+  //画面上部メニューエリア:PC
+  const topMenu = document.getElementById("top-menu");
+
   //画面下部メニューエリア:PC
-  const subMenuArea = document.getElementById("sub-menu-area");
+  const bottomMenu = document.getElementById("bottom-menu");
 
   const contentsWrapper = document.getElementById("contents-wrapper");
   const serviceDetail1 = document.getElementById("service__detail-1");
@@ -33,7 +36,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const serviceList1 = document.getElementById("service__detail-list-1");
   const serviceList2 = document.getElementById("service__detail-list-2");
   const serviceWrapper = document.getElementById("service__service-wrapper");
-  const headerNav = document.getElementById("header__nav");
+  const topMenuNav = document.getElementById("top-menu__nav");
   const whoValue = document.getElementById("who__value");
   const whoValueTextBox = gsap.utils.toArray(".who__value-text--box");
   const progressBar = document.getElementById("progress-bar");
@@ -153,7 +156,7 @@ document.addEventListener('DOMContentLoaded', function () {
         trigger: contentsWrapper,
         start: "top top",
         end: () => "+=" + (contentsWrapper.scrollWidth - window.innerWidth),
-        scrub: true,
+        scrub: 1,
         pin: true,
         aniticipatePin: 1,
         invalidateOnRefresh: true,
@@ -164,7 +167,10 @@ document.addEventListener('DOMContentLoaded', function () {
     }).to(contentsWrapper, {
       x: () => -(contentsWrapper.scrollWidth - window.innerWidth),
       ease: "none",
-    }, "horizontalScroll").to(subMenuArea, {
+    }, "horizontalScroll").to(bottomMenu, {
+      x: () => (contentsWrapper.scrollWidth - window.innerWidth),
+      ease: "none",
+    }, "horizontalScroll").to(topMenu, {
       x: () => (contentsWrapper.scrollWidth - window.innerWidth),
       ease: "none",
     }, "horizontalScroll");
@@ -313,9 +319,9 @@ document.addEventListener('DOMContentLoaded', function () {
     const currentScroll = window.scrollY;
 
     if (startPoint <= currentScroll && currentScroll <= endPoint) {
-      headerNav.classList.add("js-opened");
+      topMenuNav.classList.add("js-opened");
     } else {
-      headerNav.classList.remove("js-opened");
+      topMenuNav.classList.remove("js-opened");
     }
   }
 
