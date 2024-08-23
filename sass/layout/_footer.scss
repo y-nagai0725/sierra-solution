@@ -230,7 +230,41 @@
       right: 0;
       translate: 0 50%;
       gap: 2.5rem;
+
+      @media (any-hover: hover){
+        &:hover {
+          .footer__circle-front {
+            stroke-dasharray: 315% 315%;
+          }
+        }
+      }
     }
+  }
+
+  &__circle-svg {
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: visible;
+
+    @media screen and (min-width: 1024px) {
+      width: 5rem;
+      height: 5rem;
+    }
+  }
+
+  &__circle-back {
+    stroke: $line-gray;
+  }
+
+  &__circle-front {
+    stroke: $white;
+    stroke-dasharray: 0 315%;
+    transform-origin: center center;
+    rotate: -90deg;
+    transition: stroke-dasharray 0.4s ease-out;
   }
 
   &__page-top-arrow {

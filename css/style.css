@@ -583,6 +583,35 @@ a {
     gap: 2.5rem;
   }
 }
+@media screen and (min-width: 1024px) and (any-hover: hover) {
+  .footer__page-top-button:hover .footer__circle-front {
+    stroke-dasharray: 315% 315%;
+  }
+}
+.footer__circle-svg {
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: visible;
+}
+@media screen and (min-width: 1024px) {
+  .footer__circle-svg {
+    width: 5rem;
+    height: 5rem;
+  }
+}
+.footer__circle-back {
+  stroke: #d0d0d0;
+}
+.footer__circle-front {
+  stroke: #fff;
+  stroke-dasharray: 0 315%;
+  transform-origin: center center;
+  rotate: -90deg;
+  transition: stroke-dasharray 0.4s ease-out;
+}
 .footer__page-top-arrow {
   width: 2rem;
   height: 2rem;
