@@ -30,6 +30,12 @@ document.addEventListener('DOMContentLoaded', function () {
   //画面下部メニューエリア:PC
   const bottomMenu = document.getElementById("bottom-menu");
 
+  //GSAPでのスクロールのeasing
+  const gsapScrollEasing = "power2.out";
+
+  //GSAPでのスクロールのduration
+  const gsapScrollDuration = 0.8;
+
   const contentsWrapper = document.getElementById("contents-wrapper");
   const serviceDetail1 = document.getElementById("service__detail-1");
   const serviceDetail2 = document.getElementById("service__detail-2");
@@ -58,6 +64,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   //ウィンドウリサイズ時処理
   window.addEventListener("resize", function () {
+    ScrollTrigger.refresh();
     if (window.innerWidth >= breakPoint) {
       gnavMenuClose();
     }
@@ -91,9 +98,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
   //ページトップボタンクリック時処理
   pageTopButton.addEventListener("click", function () {
-    window.scroll({
-      top: 0,
-      behavior: "smooth",
+    gsap.to(window, {
+      duration: gsapScrollDuration,
+      ease: gsapScrollEasing,
+      scrollTo: {
+        y: 0,
+      },
     });
   });
 
@@ -107,6 +117,15 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
+  //main要素タッチ時処理
+  main.addEventListener("touchstart", function (e) {
+    if (isOpenedMenu()) {
+      //メニューが開かれている場合は閉じる
+      e.preventDefault();
+      gnavMenuClose();
+    }
+  });
+
   //アンカーリンクのクリック処理設定
   links.forEach(link => {
     link.addEventListener("click", e => {
@@ -115,8 +134,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
       if (anchorName === "#") {
         gsap.to(window, {
-          duration: 0.8,
-          ease: "power2.out",
+          duration: gsapScrollDuration,
+          ease: gsapScrollEasing,
           scrollTo: {
             y: 0,
           },
@@ -125,8 +144,8 @@ document.addEventListener('DOMContentLoaded', function () {
       } else {
         mm.add("(max-width: 1023px)", () => {
           gsap.to(window, {
-            duration: 0.8,
-            ease: "power2.out",
+            duration: gsapScrollDuration,
+            ease: gsapScrollEasing,
             scrollTo: {
               y: anchorName,
             },
@@ -138,8 +157,8 @@ document.addEventListener('DOMContentLoaded', function () {
           const target = document.getElementById(anchorName.slice(1));
           const targetPosition = target.getBoundingClientRect().left + window.scrollY;
           gsap.to(window, {
-            duration: 0.8,
-            ease: "power2.out",
+            duration: gsapScrollDuration,
+            ease: gsapScrollEasing,
             scrollTo: {
               y: targetPosition,
             }
@@ -228,7 +247,6 @@ document.addEventListener('DOMContentLoaded', function () {
         pin: true,
         aniticipatePin: 1,
         invalidateOnRefresh: true,
-        markers: true,
       }
     });
 
@@ -252,8 +270,16 @@ document.addEventListener('DOMContentLoaded', function () {
     e.preventDefault();
   }
 
+  function isOpenedMenu() {
+    if (hamburgerButton.classList.contains("js-opened")) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   function gnavMenuOpen() {
-    if (!hamburgerButton.classList.contains("js-opened")) {
+    if (!isOpenedMenu()) {
       hamburgerButton.classList.add("js-opened");
       gnavMenu.classList.add("js-opened");
       main.classList.add("js-blur");
@@ -266,7 +292,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   function gnavMenuClose() {
-    if (hamburgerButton.classList.contains("js-opened")) {
+    if (isOpenedMenu()) {
       hamburgerButton.classList.remove("js-opened");
       gnavMenu.classList.remove("js-opened");
       main.classList.remove("js-blur");

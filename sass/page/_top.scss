@@ -876,9 +876,11 @@
         scale 0.4s ease-out;
       position: relative;
 
-      &:hover {
-        background-color: $white;
-        scale: 1.05;
+      @media (any-hover: hover) {
+        &:hover {
+          background-color: $white;
+          scale: 1.05;
+        }
       }
 
       &::before,
@@ -1559,8 +1561,10 @@
         background-color: $black;
       }
 
-      &:hover::before {
-        animation: line-link-hover 0.4s ease-out;
+      @media (any-hover: hover) {
+        &:hover::before {
+          animation: line-link-hover 0.4s ease-out;
+        }
       }
 
       @media screen and (min-width: 1024px) {

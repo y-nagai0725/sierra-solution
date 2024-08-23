@@ -130,10 +130,12 @@
       transition: scale 0.4s ease-out;
     }
 
-    &:hover {
-      &::before {
-        scale: 1 1;
-        transform-origin: left;
+    @media (any-hover: hover) {
+      &:hover {
+        &::before {
+          scale: 1 1;
+          transform-origin: left;
+        }
       }
     }
 
@@ -190,10 +192,12 @@
       transition: scale 0.4s ease-out;
     }
 
-    &:hover {
-      &::before {
-        scale: 1 1;
-        transform-origin: left;
+    @media (any-hover: hover) {
+      &:hover {
+        &::before {
+          scale: 1 1;
+          transform-origin: left;
+        }
       }
     }
 

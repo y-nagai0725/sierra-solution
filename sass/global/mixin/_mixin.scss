@@ -110,14 +110,16 @@
     }
   }
 
-  &:hover {
-    background-color: $hovered-bg-color;
+  @media (any-hover: hover) {
+    &:hover {
+      background-color: $hovered-bg-color;
 
-    span {
-      top: -15px;
+      span {
+        top: -15px;
 
-      &::before {
-        opacity: 1;
+        &::before {
+          opacity: 1;
+        }
       }
     }
   }
