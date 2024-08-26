@@ -2,7 +2,7 @@
 
 .footer {
   padding: 10rem 2.5rem;
-  background-color: $black;
+  background-color: $footer-black;
 
   @media screen and (min-width: 1024px) {
     width: 192rem;
@@ -31,7 +31,7 @@
         right: 34rem;
         width: 1px;
         height: 100%;
-        background-color: $line-gray;
+        background-color: $footer-gray;
       }
     }
   }
@@ -158,7 +158,7 @@
       right: 0;
       width: 1px;
       height: 100%;
-      background-color: $line-gray;
+      background-color: $footer-gray;
     }
 
     @media screen and (min-width: 1024px) {
@@ -231,23 +231,27 @@
       translate: 0 50%;
       gap: 2.5rem;
 
-      @media (any-hover: hover){
+      @media (any-hover: hover) {
         &:hover {
           .footer__circle-front {
             stroke-dasharray: 315% 315%;
+          }
+
+          .footer__arrow-image {
+            animation: footer-arrow-hover 0.4s ease-out;
           }
         }
       }
     }
   }
 
-  &__circle-svg {
+  &__icon-wrapper {
     width: 2rem;
     height: 2rem;
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: visible;
+    position: relative;
 
     @media screen and (min-width: 1024px) {
       width: 5rem;
@@ -255,35 +259,34 @@
     }
   }
 
+  &__circle-svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+    overflow: visible;
+  }
+
   &__circle-back {
-    stroke: $line-gray;
+    fill: rgba(0, 0, 0, 0);
+    stroke: $footer-gray;
+    stroke-width: 1px;
   }
 
   &__circle-front {
+    fill: rgba(0, 0, 0, 0);
     stroke: $white;
+    stroke-width: 1px;
     stroke-dasharray: 0 315%;
     transform-origin: center center;
     rotate: -90deg;
     transition: stroke-dasharray 0.4s ease-out;
   }
 
-  &__page-top-arrow {
-    width: 2rem;
-    height: 2rem;
-    border-radius: 100vmax;
-    border: 1px solid $line-gray;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    @media screen and (min-width: 1024px) {
-      width: 5rem;
-      height: 5rem;
-    }
-  }
-
-  &__page-top-image {
-    width: 45%;
+  &__arrow-image {
+    width: 40%;
+    height: 40%;
+    position: absolute;
+    opacity: 1;
 
     @media screen and (min-width: 1024px) {
       rotate: -90deg;

@@ -125,6 +125,24 @@ meter {
     scale: 1 1;
   }
 }
+@keyframes footer-arrow-hover {
+  0% {
+    opacity: 1;
+    translate: 0 0;
+  }
+  50% {
+    opacity: 0;
+    translate: -12px 0;
+  }
+  50.01% {
+    opacity: 0;
+    translate: 12px 0;
+  }
+  100% {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
 html {
   font-size: 2.6666666667vw;
 }
@@ -362,7 +380,7 @@ a {
 
 .footer {
   padding: 10rem 2.5rem;
-  background-color: #000;
+  background-color: #1f1f1f;
 }
 @media screen and (min-width: 1024px) {
   .footer {
@@ -393,7 +411,7 @@ a {
     right: 34rem;
     width: 1px;
     height: 100%;
-    background-color: #d0d0d0;
+    background-color: #464646;
   }
 }
 .footer__top {
@@ -514,7 +532,7 @@ a {
   right: 0;
   width: 1px;
   height: 100%;
-  background-color: #d0d0d0;
+  background-color: #464646;
 }
 @media screen and (min-width: 1024px) {
   .footer__note {
@@ -587,51 +605,52 @@ a {
   .footer__page-top-button:hover .footer__circle-front {
     stroke-dasharray: 315% 315%;
   }
+  .footer__page-top-button:hover .footer__arrow-image {
+    animation: footer-arrow-hover 0.4s ease-out;
+  }
 }
-.footer__circle-svg {
+.footer__icon-wrapper {
   width: 2rem;
   height: 2rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  overflow: visible;
+  position: relative;
 }
 @media screen and (min-width: 1024px) {
-  .footer__circle-svg {
+  .footer__icon-wrapper {
     width: 5rem;
     height: 5rem;
   }
 }
+.footer__circle-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: visible;
+}
 .footer__circle-back {
-  stroke: #d0d0d0;
+  fill: rgba(0, 0, 0, 0);
+  stroke: #464646;
+  stroke-width: 1px;
 }
 .footer__circle-front {
+  fill: rgba(0, 0, 0, 0);
   stroke: #fff;
+  stroke-width: 1px;
   stroke-dasharray: 0 315%;
   transform-origin: center center;
   rotate: -90deg;
   transition: stroke-dasharray 0.4s ease-out;
 }
-.footer__page-top-arrow {
-  width: 2rem;
-  height: 2rem;
-  border-radius: 100vmax;
-  border: 1px solid #d0d0d0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.footer__arrow-image {
+  width: 40%;
+  height: 40%;
+  position: absolute;
+  opacity: 1;
 }
 @media screen and (min-width: 1024px) {
-  .footer__page-top-arrow {
-    width: 5rem;
-    height: 5rem;
-  }
-}
-.footer__page-top-image {
-  width: 45%;
-}
-@media screen and (min-width: 1024px) {
-  .footer__page-top-image {
+  .footer__arrow-image {
     rotate: -90deg;
   }
 }
