@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const progressBar = document.getElementById("progress-bar");
   const progressBarProperty = "--bar-scale";
   const newsCardList = document.getElementById("news__card-list");
-  const information = document.getElementById("information");
+  const information = document.getElementById("bottom-menu__information-list");
   const sectionList = [...document.getElementsByTagName("section")];
   const categorySelectBox = document.getElementById("news__select");
   const categoryList = {

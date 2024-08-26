@@ -116,7 +116,7 @@
       left: 0;
       width: 100%;
       height: 100px;
-      overflow: hidden;
+      //overflow: hidden;
       z-index: 2;
     }
 
@@ -190,13 +190,24 @@
       }
     }
 
-    .information {
+    &__information-wrapper {
       display: none;
 
       @media screen and (min-width: 1024px) {
+        display: block;
+        width: 230px;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        right: 40px;
+        overflow: hidden;
+      }
+    }
+
+    &__information-list {
+      @media screen and (min-width: 1024px) {
         position: absolute;
         bottom: 0;
-        right: 40px;
         transform: translateY(100%);
         display: flex;
         flex-direction: column;
@@ -214,29 +225,86 @@
           }
         }
       }
+    }
 
-      &__item {
+    &__information-item {
+      @media screen and (min-width: 1024px) {
         height: 100px;
         display: flex;
         align-items: center;
-        gap: 3rem;
+        gap: 30px;
         scale: 0.7;
         opacity: 0;
         transition:
           scale 0.4s ease-out,
           opacity 0.4s ease-out;
       }
+    }
 
-      &__section-text {
+    &__information-section-text {
+      @media screen and (min-width: 1024px) {
         color: $char-gray;
         font-family: $montserrat;
-        font-size: clamp(13px, 1.5rem, 15px);
+        font-size: 15px;
       }
+    }
 
-      &__title {
+    &__information-title {
+      @media screen and (min-width: 1024px) {
         font-family: $montserrat;
-        font-size: clamp(17px, 2rem, 20px);
+        font-size: 20px;
         font-weight: 700;
+      }
+    }
+
+    &__scroll-circle {
+      display: none;
+
+      @media screen and (min-width: 1024px) {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: 0;
+        right: 40px;
+        translate: 0 -50%;
+        width: 125px;
+        height: 125px;
+        background-color: $white;
+        border-radius: 9999px;
+        overflow: hidden;
+      }
+    }
+
+    &__square {
+      @media screen and (min-width: 1024px) {
+        width: 56px;
+        height: 35px;
+        border: 1px solid $black;
+        border-radius: 2px;
+        position: absolute;
+        animation: bottom-menu-square 1.5s ease-out infinite;
+      }
+    }
+
+    &__arrow-image {
+      @media screen and (min-width: 1024px) {
+        width: 15px;
+        height: 10px;
+        position: absolute;
+        animation: bottom-menu-arrow 1.5s ease-out infinite;
+      }
+    }
+
+    &__scroll-text {
+      @media screen and (min-width: 1024px) {
+        font-family: $montserrat;
+        font-size: 11px;
+        font-weight: 700;
+        position: absolute;
+        bottom: 0;
+        translate: 0 -25px;
       }
     }
   }
