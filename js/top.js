@@ -36,6 +36,8 @@ document.addEventListener('DOMContentLoaded', function () {
   //GSAPでのスクロールのduration
   const gsapScrollDuration = 0.8;
 
+  const scrollCircle = document.getElementById("bottom-menu__scroll-circle");
+  const indexSection = document.getElementById("index");
   const contentsWrapper = document.getElementById("contents-wrapper");
   const serviceDetail1 = document.getElementById("service__detail-1");
   const serviceDetail2 = document.getElementById("service__detail-2");
@@ -77,6 +79,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (windowWidth >= breakPoint) {
       //PC表示時
+      checkIndexArea();
       checkServiceArea();
       checkSectionArea();
     } else {
@@ -339,6 +342,18 @@ document.addEventListener('DOMContentLoaded', function () {
 
   }
 
+  function checkIndexArea() {
+    const adjustmentValue = window.innerWidth * 0.5;
+    const startPoint = indexSection.getBoundingClientRect().left + window.scrollY;
+    const currentScroll = window.scrollY;
+
+    if (startPoint <= currentScroll + adjustmentValue) {
+      scrollCircle.classList.remove("js-showed");
+    } else {
+      scrollCircle.classList.add("js-showed");
+    }
+  }
+
   function checkServiceArea() {
     const startPoint = serviceWrapper.getBoundingClientRect().left + window.scrollY;
     const endPoint = serviceWrapper.getBoundingClientRect().right + window.scrollY;
@@ -436,6 +451,11 @@ document.addEventListener('DOMContentLoaded', function () {
   function init() {
     //Newsデータを取得
     getNewsData("all", false);
+
+    //スクロール促し円表示
+    if(window.scrollY === 0){
+      scrollCircle.classList.add("js-showed");
+    }
   }
 
   init();
