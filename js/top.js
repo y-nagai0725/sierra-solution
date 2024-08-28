@@ -107,6 +107,10 @@ document.addEventListener('DOMContentLoaded', function () {
       scrollTo: {
         y: 0,
       },
+      onComplete: () => {
+        scrollCircle.classList.add("js-showed");
+        progressBar.classList.remove("js-showed");
+      },
     });
   });
 
@@ -349,8 +353,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (startPoint <= currentScroll + adjustmentValue) {
       scrollCircle.classList.remove("js-showed");
+      progressBar.classList.add("js-showed");
     } else {
       scrollCircle.classList.add("js-showed");
+      progressBar.classList.remove("js-showed");
     }
   }
 
@@ -453,7 +459,7 @@ document.addEventListener('DOMContentLoaded', function () {
     getNewsData("all", false);
 
     //スクロール促し円表示
-    if(window.scrollY === 0){
+    if (window.scrollY === 0) {
       scrollCircle.classList.add("js-showed");
     }
   }
