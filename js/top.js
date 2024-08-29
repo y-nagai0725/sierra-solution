@@ -36,6 +36,8 @@ document.addEventListener('DOMContentLoaded', function () {
   //GSAPでのスクロールのduration
   const gsapScrollDuration = 0.8;
 
+  const opening = document.getElementById("opening");
+  const openingProgressLine = [...document.getElementsByClassName("opening__progress-line")];
   const scrollCircle = document.getElementById("bottom-menu__scroll-circle");
   const indexSection = document.getElementById("index");
   const contentsWrapper = document.getElementById("contents-wrapper");
@@ -68,7 +70,7 @@ document.addEventListener('DOMContentLoaded', function () {
   window.addEventListener("resize", function () {
     ScrollTrigger.refresh();
     if (window.innerWidth >= breakPoint) {
-      gnavMenuClose();
+      closeGnavMenu();
     }
   });
 
@@ -92,10 +94,10 @@ document.addEventListener('DOMContentLoaded', function () {
   hamburgerButton.addEventListener("click", function () {
     if (this.classList.contains('js-opened')) {
       //閉じる処理
-      gnavMenuClose();
+      closeGnavMenu();
     } else {
       //開く処理
-      gnavMenuOpen();
+      openGnavMenu();
     }
   });
 
@@ -129,7 +131,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (isOpenedMenu()) {
       //メニューが開かれている場合は閉じる
       e.preventDefault();
-      gnavMenuClose();
+      closeGnavMenu();
     }
   });
 
@@ -146,7 +148,7 @@ document.addEventListener('DOMContentLoaded', function () {
           scrollTo: {
             y: 0,
           },
-          onComplete: gnavMenuClose(),
+          onComplete: closeGnavMenu(),
         });
       } else {
         mm.add("(max-width: 1023px)", () => {
@@ -156,7 +158,7 @@ document.addEventListener('DOMContentLoaded', function () {
             scrollTo: {
               y: anchorName,
             },
-            onComplete: gnavMenuClose(),
+            onComplete: closeGnavMenu(),
           });
         });
 
@@ -277,6 +279,18 @@ document.addEventListener('DOMContentLoaded', function () {
     e.preventDefault();
   }
 
+  //スクロール許可
+  function allowWindowScroll() {
+    document.removeEventListener('touchmove', noScroll);
+    document.removeEventListener('wheel', noScroll);
+  }
+
+  //スクロール禁止
+  function disallowWindowScroll() {
+    document.addEventListener('touchmove', noScroll, { passive: false });
+    document.addEventListener('wheel', noScroll, { passive: false });
+  }
+
   function isOpenedMenu() {
     if (hamburgerButton.classList.contains("js-opened")) {
       return true;
@@ -285,7 +299,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
-  function gnavMenuOpen() {
+  function openGnavMenu() {
     if (!isOpenedMenu()) {
       hamburgerButton.classList.add("js-opened");
       gnavMenu.classList.add("js-opened");
@@ -293,12 +307,11 @@ document.addEventListener('DOMContentLoaded', function () {
       header.classList.add("js-blur");
 
       //メニューが開かれているときはスクロール禁止
-      document.addEventListener('touchmove', noScroll, { passive: false });
-      document.addEventListener('wheel', noScroll, { passive: false });
+      disallowWindowScroll();
     }
   }
 
-  function gnavMenuClose() {
+  function closeGnavMenu() {
     if (isOpenedMenu()) {
       hamburgerButton.classList.remove("js-opened");
       gnavMenu.classList.remove("js-opened");
@@ -306,8 +319,7 @@ document.addEventListener('DOMContentLoaded', function () {
       header.classList.remove("js-blur");
 
       //スクロール禁止を解除
-      document.removeEventListener('touchmove', noScroll);
-      document.removeEventListener('wheel', noScroll);
+      allowWindowScroll();
     }
   }
 
@@ -397,7 +409,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
-  function getNewsData(category, canScroll = true) {
+  function getNewsData(category, isInitialLoading = false) {
     //----------------------------------
     //実際はapi呼び出しでjsonデータ取得想定
     //----------------------------------
@@ -430,19 +442,40 @@ document.addEventListener('DOMContentLoaded', function () {
           li.classList.add("news__card");
           li.innerHTML = temp;
           newsCardList.appendChild(li);
+
+          //ローディングのプログレスバー更新
+          if (isInitialLoading) {
+            const value = ((i + 1) / data.length);
+            openingProgressLine.forEach(line => {
+              line.style.setProperty("scale", value + " 1");
+            })
+          }
         }
 
         //DOM削除と追加による調整の為
         ScrollTrigger.refresh();
 
         //PC表示時、スクロール位置をリストの先頭へ
-        if (canScroll && window.innerWidth >= breakPoint) {
+        if (!isInitialLoading && window.innerWidth >= breakPoint) {
           const targetPosition = newsContents.getBoundingClientRect().left + window.scrollY;
           gsap.to(window, {
             duration: 0.8,
             ease: "power2.out",
             scrollTo: {
               y: targetPosition,
+            }
+          });
+        }
+
+        //OPアニメーション画面非表示
+        if (isInitialLoading) {
+          gsap.to(opening, {
+            autoAlpha: 0,
+            duration: 0.6,
+            delay: 1.2,
+            onComplete: () => {
+              //スクロール禁止を解除
+              allowWindowScroll();
             }
           });
         }
@@ -455,8 +488,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
   //初期実行処理
   function init() {
+    //スクロール禁止
+    disallowWindowScroll();
+
     //Newsデータを取得
-    getNewsData("all", false);
+    getNewsData("all", true);
 
     //スクロール促し円表示
     if (window.scrollY === 0) {

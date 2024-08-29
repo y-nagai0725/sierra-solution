@@ -1,5 +1,14 @@
 @use "../setting" as *;
 
+@keyframes opening-logo-show {
+  0%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
+}
+
 @keyframes bottom-menu-arrow {
   0%{
     translate: 0 0;
