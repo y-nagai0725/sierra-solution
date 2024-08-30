@@ -600,6 +600,22 @@
     @media screen and (min-width: 1024px) {
       width: 192rem;
       height: 100%;
+      margin-right: 42rem;
+      position: relative;
+
+      &::before {
+        content: "";
+        width: 18rem;
+        height: 500%;
+        position: absolute;
+        top: 0;
+        right: 0;
+        translate: 100% 0%;
+        background-image: url(../images/top/movie_slide-text.svg);
+        background-repeat: repeat-y;
+        background-size: 100% auto;
+        animation: movie-slide-text 40s linear infinite;
+      }
     }
   }
 
