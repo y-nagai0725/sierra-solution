@@ -36,6 +36,12 @@ document.addEventListener('DOMContentLoaded', function () {
   //GSAPでのスクロールのduration
   const gsapScrollDuration = 0.8;
 
+  //GSAPでのscrub値
+  const gsapScrubValue = 1;
+
+  //見出し
+  const titles = [...document.getElementsByClassName("js-title")];
+
   const opening = document.getElementById("opening");
   const openingProgressLine = [...document.getElementsByClassName("opening__progress-line")];
   const scrollCircle = document.getElementById("bottom-menu__scroll-circle");
@@ -184,7 +190,7 @@ document.addEventListener('DOMContentLoaded', function () {
         trigger: contentsWrapper,
         start: "top top",
         end: () => "+=" + (contentsWrapper.scrollWidth - window.innerWidth),
-        scrub: 1,
+        scrub: gsapScrubValue,
         pin: true,
         aniticipatePin: 1,
         invalidateOnRefresh: true,
@@ -211,11 +217,10 @@ document.addEventListener('DOMContentLoaded', function () {
       ease: "none",
       scrollTrigger: {
         pinnedContainer: contentsWrapper,
-        containerAnimation: horizontalScrollTween,
         trigger: whoValue,
-        start: "left left",
+        start: () => whoValue.getBoundingClientRect().left + window.scrollY,
         end: "+=700",
-        scrub: true,
+        scrub: gsapScrubValue,
         invalidateOnRefresh: true,
         onUpdate: (self) => {
           if (self.progress >= 0.5) {
@@ -233,11 +238,10 @@ document.addEventListener('DOMContentLoaded', function () {
       ease: "none",
       scrollTrigger: {
         pinnedContainer: contentsWrapper,
-        containerAnimation: horizontalScrollTween,
         trigger: newsContents,
-        start: "left left",
+        start: () => newsContents.getBoundingClientRect().left + window.scrollY,
         end: () => "+=" + (newsContents.offsetWidth * 0.6),
-        scrub: true,
+        scrub: gsapScrubValue,
         invalidateOnRefresh: true,
       },
     });
@@ -252,7 +256,7 @@ document.addEventListener('DOMContentLoaded', function () {
         trigger: serviceDetail1,
         start: 'top top',
         end: () => "+=" + (serviceList1.scrollWidth - serviceList1.offsetWidth),
-        scrub: true,
+        scrub: gsapScrubValue,
         pin: true,
         aniticipatePin: 1,
         invalidateOnRefresh: true,
@@ -266,11 +270,46 @@ document.addEventListener('DOMContentLoaded', function () {
         trigger: serviceDetail2,
         start: 'top top',
         end: () => "+=" + (serviceList2.scrollWidth - serviceList2.offsetWidth),
-        scrub: true,
+        scrub: gsapScrubValue,
         pin: true,
         aniticipatePin: 1,
         invalidateOnRefresh: true,
       }
+    });
+  });
+
+  //見出しのGSAP設定:PC
+  mm.add("(min-width: 1024px)", () => {
+    titles.forEach(title => {
+      gsap.to(title, {
+        scrollTrigger: {
+          pinnedContainer: contentsWrapper,
+          trigger: title,
+          start: () => title.getBoundingClientRect().left + window.scrollY - window.innerWidth * 0.6,
+          onEnter: () => {
+            if (!title.classList.contains("js-showed")) {
+              title.classList.add("js-showed");
+            }
+          },
+        }
+      });
+    });
+  });
+
+  //見出しのGSAP設定:SP
+  mm.add("(max-width: 1023px)", () => {
+    titles.forEach(title => {
+      gsap.to(title, {
+        scrollTrigger: {
+          trigger: title,
+          start: "top center",
+          onEnter: () => {
+            if (!title.classList.contains("js-showed")) {
+              title.classList.add("js-showed");
+            }
+          },
+        }
+      });
     });
   });
 
