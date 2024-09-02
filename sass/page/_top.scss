@@ -213,8 +213,8 @@
         display: block;
         position: absolute;
         top: 0;
-        left: 0;
-        width: 100%;
+        left: 40px;
+        width: calc(100% - 80px);
         height: 1px;
         background-color: $line-gray;
         scale: 0 1;
@@ -500,6 +500,10 @@
       }
     }
 
+    &__subtitle-wrapper {
+      @include section-subtitle-wrapper;
+    }
+
     &__subtitle {
       @include section-subtitle;
     }
@@ -633,18 +637,21 @@
       }
     }
 
-    &__title {
-      @include section-title;
+    &__title-wrapper {
+      @include section-title-wrapper;
       padding: 0 2.5rem;
-      display: flex;
-      flex-direction: column;
-      margin-bottom: 6rem;
 
       @media screen and (min-width: 1024px) {
         padding: 0;
-        margin-bottom: 0;
-        margin-right: 50rem;
       }
+    }
+
+    &__title-base {
+      @include section-title-base;
+    }
+
+    &__title {
+      @include section-title;
     }
 
     &__section-number {
@@ -855,6 +862,10 @@
       }
     }
 
+    &__value-subtitle-wrapper {
+      @include section-subtitle-wrapper;
+    }
+
     &__value-subtitle {
       @include section-subtitle;
     }
@@ -953,17 +964,16 @@
       }
     }
 
+    &__title-wrapper {
+      @include section-title-wrapper;
+    }
+
+    &__title-base {
+      @include section-title-base;
+    }
+
     &__title {
       @include section-title;
-      display: flex;
-      flex-direction: column;
-      margin-bottom: 6rem;
-
-      @media screen and (min-width: 1024px) {
-        width: 107rem;
-        margin-bottom: 0;
-        margin-right: 40rem;
-      }
     }
 
     &__section-number {
@@ -1166,6 +1176,10 @@
   .service {
     @include section-common;
 
+    @media screen and (min-width: 1024px) {
+      height: 100%;
+    }
+
     &__inner {
       display: flex;
       flex-direction: column;
@@ -1177,7 +1191,7 @@
       }
     }
 
-    &__title-wrapper {
+    &__title-square {
       @include contents-width;
       height: 50rem;
       background-color: $dummy;
@@ -1194,16 +1208,24 @@
       }
     }
 
+    &__title-wrapper {
+      @include section-title-wrapper;
+      padding: 0;
+      margin: 0;
+
+      @media screen and (min-width: 1024px) {
+        padding: 0;
+        margin: 0 0 100px 0;
+      }
+    }
+
+    &__title-base {
+      @include section-title-base;
+    }
+
     &__title {
       @include section-title;
       color: $white;
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-
-      @media screen and (min-width: 1024px) {
-        width: 107rem;
-      }
     }
 
     &__section-number {
@@ -1600,17 +1622,16 @@
       }
     }
 
+    &__title-wrapper {
+      @include section-title-wrapper;
+    }
+
+    &__title-base {
+      @include section-title-base;
+    }
+
     &__title {
       @include section-title;
-      display: flex;
-      flex-direction: column;
-      margin-bottom: 6rem;
-
-      @media screen and (min-width: 1024px) {
-        width: 107rem;
-        margin-bottom: 0;
-        margin-right: 40rem;
-      }
     }
 
     &__section-number {
@@ -1691,16 +1712,22 @@
       }
     }
 
-    &__title {
-      @include section-title;
-      display: flex;
-      flex-direction: column;
-      margin-bottom: 5rem;
-      text-align: center;
+    &__title-wrapper {
+      @include section-title-wrapper;
 
       @media screen and (min-width: 1024px) {
-        width: 107rem;
+        margin-bottom: 5rem;
+        margin-right: 0;
       }
+    }
+
+    &__title-base {
+      @include section-title-base;
+    }
+
+    &__title {
+      @include section-title;
+      text-align: center;
     }
 
     &__text {

@@ -302,7 +302,7 @@ document.addEventListener('DOMContentLoaded', function () {
       gsap.to(title, {
         scrollTrigger: {
           trigger: title,
-          start: "top center",
+          start: "top center+=20%",
           onEnter: () => {
             if (!title.classList.contains("js-showed")) {
               title.classList.add("js-showed");

@@ -26,23 +26,57 @@
   }
 }
 
-//見出しスタイル
-@mixin section-title {
-  font-family: $montserrat;
-  font-weight: 700;
-  font-size: clamp(50px, 5rem, 80px);
-  clip-path: inset(0 100% 0 0);
-  transition: clip-path 0.6s ease-out;
+//見出しラッパー
+@mixin section-title-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 6rem;
 
-  &.js-showed {
+  &.js-showed .title {
+    transform: translateY(0);
+  }
+
+  &.js-showed .number {
     clip-path: inset(0);
   }
+
+  @media screen and (min-width: 1024px) {
+    width: 110rem;
+    margin-bottom: 0;
+    margin-right: 50rem;
+  }
+}
+
+//見出しベース
+@mixin section-title-base {
+  overflow: hidden;
+}
+
+//見出しスタイル
+@mixin section-title {
+  display: block;
+  font-family: $montserrat;
+  font-weight: 700;
+  font-size: clamp(48px, 4.8rem, 80px);
+  transform: translateY(2em);
+  transition: transform 0.6s ease-out;
 
   @media screen and (min-width: 1024px) {
     font-size: clamp(130px, 17rem, 170px);
   }
 }
 
+//サブ見出しラッパー
+@mixin section-subtitle-wrapper {
+  overflow: hidden;
+
+  &.js-showed .title {
+    transform: translateY(0);
+  }
+}
+
+//サブ見出しスタイル
 @mixin section-subtitle {
   @include section-title;
 
@@ -51,10 +85,13 @@
   }
 }
 
+//見出し下セクション番号スタイル
 @mixin section-number {
   display: flex;
   align-items: center;
   gap: 1.5rem;
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 0.6s ease-out;
 
   @media screen and (min-width: 1024px) {
     gap: 4rem;
