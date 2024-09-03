@@ -436,6 +436,8 @@
       width: 16rem;
       height: 20rem;
       background: $dummy;
+      opacity: 0;
+      transition: opacity 0.4s ease-out;
 
       @media screen and (min-width: 1024px) {
         width: 53rem;
@@ -444,14 +446,21 @@
     }
 
     &__catchcopy {
-      text-align: center;
-      font-size: clamp(28px, 2.8rem, 46px);
-      font-weight: 700;
       letter-spacing: 0.05em;
       line-height: 1.5;
+    }
+
+    &__character {
+      display: inline-block;
+      font-size: clamp(28px, 2.8rem, 46px);
+      font-weight: 700;
+      opacity: 0;
+      transform: translateY(0.5em);
+      transition:
+        opacity 0.4s ease-out,
+        transform 0.4s ease-out;
 
       @media screen and (min-width: 1024px) {
-        text-align: left;
         font-size: clamp(60px, 8.4rem, 84px);
       }
     }

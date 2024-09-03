@@ -39,6 +39,12 @@ document.addEventListener('DOMContentLoaded', function () {
   //GSAPでのscrub値
   const gsapScrubValue = 1;
 
+  //FVロゴ
+  const firstViewLogo = document.getElementById("fv__logo");
+
+  //FVキャッチコピー文字
+  const catchcopyCharacters = [...document.getElementsByClassName("fv__character")];
+
   //見出し
   const titles = [...document.getElementsByClassName("js-title")];
 
@@ -515,6 +521,7 @@ document.addEventListener('DOMContentLoaded', function () {
             onComplete: () => {
               //スクロール禁止を解除
               allowWindowScroll();
+              showFirstView();
             }
           });
         }
@@ -523,6 +530,22 @@ document.addEventListener('DOMContentLoaded', function () {
       .catch(error => {
         console.error("データ取得に失敗しました。", error);
       });
+  }
+
+  /**
+   * FV表示処理
+   */
+  function showFirstView() {
+    const tl = gsap.timeline();
+    tl.to(firstViewLogo, {
+      opacity: 1
+    }).to(catchcopyCharacters, {
+      y: 0,
+      opacity: 1,
+      stagger: {
+        each: 0.05,
+      },
+    }, "<");
   }
 
   //初期実行処理
