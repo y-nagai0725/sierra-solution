@@ -1536,7 +1536,14 @@ a {
   display: flex;
   align-items: center;
   position: relative;
+  opacity: 0;
+  scale: 0.5;
+  transition: opacity 0.4s ease-out, scale 0.4s ease-out;
   z-index: 2;
+}
+#top .who__figure.js-showed {
+  opacity: 1;
+  scale: 1;
 }
 @media screen and (min-width: 1024px) {
   #top .who__figure {
@@ -1566,7 +1573,14 @@ a {
   translate: -50% 0;
   display: flex;
   align-items: center;
+  opacity: 0;
+  scale: 0.5;
+  transition: opacity 0.4s 0.4s ease-out, scale 0.4s 0.4s ease-out;
   z-index: 1;
+}
+#top .who__circle.js-showed {
+  opacity: 1;
+  scale: 1;
 }
 @media screen and (min-width: 1024px) {
   #top .who__circle {

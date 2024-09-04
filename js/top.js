@@ -21,14 +21,14 @@ document.addEventListener('DOMContentLoaded', function () {
   //トップへ戻るボタン
   const pageTopButton = document.getElementById("footer__page-top-button");
 
-  //GSAPメディアクエリ
-  const mm = gsap.matchMedia();
-
   //画面上部メニューエリア:PC
   const topMenu = document.getElementById("top-menu");
 
   //画面下部メニューエリア:PC
   const bottomMenu = document.getElementById("bottom-menu");
+
+  //GSAPメディアクエリ
+  const mm = gsap.matchMedia();
 
   //GSAPでのスクロールのeasing
   const gsapScrollEasing = "power2.out";
@@ -39,14 +39,23 @@ document.addEventListener('DOMContentLoaded', function () {
   //GSAPでのscrub値
   const gsapScrubValue = 1;
 
-  //FVロゴ
-  const firstViewLogo = document.getElementById("fv__logo");
-
-  //FVキャッチコピー文字
-  const catchcopyCharacters = [...document.getElementsByClassName("fv__character")];
-
   //見出し
   const titles = [...document.getElementsByClassName("js-title")];
+
+  //FV:ロゴ
+  const fvLogo = document.getElementById("fv__logo");
+
+  //FV:キャッチコピー文字
+  const fvCatchcopyCharacters = [...document.getElementsByClassName("fv__character")];
+
+  //whoセクション:introduction
+  const whoIntroduction = document.getElementById("who__introduction");
+
+  //Whoセクション:図
+  const whoFigures = [...document.getElementsByClassName("who__figure")];
+
+  //Whoセクション:円
+  const whoCircle = document.getElementById("who__circle");
 
   const opening = document.getElementById("opening");
   const openingProgressLine = [...document.getElementsByClassName("opening__progress-line")];
@@ -218,6 +227,21 @@ document.addEventListener('DOMContentLoaded', function () {
 
   //WhoセクションのGSAP設定:PC
   mm.add("(min-width: 1024px)", () => {
+    //図の表示設定
+    ScrollTrigger.create({
+      pinnedContainer: contentsWrapper,
+      trigger: whoIntroduction,
+      start: () => whoIntroduction.getBoundingClientRect().left + window.scrollY - window.innerWidth * 0.6,
+      invalidateOnRefresh: true,
+      onEnter: () => {
+        whoFigures.forEach(figure => {
+          figure.classList.add("js-showed");
+        });
+        whoCircle.classList.add("js-showed");
+      },
+    });
+
+    //value部分
     gsap.to(whoValue, {
       x: 700,
       ease: "none",
@@ -233,6 +257,22 @@ document.addEventListener('DOMContentLoaded', function () {
             showValueTextBox();
           }
         },
+      },
+    });
+  });
+
+  //WhoセクションのGSAP設定:SP
+  mm.add("(max-width: 1023px)", () => {
+    //図の表示設定
+    ScrollTrigger.create({
+      trigger: whoIntroduction,
+      start: "top center+=10%",
+      invalidateOnRefresh: true,
+      onEnter: () => {
+        whoFigures.forEach(figure => {
+          figure.classList.add("js-showed");
+        });
+        whoCircle.classList.add("js-showed");
       },
     });
   });
@@ -308,7 +348,7 @@ document.addEventListener('DOMContentLoaded', function () {
       gsap.to(title, {
         scrollTrigger: {
           trigger: title,
-          start: "top center+=20%",
+          start: "top center+=10%",
           onEnter: () => {
             if (!title.classList.contains("js-showed")) {
               title.classList.add("js-showed");
@@ -537,9 +577,9 @@ document.addEventListener('DOMContentLoaded', function () {
    */
   function showFirstView() {
     const tl = gsap.timeline();
-    tl.to(firstViewLogo, {
+    tl.to(fvLogo, {
       opacity: 1
-    }).to(catchcopyCharacters, {
+    }).to(fvCatchcopyCharacters, {
       y: 0,
       opacity: 1,
       stagger: {
