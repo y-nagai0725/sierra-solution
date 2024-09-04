@@ -105,9 +105,6 @@ document.addEventListener('DOMContentLoaded', function () {
       checkIndexArea();
       checkServiceArea();
       checkSectionArea();
-    } else {
-      //SP,TAB表示時
-      checkWhoValueArea();
     }
   });
 
@@ -275,6 +272,21 @@ document.addEventListener('DOMContentLoaded', function () {
         whoCircle.classList.add("js-showed");
       },
     });
+
+    //value部分
+    ScrollTrigger.create({
+      trigger: whoValue,
+      start: "top top",
+      end: "+=500",
+      pin: true,
+      scrub: gsapScrubValue,
+      invalidateOnRefresh: true,
+      onUpdate: (self) => {
+        if (self.progress >= 0.5) {
+          showValueTextBox();
+        }
+      },
+    });
   });
 
   //NewsセクションのGSAP設定:PC
@@ -327,17 +339,15 @@ document.addEventListener('DOMContentLoaded', function () {
   //見出しのGSAP設定:PC
   mm.add("(min-width: 1024px)", () => {
     titles.forEach(title => {
-      gsap.to(title, {
-        scrollTrigger: {
-          pinnedContainer: contentsWrapper,
-          trigger: title,
-          start: () => title.getBoundingClientRect().left + window.scrollY - window.innerWidth * 0.6,
-          onEnter: () => {
-            if (!title.classList.contains("js-showed")) {
-              title.classList.add("js-showed");
-            }
-          },
-        }
+      ScrollTrigger.create({
+        pinnedContainer: contentsWrapper,
+        trigger: title,
+        start: () => title.getBoundingClientRect().left + window.scrollY - window.innerWidth * 0.6,
+        onEnter: () => {
+          if (!title.classList.contains("js-showed")) {
+            title.classList.add("js-showed");
+          }
+        },
       });
     });
   });
@@ -345,16 +355,14 @@ document.addEventListener('DOMContentLoaded', function () {
   //見出しのGSAP設定:SP
   mm.add("(max-width: 1023px)", () => {
     titles.forEach(title => {
-      gsap.to(title, {
-        scrollTrigger: {
-          trigger: title,
-          start: "top center+=10%",
-          onEnter: () => {
-            if (!title.classList.contains("js-showed")) {
-              title.classList.add("js-showed");
-            }
-          },
-        }
+      ScrollTrigger.create({
+        trigger: title,
+        start: "top center+=10%",
+        onEnter: () => {
+          if (!title.classList.contains("js-showed")) {
+            title.classList.add("js-showed");
+          }
+        },
       });
     });
   });
@@ -466,15 +474,6 @@ document.addEventListener('DOMContentLoaded', function () {
       topMenuNav.classList.add("js-opened");
     } else {
       topMenuNav.classList.remove("js-opened");
-    }
-  }
-
-  function checkWhoValueArea() {
-    const startPoint = whoValue.getBoundingClientRect().top + window.scrollY;
-    const currentScroll = window.scrollY;
-
-    if (startPoint <= currentScroll) {
-      showValueTextBox();
     }
   }
 

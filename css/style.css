@@ -1664,9 +1664,6 @@ a {
     font-size: clamp(20px, 2.5rem, 25px);
   }
 }
-#top .who__value-wrapper {
-  height: 150svh;
-}
 @media screen and (min-width: 1024px) {
   #top .who__value-wrapper {
     height: 100%;
@@ -1680,8 +1677,6 @@ a {
   flex-direction: column;
   align-items: center;
   gap: 4rem;
-  position: sticky;
-  top: 0;
 }
 #top .who__value::before {
   content: "";

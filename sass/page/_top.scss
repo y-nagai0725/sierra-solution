@@ -867,7 +867,6 @@
     }
 
     &__value-wrapper {
-      height: 150svh;
       @media screen and (min-width: 1024px) {
         height: 100%;
       }
@@ -880,8 +879,6 @@
       flex-direction: column;
       align-items: center;
       gap: 4rem;
-      position: sticky;
-      top: 0;
 
       @media screen and (min-width: 1024px) {
         height: 100%;
