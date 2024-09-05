@@ -536,6 +536,59 @@ document.addEventListener('DOMContentLoaded', function () {
           }
         }
 
+        const newsCard = [...document.getElementsByClassName("news__card")];
+
+        //作成したnewsリストへのGSAP設定:PC
+        mm.add("(min-width: 1024px)", () => {
+          gsap.set(newsCard, {
+            opacity: 0,
+            xPercent: 10,
+          });
+
+          gsap.timeline({
+            scrollTrigger: {
+              pinnedContainer: contentsWrapper,
+              trigger: newsContents,
+              start: () => newsContents.getBoundingClientRect().left + window.scrollY - window.innerWidth * 0.6,
+              invalidateOnRefresh: true,
+            },
+          }).to(newsCard, {
+            keyframes: [
+              { duration: 0.6, opacity: 0.5, xPercent: -3 },
+              { duration: 0.6, opacity: 1, xPercent: 0 },
+            ],
+            ease: gsapScrollEasing,
+            stagger: {
+              each: 0.2,
+            },
+          });
+        });
+
+        //作成したnewsリストへのGSAP設定:SP
+        mm.add("(max-width: 1023px)", () => {
+          gsap.set(newsCard, {
+            opacity: 0,
+            yPercent: 10,
+          });
+
+          gsap.timeline({
+            scrollTrigger: {
+              trigger: newsContents,
+              start: "top center+=10%",
+              invalidateOnRefresh: true,
+            },
+          }).to(newsCard, {
+            keyframes: [
+              { duration: 0.4, opacity: 0.5, yPercent: -3 },
+              { duration: 0.4, opacity: 1, yPercent: 0 },
+            ],
+            ease: gsapScrollEasing,
+            stagger: {
+              each: 0.2,
+            },
+          });
+        });
+
         //DOM削除と追加による調整の為
         ScrollTrigger.refresh();
 
@@ -544,7 +597,7 @@ document.addEventListener('DOMContentLoaded', function () {
           const targetPosition = newsContents.getBoundingClientRect().left + window.scrollY;
           gsap.to(window, {
             duration: 0.8,
-            ease: "power2.out",
+            ease: gsapScrollEasing,
             scrollTo: {
               y: targetPosition,
             }
