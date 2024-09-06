@@ -57,6 +57,15 @@ document.addEventListener('DOMContentLoaded', function () {
   //Whoセクション:円
   const whoCircle = document.getElementById("who__circle");
 
+  //Serviceセクション:全ての詳細カード
+  const serviceDetailCards = [...document.getElementsByClassName("service__detail-item")];
+
+  //Serviceセクション:service1の詳細カード
+  const serviceFirstDetailCards = [...document.querySelectorAll(".service__first .service__detail-item")];
+
+  //Serviceセクション:service2の詳細カード
+  const serviceSecondDetailCards = [...document.querySelectorAll(".service__second .service__detail-item")];
+
   const opening = document.getElementById("opening");
   const openingProgressLine = [...document.getElementsByClassName("opening__progress-line")];
   const scrollCircle = document.getElementById("bottom-menu__scroll-circle");
@@ -305,9 +314,42 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
+  //ServciceセクションのGSAP設定:PC
+  mm.add("(min-width: 1024px)", () => {
+    serviceDetailCards.forEach(card => {
+      ScrollTrigger.create({
+        pinnedContainer: contentsWrapper,
+        trigger: card,
+        start: () => card.getBoundingClientRect().left + window.scrollY - window.innerWidth * 0.75,
+        invalidateOnRefresh: true,
+        toggleClass: {
+          targets: card,
+          className: "js-showed",
+        },
+        once: true,
+      });
+    });
+  });
+
   //ServciceセクションのGSAP設定:SP
   mm.add("(max-width: 1023px)", () => {
+    //service1設定
+    gsap.set(serviceList1, {
+      opacity: 0,
+    });
+
     gsap.to(serviceList1, {
+      opacity: 1,
+      duration: 0.4,
+      ease: gsapScrollEasing,
+      scrollTrigger: {
+        trigger: serviceList1,
+        start: "top center+=10%",
+        invalidateOnRefresh: true,
+      }
+    });
+
+    const scrollServiceFirst = gsap.to(serviceList1, {
       x: () => -(serviceList1.scrollWidth - serviceList1.offsetWidth),
       ease: "none",
       scrollTrigger: {
@@ -321,7 +363,38 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
 
+    serviceFirstDetailCards.forEach(card => {
+      ScrollTrigger.create({
+        pinnedContainer: serviceDetail1,
+        containerAnimation: scrollServiceFirst,
+        trigger: card,
+        start: () => "left right",
+        invalidateOnRefresh: true,
+        toggleClass: {
+          targets: card,
+          className: "js-showed",
+        },
+        once: true,
+      });
+    });
+
+    //service2設定
+    gsap.set(serviceList2, {
+      opacity: 0,
+    });
+
     gsap.to(serviceList2, {
+      opacity: 1,
+      duration: 0.4,
+      ease: gsapScrollEasing,
+      scrollTrigger: {
+        trigger: serviceList2,
+        start: "top center+=10%",
+        invalidateOnRefresh: true,
+      }
+    });
+
+    const scrollServiceSecond = gsap.to(serviceList2, {
       x: () => -(serviceList2.scrollWidth - serviceList2.offsetWidth),
       ease: "none",
       scrollTrigger: {
@@ -333,6 +406,21 @@ document.addEventListener('DOMContentLoaded', function () {
         aniticipatePin: 1,
         invalidateOnRefresh: true,
       }
+    });
+
+    serviceSecondDetailCards.forEach(card => {
+      ScrollTrigger.create({
+        pinnedContainer: serviceDetail2,
+        containerAnimation: scrollServiceSecond,
+        trigger: card,
+        start: () => "left right",
+        invalidateOnRefresh: true,
+        toggleClass: {
+          targets: card,
+          className: "js-showed",
+        },
+        once: true,
+      });
     });
   });
 

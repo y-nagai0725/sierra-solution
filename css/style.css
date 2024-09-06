@@ -2593,12 +2593,43 @@ a {
   width: 19rem;
   flex-shrink: 0;
 }
-#top .service__detail-item:last-of-type .service__detail-card::after {
+#top .service__detail-item:first-of-type .service__detail-card-wrapper::after {
   display: none;
+}
+#top .service__detail-item.js-showed .service__detail-card-wrapper::after {
+  clip-path: inset(0);
+}
+#top .service__detail-item.js-showed .service__detail-card,
+#top .service__detail-item.js-showed .service__detail-subtitle,
+#top .service__detail-item.js-showed .service__detail-text {
+  opacity: 1;
+  transform: translateX(0);
 }
 @media screen and (min-width: 1024px) {
   #top .service__detail-item {
     width: 37rem;
+  }
+}
+#top .service__detail-card-wrapper {
+  position: relative;
+}
+#top .service__detail-card-wrapper::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  translate: calc(-100% - 1.5rem) -50%;
+  width: 10rem;
+  height: 1.2rem;
+  background: url(../images/top/service_arrow.svg) center center/cover;
+  clip-path: inset(0 100% 0 0);
+  transition: clip-path 0.4s ease-out;
+}
+@media screen and (min-width: 1024px) {
+  #top .service__detail-card-wrapper::after {
+    translate: calc(-100% - 3rem) -50%;
+    width: 20rem;
+    height: 2.5rem;
   }
 }
 #top .service__detail-card {
@@ -2609,6 +2640,9 @@ a {
   margin-bottom: 1.5rem;
   position: relative;
   counter-increment: card-number;
+  opacity: 0;
+  transform: translateX(10%);
+  transition: opacity 0.4s 0.4s ease-out, transform 0.4s 0.4s ease-out;
 }
 #top .service__detail-card::before {
   content: counter(card-number, decimal-leading-zero);
@@ -2625,16 +2659,6 @@ a {
   align-items: center;
   font-family: "Montserrat", sans-serif;
   font-size: clamp(20px, 2rem, 26px);
-}
-#top .service__detail-card::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  right: 0;
-  translate: calc(100% + 1.5rem) -50%;
-  width: 10rem;
-  height: 1.2rem;
-  background: url(../images/top/service_arrow.svg) center center/cover;
 }
 #top .service__detail-card--red::before {
   color: #cc0033;
@@ -2654,7 +2678,7 @@ a {
     font-size: clamp(26px, 3rem, 30px);
   }
   #top .service__detail-card::after {
-    translate: calc(100% + 3rem) -50%;
+    translate: calc(-100% - 3rem) -50%;
     width: 20rem;
     height: 2.5rem;
   }
@@ -2669,6 +2693,9 @@ a {
   font-size: clamp(16px, 1.6rem, 22px);
   letter-spacing: 0.05em;
   margin-bottom: 0.5rem;
+  opacity: 0;
+  transform: translateX(10%);
+  transition: opacity 0.4s 0.4s ease-out, transform 0.4s 0.4s ease-out;
 }
 @media screen and (min-width: 1024px) {
   #top .service__detail-subtitle {
@@ -2678,6 +2705,9 @@ a {
 #top .service__detail-text {
   font-size: clamp(13px, 1.3rem, 16px);
   letter-spacing: 0.05em;
+  opacity: 0;
+  transform: translateX(10%);
+  transition: opacity 0.4s 0.4s ease-out, transform 0.4s 0.4s ease-out;
 }
 @media screen and (min-width: 1024px) {
   #top .service__detail-text {
