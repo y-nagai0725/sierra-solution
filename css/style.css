@@ -816,6 +816,11 @@ a {
 @media screen and (min-width: 1024px) {
   #top .contents-wrapper {
     height: 100%;
+  }
+}
+@media screen and (min-width: 1024px) {
+  #top .contents {
+    height: 100%;
     display: flex;
   }
 }
@@ -1409,6 +1414,7 @@ a {
 }
 #top .who__title-base {
   overflow: hidden;
+  display: block;
 }
 #top .who__title {
   display: block;
@@ -1902,6 +1908,7 @@ a {
 }
 #top .news__title-base {
   overflow: hidden;
+  display: block;
 }
 #top .news__title {
   display: block;
@@ -2274,6 +2281,7 @@ a {
 }
 #top .service__title-base {
   overflow: hidden;
+  display: block;
 }
 #top .service__title {
   display: block;
@@ -2734,7 +2742,7 @@ a {
 }
 #top .service__image-wrapper-1, #top .service__image-wrapper-2, #top .service__image-wrapper-3 {
   position: relative;
-  background-color: #6e6e6e;
+  overflow: hidden;
 }
 #top .service__image-wrapper-1 {
   width: 100%;
@@ -2759,6 +2767,7 @@ a {
     max-width: 420px;
     height: 63rem;
     max-height: 630px;
+    margin-left: 0;
   }
 }
 #top .service__image-wrapper-3 {
@@ -2772,6 +2781,52 @@ a {
     max-width: 280px;
     height: 50rem;
     max-height: 500px;
+    margin-left: 0;
+  }
+}
+#top .service__image {
+  position: absolute;
+  width: 47.6rem;
+  aspect-ratio: 476/317;
+  max-inline-size: none;
+  max-block-size: none;
+}
+@media screen and (min-width: 1024px) {
+  #top .service__image {
+    width: 119.9rem;
+    max-width: 1199px;
+    aspect-ratio: 1199/800;
+    max-height: 800px;
+  }
+}
+#top .service__image--top {
+  top: 0;
+  left: -18%;
+}
+@media screen and (min-width: 1024px) {
+  #top .service__image--top {
+    top: 0;
+    left: -20%;
+  }
+}
+#top .service__image--middle {
+  top: -70%;
+  left: -30%;
+}
+@media screen and (min-width: 1024px) {
+  #top .service__image--middle {
+    top: -10%;
+    left: -100%;
+  }
+}
+#top .service__image--bottom {
+  top: -110%;
+  left: -35%;
+}
+@media screen and (min-width: 1024px) {
+  #top .service__image--bottom {
+    top: -20%;
+    left: -350%;
   }
 }
 #top .company {
@@ -2823,6 +2878,7 @@ a {
 }
 #top .company__title-base {
   overflow: hidden;
+  display: block;
 }
 #top .company__title {
   display: block;
@@ -2955,6 +3011,7 @@ a {
   display: flex;
   flex-direction: column;
   margin-bottom: 6rem;
+  margin-bottom: 5rem;
 }
 #top .contact__title-wrapper.js-showed .title {
   transform: translateY(0);
@@ -2971,12 +3028,12 @@ a {
 }
 @media screen and (min-width: 1024px) {
   #top .contact__title-wrapper {
-    margin-bottom: 5rem;
     margin-right: 0;
   }
 }
 #top .contact__title-base {
   overflow: hidden;
+  display: block;
 }
 #top .contact__title {
   display: block;

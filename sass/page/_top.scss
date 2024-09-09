@@ -110,6 +110,12 @@
   .contents-wrapper {
     @media screen and (min-width: 1024px) {
       height: 100%;
+    }
+  }
+
+  .contents {
+    @media screen and (min-width: 1024px) {
+      height: 100%;
       display: flex;
     }
   }
@@ -1695,7 +1701,7 @@
     &__image-wrapper-2,
     &__image-wrapper-3 {
       position: relative;
-      background-color: $dummy;
+      overflow: hidden;
     }
 
     &__image-wrapper-1 {
@@ -1720,6 +1726,7 @@
         max-width: 420px;
         height: 63rem;
         max-height: 630px;
+        margin-left: 0;
       }
     }
 
@@ -1733,6 +1740,52 @@
         max-width: 280px;
         height: 50rem;
         max-height: 500px;
+        margin-left: 0;
+      }
+    }
+
+    &__image {
+      position: absolute;
+      width: 47.6rem;
+      aspect-ratio: 476 / 317;
+      max-inline-size: none;
+      max-block-size: none;
+
+      @media screen and (min-width: 1024px) {
+        width: 119.9rem;
+        max-width: 1199px;
+        aspect-ratio: 1199 / 800;
+        max-height: 800px;
+      }
+
+      &--top {
+        top: 0;
+        left: -18%;
+
+        @media screen and (min-width: 1024px) {
+          top: 0;
+          left: -20%;
+        }
+      }
+
+      &--middle {
+        top: -70%;
+        left: -30%;
+
+        @media screen and (min-width: 1024px) {
+          top: -10%;
+          left: -100%;
+        }
+      }
+
+      &--bottom {
+        top: -110%;
+        left: -35%;
+
+        @media screen and (min-width: 1024px) {
+          top: -20%;
+          left: -350%;
+        }
       }
     }
   }
@@ -1844,9 +1897,9 @@
 
     &__title-wrapper {
       @include section-title-wrapper;
+      margin-bottom: 5rem;
 
       @media screen and (min-width: 1024px) {
-        margin-bottom: 5rem;
         margin-right: 0;
       }
     }

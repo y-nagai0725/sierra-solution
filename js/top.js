@@ -66,11 +66,15 @@ document.addEventListener('DOMContentLoaded', function () {
   //Serviceセクション:service2の詳細カード
   const serviceSecondDetailCards = [...document.querySelectorAll(".service__second .service__detail-item")];
 
+  //Serviceセクション:画像エリア
+  const serviceImageArea = document.getElementById("service__image-area");
+
   const opening = document.getElementById("opening");
   const openingProgressLine = [...document.getElementsByClassName("opening__progress-line")];
   const scrollCircle = document.getElementById("bottom-menu__scroll-circle");
   const indexSection = document.getElementById("index");
   const contentsWrapper = document.getElementById("contents-wrapper");
+  const contents = document.getElementById("contents");
   const serviceDetail1 = document.getElementById("service__detail-1");
   const serviceDetail2 = document.getElementById("service__detail-2");
   const serviceList1 = document.getElementById("service__detail-list-1");
@@ -219,16 +223,24 @@ document.addEventListener('DOMContentLoaded', function () {
           progressBar.style.setProperty(progressBarProperty, self.progress + " 1");
         },
       }
-    }).to(contentsWrapper, {
-      x: () => -(contentsWrapper.scrollWidth - window.innerWidth),
+    }).to(contents, {
+      x: () => -(contents.scrollWidth - window.innerWidth),
       ease: "none",
     }, "horizontalScroll").to(bottomMenu, {
-      x: () => (contentsWrapper.scrollWidth - window.innerWidth),
+      x: () => (contents.scrollWidth - window.innerWidth),
       ease: "none",
     }, "horizontalScroll").to(topMenu, {
-      x: () => (contentsWrapper.scrollWidth - window.innerWidth),
+      x: () => (contents.scrollWidth - window.innerWidth),
       ease: "none",
     }, "horizontalScroll");
+  });
+
+  //横スクロールGSAP設定クリア:SP
+  mm.add("(max-width: 1023px)", () => {
+    //ウィンドウリサイズ時（PCからSP）にインラインスタイルが残ってしまうのを解除
+    gsap.to(contents, {
+      clearProps: true,
+    });
   });
 
   //WhoセクションのGSAP設定:PC
@@ -329,6 +341,24 @@ document.addEventListener('DOMContentLoaded', function () {
         once: true,
       });
     });
+
+    //画像スクロール連動アニメーション
+    gsap.timeline({
+      scrollTrigger: {
+        pinnedContainer: contentsWrapper,
+        trigger: serviceImageArea,
+        start: () => serviceImageArea.getBoundingClientRect().left + window.scrollY - window.innerWidth * 0.6,
+        end: () => serviceImageArea.getBoundingClientRect().right + window.scrollY - window.innerWidth * 0.6,
+        scrub: gsapScrubValue,
+        invalidateOnRefresh: true,
+      }
+    }).to(".service__image--top", {
+      xPercent: 13,
+    }, "<").to(".service__image--middle", {
+      xPercent: 13,
+    }, "<").to(".service__image--bottom", {
+      xPercent: 13,
+    }, "<");
   });
 
   //ServciceセクションのGSAP設定:SP
@@ -422,6 +452,22 @@ document.addEventListener('DOMContentLoaded', function () {
         once: true,
       });
     });
+
+    //画像スクロール連動アニメーション
+    gsap.timeline({
+      scrollTrigger: {
+        trigger: serviceImageArea,
+        start: "top center",
+        scrub: gsapScrubValue,
+        invalidateOnRefresh: true,
+      }
+    }).to(".service__image--top", {
+      yPercent: -15,
+    }, "<").to(".service__image--middle", {
+      yPercent: -15,
+    }, "<").to(".service__image--bottom", {
+      yPercent: -15,
+    }, "<");
   });
 
   //見出しのGSAP設定:PC
@@ -635,7 +681,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
           gsap.timeline({
             scrollTrigger: {
-              pinnedContainer: contentsWrapper,
+              pinnedContainer: contents,
               trigger: newsContents,
               start: () => newsContents.getBoundingClientRect().left + window.scrollY - window.innerWidth * 0.6,
               invalidateOnRefresh: true,

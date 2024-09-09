@@ -51,6 +51,7 @@
 //見出しベース
 @mixin section-title-base {
   overflow: hidden;
+  display: block;
 }
 
 //見出しスタイル
