@@ -470,6 +470,20 @@ document.addEventListener('DOMContentLoaded', function () {
     }, "<");
   });
 
+  //グローバルナビゲーションボタンGSAP設定:SP
+  mm.add("(max-width: 1023px)", () => {
+    gsap.to(hamburgerButton, {
+      autoAlpha: 0,
+      duration: 0.4,
+      scrollTrigger: {
+        trigger: footer,
+        start: "top bottom",
+        toggleActions: "play none none reverse",
+        invalidateOnRefresh: true,
+      },
+    });
+  });
+
   //見出しのGSAP設定:PC
   mm.add("(min-width: 1024px)", () => {
     titles.forEach(title => {
@@ -477,6 +491,7 @@ document.addEventListener('DOMContentLoaded', function () {
         pinnedContainer: contentsWrapper,
         trigger: title,
         start: () => title.getBoundingClientRect().left + window.scrollY - window.innerWidth * 0.6,
+        invalidateOnRefresh: true,
         onEnter: () => {
           if (!title.classList.contains("js-showed")) {
             title.classList.add("js-showed");
@@ -492,6 +507,7 @@ document.addEventListener('DOMContentLoaded', function () {
       ScrollTrigger.create({
         trigger: title,
         start: "top center+=10%",
+        invalidateOnRefresh: true,
         onEnter: () => {
           if (!title.classList.contains("js-showed")) {
             title.classList.add("js-showed");

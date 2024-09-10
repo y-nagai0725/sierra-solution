@@ -231,9 +231,8 @@ a {
   }
 }
 .header__logo-link {
-  width: 15.6rem;
-  height: 3.2rem;
-  background: #6e6e6e;
+  width: 19rem;
+  height: 3.6rem;
 }
 @media screen and (min-width: 1024px) {
   .header__logo-link {
@@ -276,7 +275,6 @@ a {
 .gnav__logo {
   width: 20rem;
   height: 4rem;
-  background: #6e6e6e;
   margin-bottom: 8rem;
 }
 .gnav__list {
@@ -474,7 +472,6 @@ a {
 .footer__logo-link {
   width: 20rem;
   height: 4rem;
-  background-color: #6e6e6e;
 }
 @media screen and (min-width: 1024px) {
   .footer__logo-link {
@@ -763,7 +760,6 @@ a {
 #top .opening__company-logo {
   width: 8rem;
   height: 10rem;
-  background-color: #6e6e6e;
 }
 @media screen and (min-width: 1024px) {
   #top .opening__company-logo {
@@ -773,7 +769,6 @@ a {
 }
 #top .opening__name-logo {
   height: 2.4rem;
-  background-color: #6e6e6e;
 }
 @media screen and (min-width: 1024px) {
   #top .opening__name-logo {
@@ -840,7 +835,6 @@ a {
   #top .top-menu__logo-link {
     width: 20rem;
     height: 4rem;
-    background: #6e6e6e;
   }
 }
 @media screen and (min-width: 1024px) {
@@ -1145,7 +1139,9 @@ a {
 #top .fv__logo {
   width: 16rem;
   height: 20rem;
-  background: #6e6e6e;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   opacity: 0;
   transition: opacity 0.4s ease-out;
 }

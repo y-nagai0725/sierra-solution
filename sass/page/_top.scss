@@ -51,7 +51,6 @@
     &__company-logo {
       width: 8rem;
       height: 10rem;
-      background-color: $dummy;
 
       @media screen and (min-width: 1024px) {
         width: 10rem;
@@ -61,7 +60,6 @@
 
     &__name-logo {
       height: 2.4rem;
-      background-color: $dummy;
 
       @media screen and (min-width: 1024px) {
         height: 3rem;
@@ -135,7 +133,6 @@
       @media screen and (min-width: 1024px) {
         width: 20rem;
         height: 4rem;
-        background: $dummy;
       }
     }
 
@@ -441,7 +438,9 @@
     &__logo {
       width: 16rem;
       height: 20rem;
-      background: $dummy;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       opacity: 0;
       transition: opacity 0.4s ease-out;
 
