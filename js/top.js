@@ -69,6 +69,12 @@ document.addEventListener('DOMContentLoaded', function () {
   //Serviceセクション:画像エリア
   const serviceImageArea = document.getElementById("service__image-area");
 
+  //video要素
+  const videos = [...document.querySelectorAll("video")];
+
+  //現在のウィンドウ幅
+  let currentWindowWidth = window.innerWidth;
+
   const opening = document.getElementById("opening");
   const openingProgressLine = [...document.getElementsByClassName("opening__progress-line")];
   const scrollCircle = document.getElementById("bottom-menu__scroll-circle");
@@ -105,6 +111,15 @@ document.addEventListener('DOMContentLoaded', function () {
     ScrollTrigger.refresh();
     if (window.innerWidth >= breakPoint) {
       closeGnavMenu();
+    }
+
+    if (((currentWindowWidth < breakPoint) && (window.innerWidth >= breakPoint)) || ((currentWindowWidth >= breakPoint) && (window.innerWidth < breakPoint))) {
+      videos.forEach(video => {
+        setVideoSource(video, video.dataset.baseSrc);
+      });
+
+      //保持データ更新
+      currentWindowWidth = window.innerWidth;
     }
   });
 
@@ -775,6 +790,27 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   /**
+   * videoにsourceを設定
+   *
+   * @param {*} video video要素
+   * @param {*} baseSource 基準パス
+   */
+  function setVideoSource(video, baseSource) {
+    //ウィンドウ幅に対応したpath作成
+    const suffix = window.innerWidth < breakPoint ? "_sp" : "_pc";
+    const src = baseSource + suffix + ".mp4";
+
+    //source要素作成
+    const source = document.createElement("source");
+    source.setAttribute("src", src);
+    source.setAttribute("type", "video/mp4");
+
+    //video要素に追加
+    video.innerHTML = "";
+    video.appendChild(source);
+  }
+
+  /**
    * FV表示処理
    */
   function showFirstView() {
@@ -794,6 +830,11 @@ document.addEventListener('DOMContentLoaded', function () {
   function init() {
     //スクロール禁止
     disallowWindowScroll();
+
+    //video設定
+    videos.forEach(video => {
+      setVideoSource(video, video.dataset.baseSrc);
+    });
 
     //Newsデータを取得
     getNewsData("all", true);

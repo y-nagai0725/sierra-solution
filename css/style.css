@@ -1194,6 +1194,9 @@ a {
 }
 #top .index {
   margin-bottom: 16rem;
+  display: flex;
+  flex-direction: column;
+  gap: 16rem;
 }
 @media screen and (min-width: 1024px) {
   #top .index {
@@ -1201,6 +1204,13 @@ a {
     margin-bottom: 0;
     margin-right: 22rem;
     flex-shrink: 0;
+  }
+}
+@media screen and (min-width: 1024px) {
+  #top .index {
+    height: 100%;
+    flex-direction: row;
+    gap: 30rem;
   }
 }
 #top .index__inner {
@@ -1216,7 +1226,7 @@ a {
 }
 @media screen and (min-width: 1024px) {
   #top .index__inner {
-    height: 100%;
+    height: calc(100% - 100px);
     flex-direction: row;
     align-items: center;
     justify-content: center;
@@ -1327,27 +1337,17 @@ a {
     transition-delay: 0s;
   }
 }
-#top .movie {
-  margin-bottom: 16rem;
+#top .index__movie {
   height: 52rem;
-  background-color: #6e6e6e;
 }
 @media screen and (min-width: 1024px) {
-  #top .movie {
-    height: calc(100% - 100px);
-    margin-bottom: 0;
-    margin-right: 22rem;
-    flex-shrink: 0;
-  }
-}
-@media screen and (min-width: 1024px) {
-  #top .movie {
+  #top .index__movie {
     width: 192rem;
     height: 100%;
-    margin-right: 42rem;
+    margin-right: 22rem;
     position: relative;
   }
-  #top .movie::before {
+  #top .index__movie::before {
     content: "";
     width: 18rem;
     height: 500%;
@@ -1355,11 +1355,16 @@ a {
     top: 0;
     right: 0;
     translate: 100% 0%;
-    background-image: url(../images/top/movie_slide-text.svg);
+    background-image: url(../images/top/index_slide-text.svg);
     background-repeat: repeat-y;
     background-size: 100% auto;
     animation: movie-slide-text 40s linear infinite;
   }
+}
+#top .index__video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 #top .who {
   margin-bottom: 16rem;
@@ -2229,10 +2234,11 @@ a {
 #top .service__title-square {
   padding: 0 2.5rem;
   height: 50rem;
-  background-color: #6e6e6e;
+  background-color: #000;
   margin-bottom: 5rem;
   display: flex;
   align-items: center;
+  position: relative;
 }
 @media screen and (min-width: 1024px) {
   #top .service__title-square {
@@ -2247,6 +2253,15 @@ a {
     margin-bottom: 0;
     margin-right: 16rem;
   }
+}
+#top .service__video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.6;
 }
 #top .service__title-wrapper {
   width: 100%;

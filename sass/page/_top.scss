@@ -498,6 +498,15 @@
 
   .index {
     @include section-common;
+    display: flex;
+    flex-direction: column;
+    gap: 16rem;
+
+    @media screen and (min-width: 1024px) {
+      height: 100%;
+      flex-direction: row;
+      gap: 30rem;
+    }
 
     &__inner {
       @include contents-width;
@@ -506,7 +515,7 @@
       gap: 4rem;
 
       @media screen and (min-width: 1024px) {
-        height: 100%;
+        height: calc(100% - 100px);
         flex-direction: row;
         align-items: center;
         justify-content: center;
@@ -608,32 +617,36 @@
         }
       }
     }
-  }
 
-  .movie {
-    @include section-common;
-    height: 52rem;
-    background-color: $dummy;
+    &__movie {
+      height: 52rem;
 
-    @media screen and (min-width: 1024px) {
-      width: 192rem;
-      height: 100%;
-      margin-right: 42rem;
-      position: relative;
+      @media screen and (min-width: 1024px) {
+        width: 192rem;
+        height: 100%;
+        margin-right: 22rem;
+        position: relative;
 
-      &::before {
-        content: "";
-        width: 18rem;
-        height: 500%;
-        position: absolute;
-        top: 0;
-        right: 0;
-        translate: 100% 0%;
-        background-image: url(../images/top/movie_slide-text.svg);
-        background-repeat: repeat-y;
-        background-size: 100% auto;
-        animation: movie-slide-text 40s linear infinite;
+        &::before {
+          content: "";
+          width: 18rem;
+          height: 500%;
+          position: absolute;
+          top: 0;
+          right: 0;
+          translate: 100% 0%;
+          background-image: url(../images/top/index_slide-text.svg);
+          background-repeat: repeat-y;
+          background-size: 100% auto;
+          animation: movie-slide-text 40s linear infinite;
+        }
       }
+    }
+
+    &__video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
   }
 
@@ -1225,10 +1238,11 @@
     &__title-square {
       @include contents-width;
       height: 50rem;
-      background-color: $dummy;
+      background-color: $black;
       margin-bottom: 5rem;
       display: flex;
       align-items: center;
+      position: relative;
 
       @media screen and (min-width: 1024px) {
         width: 192rem;
@@ -1237,6 +1251,16 @@
         margin-bottom: 0;
         margin-right: 16rem;
       }
+    }
+
+    &__video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.6;
     }
 
     &__title-wrapper {
