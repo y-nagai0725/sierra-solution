@@ -118,6 +118,14 @@
     }
   }
 
+  .bg-video {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+  }
+
   .top-menu {
     display: none;
 
@@ -126,7 +134,7 @@
       padding: 4rem 0 0 4rem;
       display: flex;
       gap: 15rem;
-      z-index: 2;
+      z-index: 3;
     }
 
     &__logo-link {
@@ -206,7 +214,7 @@
       left: 0;
       width: 100%;
       height: 100px;
-      z-index: 2;
+      z-index: 3;
     }
 
     .progress-bar {
@@ -414,11 +422,12 @@
 
   .fv {
     @include section-common;
+    padding-bottom: 0;
     height: 100svh;
     position: relative;
 
     @media screen and (min-width: 1024px) {
-      margin-left: 22rem;
+      padding-left: 22rem;
     }
 
     &__inner {
@@ -498,11 +507,13 @@
 
   .index {
     @include section-common;
+    padding-top: 16rem;
     display: flex;
     flex-direction: column;
     gap: 16rem;
 
     @media screen and (min-width: 1024px) {
+      padding-top: 0;
       height: 100%;
       flex-direction: row;
       gap: 30rem;
@@ -654,7 +665,7 @@
     @include section-common;
 
     @media screen and (min-width: 1024px) {
-      margin-right: 80rem;
+      padding-right: 80rem;
     }
 
     &__inner {
@@ -664,7 +675,7 @@
       @media screen and (min-width: 1024px) {
         flex-direction: row;
         align-items: center;
-        height: 100%;
+        height: calc(100% - 100px);
       }
     }
 
@@ -997,7 +1008,7 @@
     @include section-common;
 
     @media screen and (min-width: 1024px) {
-      margin-right: 56rem;
+      padding-right: 56rem;
     }
 
     &__inner {
@@ -1008,7 +1019,7 @@
       @media screen and (min-width: 1024px) {
         flex-direction: row;
         align-items: center;
-        height: 100%;
+        height: calc(100% - 100px);
       }
     }
 
@@ -1060,10 +1071,26 @@
       display: flex;
       flex-direction: column;
       gap: 4rem;
+      position: relative;
+
+      &::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 28.1rem;
+        height: 33.2rem;
+        background: url(../images/top/news_triangle_bottom.png) no-repeat center center / contain;
+        translate: -35% 40%;
+      }
 
       @media screen and (min-width: 1024px) {
         gap: 10rem;
         padding-left: 10rem;
+
+        &::before {
+          display: none;
+        }
       }
     }
 
@@ -1142,7 +1169,7 @@
       background-color: $bg-gray;
       box-shadow: $card-drop-shadow;
       transition:
-        background-color,
+        background-color 0.4s ease-out,
         scale 0.4s ease-out;
       position: relative;
 
@@ -1251,10 +1278,10 @@
 
   .service {
     @include section-common;
+    overflow: hidden;
 
     @media screen and (min-width: 1024px) {
-      height: 100%;
-      margin-right: 56rem;
+      padding-right: 56rem;
     }
 
     &__inner {
@@ -1743,23 +1770,52 @@
       display: flex;
       flex-direction: column;
       gap: 4rem;
+      position: relative;
+
+      &::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 19.4rem;
+        height: 22.9rem;
+        background: url(../images/top/service_triangle_left.png) no-repeat center center / contain;
+        translate: -40% 50%;
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 11.1rem;
+        height: 13.1rem;
+        background: url(../images/top/service_triangle_right.png) no-repeat center center / contain;
+        translate: 30% 110%;
+        z-index: -1;
+      }
 
       @media screen and (min-width: 1024px) {
         align-items: center;
         flex-direction: row;
         gap: 9rem;
         height: calc(100% - 100px);
-        position: relative;
 
         &::before {
           content: "";
           position: absolute;
+          bottom: initial;
+          left: initial;
           top: 0;
           right: 0;
           width: 80.2rem;
           height: 94.8rem;
           background: url(../images/top/service_triangle_top.png) no-repeat center center / contain;
           translate: 35% -50%;
+        }
+
+        &::after {
+          display: none;
         }
       }
     }
@@ -1868,7 +1924,7 @@
       @media screen and (min-width: 1024px) {
         flex-direction: row;
         align-items: center;
-        height: 100%;
+        height: calc(100% - 100px);
       }
     }
 
@@ -1957,7 +2013,7 @@
       flex-direction: column;
 
       @media screen and (min-width: 1024px) {
-        height: 100%;
+        height: calc(100% - 100px);
         justify-content: center;
       }
     }

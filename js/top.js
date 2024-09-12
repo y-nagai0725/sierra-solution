@@ -27,6 +27,9 @@ document.addEventListener('DOMContentLoaded', function () {
   //画面下部メニューエリア:PC
   const bottomMenu = document.getElementById("bottom-menu");
 
+  //背景video
+  const bgVideo = document.getElementById("bg-video");
+
   //GSAPメディアクエリ
   const mm = gsap.matchMedia();
 
@@ -38,6 +41,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
   //GSAPでのscrub値
   const gsapScrubValue = 1;
+
+  //背景アニメーション対象要素
+  const bgAnimationTargets = [...document.querySelectorAll(".fv, .index, .who, .news, .service, .company, .contact")];
 
   //見出し
   const titles = [...document.getElementsByClassName("js-title")];
@@ -75,6 +81,7 @@ document.addEventListener('DOMContentLoaded', function () {
   //現在のウィンドウ幅
   let currentWindowWidth = window.innerWidth;
 
+  const companySection = document.getElementById("company");
   const opening = document.getElementById("opening");
   const openingProgressLine = [...document.getElementsByClassName("opening__progress-line")];
   const scrollCircle = document.getElementById("bottom-menu__scroll-circle");
@@ -245,6 +252,9 @@ document.addEventListener('DOMContentLoaded', function () {
       x: () => (contents.scrollWidth - window.innerWidth),
       ease: "none",
     }, "horizontalScroll").to(topMenu, {
+      x: () => (contents.scrollWidth - window.innerWidth),
+      ease: "none",
+    }, "horizontalScroll").to(bgVideo, {
       x: () => (contents.scrollWidth - window.innerWidth),
       ease: "none",
     }, "horizontalScroll");
@@ -495,6 +505,36 @@ document.addEventListener('DOMContentLoaded', function () {
         start: "top bottom",
         toggleActions: "play none none reverse",
         invalidateOnRefresh: true,
+      },
+    });
+  });
+
+  //背景アニメーションGSAP設定:PC
+  mm.add("(min-width: 1024px)", () => {
+    ScrollTrigger.create({
+      pinnedContainer: contentsWrapper,
+      trigger: indexSection,
+      start: () => indexSection.getBoundingClientRect().left + window.scrollY - window.innerWidth * 0.6,
+      end: () => companySection.getBoundingClientRect().right + window.scrollY - window.innerWidth * 0.6,
+      invalidateOnRefresh: true,
+      toggleClass: {
+        targets: bgAnimationTargets,
+        className: "js-bg-showed",
+      },
+    });
+  });
+
+  //背景アニメーションGSAP設定:SP
+  mm.add("(max-width: 1023px)", () => {
+    ScrollTrigger.create({
+      trigger: indexSection,
+      start: "top center",
+      endTrigger: companySection,
+      end: "bottom center",
+      invalidateOnRefresh: true,
+      toggleClass: {
+        targets: bgAnimationTargets,
+        className: "js-bg-showed",
       },
     });
   });
