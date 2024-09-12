@@ -653,6 +653,10 @@
   .who {
     @include section-common;
 
+    @media screen and (min-width: 1024px) {
+      margin-right: 80rem;
+    }
+
     &__inner {
       display: flex;
       flex-direction: column;
@@ -1010,6 +1014,34 @@
 
     &__title-wrapper {
       @include section-title-wrapper;
+
+      @media screen and (min-width: 1024px) {
+        position: relative;
+        height: 100%;
+        justify-content: center;
+
+        &::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          right: 0;
+          width: 49.3rem;
+          height: 58.4rem;
+          background: url(../images/top/news_triangle_top.png) no-repeat center center / contain;
+          translate: 50% -50%;
+        }
+
+        &::after {
+          content: "";
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 49.3rem;
+          height: 58.4rem;
+          background: url(../images/top/who_triangle_bottom.png) no-repeat center center / contain;
+          translate: -100% 50%;
+        }
+      }
     }
 
     &__title-base {
@@ -1717,6 +1749,18 @@
         flex-direction: row;
         gap: 9rem;
         height: calc(100% - 100px);
+        position: relative;
+
+        &::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          right: 0;
+          width: 80.2rem;
+          height: 94.8rem;
+          background: url(../images/top/service_triangle_top.png) no-repeat center center / contain;
+          translate: 35% -50%;
+        }
       }
     }
 
