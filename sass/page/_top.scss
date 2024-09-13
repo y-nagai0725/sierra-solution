@@ -430,6 +430,10 @@
       padding-left: 22rem;
     }
 
+    &__background {
+      @include section-background-style;
+    }
+
     &__inner {
       height: 100%;
       display: flex;
@@ -517,6 +521,10 @@
       height: 100%;
       flex-direction: row;
       gap: 30rem;
+    }
+
+    &__background {
+      @include section-background-style;
     }
 
     &__inner {
@@ -663,9 +671,18 @@
 
   .who {
     @include section-common;
+    padding-bottom: 6rem;
 
     @media screen and (min-width: 1024px) {
       padding-right: 80rem;
+    }
+
+    &__background {
+      @include section-background-style;
+
+      @media screen and (min-width: 1024px) {
+        clip-path: polygon(92% 0, 93% 50%, 100% 14%, 95% 0, 100% 0, 100% 100%, 0 100%, 0 0);
+      }
     }
 
     &__inner {
@@ -1006,9 +1023,21 @@
 
   .news {
     @include section-common;
+    padding-top: 10rem;
 
     @media screen and (min-width: 1024px) {
+      padding-top: 0;
       padding-right: 56rem;
+    }
+
+    &__background {
+      @include section-background-style;
+      overflow: hidden;
+      clip-path: polygon(100% 0, 0 5%, 0% 0%, 100% 0, 100% 5%, 50% 35%, 0 20%, 0 100%, 100% 100%);
+
+      @media screen and (min-width: 1024px) {
+        clip-path: polygon(15% 100%, 23% 62%, 26% 100%, 100% 100%, 100% 0, 0 0, 0 100%);
+      }
     }
 
     &__inner {
@@ -1050,7 +1079,7 @@
           width: 49.3rem;
           height: 58.4rem;
           background: url(../images/top/who_triangle_bottom.png) no-repeat center center / contain;
-          translate: -100% 50%;
+          translate: -90% 50%;
         }
       }
     }
@@ -1282,6 +1311,10 @@
 
     @media screen and (min-width: 1024px) {
       padding-right: 56rem;
+    }
+
+    &__background {
+      @include section-background-style;
     }
 
     &__inner {
@@ -1892,7 +1925,7 @@
       }
 
       &--middle {
-        top: -70%;
+        top: -15%;
         left: -30%;
 
         @media screen and (min-width: 1024px) {
@@ -1902,7 +1935,7 @@
       }
 
       &--bottom {
-        top: -110%;
+        top: -100%;
         left: -35%;
 
         @media screen and (min-width: 1024px) {
@@ -1926,6 +1959,10 @@
         align-items: center;
         height: calc(100% - 100px);
       }
+    }
+
+    &__background {
+      @include section-background-style;
     }
 
     &__title-wrapper {
@@ -2016,6 +2053,10 @@
         height: calc(100% - 100px);
         justify-content: center;
       }
+    }
+
+    &__background {
+      @include section-background-style;
     }
 
     &__title-wrapper {

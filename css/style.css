@@ -1118,21 +1118,6 @@ a {
   height: 100svh;
   position: relative;
 }
-#top .fv::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #efefef;
-  z-index: -1;
-  opacity: 0;
-  transition: opacity 0.4s ease-out;
-}
-#top .fv.js-bg-showed::before {
-  opacity: 1;
-}
 @media screen and (min-width: 1024px) {
   #top .fv {
     height: 100%;
@@ -1145,6 +1130,20 @@ a {
   #top .fv {
     padding-left: 22rem;
   }
+}
+#top .fv__background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #efefef;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.4s ease-out;
+}
+#top .fv__background.js-visibled {
+  opacity: 1;
 }
 #top .fv__inner {
   height: 100%;
@@ -1225,21 +1224,6 @@ a {
   flex-direction: column;
   gap: 16rem;
 }
-#top .index::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #efefef;
-  z-index: -1;
-  opacity: 0;
-  transition: opacity 0.4s ease-out;
-}
-#top .index.js-bg-showed::before {
-  opacity: 1;
-}
 @media screen and (min-width: 1024px) {
   #top .index {
     height: 100%;
@@ -1255,6 +1239,20 @@ a {
     flex-direction: row;
     gap: 30rem;
   }
+}
+#top .index__background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #efefef;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.4s ease-out;
+}
+#top .index__background.js-visibled {
+  opacity: 1;
 }
 #top .index__inner {
   padding: 0 2.5rem;
@@ -1413,21 +1411,7 @@ a {
   padding-bottom: 16rem;
   position: relative;
   z-index: 2;
-}
-#top .who::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #efefef;
-  z-index: -1;
-  opacity: 0;
-  transition: opacity 0.4s ease-out;
-}
-#top .who.js-bg-showed::before {
-  opacity: 1;
+  padding-bottom: 6rem;
 }
 @media screen and (min-width: 1024px) {
   #top .who {
@@ -1440,6 +1424,25 @@ a {
 @media screen and (min-width: 1024px) {
   #top .who {
     padding-right: 80rem;
+  }
+}
+#top .who__background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #efefef;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.4s ease-out;
+}
+#top .who__background.js-visibled {
+  opacity: 1;
+}
+@media screen and (min-width: 1024px) {
+  #top .who__background {
+    clip-path: polygon(92% 0, 93% 50%, 100% 14%, 95% 0, 100% 0, 100% 100%, 0 100%, 0 0);
   }
 }
 #top .who__inner {
@@ -1924,21 +1927,7 @@ a {
   padding-bottom: 16rem;
   position: relative;
   z-index: 2;
-}
-#top .news::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #efefef;
-  z-index: -1;
-  opacity: 0;
-  transition: opacity 0.4s ease-out;
-}
-#top .news.js-bg-showed::before {
-  opacity: 1;
+  padding-top: 10rem;
 }
 @media screen and (min-width: 1024px) {
   #top .news {
@@ -1950,7 +1939,29 @@ a {
 }
 @media screen and (min-width: 1024px) {
   #top .news {
+    padding-top: 0;
     padding-right: 56rem;
+  }
+}
+#top .news__background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #efefef;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.4s ease-out;
+  overflow: hidden;
+  clip-path: polygon(100% 0, 0 5%, 0% 0%, 100% 0, 100% 5%, 50% 35%, 0 20%, 0 100%, 100% 100%);
+}
+#top .news__background.js-visibled {
+  opacity: 1;
+}
+@media screen and (min-width: 1024px) {
+  #top .news__background {
+    clip-path: polygon(15% 100%, 23% 62%, 26% 100%, 100% 100%, 100% 0, 0 0, 0 100%);
   }
 }
 #top .news__inner {
@@ -2013,7 +2024,7 @@ a {
     width: 49.3rem;
     height: 58.4rem;
     background: url(../images/top/who_triangle_bottom.png) no-repeat center center/contain;
-    translate: -100% 50%;
+    translate: -90% 50%;
   }
 }
 #top .news__title-base {
@@ -2333,21 +2344,6 @@ a {
   z-index: 2;
   overflow: hidden;
 }
-#top .service::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #efefef;
-  z-index: -1;
-  opacity: 0;
-  transition: opacity 0.4s ease-out;
-}
-#top .service.js-bg-showed::before {
-  opacity: 1;
-}
 @media screen and (min-width: 1024px) {
   #top .service {
     height: 100%;
@@ -2360,6 +2356,20 @@ a {
   #top .service {
     padding-right: 56rem;
   }
+}
+#top .service__background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #efefef;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.4s ease-out;
+}
+#top .service__background.js-visibled {
+  opacity: 1;
 }
 #top .service__inner {
   display: flex;
@@ -2998,7 +3008,7 @@ a {
   }
 }
 #top .service__image--middle {
-  top: -70%;
+  top: -15%;
   left: -30%;
 }
 @media screen and (min-width: 1024px) {
@@ -3008,7 +3018,7 @@ a {
   }
 }
 #top .service__image--bottom {
-  top: -110%;
+  top: -100%;
   left: -35%;
 }
 @media screen and (min-width: 1024px) {
@@ -3021,21 +3031,6 @@ a {
   padding-bottom: 16rem;
   position: relative;
   z-index: 2;
-}
-#top .company::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #efefef;
-  z-index: -1;
-  opacity: 0;
-  transition: opacity 0.4s ease-out;
-}
-#top .company.js-bg-showed::before {
-  opacity: 1;
 }
 @media screen and (min-width: 1024px) {
   #top .company {
@@ -3061,6 +3056,20 @@ a {
     align-items: center;
     height: calc(100% - 100px);
   }
+}
+#top .company__background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #efefef;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.4s ease-out;
+}
+#top .company__background.js-visibled {
+  opacity: 1;
 }
 #top .company__title-wrapper {
   width: 100%;
@@ -3189,21 +3198,6 @@ a {
   position: relative;
   z-index: 2;
 }
-#top .contact::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #efefef;
-  z-index: -1;
-  opacity: 0;
-  transition: opacity 0.4s ease-out;
-}
-#top .contact.js-bg-showed::before {
-  opacity: 1;
-}
 @media screen and (min-width: 1024px) {
   #top .contact {
     height: 100%;
@@ -3227,6 +3221,20 @@ a {
     height: calc(100% - 100px);
     justify-content: center;
   }
+}
+#top .contact__background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #efefef;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.4s ease-out;
+}
+#top .contact__background.js-visibled {
+  opacity: 1;
 }
 #top .contact__title-wrapper {
   width: 100%;

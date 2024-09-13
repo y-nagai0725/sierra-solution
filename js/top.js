@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const gsapScrubValue = 1;
 
   //背景アニメーション対象要素
-  const bgAnimationTargets = [...document.querySelectorAll(".fv, .index, .who, .news, .service, .company, .contact")];
+  const bgAnimationTargets = [...document.querySelectorAll("[class$='__background']")];
 
   //見出し
   const titles = [...document.getElementsByClassName("js-title")];
@@ -519,7 +519,7 @@ document.addEventListener('DOMContentLoaded', function () {
       invalidateOnRefresh: true,
       toggleClass: {
         targets: bgAnimationTargets,
-        className: "js-bg-showed",
+        className: "js-visibled",
       },
     });
   });
@@ -534,7 +534,7 @@ document.addEventListener('DOMContentLoaded', function () {
       invalidateOnRefresh: true,
       toggleClass: {
         targets: bgAnimationTargets,
-        className: "js-bg-showed",
+        className: "js-visibled",
       },
     });
   });
