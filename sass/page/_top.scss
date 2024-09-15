@@ -1963,6 +1963,11 @@
 
     &__background {
       @include section-background-style;
+      overflow: hidden;
+
+      @media screen and (min-width: 1024px) {
+        clip-path: polygon(44% 100%, 36% 10%, 9% 88%, 20% 100%, 0 100%, 0 0, 100% 0, 100% 100%);
+      }
     }
 
     &__title-wrapper {

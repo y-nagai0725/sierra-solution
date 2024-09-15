@@ -3067,9 +3067,15 @@ a {
   z-index: -1;
   opacity: 0;
   transition: opacity 0.4s ease-out;
+  overflow: hidden;
 }
 #top .company__background.js-visibled {
   opacity: 1;
+}
+@media screen and (min-width: 1024px) {
+  #top .company__background {
+    clip-path: polygon(44% 100%, 36% 10%, 9% 88%, 20% 100%, 0 100%, 0 0, 100% 0, 100% 100%);
+  }
 }
 #top .company__title-wrapper {
   width: 100%;
