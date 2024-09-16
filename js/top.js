@@ -122,7 +122,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (((currentWindowWidth < breakPoint) && (window.innerWidth >= breakPoint)) || ((currentWindowWidth >= breakPoint) && (window.innerWidth < breakPoint))) {
       videos.forEach(video => {
-        setVideoSource(video, video.dataset.baseSrc);
+        //setVideoSource(video, video.dataset.baseSrc);
       });
 
       //保持データ更新
