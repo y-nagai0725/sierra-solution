@@ -1671,12 +1671,12 @@ a {
   }
 }
 #top .who__circle-image {
-  background-color: #6e6e6e;
-  height: 6.5rem;
+  height: 7rem;
+  object-fit: contain;
 }
 @media screen and (min-width: 1024px) {
   #top .who__circle-image {
-    height: 11rem;
+    height: 13rem;
   }
 }
 #top .who__circle-line {
@@ -1783,7 +1783,7 @@ a {
     height: 100%;
     flex-direction: row;
     gap: 30rem;
-    padding: 0 100rem 0 30rem;
+    padding: 0 120rem 0 30rem;
   }
 }
 #top .who__value-subtitle-wrapper {
@@ -2953,6 +2953,8 @@ a {
 #top .service__image-wrapper-1, #top .service__image-wrapper-2, #top .service__image-wrapper-3 {
   position: relative;
   overflow: hidden;
+  opacity: 0;
+  scale: 0.5;
 }
 #top .service__image-wrapper-1 {
   width: 100%;

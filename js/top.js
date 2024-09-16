@@ -122,7 +122,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (((currentWindowWidth < breakPoint) && (window.innerWidth >= breakPoint)) || ((currentWindowWidth >= breakPoint) && (window.innerWidth < breakPoint))) {
       videos.forEach(video => {
-        //setVideoSource(video, video.dataset.baseSrc);
+        setVideoSource(video, video.dataset.baseSrc);
       });
 
       //保持データ更新
@@ -286,13 +286,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
     //value部分
     gsap.to(whoValue, {
-      x: 700,
+      x: 900,
       ease: "none",
       scrollTrigger: {
         pinnedContainer: contentsWrapper,
         trigger: whoValue,
-        start: () => whoValue.getBoundingClientRect().left + window.scrollY,
-        end: "+=700",
+        start: () => whoValue.getBoundingClientRect().left + window.scrollY - 100,
+        end: "+=900",
         scrub: gsapScrubValue,
         invalidateOnRefresh: true,
         onUpdate: (self) => {
@@ -322,8 +322,8 @@ document.addEventListener('DOMContentLoaded', function () {
     //value部分
     ScrollTrigger.create({
       trigger: whoValue,
-      start: "top top",
-      end: "+=500",
+      start: "top top+=7%",
+      end: "+=700",
       pin: true,
       scrub: gsapScrubValue,
       invalidateOnRefresh: true,
@@ -376,6 +376,17 @@ document.addEventListener('DOMContentLoaded', function () {
         end: () => serviceImageArea.getBoundingClientRect().right + window.scrollY - window.innerWidth * 0.6,
         scrub: gsapScrubValue,
         invalidateOnRefresh: true,
+        onEnter: () => {
+          gsap.to(serviceImageArea.children, {
+            ease: gsapScrollEasing,
+            opacity: 1,
+            duration: 0.4,
+            scale: 1,
+            stagger: {
+              each: 0.2,
+            },
+          });
+        },
       }
     }).to(".service__image--top", {
       xPercent: 13,
@@ -409,7 +420,7 @@ document.addEventListener('DOMContentLoaded', function () {
       ease: "none",
       scrollTrigger: {
         trigger: serviceDetail1,
-        start: 'top top',
+        start: 'top top+=7%',
         end: () => "+=" + (serviceList1.scrollWidth - serviceList1.offsetWidth),
         scrub: gsapScrubValue,
         pin: true,
@@ -454,7 +465,7 @@ document.addEventListener('DOMContentLoaded', function () {
       ease: "none",
       scrollTrigger: {
         trigger: serviceDetail2,
-        start: 'top top',
+        start: 'top top+=7%',
         end: () => "+=" + (serviceList2.scrollWidth - serviceList2.offsetWidth),
         scrub: gsapScrubValue,
         pin: true,
@@ -485,6 +496,17 @@ document.addEventListener('DOMContentLoaded', function () {
         start: "top center",
         scrub: gsapScrubValue,
         invalidateOnRefresh: true,
+        onEnter: () => {
+          gsap.to(serviceImageArea.children, {
+            ease: gsapScrollEasing,
+            opacity: 1,
+            duration: 0.4,
+            scale: 1,
+            stagger: {
+              each: 0.2,
+            },
+          });
+        },
       }
     }).to(".service__image--top", {
       yPercent: -15,

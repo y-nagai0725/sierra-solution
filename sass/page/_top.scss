@@ -840,11 +840,11 @@
     }
 
     &__circle-image {
-      background-color: $dummy;
-      height: 6.5rem;
+      height: 7rem;
+      object-fit: contain;
 
       @media screen and (min-width: 1024px) {
-        height: 11rem;
+        height: 13rem;
       }
     }
 
@@ -934,7 +934,7 @@
         height: 100%;
         flex-direction: row;
         gap: 30rem;
-        padding: 0 100rem 0 30rem;
+        padding: 0 120rem 0 30rem;
       }
     }
 
@@ -1863,6 +1863,8 @@
     &__image-wrapper-3 {
       position: relative;
       overflow: hidden;
+      opacity: 0;
+      scale: 0.5;
     }
 
     &__image-wrapper-1 {
