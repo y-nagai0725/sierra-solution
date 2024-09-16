@@ -294,6 +294,9 @@ a {
   position: relative;
   transition: background-color 0.4s ease-out;
 }
+.gnav__link--button div {
+  overflow: hidden;
+}
 .gnav__link--button span {
   font-family: "Montserrat", sans-serif;
   font-size: clamp(13px, 1.3rem, 16px);
@@ -2267,6 +2270,9 @@ a {
   transition: background-color 0.4s ease-out;
   margin-left: auto;
 }
+#top .news__more-button div {
+  overflow: hidden;
+}
 #top .news__more-button span {
   font-family: "Montserrat", sans-serif;
   font-size: clamp(13px, 1.3rem, 16px);
@@ -3313,6 +3319,9 @@ a {
   transition: background-color 0.4s ease-out;
   margin-inline: auto;
   margin-bottom: 4rem;
+}
+#top .contact__button-link div {
+  overflow: hidden;
 }
 #top .contact__button-link span {
   font-family: "Montserrat", sans-serif;
