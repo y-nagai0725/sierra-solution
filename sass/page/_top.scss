@@ -797,11 +797,10 @@
     }
 
     &__figure-image {
-      background-color: $dummy;
-      height: 1.6rem;
+      width: 10rem;
 
       @media screen and (min-width: 1024px) {
-        height: 2.8rem;
+        width: 18rem;
       }
     }
 
