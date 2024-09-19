@@ -1766,10 +1766,13 @@
 
     &__card-svg-wrapper {
       height: 100%;
-      background-color: $dummy;
 
       @media screen and (min-width: 1024px) {
       }
+    }
+
+    &__dot-circle {
+
     }
 
     &__detail-subtitle {
