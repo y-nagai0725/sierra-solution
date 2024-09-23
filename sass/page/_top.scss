@@ -1712,6 +1712,9 @@
       border-radius: 1.5rem;
       box-shadow: $card-drop-shadow;
       margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       position: relative;
       counter-increment: card-number;
       opacity: 0;
@@ -1746,7 +1749,7 @@
       }
 
       @media screen and (min-width: 1024px) {
-        padding: 10rem;
+        padding: 3rem 5rem;
         aspect-ratio: 370/480;
         margin-bottom: 3.2rem;
 
@@ -1765,14 +1768,65 @@
     }
 
     &__card-svg-wrapper {
-      height: 100%;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      position: relative;
 
       @media screen and (min-width: 1024px) {
       }
     }
 
-    &__dot-circle {
+    &__service-2-card-1-svg-wrapper {
+      display: flex;
+      align-items: center;
+      position: relative;
 
+      @media screen and (min-width: 1024px) {
+        width: 22rem;
+      }
+    }
+
+    &__dot-circle {
+      @media screen and (min-width: 1024px) {
+      }
+    }
+
+    &__circle-person {
+      position: absolute;
+
+      &--top {
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      &--bottom {
+        bottom: 0;
+        left: 50%;
+        transform: translate(-50%, 50%);
+      }
+
+      &--left {
+        left: 0;
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      &--right {
+        right: 0;
+        top: 50%;
+        transform: translate(50%, -50%);
+      }
+
+      @media screen and (min-width: 1024px) {
+        width: 4.5rem;
+        height: 4.5rem;
+      }
+    }
+
+    &__outside-circle {
+      fill: $black;
     }
 
     &__detail-subtitle {

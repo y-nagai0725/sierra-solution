@@ -2823,6 +2823,9 @@ a {
   border-radius: 1.5rem;
   box-shadow: -5px -5px 10px 0 rgb(255, 255, 255), 3px 3px 5px 0 rgba(0, 0, 0, 0.08);
   margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: relative;
   counter-increment: card-number;
   opacity: 0;
@@ -2853,7 +2856,7 @@ a {
 }
 @media screen and (min-width: 1024px) {
   #top .service__detail-card {
-    padding: 10rem;
+    padding: 3rem 5rem;
     aspect-ratio: 370/480;
     margin-bottom: 3.2rem;
   }
@@ -2869,7 +2872,52 @@ a {
   }
 }
 #top .service__card-svg-wrapper {
-  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+#top .service__service-2-card-1-svg-wrapper {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+@media screen and (min-width: 1024px) {
+  #top .service__service-2-card-1-svg-wrapper {
+    width: 22rem;
+  }
+}
+#top .service__circle-person {
+  position: absolute;
+}
+#top .service__circle-person--top {
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+#top .service__circle-person--bottom {
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 50%);
+}
+#top .service__circle-person--left {
+  left: 0;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+#top .service__circle-person--right {
+  right: 0;
+  top: 50%;
+  transform: translate(50%, -50%);
+}
+@media screen and (min-width: 1024px) {
+  #top .service__circle-person {
+    width: 4.5rem;
+    height: 4.5rem;
+  }
+}
+#top .service__outside-circle {
+  fill: #000;
 }
 #top .service__detail-subtitle {
   display: block;
