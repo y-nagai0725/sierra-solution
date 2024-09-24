@@ -88,3 +88,15 @@
     translate: 0 0;
   }
 }
+
+@keyframes service-card-bound {
+  0% {
+    scale: 1;
+  }
+  50% {
+    scale: 1.25;
+  }
+  100% {
+    scale: 1;
+  }
+}

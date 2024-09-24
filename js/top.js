@@ -81,6 +81,21 @@ document.addEventListener('DOMContentLoaded', function () {
   //現在のウィンドウ幅
   let currentWindowWidth = window.innerWidth;
 
+  //Serviceセクション:Card
+  const service1Card1 = document.getElementById("service__service-1-card-1");
+  const service1Card2 = document.getElementById("service__service-1-card-2");
+  const service1Card3 = document.getElementById("service__service-1-card-3");
+  const service1Card4 = document.getElementById("service__service-1-card-4");
+  const service2Card1 = document.getElementById("service__service-2-card-1");
+  const service2Card2 = document.getElementById("service__service-2-card-2");
+  const service2Card3 = document.getElementById("service__service-2-card-3");
+
+  //Serviceセクション:Service-2-card-1:ドットサークル画像
+  const dotCircleImage = document.getElementById("service__dot-circle");
+
+  //Serviceセクション:Service-2-card-1:circle-personSVG
+  const circlePersonSVG = document.getElementsByClassName("service__circle-person");
+
   const companySection = document.getElementById("company");
   const opening = document.getElementById("opening");
   const openingProgressLine = [...document.getElementsByClassName("opening__progress-line")];
@@ -353,6 +368,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   //ServciceセクションのGSAP設定:PC
   mm.add("(min-width: 1024px)", () => {
+    //各カード共通設定
     serviceDetailCards.forEach(card => {
       ScrollTrigger.create({
         pinnedContainer: contentsWrapper,
@@ -367,13 +383,26 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     });
 
+    //service2Card1のアニメーション設定
+    ScrollTrigger.create({
+      pinnedContainer: contentsWrapper,
+      trigger: service2Card1,
+      start: () => service2Card1.getBoundingClientRect().left + window.scrollY - window.innerWidth * 0.75,
+      end: () => "+=" + (window.innerWidth - service2Card1.offsetWidth / 2),
+      invalidateOnRefresh: true,
+      toggleClass: {
+        targets: [dotCircleImage, circlePersonSVG],
+        className: "js-actived",
+      },
+    });
+
     //画像スクロール連動アニメーション
     gsap.timeline({
       scrollTrigger: {
         pinnedContainer: contentsWrapper,
         trigger: serviceImageArea,
         start: () => serviceImageArea.getBoundingClientRect().left + window.scrollY - window.innerWidth * 0.6,
-        end: () => serviceImageArea.getBoundingClientRect().right + window.scrollY - window.innerWidth * 0.6,
+        end: () => "+=" + serviceImageArea.offsetWidth,
         scrub: gsapScrubValue,
         invalidateOnRefresh: true,
         onEnter: () => {
@@ -487,6 +516,19 @@ document.addEventListener('DOMContentLoaded', function () {
         },
         once: true,
       });
+    });
+
+    //service2Card1のアニメーション設定
+    ScrollTrigger.create({
+      pinnedContainer: serviceDetail2,
+      containerAnimation: scrollServiceSecond,
+      trigger: service2Card1,
+      start: () => "left right",
+      invalidateOnRefresh: true,
+      toggleClass: {
+        targets: [dotCircleImage, circlePersonSVG],
+        className: "js-actived",
+      },
     });
 
     //画像スクロール連動アニメーション
