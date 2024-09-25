@@ -531,6 +531,69 @@ document.addEventListener('DOMContentLoaded', function () {
       },
     });
 
+    //service2Card2のアニメーション設定
+    let service2Card2Animation;
+    ScrollTrigger.create({
+      pinnedContainer: serviceDetail2,
+      containerAnimation: scrollServiceSecond,
+      trigger: service2Card2,
+      start: "left center",
+      end: "right left+=10%",
+      invalidateOnRefresh: true,
+      markers: true,
+      onEnter: () => {
+        const tl = gsap.timeline();
+        service2Card2Animation = tl.to(".service__service-2-card-2-item", {
+          opacity: 1,
+          duration: 0.4,
+          stagger: {
+            each: 0.2,
+          },
+        }).to(".service__service-2-card-2-item .circle--green", {
+          strokeDashoffset: 0,
+          duration: 2,
+          stagger: {
+            each: 0.2,
+          },
+        }, "<");
+      },
+      onLeave: () => {
+        service2Card2Animation.kill();
+        gsap.set(".service__service-2-card-2-item", {
+          opacity: 0,
+        });
+        gsap.set(".service__service-2-card-2-item .circle--green", {
+          strokeDashoffset: 300,
+        });
+      },
+      onEnterBack: () => {
+        const tl = gsap.timeline();
+        service2Card2Animation = tl.to(".service__service-2-card-2-item", {
+          opacity: 1,
+          duration: 0.4,
+          stagger: {
+            each: 0.2,
+          },
+        }).to(".service__service-2-card-2-item .circle--green", {
+          strokeDashoffset: 0,
+          duration: 2,
+          stagger: {
+            each: 0.2,
+          },
+        }, "<");
+      },
+      onLeaveBack: () => {
+        service2Card2Animation.kill();
+        gsap.set(".service__service-2-card-2-item", {
+          opacity: 0,
+        });
+        gsap.set(".service__service-2-card-2-item .circle--green", {
+          strokeDashoffset: 300,
+        });
+      },
+
+    });
+
     //画像スクロール連動アニメーション
     gsap.timeline({
       scrollTrigger: {
