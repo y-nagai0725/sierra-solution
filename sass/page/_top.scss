@@ -1981,6 +1981,7 @@
     &__dsp-image {
       height: 7.1rem;
       object-fit: contain;
+      opacity: 0;
 
       @media screen and (min-width: 1024px) {
         height: 11.3rem;
@@ -1991,6 +1992,7 @@
       width: 2.1rem;
       height: 5.7rem;
       object-fit: contain;
+      clip-path: inset(0 100% 0 0);
 
       @media screen and (min-width: 1024px) {
         width: 4rem;
@@ -2012,6 +2014,7 @@
     &__ssp-text {
       font-weight: 700;
       font-size: clamp(10px, 1rem, 11px);
+      opacity: 0;
 
       @media screen and (min-width: 1024px) {
         font-size: clamp(11px, 1.2rem, 12px);
@@ -2021,6 +2024,7 @@
     &__ssp-image {
       height: 4rem;
       object-fit: contain;
+      opacity: 0;
 
       @media screen and (min-width: 1024px) {
         height: 6.4rem;
@@ -2034,6 +2038,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      opacity: 0;
 
       &::before,
       &::after {
@@ -2068,6 +2073,7 @@
       font-weight: 700;
       font-size: clamp(10px, 1rem, 12px);
       text-align: center;
+      opacity: 0;
 
       @media screen and (min-width: 1024px) {
         font-size: clamp(12px, 1.4rem, 14px);
@@ -2082,6 +2088,10 @@
       @media screen and (min-width: 1024px) {
         gap: 1rem;
       }
+    }
+
+    &__platform-image {
+      opacity: 0;
     }
 
     &__image-area {

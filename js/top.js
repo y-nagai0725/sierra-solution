@@ -105,6 +105,15 @@ document.addEventListener('DOMContentLoaded', function () {
   //Serviceセクション:Service-2-card-2:image
   const service2Card2Image = document.getElementsByClassName("service__service-2-card-2-image");
 
+  //Serviceセクション:Service-2-card-3:
+  const service2Card3DspImage = document.getElementById("service__dsp-image");
+  const service2Card3DspArrow = document.getElementById("service__dsp-arrow");
+  const service2Card3SspText = document.getElementById("service__ssp-text");
+  const service2Card3SspImage = document.getElementById("service__ssp-image");
+  const service2Card3Middle = document.getElementById("service__service-2-card-3-middle");
+  const service2Card3PlatformText = document.getElementById("service__platform-text");
+  const service2Card3PlatformImage = document.getElementsByClassName("service__platform-image");
+
   const companySection = document.getElementById("company");
   const opening = document.getElementById("opening");
   const openingProgressLine = [...document.getElementsByClassName("opening__progress-line")];
@@ -433,6 +442,15 @@ document.addEventListener('DOMContentLoaded', function () {
       },
     }, "<");
 
+    const resetService2Card2Animation = function () {
+      gsap.set(service2Card2Item, {
+        opacity: 0,
+      });
+      gsap.set(service2Card2Circle, {
+        strokeDashoffset: 300,
+      });
+    }
+
     ScrollTrigger.create({
       pinnedContainer: contentsWrapper,
       trigger: service2Card2,
@@ -444,26 +462,88 @@ document.addEventListener('DOMContentLoaded', function () {
       },
       onLeave: () => {
         service2Card2Animation.kill();
-        gsap.set(service2Card2Item, {
-          opacity: 0,
-        });
-        gsap.set(service2Card2Circle, {
-          strokeDashoffset: 300,
-        });
+        resetService2Card2Animation();
       },
       onEnterBack: () => {
         service2Card2Animation.restart();
       },
       onLeaveBack: () => {
         service2Card2Animation.kill();
-        gsap.set(service2Card2Item, {
-          opacity: 0,
-        });
-        gsap.set(service2Card2Circle, {
-          strokeDashoffset: 300,
-        });
+        resetService2Card2Animation();
       },
+    });
 
+    //service2Card3のアニメーション設定
+    const service2Card3Animation = gsap.timeline({
+      paused: true,
+    }).to(service2Card3DspImage, {
+      ease: gsapScrollEasing,
+      keyframes: [
+        { duration: 0.2, opacity: 0.5, y: -10 },
+        { duration: 0.2, opacity: 1, y: 0 },
+      ],
+    }).to(service2Card3DspArrow, {
+      duration: 0.4,
+      ease: gsapScrollEasing,
+      clipPath: "inset(0 0% 0 0)",
+    }, "<0.1").to(service2Card3SspText, {
+      duration: 0.4,
+      ease: gsapScrollEasing,
+      opacity: 1,
+    }, "<0.1").to(service2Card3SspImage, {
+      ease: gsapScrollEasing,
+      keyframes: [
+        { duration: 0.2, opacity: 0.5, y: -10 },
+        { duration: 0.2, opacity: 1, y: 0 },
+      ],
+    }, "<0.1").to(service2Card3Middle, {
+      duration: 0.4,
+      ease: gsapScrollEasing,
+      opacity: 1,
+    }, "<0.1").to(service2Card3PlatformText, {
+      duration: 0.4,
+      ease: gsapScrollEasing,
+      opacity: 1,
+    }, "<0.1").to(service2Card3PlatformImage, {
+      ease: gsapScrollEasing,
+      keyframes: [
+        { duration: 0.2, opacity: 0.5, y: -5 },
+        { duration: 0.2, opacity: 1, y: 0 },
+      ],
+      stagger: {
+        each: 0.1,
+      }
+    }, "<0.1");
+
+    const resetService2Card3Animation = function () {
+      gsap.set([service2Card3DspImage, service2Card3SspText, service2Card3SspImage, service2Card3Middle, service2Card3PlatformText, service2Card3PlatformImage], {
+        opacity: 0,
+      });
+      gsap.set(service2Card3DspArrow, {
+        clipPath: "inset(0 100% 0 0)",
+      });
+    }
+
+    ScrollTrigger.create({
+      pinnedContainer: contentsWrapper,
+      trigger: service2Card3,
+      start: () => service2Card3.getBoundingClientRect().left + window.scrollY - window.innerWidth * 0.75,
+      end: () => "+=" + (window.innerWidth * 0.75 + service2Card3.offsetWidth),
+      invalidateOnRefresh: true,
+      onEnter: () => {
+        service2Card3Animation.restart();
+      },
+      onLeave: () => {
+        service2Card3Animation.kill();
+        resetService2Card3Animation();
+      },
+      onEnterBack: () => {
+        service2Card3Animation.restart();
+      },
+      onLeaveBack: () => {
+        service2Card3Animation.kill();
+        resetService2Card3Animation();
+      },
     });
 
     //画像スクロール連動アニメーション
@@ -629,11 +709,20 @@ document.addEventListener('DOMContentLoaded', function () {
       },
     }, "<");
 
+    const resetService2Card2Animation = function () {
+      gsap.set(service2Card2Item, {
+        opacity: 0,
+      });
+      gsap.set(service2Card2Circle, {
+        strokeDashoffset: 300,
+      });
+    }
+
     ScrollTrigger.create({
       pinnedContainer: serviceDetail2,
       containerAnimation: scrollServiceSecond,
       trigger: service2Card2,
-      start: "left center",
+      start: "left center+=20%",
       end: "right left+=10%",
       invalidateOnRefresh: true,
       onEnter: () => {
@@ -641,24 +730,88 @@ document.addEventListener('DOMContentLoaded', function () {
       },
       onLeave: () => {
         service2Card2Animation.kill();
-        gsap.set(service2Card2Item, {
-          opacity: 0,
-        });
-        gsap.set(service2Card2Circle, {
-          strokeDashoffset: 300,
-        });
+        resetService2Card2Animation();
       },
       onEnterBack: () => {
         service2Card2Animation.restart();
       },
       onLeaveBack: () => {
         service2Card2Animation.kill();
-        gsap.set(service2Card2Item, {
-          opacity: 0,
-        });
-        gsap.set(service2Card2Circle, {
-          strokeDashoffset: 300,
-        });
+        resetService2Card2Animation();
+      },
+    });
+
+    //service2Card3のアニメーション設定
+    const service2Card3Animation = gsap.timeline({
+      paused: true,
+    }).to(service2Card3DspImage, {
+      ease: gsapScrollEasing,
+      keyframes: [
+        { duration: 0.2, opacity: 0.5, y: -10 },
+        { duration: 0.2, opacity: 1, y: 0 },
+      ],
+    }).to(service2Card3DspArrow, {
+      duration: 0.4,
+      ease: gsapScrollEasing,
+      clipPath: "inset(0 0% 0 0)",
+    }, "<0.1").to(service2Card3SspText, {
+      duration: 0.4,
+      ease: gsapScrollEasing,
+      opacity: 1,
+    }, "<0.1").to(service2Card3SspImage, {
+      ease: gsapScrollEasing,
+      keyframes: [
+        { duration: 0.2, opacity: 0.5, y: -10 },
+        { duration: 0.2, opacity: 1, y: 0 },
+      ],
+    }, "<0.1").to(service2Card3Middle, {
+      duration: 0.4,
+      ease: gsapScrollEasing,
+      opacity: 1,
+    }, "<0.1").to(service2Card3PlatformText, {
+      duration: 0.4,
+      ease: gsapScrollEasing,
+      opacity: 1,
+    }, "<0.1").to(service2Card3PlatformImage, {
+      ease: gsapScrollEasing,
+      keyframes: [
+        { duration: 0.2, opacity: 0.5, y: -5 },
+        { duration: 0.2, opacity: 1, y: 0 },
+      ],
+      stagger: {
+        each: 0.1,
+      }
+    }, "<0.1");
+
+    const resetService2Card3Animation = function () {
+      gsap.set([service2Card3DspImage, service2Card3SspText, service2Card3SspImage, service2Card3Middle, service2Card3PlatformText, service2Card3PlatformImage], {
+        opacity: 0,
+      });
+      gsap.set(service2Card3DspArrow, {
+        clipPath: "inset(0 100% 0 0)",
+      });
+    }
+
+    ScrollTrigger.create({
+      pinnedContainer: serviceDetail2,
+      containerAnimation: scrollServiceSecond,
+      trigger: service2Card3,
+      start: "left center+=20%",
+      end: "right left+=10%",
+      invalidateOnRefresh: true,
+      onEnter: () => {
+        service2Card3Animation.restart();
+      },
+      onLeave: () => {
+        service2Card3Animation.kill();
+        resetService2Card3Animation();
+      },
+      onEnterBack: () => {
+        service2Card3Animation.restart();
+      },
+      onLeaveBack: () => {
+        service2Card3Animation.kill();
+        resetService2Card3Animation();
       },
     });
 
