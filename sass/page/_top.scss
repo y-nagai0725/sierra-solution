@@ -1193,20 +1193,7 @@
 
     &__card {
       height: 16rem;
-      border-radius: 1.5rem;
-      background-color: $bg-gray;
-      box-shadow: $card-drop-shadow;
-      transition:
-        background-color 0.4s ease-out,
-        scale 0.4s ease-out;
       position: relative;
-
-      @media (any-hover: hover) {
-        &:hover {
-          background-color: $white;
-          scale: 1.05;
-        }
-      }
 
       &::before,
       &::after {
@@ -1255,6 +1242,30 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      position: relative;
+
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 1.5rem;
+        background-color: $bg-gray;
+        box-shadow: $card-drop-shadow;
+        transition:
+          background-color 0.4s ease-out,
+          scale 0.4s ease-out;
+        z-index: -1;
+      }
+
+      @media (any-hover: hover) {
+        &:hover::before {
+          background-color: $white;
+          scale: 1.05;
+        }
+      }
 
       @media screen and (min-width: 1024px) {
         padding: 5rem;
