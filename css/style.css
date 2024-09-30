@@ -2925,6 +2925,92 @@ a {
   align-items: center;
   position: relative;
 }
+#top .service__service-1-card-4-svg-wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+@media screen and (min-width: 1024px) {
+  #top .service__service-1-card-4-svg-wrapper {
+    gap: 5rem;
+  }
+}
+#top .service__circle-text {
+  width: 14rem;
+  height: 2.4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: clamp(11px, 1.1rem, 14px);
+  font-weight: 700;
+  border: 2px dotted #d0d0d0;
+  border-radius: 9999px;
+  position: relative;
+}
+#top .service__circle-text::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translate(1rem, -50%);
+  width: 1.2rem;
+  height: 1.2rem;
+  background: url(../images/top/service_check_sp.svg) center center/contain;
+}
+#top .service__circle-text::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translate(-50%, calc(100% + 0.55rem));
+}
+#top .service__circle-text:nth-of-type(1)::after, #top .service__circle-text:nth-of-type(2)::after {
+  width: 1rem;
+  height: 1rem;
+  background: url(../images/top/service_plus_sp.svg) center center/contain;
+}
+#top .service__circle-text:nth-of-type(3)::after {
+  width: 1rem;
+  height: 1.5rem;
+  background: url(../images/top/service_arrow_bottom_sp.svg) center center/contain;
+}
+@media screen and (min-width: 1024px) {
+  #top .service__circle-text {
+    width: 22rem;
+    height: 4rem;
+    font-size: clamp(14px, 1.6rem, 16px);
+    border: 3px dotted #d0d0d0;
+  }
+  #top .service__circle-text::before {
+    width: 2.2rem;
+    height: 2.2rem;
+  }
+  #top .service__circle-text::after {
+    transform: translate(-50%, calc(100% + 1.85rem));
+  }
+  #top .service__circle-text:nth-of-type(1)::after, #top .service__circle-text:nth-of-type(2)::after {
+    width: 1.6rem;
+    height: 1.6rem;
+    background: url(../images/top/service_plus_pc.svg) center center/contain;
+  }
+  #top .service__circle-text:nth-of-type(3)::after {
+    width: 1.6rem;
+    height: 2.4rem;
+    background: url(../images/top/service_arrow_bottom_pc.svg) center center/contain;
+  }
+}
+#top .service__dmp-image {
+  width: 14rem;
+}
+@media screen and (min-width: 1024px) {
+  #top .service__dmp-image {
+    width: 20.2rem;
+  }
+}
 #top .service__service-2-card-1-svg-wrapper {
   display: flex;
   align-items: center;
