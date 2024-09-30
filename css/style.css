@@ -2959,7 +2959,9 @@ a {
   transform: translate(1rem, -50%);
   width: 1.2rem;
   height: 1.2rem;
-  background: url(../images/top/service_check_sp.svg) center center/contain;
+  background-image: url(../images/top/service_check_sp.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 #top .service__circle-text::after {
   content: "";
@@ -2967,16 +2969,18 @@ a {
   left: 50%;
   bottom: 0;
   transform: translate(-50%, calc(100% + 0.55rem));
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 #top .service__circle-text:nth-of-type(1)::after, #top .service__circle-text:nth-of-type(2)::after {
   width: 1rem;
   height: 1rem;
-  background: url(../images/top/service_plus_sp.svg) center center/contain;
+  background-image: url(../images/top/service_plus_sp.svg);
 }
 #top .service__circle-text:nth-of-type(3)::after {
   width: 1rem;
   height: 1.5rem;
-  background: url(../images/top/service_arrow_bottom_sp.svg) center center/contain;
+  background-image: url(../images/top/service_arrow_bottom_sp.svg);
 }
 @media screen and (min-width: 1024px) {
   #top .service__circle-text {
@@ -2995,12 +2999,12 @@ a {
   #top .service__circle-text:nth-of-type(1)::after, #top .service__circle-text:nth-of-type(2)::after {
     width: 1.6rem;
     height: 1.6rem;
-    background: url(../images/top/service_plus_pc.svg) center center/contain;
+    background-image: url(../images/top/service_plus_pc.svg);
   }
   #top .service__circle-text:nth-of-type(3)::after {
     width: 1.6rem;
     height: 2.4rem;
-    background: url(../images/top/service_arrow_bottom_pc.svg) center center/contain;
+    background-image: url(../images/top/service_arrow_bottom_pc.svg);
   }
 }
 #top .service__dmp-image {
