@@ -1847,9 +1847,38 @@
       height: 100%;
       display: grid;
       place-content: center;
+    }
 
-      svg {
-        width: 100%;
+    &__service-1-card-1-svg,
+    &__service-1-card-2-svg,
+    &__service-1-card-3-svg {
+      width: 100%;
+
+      .balloon {
+        opacity: 0;
+      }
+
+      .balloon-icon {
+        opacity: 0;
+      }
+
+      .character {
+        opacity: 0;
+      }
+    }
+
+    &__service-1-card-2-svg{
+      .p-icon {
+        opacity: 0;
+      }
+    }
+
+    &__service-1-card-3-svg{
+      .coin-top,
+      .coin-middle,
+      .coin-bottom {
+        opacity: 0;
+        transform: translateY(-5px);
       }
     }
 

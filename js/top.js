@@ -81,6 +81,10 @@ document.addEventListener('DOMContentLoaded', function () {
   //現在のウィンドウ幅
   let currentWindowWidth = window.innerWidth;
 
+  //path初期化ターゲット
+  const initialPathTarget = document.querySelectorAll(".js-path-target");
+  const initialPathTargetReverse = document.querySelectorAll(".js-path-target-reverse");
+
   //Serviceセクション:Card
   const service1Card1 = document.getElementById("service__service-1-card-1");
   const service1Card2 = document.getElementById("service__service-1-card-2");
@@ -89,6 +93,36 @@ document.addEventListener('DOMContentLoaded', function () {
   const service2Card1 = document.getElementById("service__service-2-card-1");
   const service2Card2 = document.getElementById("service__service-2-card-2");
   const service2Card3 = document.getElementById("service__service-2-card-3");
+
+  //Serviceセクション:Service-1-card-1:SVG
+  const service1Card1SVG = document.getElementById("service__service-1-card-1-svg");
+  const service1Card1RectangleCorner = service1Card1SVG.querySelector(".rectangle-corner");
+  const service1Card1Balloon = service1Card1SVG.querySelector(".balloon");
+  const service1Card1BalloonIcon = service1Card1SVG.querySelector(".balloon-icon");
+  const service1Card1EmphasisMark = service1Card1SVG.querySelectorAll(".emphasis-mark");
+  const service1Card1CenterRectangle = service1Card1SVG.querySelector(".center-rectangle");
+  const service1Card1Character = service1Card1SVG.querySelectorAll(".character");
+  const service1Card1Line = service1Card1SVG.querySelectorAll(".line");
+
+  //Serviceセクション:Service-1-card-2:SVG
+  const service1Card2SVG = document.getElementById("service__service-1-card-2-svg");
+  const service1Card2RectangleCorner = service1Card2SVG.querySelector(".rectangle-corner");
+  const service1Card2Balloon = service1Card2SVG.querySelector(".balloon");
+  const service1Card2BalloonIcon = service1Card2SVG.querySelectorAll(".balloon-icon");
+  const service1Card2EmphasisMark = service1Card2SVG.querySelectorAll(".emphasis-mark");
+  const service1Card2PIcon = service1Card2SVG.querySelectorAll(".p-icon");
+  const service1Card2Character = service1Card2SVG.querySelectorAll(".character");
+
+  //Serviceセクション:Service-1-card-3:SVG
+  const service1Card3SVG = document.getElementById("service__service-1-card-3-svg");
+  const service1Card3RectangleCorner = service1Card3SVG.querySelector(".rectangle-corner");
+  const service1Card3Balloon = service1Card3SVG.querySelector(".balloon");
+  const service1Card3BalloonIcon = service1Card3SVG.querySelectorAll(".balloon-icon");
+  const service1Card3EmphasisMark = service1Card3SVG.querySelectorAll(".emphasis-mark");
+  const service1Card3Character = service1Card3SVG.querySelectorAll(".character");
+  const service1Card3CoinTop = service1Card3SVG.querySelectorAll(".coin-top");
+  const service1Card3CoinMiddle = service1Card3SVG.querySelectorAll(".coin-middle");
+  const service1Card3CoinBottom = service1Card3SVG.querySelectorAll(".coin-bottom");
 
   //Serviceセクション:Service-2-card-1:ドットサークル画像
   const dotCircleImage = document.getElementById("service__dot-circle");
@@ -400,6 +434,258 @@ document.addEventListener('DOMContentLoaded', function () {
         once: true,
       });
     });
+
+    //service1Card1のアニメーション設定
+    const service1Card1Animation = gsap.timeline({
+      paused: true,
+    }).to(service1Card1RectangleCorner, {
+      duration: 0.8,
+      ease: "liner",
+      strokeDashoffset: Math.ceil(service1Card1RectangleCorner.getTotalLength()),
+    }).to(service1Card1Balloon, {
+      duration: 0.4,
+      ease: gsapScrollEasing,
+      opacity: 1,
+    }, "-=0.3").to(service1Card1BalloonIcon, {
+      ease: gsapScrollEasing,
+      keyframes: [
+        { duration: 0.2, opacity: 0.5, y: -5 },
+        { duration: 0.2, opacity: 1, y: 0 },
+      ],
+    }, "<").to(service1Card1EmphasisMark, {
+      duration: 0.15,
+      ease: gsapScrollEasing,
+      strokeDashoffset: 0,
+      stagger: {
+        each: 0.1,
+      },
+    }, "<").to(service1Card1CenterRectangle, {
+      duration: 0.4,
+      ease: "liner",
+      strokeDashoffset: 0,
+    }, "<").to(service1Card1Character, {
+      ease: gsapScrollEasing,
+      keyframes: [
+        { duration: 0.2, opacity: 0.5, y: -5 },
+        { duration: 0.2, opacity: 1, y: 0 },
+      ],
+    }, "<").to(service1Card1Line, {
+      duration: 0.2,
+      ease: "liner",
+      strokeDashoffset: 0,
+      stagger: {
+        each: 0.1,
+      },
+    }, "<")
+
+    const resetService1Card1Animation = function () {
+      gsap.set(service1Card1RectangleCorner, {
+        strokeDashoffset: 0,
+      });
+      gsap.set([service1Card1Balloon, service1Card1BalloonIcon, service1Card1Character], {
+        opacity: 0,
+      });
+      service1Card1EmphasisMark.forEach(mark => {
+        gsap.set(mark, {
+          strokeDashoffset: Math.ceil(mark.getTotalLength()),
+        });
+      });
+      gsap.set(service1Card1CenterRectangle, {
+        strokeDashoffset: Math.ceil(service1Card1CenterRectangle.getTotalLength()),
+      });
+      service1Card1Line.forEach(line => {
+        gsap.set(line, {
+          strokeDashoffset: Math.ceil(line.getTotalLength()),
+        });
+      });
+    };
+
+    ScrollTrigger.create({
+      pinnedContainer: contentsWrapper,
+      trigger: service1Card1,
+      start: () => service1Card1.getBoundingClientRect().left + window.scrollY - window.innerWidth * 0.75,
+      end: () => "+=" + (window.innerWidth * 0.75 + service1Card1.offsetWidth),
+      invalidateOnRefresh: true,
+      onEnter: () => {
+        service1Card1Animation.restart();
+      },
+      onLeave: () => {
+        service1Card1Animation.kill();
+        resetService1Card1Animation();
+      },
+      onEnterBack: () => {
+        service1Card1Animation.restart();
+      },
+      onLeaveBack: () => {
+        service1Card1Animation.kill();
+        resetService1Card1Animation();
+      },
+    });
+
+    //service1Card2のアニメーション設定
+    const service1Card2Animation = gsap.timeline({
+      paused: true,
+    }).to(service1Card2RectangleCorner, {
+      duration: 0.8,
+      ease: "liner",
+      strokeDashoffset: Math.ceil(service1Card2RectangleCorner.getTotalLength()),
+    }).to(service1Card2Balloon, {
+      duration: 0.4,
+      ease: gsapScrollEasing,
+      opacity: 1,
+    }, "-=0.3").to(service1Card2BalloonIcon, {
+      ease: gsapScrollEasing,
+      keyframes: [
+        { duration: 0.2, opacity: 0.5, y: -5 },
+        { duration: 0.2, opacity: 1, y: 0 },
+      ],
+    }, "<").to(service1Card2EmphasisMark, {
+      duration: 0.15,
+      ease: gsapScrollEasing,
+      strokeDashoffset: 0,
+      stagger: {
+        each: 0.1,
+      },
+    }, "<").to(service1Card2PIcon, {
+      ease: gsapScrollEasing,
+      keyframes: [
+        { duration: 0.2, opacity: 0.5, y: -5 },
+        { duration: 0.2, opacity: 1, y: 0 },
+      ],
+    }, "<").to(service1Card2Character, {
+      duration: 0.4,
+      ease: gsapScrollEasing,
+      opacity: 1,
+    }, "<");
+
+    const resetService1Card2Animation = function () {
+      gsap.set(service1Card2RectangleCorner, {
+        strokeDashoffset: 0,
+      });
+      gsap.set([service1Card2Balloon, service1Card2BalloonIcon, service1Card2PIcon, service1Card2Character], {
+        opacity: 0,
+      });
+      service1Card2EmphasisMark.forEach(mark => {
+        gsap.set(mark, {
+          strokeDashoffset: Math.ceil(mark.getTotalLength()),
+        });
+      });
+    };
+
+    ScrollTrigger.create({
+      pinnedContainer: contentsWrapper,
+      trigger: service1Card2,
+      start: () => service1Card2.getBoundingClientRect().left + window.scrollY - window.innerWidth * 0.75,
+      end: () => "+=" + (window.innerWidth * 0.75 + service1Card2.offsetWidth),
+      invalidateOnRefresh: true,
+      onEnter: () => {
+        service1Card2Animation.restart();
+      },
+      onLeave: () => {
+        service1Card2Animation.kill();
+        resetService1Card2Animation();
+      },
+      onEnterBack: () => {
+        service1Card2Animation.restart();
+      },
+      onLeaveBack: () => {
+        service1Card2Animation.kill();
+        resetService1Card2Animation();
+      },
+    });
+
+    //service1Card3のアニメーション設定
+    const service1Card3Animation = gsap.timeline({
+      paused: true,
+    }).to(service1Card3RectangleCorner, {
+      duration: 0.8,
+      ease: "liner",
+      strokeDashoffset: Math.ceil(service1Card3RectangleCorner.getTotalLength()),
+    }).to(service1Card3Balloon, {
+      duration: 0.4,
+      ease: gsapScrollEasing,
+      opacity: 1,
+    }, "-=0.3").to(service1Card3BalloonIcon, {
+      ease: gsapScrollEasing,
+      keyframes: [
+        { duration: 0.2, opacity: 0.5, y: -5 },
+        { duration: 0.2, opacity: 1, y: 0 },
+      ],
+    }, "<").to(service1Card3EmphasisMark, {
+      duration: 0.15,
+      ease: gsapScrollEasing,
+      strokeDashoffset: 0,
+      stagger: {
+        each: 0.1,
+      },
+    }, "<").to(service1Card3Character, {
+      ease: gsapScrollEasing,
+      keyframes: [
+        { duration: 0.08, opacity: 0.5, y: -5 },
+        { duration: 0.08, opacity: 1, y: 0 },
+      ],
+      stagger: {
+        each: 0.08,
+      }
+    }, "<").to(service1Card3CoinBottom, {
+      duration: 0.2,
+      ease: gsapScrollEasing,
+      opacity: 1,
+      y: 0,
+    }, "<0.3").to(service1Card3CoinMiddle, {
+      duration: 0.2,
+      ease: gsapScrollEasing,
+      opacity: 1,
+      y: 0,
+    }, "<0.1").to(service1Card3CoinTop, {
+      duration: 0.2,
+      ease: gsapScrollEasing,
+      opacity: 1,
+      y: 0,
+    }, "<0.1");
+
+    const resetService1Card3Animation = function () {
+      gsap.set(service1Card3RectangleCorner, {
+        strokeDashoffset: 0,
+      });
+      gsap.set([service1Card3Balloon, service1Card3BalloonIcon, service1Card3Character], {
+        opacity: 0,
+      });
+      service1Card3EmphasisMark.forEach(mark => {
+        gsap.set(mark, {
+          strokeDashoffset: Math.ceil(mark.getTotalLength()),
+        });
+      });
+      gsap.set([service1Card3CoinBottom, service1Card3CoinMiddle, service1Card3CoinTop], {
+        opacity: 0,
+        y: -5,
+      });
+    };
+
+    ScrollTrigger.create({
+      pinnedContainer: contentsWrapper,
+      trigger: service1Card3,
+      start: () => service1Card3.getBoundingClientRect().left + window.scrollY - window.innerWidth * 0.75,
+      end: () => "+=" + (window.innerWidth * 0.75 + service1Card3.offsetWidth),
+      invalidateOnRefresh: true,
+      onEnter: () => {
+        service1Card3Animation.restart();
+      },
+      onLeave: () => {
+        service1Card3Animation.kill();
+        resetService1Card3Animation();
+      },
+      onEnterBack: () => {
+        service1Card3Animation.restart();
+      },
+      onLeaveBack: () => {
+        service1Card3Animation.kill();
+        resetService1Card3Animation();
+      },
+    });
+
+    //service1Card4のアニメーション設定
+
 
     //service2Card1のアニメーション設定
     ScrollTrigger.create({
@@ -1177,6 +1463,12 @@ document.addEventListener('DOMContentLoaded', function () {
       });
   }
 
+  function resetPathStorke(pathElement, reverse = false) {
+    const totalLength = Math.ceil(pathElement.getTotalLength());
+    pathElement.style.strokeDasharray = totalLength;
+    pathElement.style.strokeDashoffset = reverse ? 0 : totalLength;
+  }
+
   /**
    * videoにsourceを設定
    *
@@ -1231,6 +1523,14 @@ document.addEventListener('DOMContentLoaded', function () {
     if (window.scrollY === 0) {
       scrollCircle.classList.add("js-showed");
     }
+
+    //pathの初期化
+    initialPathTarget.forEach(path => {
+      resetPathStorke(path);
+    });
+    initialPathTargetReverse.forEach(path => {
+      resetPathStorke(path, true);
+    });
   }
 
   init();

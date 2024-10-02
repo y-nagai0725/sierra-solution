@@ -2950,8 +2950,26 @@ a {
   display: grid;
   place-content: center;
 }
-#top .service__service-1-card-1-svg-wrapper svg, #top .service__service-1-card-2-svg-wrapper svg, #top .service__service-1-card-3-svg-wrapper svg {
+#top .service__service-1-card-1-svg, #top .service__service-1-card-2-svg, #top .service__service-1-card-3-svg {
   width: 100%;
+}
+#top .service__service-1-card-1-svg .balloon, #top .service__service-1-card-2-svg .balloon, #top .service__service-1-card-3-svg .balloon {
+  opacity: 0;
+}
+#top .service__service-1-card-1-svg .balloon-icon, #top .service__service-1-card-2-svg .balloon-icon, #top .service__service-1-card-3-svg .balloon-icon {
+  opacity: 0;
+}
+#top .service__service-1-card-1-svg .character, #top .service__service-1-card-2-svg .character, #top .service__service-1-card-3-svg .character {
+  opacity: 0;
+}
+#top .service__service-1-card-2-svg .p-icon {
+  opacity: 0;
+}
+#top .service__service-1-card-3-svg .coin-top,
+#top .service__service-1-card-3-svg .coin-middle,
+#top .service__service-1-card-3-svg .coin-bottom {
+  opacity: 0;
+  transform: translateY(-5px);
 }
 #top .service__service-1-card-4-svg-wrapper {
   width: 100%;
