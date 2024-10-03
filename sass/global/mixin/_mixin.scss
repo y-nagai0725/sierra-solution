@@ -174,7 +174,7 @@
       background-color: $hovered-bg-color;
 
       span {
-        top: -15px;
+        top: calc(clamp(16px, 1.8rem, 18px) * -1);
 
         &::before {
           opacity: 1;

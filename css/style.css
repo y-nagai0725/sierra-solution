@@ -331,7 +331,7 @@ a {
     background-color: transparent;
   }
   .gnav__link--button:hover span {
-    top: -15px;
+    top: calc(clamp(16px, 1.8rem, 18px) * -1);
   }
   .gnav__link--button:hover span::before {
     opacity: 1;
@@ -2316,7 +2316,7 @@ a {
     background-color: #000;
   }
   #top .news__more-button:hover span {
-    top: -15px;
+    top: calc(clamp(16px, 1.8rem, 18px) * -1);
   }
   #top .news__more-button:hover span::before {
     opacity: 1;
@@ -2877,7 +2877,7 @@ a {
   position: absolute;
   top: 0;
   left: 0;
-  translate: -25% -25%;
+  translate: -35% -35%;
   width: 5rem;
   height: 5rem;
   border-radius: 9999px;
@@ -2985,19 +2985,18 @@ a {
     gap: 5rem;
   }
 }
-#top .service__circle-text {
+#top .service__dot-ellipse {
   width: 14rem;
   height: 2.4rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: clamp(11px, 1.1rem, 14px);
-  font-weight: 700;
   border: 2px dotted #d0d0d0;
   border-radius: 9999px;
   position: relative;
+  clip-path: inset(0% 0% 100% 0%);
 }
-#top .service__circle-text::before {
+#top .service__dot-ellipse::before {
   content: "";
   position: absolute;
   top: 50%;
@@ -3009,7 +3008,7 @@ a {
   background-size: contain;
   background-repeat: no-repeat;
 }
-#top .service__circle-text::after {
+#top .service__dot-ellipse::after {
   content: "";
   position: absolute;
   left: 50%;
@@ -3018,43 +3017,52 @@ a {
   background-size: contain;
   background-repeat: no-repeat;
 }
-#top .service__circle-text:nth-of-type(1)::after, #top .service__circle-text:nth-of-type(2)::after {
+#top .service__dot-ellipse:nth-of-type(1)::after, #top .service__dot-ellipse:nth-of-type(2)::after {
   width: 1rem;
   height: 1rem;
   background-image: url(../images/top/service_plus_sp.svg);
 }
-#top .service__circle-text:nth-of-type(3)::after {
+#top .service__dot-ellipse:nth-of-type(3)::after {
   width: 1rem;
   height: 1.5rem;
   background-image: url(../images/top/service_arrow_bottom_sp.svg);
 }
 @media screen and (min-width: 1024px) {
-  #top .service__circle-text {
+  #top .service__dot-ellipse {
     width: 22rem;
     height: 4rem;
-    font-size: clamp(14px, 1.6rem, 16px);
     border: 3px dotted #d0d0d0;
   }
-  #top .service__circle-text::before {
+  #top .service__dot-ellipse::before {
     width: 2.2rem;
     height: 2.2rem;
   }
-  #top .service__circle-text::after {
+  #top .service__dot-ellipse::after {
     transform: translate(-50%, calc(100% + 1.85rem));
   }
-  #top .service__circle-text:nth-of-type(1)::after, #top .service__circle-text:nth-of-type(2)::after {
+  #top .service__dot-ellipse:nth-of-type(1)::after, #top .service__dot-ellipse:nth-of-type(2)::after {
     width: 1.6rem;
     height: 1.6rem;
     background-image: url(../images/top/service_plus_pc.svg);
   }
-  #top .service__circle-text:nth-of-type(3)::after {
+  #top .service__dot-ellipse:nth-of-type(3)::after {
     width: 1.6rem;
     height: 2.4rem;
     background-image: url(../images/top/service_arrow_bottom_pc.svg);
   }
 }
+#top .service__dot-ellipse-text {
+  font-size: clamp(11px, 1.1rem, 14px);
+  font-weight: 700;
+}
+@media screen and (min-width: 1024px) {
+  #top .service__dot-ellipse-text {
+    font-size: clamp(14px, 1.6rem, 16px);
+  }
+}
 #top .service__dmp-image {
   width: 14rem;
+  opacity: 0;
 }
 @media screen and (min-width: 1024px) {
   #top .service__dmp-image {
@@ -3079,6 +3087,7 @@ a {
   position: absolute;
   width: 2.2rem;
   height: 2.2rem;
+  overflow: visible;
 }
 #top .service__circle-person--top {
   top: 0;
@@ -3778,7 +3787,7 @@ a {
     background-color: transparent;
   }
   #top .contact__button-link:hover span {
-    top: -15px;
+    top: calc(clamp(16px, 1.8rem, 18px) * -1);
   }
   #top .contact__button-link:hover span::before {
     opacity: 1;

@@ -1760,7 +1760,7 @@
         position: absolute;
         top: 0;
         left: 0;
-        translate: -25% -25%;
+        translate: -35% -35%;
         width: 5rem;
         height: 5rem;
         border-radius: 9999px;
@@ -1896,17 +1896,16 @@
       }
     }
 
-    &__circle-text {
+    &__dot-ellipse {
       width: 14rem;
       height: 2.4rem;
       display: flex;
       justify-content: center;
       align-items: center;
-      font-size: clamp(11px, 1.1rem, 14px);
-      font-weight: 700;
       border: 2px dotted $line-gray;
       border-radius: 9999px;
       position: relative;
+      clip-path: inset(0% 0% 100% 0%);
 
       &::before {
         content: "";
@@ -1947,7 +1946,6 @@
       @media screen and (min-width: 1024px) {
         width: 22rem;
         height: 4rem;
-        font-size: clamp(14px, 1.6rem, 16px);
         border: 3px dotted $line-gray;
 
         &::before {
@@ -1974,8 +1972,18 @@
       }
     }
 
+    &__dot-ellipse-text {
+      font-size: clamp(11px, 1.1rem, 14px);
+      font-weight: 700;
+
+      @media screen and (min-width: 1024px) {
+        font-size: clamp(14px, 1.6rem, 16px);
+      }
+    }
+
     &__dmp-image {
       width: 14rem;
+      opacity: 0;
 
       @media screen and (min-width: 1024px) {
         width: 20.2rem;
@@ -2006,6 +2014,7 @@
       position: absolute;
       width: 2.2rem;
       height: 2.2rem;
+      overflow: visible;
 
       &--top {
         top: 0;
