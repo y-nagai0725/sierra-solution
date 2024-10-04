@@ -967,7 +967,7 @@
     }
 
     &__value-text {
-      font-size: clamp(13px, 1.3rem, 20px);
+      font-size: clamp(12px, 1.2rem, 20px);
       letter-spacing: 0.05em;
 
       @media screen and (min-width: 1024px) {
@@ -978,44 +978,25 @@
         padding: 0.8rem 1.6rem;
         border-radius: 9999px;
         box-shadow: $bg-drop-shadow;
-        transition:
-          background-color,
-          box-shadow 0.4s ease-out;
 
         @media screen and (min-width: 1024px) {
           padding: 1.3rem 2.2rem;
         }
+      }
+    }
 
-        span {
-          position: relative;
-          font-weight: 700;
-          bottom: -10px;
-          opacity: 0;
-          transition:
-            opacity,
-            bottom 0.4s ease-out;
-        }
+    &__value-character-wrapper {
+      display: block;
+      overflow: hidden;
+    }
 
-        &.js-show-box {
-          background-color: $white;
-          box-shadow: none;
+    &__value-character {
+      display: block;
+      font-weight: 700;
+      transform: translateY(calc(clamp(13px, 1.3rem, 20px) * 1.5));
 
-          span {
-            bottom: 0;
-            opacity: 1;
-          }
-        }
-
-        @for $i from 0 to 10 {
-          &.js-delay#{$i} {
-            $delay: $i * 0.2;
-            transition-delay: #{$delay}s;
-
-            span {
-              transition-delay: #{$delay}s;
-            }
-          }
-        }
+      @media screen and (min-width: 1024px) {
+        transform: translateY(calc(clamp(20px, 2.5rem, 25px) * 1.5));
       }
     }
   }
@@ -1705,7 +1686,7 @@
         width: 8.4rem;
         height: 9.66rem;
         background: url(../images/top/service_raitensokusin.svg) center center / cover;
-        clip-path: inset(0 100% 0 0);
+        clip-path: inset(100% 0 0 0);
         transition: clip-path 0.4s ease-out;
       }
 
@@ -1867,13 +1848,13 @@
       }
     }
 
-    &__service-1-card-2-svg{
+    &__service-1-card-2-svg {
       .p-icon {
         opacity: 0;
       }
     }
 
-    &__service-1-card-3-svg{
+    &__service-1-card-3-svg {
       .coin-top,
       .coin-middle,
       .coin-bottom {

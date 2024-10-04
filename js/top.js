@@ -21,38 +21,57 @@ document.addEventListener('DOMContentLoaded', function () {
   //トップへ戻るボタン
   const pageTopButton = document.getElementById("footer__page-top-button");
 
-  //画面上部メニューエリア:PC
+  //画面上部メニューエリア(PCのみ)
   const topMenu = document.getElementById("top-menu");
+  const topMenuNav = document.getElementById("top-menu__nav");
 
-  //画面下部メニューエリア:PC
+  //画面下部メニューエリア(PCのみ)
   const bottomMenu = document.getElementById("bottom-menu");
+  const information = document.getElementById("bottom-menu__information-list");
+  const scrollCircle = document.getElementById("bottom-menu__scroll-circle");
+
+  //画面下部プログレスバー(PCのみ)
+  const progressBar = document.getElementById("progress-bar");
+  const progressBarProperty = "--bar-scale";
 
   //背景video
   const bgVideo = document.getElementById("bg-video");
 
-  //GSAPメディアクエリ
-  const mm = gsap.matchMedia();
+  //メインコンテンツ
+  const contentsWrapper = document.getElementById("contents-wrapper");
+  const contents = document.getElementById("contents");
 
-  //GSAPでのスクロールのeasing
-  const gsapScrollEasing = "power2.out";
+  //見出し
+  const titles = [...document.getElementsByClassName("js-title")];
 
-  //GSAPでのスクロールのduration
-  const gsapScrollDuration = 0.8;
+  //video要素
+  const videos = [...document.querySelectorAll("video")];
 
-  //GSAPでのscrub値
-  const gsapScrubValue = 1;
+  //section要素
+  const sectionList = [...document.getElementsByTagName("section")];
+
+  //アンカーリンク
+  const links = document.querySelectorAll("a[href^='#']");
+
+  //path初期化ターゲット
+  const initialPathTarget = document.querySelectorAll(".js-path-target");
+  const initialPathTargetReverse = document.querySelectorAll(".js-path-target-reverse");
 
   //背景アニメーション対象要素
   const bgAnimationTargets = [...document.querySelectorAll("[class$='__background']")];
 
-  //見出し
-  const titles = [...document.getElementsByClassName("js-title")];
+  //OP画面
+  const opening = document.getElementById("opening");
+  const openingProgressLine = [...document.getElementsByClassName("opening__progress-line")];
 
   //FV:ロゴ
   const fvLogo = document.getElementById("fv__logo");
 
   //FV:キャッチコピー文字
   const fvCatchcopyCharacters = [...document.getElementsByClassName("fv__character")];
+
+  //Index
+  const indexSection = document.getElementById("index");
 
   //whoセクション:introduction
   const whoIntroduction = document.getElementById("who__introduction");
@@ -63,6 +82,30 @@ document.addEventListener('DOMContentLoaded', function () {
   //Whoセクション:円
   const whoCircle = document.getElementById("who__circle");
 
+  //Whoセクション:Value
+  const whoValue = document.getElementById("who__value");
+  const whoValueTextBox = gsap.utils.toArray(".who__value-text--box");
+  const whoValueCharacter = gsap.utils.toArray(".who__value-character");
+
+  //Newsセクション
+  const newsContents = document.getElementById("news__contents");
+  const newsScrollTarget = gsap.utils.toArray(".js-news-scroll");
+  const newsCardList = document.getElementById("news__card-list");
+  const categorySelectBox = document.getElementById("news__select");
+  const categoryList = {
+    "all": "All",
+    "event": "イベント",
+    "notice": "お知らせ",
+    "release": "プレリリース",
+  };
+
+  //Serviceセクション
+  const serviceDetail1 = document.getElementById("service__detail-1");
+  const serviceDetail2 = document.getElementById("service__detail-2");
+  const serviceList1 = document.getElementById("service__detail-list-1");
+  const serviceList2 = document.getElementById("service__detail-list-2");
+  const serviceWrapper = document.getElementById("service__service-wrapper");
+
   //Serviceセクション:全ての詳細カード
   const serviceDetailCards = [...document.getElementsByClassName("service__detail-item")];
 
@@ -71,19 +114,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
   //Serviceセクション:service2の詳細カード
   const serviceSecondDetailCards = [...document.querySelectorAll(".service__second .service__detail-item")];
-
-  //Serviceセクション:画像エリア
-  const serviceImageArea = document.getElementById("service__image-area");
-
-  //video要素
-  const videos = [...document.querySelectorAll("video")];
-
-  //現在のウィンドウ幅
-  let currentWindowWidth = window.innerWidth;
-
-  //path初期化ターゲット
-  const initialPathTarget = document.querySelectorAll(".js-path-target");
-  const initialPathTargetReverse = document.querySelectorAll(".js-path-target-reverse");
 
   //Serviceセクション:Service-1-card-1
   const service1Card1 = document.getElementById("service__service-1-card-1");
@@ -144,37 +174,29 @@ document.addEventListener('DOMContentLoaded', function () {
   const service2Card3PlatformText = document.getElementById("service__platform-text");
   const service2Card3PlatformImage = document.getElementsByClassName("service__platform-image");
 
+  //Serviceセクション:画像エリア
+  const serviceImageArea = document.getElementById("service__image-area");
+
+  //Companyセクション
   const companySection = document.getElementById("company");
-  const opening = document.getElementById("opening");
-  const openingProgressLine = [...document.getElementsByClassName("opening__progress-line")];
-  const scrollCircle = document.getElementById("bottom-menu__scroll-circle");
-  const indexSection = document.getElementById("index");
-  const contentsWrapper = document.getElementById("contents-wrapper");
-  const contents = document.getElementById("contents");
-  const serviceDetail1 = document.getElementById("service__detail-1");
-  const serviceDetail2 = document.getElementById("service__detail-2");
-  const serviceList1 = document.getElementById("service__detail-list-1");
-  const serviceList2 = document.getElementById("service__detail-list-2");
-  const serviceWrapper = document.getElementById("service__service-wrapper");
-  const topMenuNav = document.getElementById("top-menu__nav");
-  const whoValue = document.getElementById("who__value");
-  const whoValueTextBox = gsap.utils.toArray(".who__value-text--box");
-  const progressBar = document.getElementById("progress-bar");
-  const progressBarProperty = "--bar-scale";
-  const newsCardList = document.getElementById("news__card-list");
-  const information = document.getElementById("bottom-menu__information-list");
-  const sectionList = [...document.getElementsByTagName("section")];
-  const categorySelectBox = document.getElementById("news__select");
-  const categoryList = {
-    "all": "All",
-    "event": "イベント",
-    "notice": "お知らせ",
-    "release": "プレリリース",
-  };
-  const newsContents = document.getElementById("news__contents");
-  const newsScrollTarget = gsap.utils.toArray(".js-news-scroll");
-  const links = document.querySelectorAll("a[href^='#']");
-  let horizontalScrollTween;
+
+  //GSAPメディアクエリ
+  const mm = gsap.matchMedia();
+
+  //GSAPでのスクロールのeasing
+  const gsapScrollEasing = "power2.out";
+
+  //GSAPでのスクロールのduration
+  const gsapScrollDuration = 0.8;
+
+  //GSAPでのscrub値
+  const gsapScrubValue = 1;
+
+  //現在のウィンドウ幅
+  let currentWindowWidth = window.innerWidth;
+
+  //Whoセクション:Valueテキスト表示フラグ
+  let isShowedValueTextBox = false;
 
   //ウィンドウリサイズ時処理
   window.addEventListener("resize", function () {
@@ -183,6 +205,7 @@ document.addEventListener('DOMContentLoaded', function () {
       closeGnavMenu();
     }
 
+    //PC -> SP表示またはSP -> PC表示への切り替え時にvideo要素のsource設定変更処理
     if (((currentWindowWidth < breakPoint) && (window.innerWidth >= breakPoint)) || ((currentWindowWidth >= breakPoint) && (window.innerWidth < breakPoint))) {
       videos.forEach(video => {
         setVideoSource(video, video.dataset.baseSrc);
@@ -222,7 +245,7 @@ document.addEventListener('DOMContentLoaded', function () {
     gsap.to(window, {
       duration: gsapScrollDuration,
       ease: gsapScrollEasing,
-      scrollTo: {
+      scrollTo: { //画面最上部へスクロールさせる
         y: 0,
       },
       onComplete: () => {
@@ -295,7 +318,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   //横スクロールGSAP設定:PC
   mm.add("(min-width: 1024px)", () => {
-    horizontalScrollTween = gsap.timeline({
+    gsap.timeline({
       scrollTrigger: {
         trigger: contentsWrapper,
         start: "top top",
@@ -311,16 +334,16 @@ document.addEventListener('DOMContentLoaded', function () {
     }).to(contents, {
       x: () => -(contents.scrollWidth - window.innerWidth),
       ease: "none",
-    }, "horizontalScroll").to(bottomMenu, {
+    }).to(bottomMenu, {
       x: () => (contents.scrollWidth - window.innerWidth),
       ease: "none",
-    }, "horizontalScroll").to(topMenu, {
+    }, "<").to(topMenu, {
       x: () => (contents.scrollWidth - window.innerWidth),
       ease: "none",
-    }, "horizontalScroll").to(bgVideo, {
+    }, "<").to(bgVideo, {
       x: () => (contents.scrollWidth - window.innerWidth),
       ease: "none",
-    }, "horizontalScroll");
+    }, "<");
   });
 
   //横スクロールGSAP設定クリア:SP
@@ -1658,10 +1681,44 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   function showValueTextBox() {
-    whoValueTextBox.forEach((box, index) => {
-      box.classList.add("js-show-box");
-      box.classList.add("js-delay" + index);
-    });
+    //既に表示されている場合は何もしない
+    if (isShowedValueTextBox) return;
+
+    //テキスト表示アニメーション
+    gsap.timeline().to(whoValueTextBox, {
+      duration: 0.6,
+      ease: gsapScrollEasing,
+      keyframes: {
+        "0%": {
+          scale: 1,
+          backgroundColor: "transparent",
+          boxShadow: "inset 0 1px 6px 0 rgba(0, 0, 0, 0.16), 0 -5px 10px 0 rgba(255, 255, 255, 0.44)",
+        },
+        "50%": {
+          scale: 0.8,
+          backgroundColor: "transparent",
+          boxShadow: "inset 0 1px 6px 0 rgba(0, 0, 0, 0.16), 0 -5px 10px 0 rgba(255, 255, 255, 0.44)",
+        },
+        "100%": {
+          scale: 1,
+          backgroundColor: "#fff",
+          boxShadow: "none",
+        },
+      },
+      stagger: {
+        each: 0.3,
+      },
+    }).to(whoValueCharacter, {
+      duration: 0.3,
+      ease: gsapScrollEasing,
+      y: 0,
+      stagger: {
+        each: 0.3,
+      },
+    }, "<0.3");
+
+    //フラグ更新
+    isShowedValueTextBox = true;
   }
 
   function removeClass(targetElement, regExpString, option) {
