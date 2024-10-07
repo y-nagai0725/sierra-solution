@@ -554,7 +554,11 @@
       gap: 1.2rem;
 
       @media screen and (min-width: 1024px) {
-        width: 51rem;
+        width: 400px;
+      }
+
+      @media screen and (min-width: 1440px) {
+        width: 510px;
       }
     }
 
@@ -620,7 +624,6 @@
         font-size: clamp(14px, 1.7rem, 17px);
         position: relative;
         display: block;
-        width: 10rem;
 
         &::before {
           content: attr(data-mask);

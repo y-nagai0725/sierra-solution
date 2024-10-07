@@ -1319,7 +1319,12 @@ a {
 }
 @media screen and (min-width: 1024px) {
   #top .index__list {
-    width: 51rem;
+    width: 400px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  #top .index__list {
+    width: 510px;
   }
 }
 #top .index__link {
@@ -1379,7 +1384,6 @@ a {
     font-size: clamp(14px, 1.7rem, 17px);
     position: relative;
     display: block;
-    width: 10rem;
   }
   #top .index__section-number::before {
     content: attr(data-mask);
