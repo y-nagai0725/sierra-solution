@@ -377,7 +377,7 @@ document.addEventListener('DOMContentLoaded', function () {
       scrollTrigger: {
         pinnedContainer: contentsWrapper,
         trigger: whoValue,
-        start: () => whoValue.getBoundingClientRect().left + window.scrollY - 100,
+        start: () => whoValue.getBoundingClientRect().left + window.scrollY - 140,
         end: "+=900",
         scrub: gsapScrubValue,
         invalidateOnRefresh: true,

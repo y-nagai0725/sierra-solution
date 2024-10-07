@@ -16,13 +16,16 @@
 }
 
 @mixin section-common {
-  padding-bottom: 16rem;
+  padding-top: 8rem;
+  padding-bottom: 8rem;
   position: relative;
   z-index: 2;
 
   @media screen and (min-width: 1024px) {
     height: 100%;
+    padding-top: 0;
     padding-bottom: 0;
+    padding-left: 22rem;
     padding-right: 22rem;
     flex-shrink: 0;
   }
@@ -66,7 +69,7 @@
   transition: transform 0.6s ease-out;
 
   @media screen and (min-width: 1024px) {
-    font-size: clamp(130px, 17rem, 170px);
+    font-size: clamp(17rem, 17rem, 170px);
   }
 }
 
@@ -84,7 +87,7 @@
   @include section-title;
 
   @media screen and (min-width: 1024px) {
-    font-size: clamp(70px, 9.8rem, 98px);
+    font-size: clamp(9.8rem, 9.8rem, 98px);
   }
 }
 
