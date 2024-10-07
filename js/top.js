@@ -1893,15 +1893,19 @@ document.addEventListener('DOMContentLoaded', function () {
    */
   function showFirstView() {
     const tl = gsap.timeline();
-    tl.to(fvLogo, {
-      opacity: 1
-    }).to(fvCatchcopyCharacters, {
+    tl.to(fvCatchcopyCharacters, {
+      ease: gsapScrollEasing,
+      duration: 0.6,
       y: 0,
       opacity: 1,
       stagger: {
         each: 0.05,
       },
-    }, "<");
+    }).to(fvLogo, {
+      ease: gsapScrollEasing,
+      duration: 0.6,
+      opacity: 1
+    },"<");
   }
 
   //初期実行処理
