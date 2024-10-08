@@ -270,13 +270,13 @@ a {
 .gnav__menu {
   width: calc(100% - 6.5rem);
   height: 100vh;
-  padding-top: 8rem;
   background-color: #fff;
   position: absolute;
   left: 100vw;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   transition: left 0.4s ease-out;
 }
 .gnav__menu.js-opened {
@@ -285,13 +285,23 @@ a {
 .gnav__logo {
   width: 20rem;
   height: 4rem;
-  margin-bottom: 8rem;
+  margin-bottom: 7rem;
+}
+@media screen and (min-width: 768px) {
+  .gnav__logo {
+    margin-bottom: 4rem;
+  }
 }
 .gnav__list {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 2rem;
+}
+@media screen and (min-width: 768px) {
+  .gnav__list {
+    gap: 1rem;
+  }
 }
 .gnav__link {
   padding: 1rem;
@@ -310,7 +320,7 @@ a {
 }
 .gnav__link--button span {
   font-family: "Montserrat", sans-serif;
-  font-size: clamp(13px, 1.3rem, 16px);
+  font-size: clamp(13px, 1.3rem, 22px);
   letter-spacing: -0.04em;
   color: #efefef;
   position: relative;
@@ -376,7 +386,7 @@ a {
 }
 .gnav__title {
   font-family: "Montserrat", sans-serif;
-  font-size: clamp(17px, 1.7rem, 30px);
+  font-size: clamp(17px, 1.7rem, 24px);
   position: relative;
 }
 .gnav__title--white {
@@ -402,13 +412,19 @@ a {
   transition: border 0.4s ease-out;
   z-index: 102;
 }
+@media screen and (min-width: 768px) {
+  .hamburger-button {
+    width: 3.4rem;
+    height: 3.4rem;
+  }
+}
 @media screen and (min-width: 1024px) {
   .hamburger-button {
     display: none;
   }
 }
 .hamburger-button::before, .hamburger-button::after {
-  width: 2rem;
+  width: 45%;
   height: 1px;
   content: "";
   position: absolute;
@@ -418,11 +434,11 @@ a {
 }
 .hamburger-button::before {
   background-color: #82be28;
-  translate: -50% calc(-50% - 0.4rem);
+  translate: -50% calc(-50% - 0.3rem);
 }
 .hamburger-button::after {
   background-color: #cc0033;
-  translate: -50% calc(-50% + 0.4rem);
+  translate: -50% calc(-50% + 0.3rem);
 }
 .hamburger-button.js-opened {
   border: 1px solid #000;
@@ -1205,7 +1221,7 @@ a {
 }
 #top .fv__character {
   display: inline-block;
-  font-size: clamp(28px, 2.8rem, 46px);
+  font-size: clamp(26px, 2.6rem, 46px);
   font-weight: 700;
   opacity: 0;
   transform: translateY(0.5em);
@@ -2282,7 +2298,7 @@ a {
 }
 #top .news__more-button span {
   font-family: "Montserrat", sans-serif;
-  font-size: clamp(13px, 1.3rem, 16px);
+  font-size: clamp(13px, 1.3rem, 22px);
   letter-spacing: -0.04em;
   color: #000;
   position: relative;
@@ -3766,7 +3782,7 @@ a {
 }
 #top .contact__button-link span {
   font-family: "Montserrat", sans-serif;
-  font-size: clamp(13px, 1.3rem, 16px);
+  font-size: clamp(13px, 1.3rem, 22px);
   letter-spacing: -0.04em;
   color: #efefef;
   position: relative;

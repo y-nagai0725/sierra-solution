@@ -14,13 +14,13 @@
   &__menu {
     width: calc(100% - 6.5rem);
     height: 100vh;
-    padding-top: 8rem;
     background-color: $white;
     position: absolute;
     left: 100vw;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     transition: left 0.4s ease-out;
 
     &.js-opened {
@@ -31,7 +31,11 @@
   &__logo {
     width: 20rem;
     height: 4rem;
-    margin-bottom: 8rem;
+    margin-bottom: 7rem;
+
+    @media screen and (min-width: 768px) {
+      margin-bottom: 4rem;
+    }
   }
 
   &__list {
@@ -39,6 +43,10 @@
     flex-direction: column;
     align-items: center;
     gap: 2rem;
+
+    @media screen and (min-width: 768px) {
+      gap: 1rem;
+    }
   }
 
   &__link {
@@ -50,7 +58,7 @@
 
   &__title {
     font-family: $montserrat;
-    font-size: clamp(17px, 1.7rem, 30px);
+    font-size: clamp(17px, 1.7rem, 24px);
     position: relative;
 
     &--white {
@@ -80,13 +88,18 @@
   transition: border 0.4s ease-out;
   z-index: 102;
 
+  @media screen and (min-width: 768px) {
+    width: 3.4rem;
+    height: 3.4rem;
+  }
+
   @media screen and (min-width: 1024px) {
     display: none;
   }
 
   &::before,
   &::after {
-    width: 2rem;
+    width: 45%;
     height: 1px;
     content: "";
     position: absolute;
@@ -99,12 +112,12 @@
 
   &::before {
     background-color: $green;
-    translate: -50% calc(-50% - 0.4rem);
+    translate: -50% calc(-50% - 0.3rem);
   }
 
   &::after {
     background-color: $red;
-    translate: -50% calc(-50% + 0.4rem);
+    translate: -50% calc(-50% + 0.3rem);
   }
 
   &.js-opened {
