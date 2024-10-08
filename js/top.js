@@ -377,7 +377,7 @@ document.addEventListener('DOMContentLoaded', function () {
       scrollTrigger: {
         pinnedContainer: contentsWrapper,
         trigger: whoValue,
-        start: () => whoValue.getBoundingClientRect().left + window.scrollY - 140,
+        start: () => whoValue.getBoundingClientRect().left + window.scrollY - 100,
         end: "+=1000",
         scrub: gsapScrubValue,
         invalidateOnRefresh: true,
@@ -1791,7 +1791,7 @@ document.addEventListener('DOMContentLoaded', function () {
             },
           }).to(newsCard, {
             keyframes: [
-              { duration: 0.6, opacity: 0.5, xPercent: -3 },
+              { duration: 0.6, opacity: 0.5, xPercent: -4 },
               { duration: 0.6, opacity: 1, xPercent: 0 },
             ],
             ease: gsapScrollEasing,
@@ -1816,12 +1816,12 @@ document.addEventListener('DOMContentLoaded', function () {
             },
           }).to(newsCard, {
             keyframes: [
-              { duration: 0.4, opacity: 0.5, yPercent: -3 },
-              { duration: 0.4, opacity: 1, yPercent: 0 },
+              { duration: 0.6, opacity: 0.5, yPercent: -4 },
+              { duration: 0.6, opacity: 1, yPercent: 0 },
             ],
             ease: gsapScrollEasing,
             stagger: {
-              each: 0.2,
+              each: 0.3,
             },
           });
         });

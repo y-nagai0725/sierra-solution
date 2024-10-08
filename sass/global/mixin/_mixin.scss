@@ -210,6 +210,7 @@
   @media screen and (min-width: 1024px) {
     padding: 2rem 2.5rem;
     width: 21rem;
+    min-width: 150px;
     border-radius: 5rem;
 
     span {
@@ -254,8 +255,8 @@
       top: 50%;
       left: 0;
       translate: 0 -50%;
-      width: 160rem;
-      height: 160rem;
+      width: 1600px;
+      height: 1600px;
       clip-path: circle(50% at left);
     }
   }

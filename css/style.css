@@ -368,6 +368,7 @@ a {
   .gnav__link--button {
     padding: 2rem 2.5rem;
     width: 21rem;
+    min-width: 150px;
     border-radius: 5rem;
   }
   .gnav__link--button span {
@@ -869,8 +870,8 @@ a {
 }
 @media screen and (min-width: 1024px) {
   #top .top-menu__logo-link {
-    width: 20rem;
-    height: 4rem;
+    width: 200px;
+    height: 40px;
   }
 }
 @media screen and (min-width: 1024px) {
@@ -1633,8 +1634,8 @@ a {
     top: 50%;
     left: 0;
     translate: 0 -50%;
-    width: 160rem;
-    height: 160rem;
+    width: 1600px;
+    height: 1600px;
     clip-path: circle(50% at left);
   }
 }
@@ -1830,8 +1831,8 @@ a {
     top: 50%;
     left: 0;
     translate: 0 -50%;
-    width: 160rem;
-    height: 160rem;
+    width: 1600px;
+    height: 1600px;
     clip-path: circle(50% at left);
   }
 }
@@ -1845,8 +1846,8 @@ a {
   #top .who__value {
     height: 100%;
     flex-direction: row;
-    gap: 30rem;
-    padding: 0 150rem 0 30rem;
+    gap: 15rem;
+    padding: 0 160rem 0 30rem;
   }
 }
 #top .who__value-subtitle-wrapper {
@@ -1943,6 +1944,7 @@ a {
   padding-bottom: 8rem;
   position: relative;
   z-index: 2;
+  padding-bottom: 16rem;
 }
 @media screen and (min-width: 1024px) {
   #top .news {
@@ -1956,6 +1958,7 @@ a {
 }
 @media screen and (min-width: 1024px) {
   #top .news {
+    padding-bottom: 0;
     padding-right: 56rem;
   }
 }
@@ -2204,8 +2207,10 @@ a {
 }
 @media screen and (min-width: 1024px) {
   #top .news__card {
-    width: 46rem;
+    width: 45rem;
     height: 30rem;
+    min-width: 300px;
+    min-height: 200px;
   }
   #top .news__card::before, #top .news__card::after {
     width: 0.6rem;
@@ -2261,6 +2266,10 @@ a {
   }
 }
 #top .news__text {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
   font-size: clamp(13px, 1.3rem, 18px);
   letter-spacing: 0.05em;
   line-height: 1.85;
@@ -2272,7 +2281,7 @@ a {
 }
 #top .news__tag {
   width: fit-content;
-  padding: 0.3rem 0.5rem;
+  padding: 0.5rem;
   border: 1px solid #000;
   border-radius: 3px;
   font-size: clamp(10px, 1rem, 12px);
@@ -2346,6 +2355,7 @@ a {
   #top .news__more-button {
     padding: 2rem 2.5rem;
     width: 21rem;
+    min-width: 150px;
     border-radius: 5rem;
   }
   #top .news__more-button span {
@@ -2782,8 +2792,8 @@ a {
     top: 50%;
     left: 0;
     translate: 0 -50%;
-    width: 160rem;
-    height: 160rem;
+    width: 1600px;
+    height: 1600px;
     clip-path: circle(50% at left);
   }
 }
@@ -3830,6 +3840,7 @@ a {
   #top .contact__button-link {
     padding: 2rem 2.5rem;
     width: 21rem;
+    min-width: 150px;
     border-radius: 5rem;
   }
   #top .contact__button-link span {
