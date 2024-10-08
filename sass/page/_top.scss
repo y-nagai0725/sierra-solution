@@ -422,6 +422,7 @@
 
   .fv {
     @include section-common;
+    padding-top: 0;
     padding-bottom: 0;
     height: 100svh;
     position: relative;
@@ -946,11 +947,16 @@
       align-items: center;
       gap: 4rem;
 
+      @media screen and (min-width: 768px) {
+        padding: 5rem 2.5rem 0 2.5rem;
+        gap: 2.8rem;
+      }
+
       @media screen and (min-width: 1024px) {
         height: 100%;
         flex-direction: row;
         gap: 30rem;
-        padding: 0 120rem 0 30rem;
+        padding: 0 150rem 0 30rem;
       }
     }
 
@@ -1000,6 +1006,10 @@
         padding: 1rem 1.6rem;
         border-radius: 9999px;
         box-shadow: $bg-drop-shadow;
+
+        @media screen and (min-width: 768px) {
+          padding: 0.8rem 1.4rem;
+        }
 
         @media screen and (min-width: 1024px) {
           padding: 1.3rem 2.2rem;

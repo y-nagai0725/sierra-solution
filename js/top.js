@@ -190,7 +190,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const gsapScrollDuration = 0.8;
 
   //GSAPでのscrub値
-  const gsapScrubValue = 1;
+  const gsapScrubValue = 0.8;
 
   //現在のウィンドウ幅
   let currentWindowWidth = window.innerWidth;
@@ -372,13 +372,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
     //value部分
     gsap.to(whoValue, {
-      x: 900,
+      x: 1000,
       ease: "none",
       scrollTrigger: {
         pinnedContainer: contentsWrapper,
         trigger: whoValue,
         start: () => whoValue.getBoundingClientRect().left + window.scrollY - 140,
-        end: "+=900",
+        end: "+=1000",
         scrub: gsapScrubValue,
         invalidateOnRefresh: true,
         onUpdate: (self) => {
@@ -408,13 +408,13 @@ document.addEventListener('DOMContentLoaded', function () {
     //value部分
     ScrollTrigger.create({
       trigger: whoValue,
-      start: "top top+=7%",
+      start: "top top+=5%",
       end: "+=700",
       pin: true,
       scrub: gsapScrubValue,
       invalidateOnRefresh: true,
       onUpdate: (self) => {
-        if (self.progress >= 0.5) {
+        if (self.progress >= 0.4) {
           showValueTextBox();
         }
       },
