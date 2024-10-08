@@ -862,7 +862,7 @@ a {
 @media screen and (min-width: 1024px) {
   #top .top-menu {
     position: fixed;
-    padding: 3rem 0 0 4rem;
+    padding: 2.4rem 0 0 4rem;
     display: flex;
     gap: 15rem;
     z-index: 3;
@@ -899,7 +899,7 @@ a {
     display: flex;
     align-items: center;
     gap: 1.4rem;
-    font-size: clamp(16px, 1.8rem, 18px);
+    font-size: 16px;
     transition: opacity 0.2s ease-out;
   }
 }
@@ -911,7 +911,7 @@ a {
 @media screen and (min-width: 1024px) {
   #top .top-menu__nav-number {
     font-family: "Montserrat", sans-serif;
-    font-size: clamp(16px, 1.8rem, 18px);
+    font-size: 16px;
   }
   #top .top-menu__nav-number--red {
     color: #cc0033;
@@ -2710,7 +2710,7 @@ a {
   #top .service__summary {
     padding: 0;
     margin-bottom: 0;
-    width: 61rem;
+    width: 90rem;
     display: grid;
     place-content: center;
   }
@@ -2797,6 +2797,11 @@ a {
     width: 1600px;
     height: 1600px;
     clip-path: circle(50% at left);
+  }
+}
+@media screen and (min-width: 768px) {
+  #top .service__detail {
+    padding: 9rem 2.5rem 0 2.5rem;
   }
 }
 @media screen and (min-width: 1024px) {
@@ -2956,6 +2961,7 @@ a {
 }
 #top .service__detail-text {
   font-size: clamp(13px, 1.3rem, 16px);
+  line-height: 1.85;
   letter-spacing: 0.05em;
   opacity: 0;
   transform: translateX(10%);

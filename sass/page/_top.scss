@@ -131,7 +131,7 @@
 
     @media screen and (min-width: 1024px) {
       position: fixed;
-      padding: 3rem 0 0 4rem;
+      padding: 2.4rem 0 0 4rem;
       display: flex;
       gap: 15rem;
       z-index: 3;
@@ -177,7 +177,7 @@
         display: flex;
         align-items: center;
         gap: 1.4rem;
-        font-size: clamp(16px, 1.8rem, 18px);
+        font-size: 16px;
         transition: opacity 0.2s ease-out;
 
         @media (any-hover: hover) {
@@ -191,7 +191,7 @@
     &__nav-number {
       @media screen and (min-width: 1024px) {
         font-family: $montserrat;
-        font-size: clamp(16px, 1.8rem, 18px);
+        font-size: 16px;
 
         &--red {
           color: $red;
@@ -1600,7 +1600,7 @@
       @media screen and (min-width: 1024px) {
         padding: 0;
         margin-bottom: 0;
-        width: 61rem;
+        width: 90rem;
         display: grid;
         place-content: center;
       }
@@ -1670,6 +1670,10 @@
     &__detail {
       @include background-semicircle-style;
       padding: 11rem 2.5rem 0 2.5rem;
+
+      @media screen and (min-width: 768px) {
+        padding: 9rem 2.5rem 0 2.5rem;
+      }
 
       @media screen and (min-width: 1024px) {
         padding: 0 0 0 24rem;
@@ -1848,6 +1852,7 @@
 
     &__detail-text {
       font-size: clamp(13px, 1.3rem, 16px);
+      line-height: 1.85;
       letter-spacing: 0.05em;
       opacity: 0;
       transform: translateX(10%);
