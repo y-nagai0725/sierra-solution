@@ -368,7 +368,7 @@ a {
   .gnav__link--button {
     padding: 2rem 2.5rem;
     width: 21rem;
-    min-width: 150px;
+    min-width: 160px;
     border-radius: 5rem;
   }
   .gnav__link--button span {
@@ -2355,7 +2355,7 @@ a {
   #top .news__more-button {
     padding: 2rem 2.5rem;
     width: 21rem;
-    min-width: 150px;
+    min-width: 160px;
     border-radius: 5rem;
   }
   #top .news__more-button span {
@@ -3699,6 +3699,7 @@ a {
   padding-bottom: 8rem;
   position: relative;
   z-index: 2;
+  padding-bottom: 16rem;
 }
 @media screen and (min-width: 1024px) {
   #top .contact {
@@ -3708,6 +3709,12 @@ a {
     padding-left: 22rem;
     padding-right: 22rem;
     flex-shrink: 0;
+  }
+}
+@media screen and (min-width: 1024px) {
+  #top .contact {
+    padding: 0;
+    width: 100vw;
   }
 }
 #top .contact__inner {
@@ -3724,6 +3731,7 @@ a {
   #top .contact__inner {
     height: calc(100% - 100px);
     justify-content: center;
+    align-items: center;
   }
 }
 #top .contact__background {
@@ -3763,6 +3771,7 @@ a {
 @media screen and (min-width: 1024px) {
   #top .contact__title-wrapper {
     margin-right: 0;
+    margin-bottom: 5rem;
   }
 }
 #top .contact__title-base {
@@ -3784,7 +3793,7 @@ a {
   }
 }
 #top .contact__text {
-  font-size: clamp(13px, 1.3rem, 16px);
+  font-size: clamp(13px, 1.3rem, 20px);
   letter-spacing: 0.05em;
   line-height: 1.85;
   text-align: center;
@@ -3865,7 +3874,7 @@ a {
   #top .contact__button-link {
     padding: 2rem 2.5rem;
     width: 21rem;
-    min-width: 150px;
+    min-width: 160px;
     border-radius: 5rem;
   }
   #top .contact__button-link span {
@@ -3886,7 +3895,7 @@ a {
   width: fit-content;
   margin-inline: auto;
   font-family: "Montserrat", sans-serif;
-  font-size: clamp(12px, 1.2rem, 14px);
+  font-size: clamp(12px, 1.2rem, 15px);
   position: relative;
 }
 #top .contact__privacy-policy::before {

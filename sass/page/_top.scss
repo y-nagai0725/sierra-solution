@@ -2574,6 +2574,12 @@
 
   .contact {
     @include section-common;
+    padding-bottom: 16rem;
+
+    @media screen and (min-width: 1024px) {
+      padding: 0;
+      width: 100vw;
+    }
 
     &__inner {
       @include contents-width;
@@ -2583,6 +2589,7 @@
       @media screen and (min-width: 1024px) {
         height: calc(100% - 100px);
         justify-content: center;
+        align-items: center;
       }
     }
 
@@ -2596,6 +2603,7 @@
 
       @media screen and (min-width: 1024px) {
         margin-right: 0;
+        margin-bottom: 5rem;
       }
     }
 
@@ -2609,7 +2617,7 @@
     }
 
     &__text {
-      font-size: clamp(13px, 1.3rem, 16px);
+      font-size: clamp(13px, 1.3rem, 20px);
       letter-spacing: 0.05em;
       line-height: 1.85;
       text-align: center;
@@ -2637,7 +2645,7 @@
       width: fit-content;
       margin-inline: auto;
       font-family: $montserrat;
-      font-size: clamp(12px, 1.2rem, 14px);
+      font-size: clamp(12px, 1.2rem, 15px);
       position: relative;
 
       &::before {
