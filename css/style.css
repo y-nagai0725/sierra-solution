@@ -2553,10 +2553,11 @@ a {
 }
 @media screen and (min-width: 1024px) {
   #top .service__service-menu {
-    width: 21rem;
+    width: 27rem;
     height: calc(100% - 100px);
-    padding: 16rem 4rem 0 0;
+    padding: 0 4rem 0 0;
     gap: 7rem;
+    justify-content: center;
   }
   #top .service__service-menu::before {
     content: "";
@@ -2581,16 +2582,15 @@ a {
 #top .service__menu-wrapper {
   display: flex;
   gap: 2.5rem;
-  margin-bottom: 8rem;
 }
 @media screen and (min-width: 1024px) {
   #top .service__menu-wrapper {
     flex-direction: column;
     gap: 7rem;
-    margin-bottom: 0;
   }
 }
 #top .service__menu-link {
+  width: 50%;
   padding-bottom: 1.5rem;
   display: flex;
   flex-direction: column;
@@ -2632,6 +2632,7 @@ a {
 }
 @media screen and (min-width: 1024px) {
   #top .service__menu-link {
+    width: auto;
     padding-bottom: 2rem;
   }
 }
@@ -2685,16 +2686,20 @@ a {
     margin-right: 102rem;
   }
 }
+#top .service__first, #top .service__second {
+  padding-top: 8rem;
+}
 @media screen and (min-width: 1024px) {
   #top .service__first, #top .service__second {
     display: flex;
     flex-direction: row;
     gap: 20rem;
+    padding-top: 0;
     padding-left: 22rem;
   }
 }
 #top .service__first {
-  margin-bottom: 11rem;
+  margin-bottom: 3rem;
 }
 @media screen and (min-width: 1024px) {
   #top .service__first {
@@ -3429,9 +3434,9 @@ a {
 }
 @media screen and (min-width: 1024px) {
   #top .service__image-wrapper-1 {
-    width: 58rem;
+    width: 54vh;
     max-width: 580px;
-    height: 80rem;
+    height: 75vh;
     max-height: 800px;
   }
 }
@@ -3442,9 +3447,9 @@ a {
 }
 @media screen and (min-width: 1024px) {
   #top .service__image-wrapper-2 {
-    width: 42rem;
+    width: 39vh;
     max-width: 420px;
-    height: 63rem;
+    height: 59vh;
     max-height: 630px;
     margin-left: 0;
   }
@@ -3456,9 +3461,9 @@ a {
 }
 @media screen and (min-width: 1024px) {
   #top .service__image-wrapper-3 {
-    width: 28rem;
+    width: 26vh;
     max-width: 280px;
-    height: 50rem;
+    height: 47vh;
     max-height: 500px;
     margin-left: 0;
   }
@@ -3472,7 +3477,7 @@ a {
 }
 @media screen and (min-width: 1024px) {
   #top .service__image {
-    width: 119.9rem;
+    width: 112vh;
     max-width: 1199px;
     aspect-ratio: 1199/800;
     max-height: 800px;

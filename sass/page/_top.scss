@@ -1429,10 +1429,11 @@
       position: relative;
 
       @media screen and (min-width: 1024px) {
-        width: 21rem;
+        width: 27rem;
         height: calc(100% - 100px);
-        padding: 16rem 4rem 0 0;
+        padding: 0 4rem 0 0;
         gap: 7rem;
+        justify-content: center;
 
         &::before {
           content: "";
@@ -1459,16 +1460,15 @@
     &__menu-wrapper {
       display: flex;
       gap: 2.5rem;
-      margin-bottom: 8rem;
 
       @media screen and (min-width: 1024px) {
         flex-direction: column;
         gap: 7rem;
-        margin-bottom: 0;
       }
     }
 
     &__menu-link {
+      width: 50%;
       padding-bottom: 1.5rem;
       display: flex;
       flex-direction: column;
@@ -1516,6 +1516,7 @@
       }
 
       @media screen and (min-width: 1024px) {
+        width: auto;
         padding-bottom: 2rem;
       }
     }
@@ -1576,16 +1577,19 @@
 
     &__first,
     &__second {
+      padding-top: 8rem;
+
       @media screen and (min-width: 1024px) {
         display: flex;
         flex-direction: row;
         gap: 20rem;
+        padding-top: 0;
         padding-left: 22rem;
       }
     }
 
     &__first {
-      margin-bottom: 11rem;
+      margin-bottom: 3rem;
 
       @media screen and (min-width: 1024px) {
         margin-bottom: 0;
@@ -2380,9 +2384,9 @@
       height: 24rem;
 
       @media screen and (min-width: 1024px) {
-        width: 58rem;
+        width: 54vh;
         max-width: 580px;
-        height: 80rem;
+        height: 75vh;
         max-height: 800px;
       }
     }
@@ -2393,9 +2397,9 @@
       margin-left: 2.5rem;
 
       @media screen and (min-width: 1024px) {
-        width: 42rem;
+        width: 39vh;
         max-width: 420px;
-        height: 63rem;
+        height: 59vh;
         max-height: 630px;
         margin-left: 0;
       }
@@ -2407,9 +2411,9 @@
       margin-left: 2.5rem;
 
       @media screen and (min-width: 1024px) {
-        width: 28rem;
+        width: 26vh;
         max-width: 280px;
-        height: 50rem;
+        height: 47vh;
         max-height: 500px;
         margin-left: 0;
       }
@@ -2423,7 +2427,7 @@
       max-block-size: none;
 
       @media screen and (min-width: 1024px) {
-        width: 119.9rem;
+        width: 112vh;
         max-width: 1199px;
         aspect-ratio: 1199 / 800;
         max-height: 800px;

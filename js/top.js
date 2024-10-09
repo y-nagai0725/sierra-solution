@@ -800,6 +800,9 @@ document.addEventListener('DOMContentLoaded', function () {
       gsap.set(service2Card2Circle, {
         strokeDashoffset: 300,
       });
+      gsap.set(service2Card2Image, {
+        clearProps: true,
+      });
     }
 
     ScrollTrigger.create({
@@ -1365,6 +1368,9 @@ document.addEventListener('DOMContentLoaded', function () {
       });
       gsap.set(service2Card2Circle, {
         strokeDashoffset: 300,
+      });
+      gsap.set(service2Card2Image, {
+        clearProps: true,
       });
     }
 
