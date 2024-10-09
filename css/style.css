@@ -3669,7 +3669,7 @@ a {
 }
 #top .company__subtitle {
   font-weight: 700;
-  font-size: clamp(13px, 1.3rem, 16px);
+  font-size: clamp(13px, 1.3rem, 20px);
   letter-spacing: 0.05em;
 }
 @media screen and (min-width: 1024px) {
@@ -3680,13 +3680,19 @@ a {
   }
 }
 #top .company__text {
-  font-size: clamp(13px, 1.3rem, 16px);
+  font-size: clamp(13px, 1.3rem, 20px);
   letter-spacing: 0.05em;
+  line-height: 1.85;
 }
 @media screen and (min-width: 1024px) {
   #top .company__text {
     font-size: clamp(16px, 2rem, 20px);
   }
+}
+#top .company__text-grid {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 2em;
 }
 #top .contact {
   padding-top: 8rem;
