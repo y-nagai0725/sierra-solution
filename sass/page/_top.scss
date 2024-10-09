@@ -2535,7 +2535,7 @@
       @media screen and (min-width: 1024px) {
         padding: 4rem 0;
         flex-direction: row;
-        gap: 9.4rem;
+        gap: 0;
 
         &.last-pc {
           border-bottom: 1px solid $line-gray;
@@ -2550,7 +2550,7 @@
 
       @media screen and (min-width: 1024px) {
         flex-shrink: 0;
-        width: 12rem;
+        width: 15.6rem;
         font-size: clamp(16px, 2rem, 20px);
       }
     }
