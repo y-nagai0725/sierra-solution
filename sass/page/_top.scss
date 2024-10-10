@@ -51,6 +51,7 @@
     &__company-logo {
       width: 8rem;
       height: 10rem;
+      object-fit: contain;
 
       @media screen and (min-width: 1024px) {
         width: 10rem;
@@ -140,7 +141,7 @@
     &__logo-link {
       @media screen and (min-width: 1024px) {
         width: 200px;
-        height: 40px;
+        padding: 10px 0;
       }
     }
 
@@ -174,6 +175,7 @@
 
     &__nav-link {
       @media screen and (min-width: 1024px) {
+        padding: 10px 0;
         display: flex;
         align-items: center;
         gap: 1.4rem;
@@ -497,7 +499,7 @@
 
     &__scroll-text {
       position: absolute;
-      left: -1.7rem;
+      left: -1rem;
       bottom: 6.8rem;
       rotate: 90deg;
       font-family: $montserrat;

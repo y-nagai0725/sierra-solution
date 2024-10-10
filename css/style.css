@@ -227,7 +227,7 @@ a {
 }
 
 .header {
-  padding: 1.5rem 0 0 1.5rem;
+  padding: 0.5rem 0 0 2.5rem;
   position: absolute;
   transition: filter 0.2s ease-out;
   z-index: 101;
@@ -242,7 +242,7 @@ a {
 }
 .header__logo-link {
   width: 19rem;
-  height: 3.6rem;
+  padding: 1rem 0;
 }
 @media screen and (min-width: 1024px) {
   .header__logo-link {
@@ -284,7 +284,7 @@ a {
 }
 .gnav__logo {
   width: 20rem;
-  height: 4rem;
+  padding: 1rem 0;
   margin-bottom: 7rem;
 }
 @media screen and (min-width: 768px) {
@@ -435,11 +435,11 @@ a {
 }
 .hamburger-button::before {
   background-color: #82be28;
-  translate: -50% calc(-50% - 0.3rem);
+  translate: -50% calc(-50% - 0.2rem);
 }
 .hamburger-button::after {
   background-color: #cc0033;
-  translate: -50% calc(-50% + 0.3rem);
+  translate: -50% calc(-50% + 0.2rem);
 }
 .hamburger-button.js-opened {
   border: 1px solid #000;
@@ -454,7 +454,7 @@ a {
 }
 
 .footer {
-  padding: 10rem 2.5rem;
+  padding: 9rem 2.5rem 10rem;
   background-color: #1f1f1f;
   position: relative;
   z-index: 3;
@@ -463,14 +463,14 @@ a {
   .footer {
     width: 192rem;
     height: 100%;
-    padding: 14rem 18rem;
+    padding: 13rem 18rem 14rem;
     flex-shrink: 0;
   }
 }
 .footer__inner {
   display: flex;
   flex-direction: column;
-  gap: 5rem;
+  gap: 4.5rem;
   position: relative;
 }
 @media screen and (min-width: 1024px) {
@@ -492,21 +492,20 @@ a {
 .footer__top {
   display: flex;
   flex-direction: column;
-  gap: 5rem;
+  gap: 4.4rem;
 }
 @media screen and (min-width: 1024px) {
   .footer__top {
-    gap: 8rem;
+    gap: 7rem;
   }
 }
 .footer__logo-link {
   width: 20rem;
-  height: 4rem;
+  padding: 1rem 0;
 }
 @media screen and (min-width: 1024px) {
   .footer__logo-link {
     width: 30rem;
-    height: 6rem;
   }
 }
 .footer__dl {
@@ -550,7 +549,7 @@ a {
 .footer__bottom {
   display: flex;
   flex-direction: column;
-  gap: 5rem;
+  gap: 4.5rem;
 }
 @media screen and (min-width: 1024px) {
   .footer__bottom {
@@ -561,7 +560,7 @@ a {
 .footer__link-list {
   display: flex;
   flex-direction: column;
-  gap: 2.5rem;
+  gap: 1.5rem;
 }
 @media screen and (min-width: 1024px) {
   .footer__link-list {
@@ -571,6 +570,7 @@ a {
   }
 }
 .footer__link {
+  padding: 0.5rem 0;
   width: fit-content;
   font-family: "Montserrat", sans-serif;
   font-size: clamp(15px, 1.5rem, 24px);
@@ -580,7 +580,7 @@ a {
 .footer__link::before {
   content: "";
   position: absolute;
-  bottom: -0.4rem;
+  bottom: 9px;
   left: 0;
   width: 100%;
   height: 1px;
@@ -597,6 +597,7 @@ a {
 }
 @media screen and (min-width: 1024px) {
   .footer__link {
+    padding: 10px 0;
     font-size: clamp(17px, 2rem, 20px);
   }
 }
@@ -621,6 +622,7 @@ a {
     width: 100%;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
     gap: 0;
   }
   .footer__note::before {
@@ -636,7 +638,7 @@ a {
 .footer__privacy-policy::before {
   content: "";
   position: absolute;
-  bottom: -0.4rem;
+  bottom: 3px;
   left: 0;
   width: 100%;
   height: 1px;
@@ -653,6 +655,7 @@ a {
 }
 @media screen and (min-width: 1024px) {
   .footer__privacy-policy {
+    padding: 5px 0;
     font-size: 13px;
   }
 }
@@ -798,6 +801,7 @@ a {
 #top .opening__company-logo {
   width: 8rem;
   height: 10rem;
+  object-fit: contain;
 }
 @media screen and (min-width: 1024px) {
   #top .opening__company-logo {
@@ -879,7 +883,7 @@ a {
 @media screen and (min-width: 1024px) {
   #top .top-menu__logo-link {
     width: 200px;
-    height: 40px;
+    padding: 10px 0;
   }
 }
 @media screen and (min-width: 1024px) {
@@ -904,6 +908,7 @@ a {
 }
 @media screen and (min-width: 1024px) {
   #top .top-menu__nav-link {
+    padding: 10px 0;
     display: flex;
     align-items: center;
     gap: 1.4rem;
@@ -1250,7 +1255,7 @@ a {
 }
 #top .fv__scroll-text {
   position: absolute;
-  left: -1.7rem;
+  left: -1rem;
   bottom: 6.8rem;
   rotate: 90deg;
   font-family: "Montserrat", sans-serif;

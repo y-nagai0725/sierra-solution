@@ -30,7 +30,7 @@
 
   &__logo {
     width: 20rem;
-    height: 4rem;
+    padding: 1rem 0;
     margin-bottom: 7rem;
 
     @media screen and (min-width: 768px) {
@@ -112,12 +112,12 @@
 
   &::before {
     background-color: $green;
-    translate: -50% calc(-50% - 0.3rem);
+    translate: -50% calc(-50% - 0.2rem);
   }
 
   &::after {
     background-color: $red;
-    translate: -50% calc(-50% + 0.3rem);
+    translate: -50% calc(-50% + 0.2rem);
   }
 
   &.js-opened {

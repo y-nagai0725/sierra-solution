@@ -1,7 +1,7 @@
 @use "../global" as *;
 
 .footer {
-  padding: 10rem 2.5rem;
+  padding: 9rem 2.5rem 10rem;
   background-color: $footer-black;
   position: relative;
   z-index: 3;
@@ -9,14 +9,14 @@
   @media screen and (min-width: 1024px) {
     width: 192rem;
     height: 100%;
-    padding: 14rem 18rem;
+    padding: 13rem 18rem 14rem;
     flex-shrink: 0;
   }
 
   &__inner {
     display: flex;
     flex-direction: column;
-    gap: 5rem;
+    gap: 4.5rem;
     position: relative;
 
     @media screen and (min-width: 1024px) {
@@ -39,20 +39,19 @@
   &__top {
     display: flex;
     flex-direction: column;
-    gap: 5rem;
+    gap: 4.4rem;
 
     @media screen and (min-width: 1024px) {
-      gap: 8rem;
+      gap: 7rem;
     }
   }
 
   &__logo-link {
     width: 20rem;
-    height: 4rem;
+    padding: 1rem 0;
 
     @media screen and (min-width: 1024px) {
       width: 30rem;
-      height: 6rem;
     }
   }
 
@@ -97,7 +96,7 @@
   &__bottom {
     display: flex;
     flex-direction: column;
-    gap: 5rem;
+    gap: 4.5rem;
 
     @media screen and (min-width: 1024px) {
       width: fit-content;
@@ -108,7 +107,7 @@
   &__link-list {
     display: flex;
     flex-direction: column;
-    gap: 2.5rem;
+    gap: 1.5rem;
 
     @media screen and (min-width: 1024px) {
       width: fit-content;
@@ -118,6 +117,7 @@
   }
 
   &__link {
+    padding: 0.5rem 0;
     width: fit-content;
     font-family: $montserrat;
     font-size: clamp(15px, 1.5rem, 24px);
@@ -127,7 +127,7 @@
     &::before {
       content: "";
       position: absolute;
-      bottom: -0.4rem;
+      bottom: 9px;
       left: 0;
       width: 100%;
       height: 1px;
@@ -147,6 +147,7 @@
     }
 
     @media screen and (min-width: 1024px) {
+      padding: 10px 0;
       font-size: clamp(17px, 2rem, 20px);
     }
   }
@@ -172,6 +173,7 @@
       width: 100%;
       flex-direction: row;
       justify-content: space-between;
+      align-items: center;
       gap: 0;
 
       &::before {
@@ -189,7 +191,7 @@
     &::before {
       content: "";
       position: absolute;
-      bottom: -0.4rem;
+      bottom: 3px;
       left: 0;
       width: 100%;
       height: 1px;
@@ -209,6 +211,7 @@
     }
 
     @media screen and (min-width: 1024px) {
+      padding: 5px 0;
       font-size: 13px;
     }
   }

@@ -1,7 +1,7 @@
 @use "../global" as *;
 
 .header {
-  padding: 1.5rem 0 0 1.5rem;
+  padding: 0.5rem 0 0 2.5rem;
   position: absolute;
   transition: filter 0.2s ease-out;
   z-index: 101;
@@ -16,7 +16,7 @@
 
   &__logo-link {
     width: 19rem;
-    height: 3.6rem;
+    padding: 1rem 0;
 
     @media screen and (min-width: 1024px) {
       display: none;
