@@ -190,7 +190,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const gsapScrollDuration = 0.8;
 
   //GSAPでのscrub値
-  const gsapScrubValue = 0.8;
+  const gsapScrubValue = 0.7;
 
   //現在のウィンドウ幅
   let currentWindowWidth = window.innerWidth;
