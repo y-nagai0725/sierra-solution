@@ -68,7 +68,7 @@
 
   &__dt {
     font-family: $montserrat;
-    font-size: clamp(15px, 1.5rem, 17px);
+    font-size: clamp(15px, 1.5rem, 20px);
     color: $white;
 
     @media screen and (min-width: 1024px) {
@@ -77,12 +77,20 @@
   }
 
   &__dd {
-    font-size: clamp(15px, 1.5rem, 17px);
+    font-size: clamp(15px, 1.5rem, 20px);
     color: $white;
     line-height: 1.85;
 
     @media screen and (min-width: 1024px) {
       font-size: clamp(17px, 2rem, 20px);
+    }
+  }
+
+  &__br {
+    display: block;
+
+    @media screen and (min-width: 1024px) {
+      display: none;
     }
   }
 
@@ -112,7 +120,7 @@
   &__link {
     width: fit-content;
     font-family: $montserrat;
-    font-size: clamp(15px, 1.5rem, 17px);
+    font-size: clamp(15px, 1.5rem, 24px);
     color: $white;
     position: relative;
 
@@ -174,7 +182,7 @@
 
   &__privacy-policy {
     font-family: $montserrat;
-    font-size: clamp(11px, 1.1rem, 13px);
+    font-size: clamp(11px, 1.1rem, 14px);
     color: $white;
     position: relative;
 
@@ -207,7 +215,7 @@
 
   &__copyright {
     font-family: $montserrat;
-    font-size: clamp(11px, 1.1rem, 13px);
+    font-size: clamp(11px, 1.1rem, 14px);
     color: $white;
 
     @media screen and (min-width: 1024px) {
@@ -295,7 +303,7 @@
   &__page-top-text {
     font-family: $montserrat;
     font-weight: 700;
-    font-size: clamp(13px, 1.3rem, 16px);
+    font-size: clamp(13px, 1.3rem, 20px);
     color: $white;
 
     @media screen and (min-width: 1024px) {

@@ -521,7 +521,7 @@ a {
 }
 .footer__dt {
   font-family: "Montserrat", sans-serif;
-  font-size: clamp(15px, 1.5rem, 17px);
+  font-size: clamp(15px, 1.5rem, 20px);
   color: #fff;
 }
 @media screen and (min-width: 1024px) {
@@ -530,13 +530,21 @@ a {
   }
 }
 .footer__dd {
-  font-size: clamp(15px, 1.5rem, 17px);
+  font-size: clamp(15px, 1.5rem, 20px);
   color: #fff;
   line-height: 1.85;
 }
 @media screen and (min-width: 1024px) {
   .footer__dd {
     font-size: clamp(17px, 2rem, 20px);
+  }
+}
+.footer__br {
+  display: block;
+}
+@media screen and (min-width: 1024px) {
+  .footer__br {
+    display: none;
   }
 }
 .footer__bottom {
@@ -565,7 +573,7 @@ a {
 .footer__link {
   width: fit-content;
   font-family: "Montserrat", sans-serif;
-  font-size: clamp(15px, 1.5rem, 17px);
+  font-size: clamp(15px, 1.5rem, 24px);
   color: #fff;
   position: relative;
 }
@@ -621,7 +629,7 @@ a {
 }
 .footer__privacy-policy {
   font-family: "Montserrat", sans-serif;
-  font-size: clamp(11px, 1.1rem, 13px);
+  font-size: clamp(11px, 1.1rem, 14px);
   color: #fff;
   position: relative;
 }
@@ -650,7 +658,7 @@ a {
 }
 .footer__copyright {
   font-family: "Montserrat", sans-serif;
-  font-size: clamp(11px, 1.1rem, 13px);
+  font-size: clamp(11px, 1.1rem, 14px);
   color: #fff;
 }
 @media screen and (min-width: 1024px) {
@@ -731,7 +739,7 @@ a {
 .footer__page-top-text {
   font-family: "Montserrat", sans-serif;
   font-weight: 700;
-  font-size: clamp(13px, 1.3rem, 16px);
+  font-size: clamp(13px, 1.3rem, 20px);
   color: #fff;
 }
 @media screen and (min-width: 1024px) {
