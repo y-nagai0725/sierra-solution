@@ -183,14 +183,14 @@ document.addEventListener('DOMContentLoaded', function () {
   //GSAPメディアクエリ
   const mm = gsap.matchMedia();
 
-  //GSAPでのスクロールのeasing
-  const gsapScrollEasing = "power2.out";
+  //GSAPのeasing
+  const gsapEasing = "power2.out";
 
-  //GSAPでのスクロールのduration
-  const gsapScrollDuration = 0.8;
+  //GSAPのscrub値
+  const gsapScrubValue = 0.65;
 
-  //GSAPでのscrub値
-  const gsapScrubValue = 0.7;
+  //GSAPのScrollToのduration
+  const gsapScrollToDuration = 0.8;
 
   //現在のウィンドウ幅
   let currentWindowWidth = window.innerWidth;
@@ -243,8 +243,8 @@ document.addEventListener('DOMContentLoaded', function () {
   //ページトップボタンクリック時処理
   pageTopButton.addEventListener("click", function () {
     gsap.to(window, {
-      duration: gsapScrollDuration,
-      ease: gsapScrollEasing,
+      duration: gsapScrollToDuration,
+      ease: gsapEasing,
       scrollTo: { //画面最上部へスクロールさせる
         y: 0,
       },
@@ -282,8 +282,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
       if (anchorName === "#") {
         gsap.to(window, {
-          duration: gsapScrollDuration,
-          ease: gsapScrollEasing,
+          duration: gsapScrollToDuration,
+          ease: gsapEasing,
           scrollTo: {
             y: 0,
           },
@@ -292,8 +292,8 @@ document.addEventListener('DOMContentLoaded', function () {
       } else {
         mm.add("(max-width: 1023px)", () => {
           gsap.to(window, {
-            duration: gsapScrollDuration,
-            ease: gsapScrollEasing,
+            duration: gsapScrollToDuration,
+            ease: gsapEasing,
             scrollTo: {
               y: anchorName,
             },
@@ -305,8 +305,8 @@ document.addEventListener('DOMContentLoaded', function () {
           const target = document.getElementById(anchorName.slice(1));
           const targetPosition = target.getBoundingClientRect().left + window.scrollY;
           gsap.to(window, {
-            duration: gsapScrollDuration,
-            ease: gsapScrollEasing,
+            duration: gsapScrollToDuration,
+            ease: gsapEasing,
             scrollTo: {
               y: targetPosition,
             }
@@ -463,17 +463,17 @@ document.addEventListener('DOMContentLoaded', function () {
       strokeDashoffset: Math.ceil(service1Card1RectangleCorner.getTotalLength()),
     }).to(service1Card1Balloon, {
       duration: 0.4,
-      ease: gsapScrollEasing,
+      ease: gsapEasing,
       opacity: 1,
     }, "-=0.3").to(service1Card1BalloonIcon, {
-      ease: gsapScrollEasing,
+      ease: gsapEasing,
       keyframes: [
         { duration: 0.2, opacity: 0.5, y: -5 },
         { duration: 0.2, opacity: 1, y: 0 },
       ],
     }, "<").to(service1Card1EmphasisMark, {
       duration: 0.15,
-      ease: gsapScrollEasing,
+      ease: gsapEasing,
       strokeDashoffset: 0,
       stagger: {
         each: 0.1,
@@ -483,7 +483,7 @@ document.addEventListener('DOMContentLoaded', function () {
       ease: "liner",
       strokeDashoffset: 0,
     }, "<").to(service1Card1Character, {
-      ease: gsapScrollEasing,
+      ease: gsapEasing,
       keyframes: [
         { duration: 0.2, opacity: 0.5, y: -5 },
         { duration: 0.2, opacity: 1, y: 0 },
@@ -550,30 +550,30 @@ document.addEventListener('DOMContentLoaded', function () {
       strokeDashoffset: Math.ceil(service1Card2RectangleCorner.getTotalLength()),
     }).to(service1Card2Balloon, {
       duration: 0.4,
-      ease: gsapScrollEasing,
+      ease: gsapEasing,
       opacity: 1,
     }, "-=0.3").to(service1Card2BalloonIcon, {
-      ease: gsapScrollEasing,
+      ease: gsapEasing,
       keyframes: [
         { duration: 0.2, opacity: 0.5, y: -5 },
         { duration: 0.2, opacity: 1, y: 0 },
       ],
     }, "<").to(service1Card2EmphasisMark, {
       duration: 0.15,
-      ease: gsapScrollEasing,
+      ease: gsapEasing,
       strokeDashoffset: 0,
       stagger: {
         each: 0.1,
       },
     }, "<").to(service1Card2PIcon, {
-      ease: gsapScrollEasing,
+      ease: gsapEasing,
       keyframes: [
         { duration: 0.2, opacity: 0.5, y: -5 },
         { duration: 0.2, opacity: 1, y: 0 },
       ],
     }, "<").to(service1Card2Character, {
       duration: 0.4,
-      ease: gsapScrollEasing,
+      ease: gsapEasing,
       opacity: 1,
     }, "<");
 
@@ -622,23 +622,23 @@ document.addEventListener('DOMContentLoaded', function () {
       strokeDashoffset: Math.ceil(service1Card3RectangleCorner.getTotalLength()),
     }).to(service1Card3Balloon, {
       duration: 0.4,
-      ease: gsapScrollEasing,
+      ease: gsapEasing,
       opacity: 1,
     }, "-=0.3").to(service1Card3BalloonIcon, {
-      ease: gsapScrollEasing,
+      ease: gsapEasing,
       keyframes: [
         { duration: 0.2, opacity: 0.5, y: -5 },
         { duration: 0.2, opacity: 1, y: 0 },
       ],
     }, "<").to(service1Card3EmphasisMark, {
       duration: 0.15,
-      ease: gsapScrollEasing,
+      ease: gsapEasing,
       strokeDashoffset: 0,
       stagger: {
         each: 0.1,
       },
     }, "<").to(service1Card3Character, {
-      ease: gsapScrollEasing,
+      ease: gsapEasing,
       keyframes: [
         { duration: 0.08, opacity: 0.5, y: -5 },
         { duration: 0.08, opacity: 1, y: 0 },
@@ -648,17 +648,17 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     }, "<").to(service1Card3CoinBottom, {
       duration: 0.2,
-      ease: gsapScrollEasing,
+      ease: gsapEasing,
       opacity: 1,
       y: 0,
     }, "<0.3").to(service1Card3CoinMiddle, {
       duration: 0.2,
-      ease: gsapScrollEasing,
+      ease: gsapEasing,
       opacity: 1,
       y: 0,
     }, "<0.1").to(service1Card3CoinTop, {
       duration: 0.2,
-      ease: gsapScrollEasing,
+      ease: gsapEasing,
       opacity: 1,
       y: 0,
     }, "<0.1");
@@ -708,13 +708,13 @@ document.addEventListener('DOMContentLoaded', function () {
       paused: true,
     }).to(service1Card4DotEllipse, {
       duration: 0.6,
-      ease: gsapScrollEasing,
+      ease: gsapEasing,
       clipPath: "inset(0% 0% -100% 0%)",
       stagger: {
         each: 0.3,
       },
     }, "+=0.3").to(service1Card4DmpImage, {
-      ease: gsapScrollEasing,
+      ease: gsapEasing,
       keyframes: [
         { duration: 0.3, opacity: 0.5, scale: 1.1 },
         { duration: 0.3, opacity: 1, scale: 1 },
@@ -771,7 +771,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }).to(service2Card2Item, {
       opacity: 1,
       duration: 0.4,
-      ease: gsapScrollEasing,
+      ease: gsapEasing,
       stagger: {
         each: 0.2,
       },
@@ -787,7 +787,7 @@ document.addEventListener('DOMContentLoaded', function () {
         { duration: 0.3, scale: 1.3 },
         { duration: 0.3, scale: 1 },
       ],
-      ease: gsapScrollEasing,
+      ease: gsapEasing,
       stagger: {
         each: 0.2,
       },
@@ -831,35 +831,35 @@ document.addEventListener('DOMContentLoaded', function () {
     const service2Card3Animation = gsap.timeline({
       paused: true,
     }).to(service2Card3DspImage, {
-      ease: gsapScrollEasing,
+      ease: gsapEasing,
       keyframes: [
         { duration: 0.2, opacity: 0.5, y: -10 },
         { duration: 0.2, opacity: 1, y: 0 },
       ],
     }).to(service2Card3DspArrow, {
       duration: 0.4,
-      ease: gsapScrollEasing,
+      ease: gsapEasing,
       clipPath: "inset(0 0% 0 0)",
     }, "<0.1").to(service2Card3SspText, {
       duration: 0.4,
-      ease: gsapScrollEasing,
+      ease: gsapEasing,
       opacity: 1,
     }, "<0.1").to(service2Card3SspImage, {
-      ease: gsapScrollEasing,
+      ease: gsapEasing,
       keyframes: [
         { duration: 0.2, opacity: 0.5, y: -10 },
         { duration: 0.2, opacity: 1, y: 0 },
       ],
     }, "<0.1").to(service2Card3Middle, {
       duration: 0.4,
-      ease: gsapScrollEasing,
+      ease: gsapEasing,
       opacity: 1,
     }, "<0.1").to(service2Card3PlatformText, {
       duration: 0.4,
-      ease: gsapScrollEasing,
+      ease: gsapEasing,
       opacity: 1,
     }, "<0.1").to(service2Card3PlatformImage, {
-      ease: gsapScrollEasing,
+      ease: gsapEasing,
       keyframes: [
         { duration: 0.2, opacity: 0.5, y: -5 },
         { duration: 0.2, opacity: 1, y: 0 },
@@ -911,7 +911,7 @@ document.addEventListener('DOMContentLoaded', function () {
         invalidateOnRefresh: true,
         onEnter: () => {
           gsap.to(serviceImageArea.children, {
-            ease: gsapScrollEasing,
+            ease: gsapEasing,
             opacity: 1,
             duration: 0.4,
             scale: 1,
@@ -940,7 +940,7 @@ document.addEventListener('DOMContentLoaded', function () {
     gsap.to(serviceList1, {
       opacity: 1,
       duration: 0.4,
-      ease: gsapScrollEasing,
+      ease: gsapEasing,
       scrollTrigger: {
         trigger: serviceList1,
         start: "top center+=10%",
@@ -986,17 +986,17 @@ document.addEventListener('DOMContentLoaded', function () {
       strokeDashoffset: Math.ceil(service1Card1RectangleCorner.getTotalLength()),
     }).to(service1Card1Balloon, {
       duration: 0.4,
-      ease: gsapScrollEasing,
+      ease: gsapEasing,
       opacity: 1,
     }, "-=0.3").to(service1Card1BalloonIcon, {
-      ease: gsapScrollEasing,
+      ease: gsapEasing,
       keyframes: [
         { duration: 0.2, opacity: 0.5, y: -5 },
         { duration: 0.2, opacity: 1, y: 0 },
       ],
     }, "<").to(service1Card1EmphasisMark, {
       duration: 0.15,
-      ease: gsapScrollEasing,
+      ease: gsapEasing,
       strokeDashoffset: 0,
       stagger: {
         each: 0.1,
@@ -1006,7 +1006,7 @@ document.addEventListener('DOMContentLoaded', function () {
       ease: "liner",
       strokeDashoffset: 0,
     }, "<").to(service1Card1Character, {
-      ease: gsapScrollEasing,
+      ease: gsapEasing,
       keyframes: [
         { duration: 0.2, opacity: 0.5, y: -5 },
         { duration: 0.2, opacity: 1, y: 0 },
@@ -1072,30 +1072,30 @@ document.addEventListener('DOMContentLoaded', function () {
       strokeDashoffset: Math.ceil(service1Card2RectangleCorner.getTotalLength()),
     }).to(service1Card2Balloon, {
       duration: 0.4,
-      ease: gsapScrollEasing,
+      ease: gsapEasing,
       opacity: 1,
     }, "-=0.3").to(service1Card2BalloonIcon, {
-      ease: gsapScrollEasing,
+      ease: gsapEasing,
       keyframes: [
         { duration: 0.2, opacity: 0.5, y: -5 },
         { duration: 0.2, opacity: 1, y: 0 },
       ],
     }, "<").to(service1Card2EmphasisMark, {
       duration: 0.15,
-      ease: gsapScrollEasing,
+      ease: gsapEasing,
       strokeDashoffset: 0,
       stagger: {
         each: 0.1,
       },
     }, "<").to(service1Card2PIcon, {
-      ease: gsapScrollEasing,
+      ease: gsapEasing,
       keyframes: [
         { duration: 0.2, opacity: 0.5, y: -5 },
         { duration: 0.2, opacity: 1, y: 0 },
       ],
     }, "<").to(service1Card2Character, {
       duration: 0.4,
-      ease: gsapScrollEasing,
+      ease: gsapEasing,
       opacity: 1,
     }, "<");
 
@@ -1145,23 +1145,23 @@ document.addEventListener('DOMContentLoaded', function () {
       strokeDashoffset: Math.ceil(service1Card3RectangleCorner.getTotalLength()),
     }).to(service1Card3Balloon, {
       duration: 0.4,
-      ease: gsapScrollEasing,
+      ease: gsapEasing,
       opacity: 1,
     }, "-=0.3").to(service1Card3BalloonIcon, {
-      ease: gsapScrollEasing,
+      ease: gsapEasing,
       keyframes: [
         { duration: 0.2, opacity: 0.5, y: -5 },
         { duration: 0.2, opacity: 1, y: 0 },
       ],
     }, "<").to(service1Card3EmphasisMark, {
       duration: 0.15,
-      ease: gsapScrollEasing,
+      ease: gsapEasing,
       strokeDashoffset: 0,
       stagger: {
         each: 0.1,
       },
     }, "<").to(service1Card3Character, {
-      ease: gsapScrollEasing,
+      ease: gsapEasing,
       keyframes: [
         { duration: 0.08, opacity: 0.5, y: -5 },
         { duration: 0.08, opacity: 1, y: 0 },
@@ -1171,17 +1171,17 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     }, "<").to(service1Card3CoinBottom, {
       duration: 0.2,
-      ease: gsapScrollEasing,
+      ease: gsapEasing,
       opacity: 1,
       y: 0,
     }, "<0.3").to(service1Card3CoinMiddle, {
       duration: 0.2,
-      ease: gsapScrollEasing,
+      ease: gsapEasing,
       opacity: 1,
       y: 0,
     }, "<0.1").to(service1Card3CoinTop, {
       duration: 0.2,
-      ease: gsapScrollEasing,
+      ease: gsapEasing,
       opacity: 1,
       y: 0,
     }, "<0.1");
@@ -1232,13 +1232,13 @@ document.addEventListener('DOMContentLoaded', function () {
       paused: true,
     }).to(service1Card4DotEllipse, {
       duration: 0.6,
-      ease: gsapScrollEasing,
+      ease: gsapEasing,
       clipPath: "inset(0% 0% -100% 0%)",
       stagger: {
         each: 0.3,
       },
     }, "+=0.3").to(service1Card4DmpImage, {
-      ease: gsapScrollEasing,
+      ease: gsapEasing,
       keyframes: [
         { duration: 0.3, opacity: 0.5, scale: 1.1 },
         { duration: 0.3, opacity: 1, scale: 1 },
@@ -1285,7 +1285,7 @@ document.addEventListener('DOMContentLoaded', function () {
     gsap.to(serviceList2, {
       opacity: 1,
       duration: 0.4,
-      ease: gsapScrollEasing,
+      ease: gsapEasing,
       scrollTrigger: {
         trigger: serviceList2,
         start: "top center+=10%",
@@ -1340,7 +1340,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }).to(service2Card2Item, {
       opacity: 1,
       duration: 0.4,
-      ease: gsapScrollEasing,
+      ease: gsapEasing,
       stagger: {
         each: 0.2,
       },
@@ -1356,7 +1356,7 @@ document.addEventListener('DOMContentLoaded', function () {
         { duration: 0.3, scale: 1.3 },
         { duration: 0.3, scale: 1 },
       ],
-      ease: gsapScrollEasing,
+      ease: gsapEasing,
       stagger: {
         each: 0.2,
       },
@@ -1401,35 +1401,35 @@ document.addEventListener('DOMContentLoaded', function () {
     const service2Card3Animation = gsap.timeline({
       paused: true,
     }).to(service2Card3DspImage, {
-      ease: gsapScrollEasing,
+      ease: gsapEasing,
       keyframes: [
         { duration: 0.2, opacity: 0.5, y: -10 },
         { duration: 0.2, opacity: 1, y: 0 },
       ],
     }).to(service2Card3DspArrow, {
       duration: 0.4,
-      ease: gsapScrollEasing,
+      ease: gsapEasing,
       clipPath: "inset(0 0% 0 0)",
     }, "<0.1").to(service2Card3SspText, {
       duration: 0.4,
-      ease: gsapScrollEasing,
+      ease: gsapEasing,
       opacity: 1,
     }, "<0.1").to(service2Card3SspImage, {
-      ease: gsapScrollEasing,
+      ease: gsapEasing,
       keyframes: [
         { duration: 0.2, opacity: 0.5, y: -10 },
         { duration: 0.2, opacity: 1, y: 0 },
       ],
     }, "<0.1").to(service2Card3Middle, {
       duration: 0.4,
-      ease: gsapScrollEasing,
+      ease: gsapEasing,
       opacity: 1,
     }, "<0.1").to(service2Card3PlatformText, {
       duration: 0.4,
-      ease: gsapScrollEasing,
+      ease: gsapEasing,
       opacity: 1,
     }, "<0.1").to(service2Card3PlatformImage, {
-      ease: gsapScrollEasing,
+      ease: gsapEasing,
       keyframes: [
         { duration: 0.2, opacity: 0.5, y: -5 },
         { duration: 0.2, opacity: 1, y: 0 },
@@ -1480,7 +1480,7 @@ document.addEventListener('DOMContentLoaded', function () {
         invalidateOnRefresh: true,
         onEnter: () => {
           gsap.to(serviceImageArea.children, {
-            ease: gsapScrollEasing,
+            ease: gsapEasing,
             opacity: 1,
             duration: 0.4,
             scale: 1,
@@ -1722,7 +1722,7 @@ document.addEventListener('DOMContentLoaded', function () {
     //テキスト表示アニメーション
     gsap.timeline().to(whoValueTextBox, {
       duration: 0.6,
-      ease: gsapScrollEasing,
+      ease: gsapEasing,
       keyframes: {
         "0%": {
           scale: 1,
@@ -1745,7 +1745,7 @@ document.addEventListener('DOMContentLoaded', function () {
       },
     }).to(whoValueCharacter, {
       duration: 0.3,
-      ease: gsapScrollEasing,
+      ease: gsapEasing,
       y: 0,
       stagger: {
         each: 0.3,
@@ -1840,7 +1840,7 @@ document.addEventListener('DOMContentLoaded', function () {
               { duration: 0.6, opacity: 0.5, xPercent: -4 },
               { duration: 0.6, opacity: 1, xPercent: 0 },
             ],
-            ease: gsapScrollEasing,
+            ease: gsapEasing,
             stagger: {
               each: 0.2,
             },
@@ -1865,7 +1865,7 @@ document.addEventListener('DOMContentLoaded', function () {
               { duration: 0.6, opacity: 0.5, yPercent: -4 },
               { duration: 0.6, opacity: 1, yPercent: 0 },
             ],
-            ease: gsapScrollEasing,
+            ease: gsapEasing,
             stagger: {
               each: 0.3,
             },
@@ -1880,7 +1880,7 @@ document.addEventListener('DOMContentLoaded', function () {
           const targetPosition = newsContents.getBoundingClientRect().left + window.scrollY;
           gsap.to(window, {
             duration: 0.8,
-            ease: gsapScrollEasing,
+            ease: gsapEasing,
             scrollTo: {
               y: targetPosition,
             }
@@ -1890,13 +1890,10 @@ document.addEventListener('DOMContentLoaded', function () {
         //OPアニメーション画面非表示
         if (isInitialLoading) {
           gsap.to(opening, {
-            autoAlpha: 0,
             duration: 0.6,
-            delay: 1.2,
+            autoAlpha: 0,
+            delay: 0.8,
             onComplete: () => {
-              //スクロール禁止を解除
-              allowWindowScroll();
-
               //FV表示
               showFirstView();
             }
@@ -1946,7 +1943,7 @@ document.addEventListener('DOMContentLoaded', function () {
   function showFirstView() {
     const tl = gsap.timeline();
     tl.to(fvCatchcopyCharacters, {
-      ease: gsapScrollEasing,
+      ease: gsapEasing,
       duration: 0.6,
       y: 0,
       opacity: 1,
@@ -1954,7 +1951,7 @@ document.addEventListener('DOMContentLoaded', function () {
         each: 0.05,
       },
     }).to(fvLogo, {
-      ease: gsapScrollEasing,
+      ease: gsapEasing,
       duration: 0.6,
       opacity: 1
     }, "<");
@@ -1964,9 +1961,6 @@ document.addEventListener('DOMContentLoaded', function () {
    * 初期実行処理
    */
   function init() {
-    //スクロール禁止
-    disallowWindowScroll();
-
     //video設定
     videos.forEach(video => {
       setVideoSource(video, video.dataset.baseSrc);

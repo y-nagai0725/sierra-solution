@@ -1,12 +1,13 @@
 @use "../setting" as *;
 
+//画像共通
 @mixin img-base {
   display: block;
   width: 100%;
   object-fit: cover;
 }
 
-//コンテンツ幅
+//コンテンツ共通
 @mixin contents-width {
   padding: 0 2.5rem;
 
@@ -15,6 +16,7 @@
   }
 }
 
+//セクション共通
 @mixin section-common {
   padding-top: 8rem;
   padding-bottom: 8rem;
@@ -139,6 +141,37 @@
   }
 }
 
+//半円背景スタイル
+@mixin background-semicircle-style {
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    translate: -50% 0;
+    width: 60rem;
+    height: 60rem;
+    clip-path: circle(50% at top);
+    border-radius: 9999px;
+    box-shadow: $bg-drop-shadow;
+  }
+
+  @media screen and (min-width: 1024px) {
+    &::before {
+      top: 50%;
+      left: 0;
+      translate: 0 -50%;
+      width: 1600px;
+      height: 1600px;
+      clip-path: circle(50% at left);
+    }
+  }
+}
+
+//ボタンスタイル
 @mixin button-style($text-color, $bg-color, $hovered-bg-color, $hovered-text, $hovered-text-color) {
   width: 15rem;
   padding: 1.7rem 2rem;
@@ -229,35 +262,6 @@
 
     &::after {
       translate: -2.5rem -50%;
-    }
-  }
-}
-
-@mixin background-semicircle-style {
-  position: relative;
-  overflow: hidden;
-
-  &::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 50%;
-    translate: -50% 0;
-    width: 60rem;
-    height: 60rem;
-    clip-path: circle(50% at top);
-    border-radius: 9999px;
-    box-shadow: $bg-drop-shadow;
-  }
-
-  @media screen and (min-width: 1024px) {
-    &::before {
-      top: 50%;
-      left: 0;
-      translate: 0 -50%;
-      width: 1600px;
-      height: 1600px;
-      clip-path: circle(50% at left);
     }
   }
 }

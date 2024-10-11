@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /***
     The new CSS reset - version 1.11.2 (last updated 15.11.2023)
     GitHub page: https://github.com/elad2412/the-new-css-reset
@@ -146,7 +147,7 @@ meter {
     translate: 0 0;
   }
 }
-@keyframes movie-slide-text {
+@keyframes index-movie-slide-text {
   0% {
     translate: 100% 0%;
   }
@@ -154,7 +155,18 @@ meter {
     translate: 100% -50%;
   }
 }
-@keyframes line-link-hover {
+@keyframes service-card-bound {
+  0% {
+    scale: 1;
+  }
+  50% {
+    scale: 1.25;
+  }
+  100% {
+    scale: 1;
+  }
+}
+@keyframes contact-line-link-hover {
   0% {
     transform-origin: right;
     scale: 1 1;
@@ -188,17 +200,6 @@ meter {
   100% {
     opacity: 1;
     translate: 0 0;
-  }
-}
-@keyframes service-card-bound {
-  0% {
-    scale: 1;
-  }
-  50% {
-    scale: 1.25;
-  }
-  100% {
-    scale: 1;
   }
 }
 html {
@@ -255,6 +256,11 @@ a {
   }
 }
 
+/*-----------------------------
+
+グローバルナビゲーションメニュー
+
+-----------------------------*/
 .gnav {
   width: 100%;
   position: fixed;
@@ -400,6 +406,11 @@ a {
   letter-spacing: -0.04em;
 }
 
+/*-----------------------------
+
+ハンバーガーメニュー
+
+-----------------------------*/
 .hamburger-button {
   width: 4.8rem;
   height: 4.8rem;
@@ -751,12 +762,89 @@ a {
   }
 }
 
+#top {
+  /*-----------------------------
+
+  OP画面
+
+  -----------------------------*/
+  /*-----------------------------
+
+  背景video
+
+  -----------------------------*/
+  /*-----------------------------
+
+  (PCのみ)画面上部メニュー
+
+  -----------------------------*/
+  /*-----------------------------
+
+  (PCのみ)画面下部メニュー
+
+  -----------------------------*/
+  /*-----------------------------
+
+  FV
+
+  -----------------------------*/
+  /*-----------------------------
+
+  Index
+
+  -----------------------------*/
+  /*-----------------------------
+
+  Whoセクション
+
+  -----------------------------*/
+  /*-----------------------------
+
+  Newsセクション
+
+  -----------------------------*/
+  /*-----------------------------
+
+  Serviceセクション
+
+  -----------------------------*/
+  /*-----------------------------
+
+  Companyセクション
+
+  -----------------------------*/
+  /*-----------------------------
+
+  Contactセクション
+
+  -----------------------------*/
+}
 #top .wrapper {
   position: relative;
 }
 @media screen and (min-width: 1024px) {
   #top .wrapper {
     height: 100vh;
+  }
+}
+#top .main {
+  height: 100%;
+  position: relative;
+  z-index: 100;
+  transition: filter 0.2s ease-out;
+}
+#top .main.js-blur {
+  filter: blur(2px);
+}
+@media screen and (min-width: 1024px) {
+  #top .contents-wrapper {
+    height: 100%;
+  }
+}
+@media screen and (min-width: 1024px) {
+  #top .contents {
+    height: 100%;
+    display: flex;
   }
 }
 #top .opening {
@@ -826,7 +914,7 @@ a {
   width: 50%;
   height: 3px;
   scale: 0 1;
-  transition: scale 0.4s 0.4s linear;
+  transition: scale 0.4s linear;
 }
 #top .opening__progress-line--left {
   background-color: #82be28;
@@ -839,26 +927,6 @@ a {
 @media screen and (min-width: 1024px) {
   #top .opening__progress-line {
     height: 4px;
-  }
-}
-#top .main {
-  height: 100%;
-  position: relative;
-  z-index: 100;
-  transition: filter 0.2s ease-out;
-}
-#top .main.js-blur {
-  filter: blur(2px);
-}
-@media screen and (min-width: 1024px) {
-  #top .contents-wrapper {
-    height: 100%;
-  }
-}
-@media screen and (min-width: 1024px) {
-  #top .contents {
-    height: 100%;
-    display: flex;
   }
 }
 #top .bg-video {
@@ -1469,7 +1537,7 @@ a {
     background-image: url(../images/top/index_slide-text.svg);
     background-repeat: repeat-y;
     background-size: 100% auto;
-    animation: movie-slide-text 40s linear infinite;
+    animation: index-movie-slide-text 40s linear infinite;
   }
 }
 #top .index__video {
@@ -3922,7 +3990,7 @@ a {
 }
 @media (any-hover: hover) {
   #top .contact__privacy-policy:hover::before {
-    animation: line-link-hover 0.4s ease-out;
+    animation: contact-line-link-hover 0.4s ease-out;
   }
 }
 @media screen and (min-width: 1024px) {

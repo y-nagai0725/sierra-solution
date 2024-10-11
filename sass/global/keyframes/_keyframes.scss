@@ -1,5 +1,6 @@
 @use "../setting" as *;
 
+//OP:会社ロゴ表示
 @keyframes opening-logo-show {
   0% {
     opacity: 0;
@@ -9,6 +10,7 @@
   }
 }
 
+//画面下部メニュー:矢印
 @keyframes bottom-menu-arrow {
   0% {
     translate: 0 0;
@@ -24,6 +26,7 @@
   }
 }
 
+//画面下部メニュー:四角
 @keyframes bottom-menu-square {
   0% {
     translate: 0 0;
@@ -42,7 +45,8 @@
   }
 }
 
-@keyframes movie-slide-text {
+//Index:スライド文字
+@keyframes index-movie-slide-text {
   0% {
     translate: 100% 0%;
   }
@@ -51,7 +55,21 @@
   }
 }
 
-@keyframes line-link-hover {
+//Serviceセクション:バウンド
+@keyframes service-card-bound {
+  0% {
+    scale: 1;
+  }
+  50% {
+    scale: 1.25;
+  }
+  100% {
+    scale: 1;
+  }
+}
+
+//Contactセクション:privacyリンクhover
+@keyframes contact-line-link-hover {
   0% {
     transform-origin: right;
     scale: 1 1;
@@ -70,6 +88,7 @@
   }
 }
 
+//footer:hover時の矢印
 @keyframes footer-arrow-hover {
   0% {
     opacity: 1;
@@ -86,17 +105,5 @@
   100% {
     opacity: 1;
     translate: 0 0;
-  }
-}
-
-@keyframes service-card-bound {
-  0% {
-    scale: 1;
-  }
-  50% {
-    scale: 1.25;
-  }
-  100% {
-    scale: 1;
   }
 }

@@ -9,6 +9,35 @@
     }
   }
 
+  .main {
+    height: 100%;
+    position: relative;
+    z-index: 100;
+    transition: filter 0.2s ease-out;
+
+    &.js-blur {
+      filter: blur(2px);
+    }
+  }
+
+  .contents-wrapper {
+    @media screen and (min-width: 1024px) {
+      height: 100%;
+    }
+  }
+
+  .contents {
+    @media screen and (min-width: 1024px) {
+      height: 100%;
+      display: flex;
+    }
+  }
+
+  /*-----------------------------
+
+  OP画面
+
+  -----------------------------*/
   .opening {
     width: 100%;
     height: 100svh;
@@ -77,7 +106,7 @@
       width: 50%;
       height: 3px;
       scale: 0 1;
-      transition: scale 0.4s 0.4s linear;
+      transition: scale 0.4s linear;
 
       &--left {
         background-color: $green;
@@ -95,30 +124,11 @@
     }
   }
 
-  .main {
-    height: 100%;
-    position: relative;
-    z-index: 100;
-    transition: filter 0.2s ease-out;
+  /*-----------------------------
 
-    &.js-blur {
-      filter: blur(2px);
-    }
-  }
+  背景video
 
-  .contents-wrapper {
-    @media screen and (min-width: 1024px) {
-      height: 100%;
-    }
-  }
-
-  .contents {
-    @media screen and (min-width: 1024px) {
-      height: 100%;
-      display: flex;
-    }
-  }
-
+  -----------------------------*/
   .bg-video {
     position: fixed;
     width: 100%;
@@ -127,6 +137,11 @@
     z-index: 1;
   }
 
+  /*-----------------------------
+
+  (PCのみ)画面上部メニュー
+
+  -----------------------------*/
   .top-menu {
     display: none;
 
@@ -206,6 +221,11 @@
     }
   }
 
+  /*-----------------------------
+
+  (PCのみ)画面下部メニュー
+
+  -----------------------------*/
   .bottom-menu {
     display: none;
 
@@ -422,6 +442,11 @@
     }
   }
 
+  /*-----------------------------
+
+  FV
+
+  -----------------------------*/
   .fv {
     @include section-common;
     padding-top: 0;
@@ -523,6 +548,11 @@
     }
   }
 
+  /*-----------------------------
+
+  Index
+
+  -----------------------------*/
   .index {
     @include section-common;
     padding-top: 16rem;
@@ -675,7 +705,7 @@
           background-image: url(../images/top/index_slide-text.svg);
           background-repeat: repeat-y;
           background-size: 100% auto;
-          animation: movie-slide-text 40s linear infinite;
+          animation: index-movie-slide-text 40s linear infinite;
         }
       }
     }
@@ -687,6 +717,11 @@
     }
   }
 
+  /*-----------------------------
+
+  Whoセクション
+
+  -----------------------------*/
   .who {
     @include section-common;
     padding-bottom: 6rem;
@@ -1035,6 +1070,11 @@
     }
   }
 
+  /*-----------------------------
+
+  Newsセクション
+
+  -----------------------------*/
   .news {
     @include section-common;
     padding-bottom: 16rem;
@@ -1336,6 +1376,11 @@
     }
   }
 
+  /*-----------------------------
+
+  Serviceセクション
+
+  -----------------------------*/
   .service {
     @include section-common;
     padding-top: 0;
@@ -2467,6 +2512,11 @@
     }
   }
 
+  /*-----------------------------
+
+  Companyセクション
+
+  -----------------------------*/
   .company {
     @include section-common;
 
@@ -2574,6 +2624,11 @@
     }
   }
 
+  /*-----------------------------
+
+  Contactセクション
+
+  -----------------------------*/
   .contact {
     @include section-common;
     padding-bottom: 16rem;
@@ -2662,7 +2717,7 @@
 
       @media (any-hover: hover) {
         &:hover::before {
-          animation: line-link-hover 0.4s ease-out;
+          animation: contact-line-link-hover 0.4s ease-out;
         }
       }
 
