@@ -223,9 +223,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
     if (windowWidth >= breakPoint) {
       //PC表示時
-      checkIndexArea();
-      checkServiceArea();
-      checkSectionArea();
+      checkScrollInIndexArea();
+      checkScrollInServiceArea();
+      checkScrollInSectionArea();
     }
   });
 
@@ -267,7 +267,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   //main要素タッチ時処理
   main.addEventListener("touchstart", function (e) {
-    if (isOpenedMenu()) {
+    if (isOpenedGnavMenu()) {
       //メニューが開かれている場合は閉じる
       e.preventDefault();
       closeGnavMenu();
@@ -1576,24 +1576,35 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  //イベント処理禁止用
+  /**
+   * イベント禁止用処理
+   * @param {Event} e イベントオブジェクト
+   */
   function noScroll(e) {
     e.preventDefault();
   }
 
-  //スクロール許可
+  /**
+   * スクロール許可（スクロール禁止処理解除）
+   */
   function allowWindowScroll() {
     document.removeEventListener('touchmove', noScroll);
     document.removeEventListener('wheel', noScroll);
   }
 
-  //スクロール禁止
+  /**
+   * スクロール禁止処理設定
+   */
   function disallowWindowScroll() {
     document.addEventListener('touchmove', noScroll, { passive: false });
     document.addEventListener('wheel', noScroll, { passive: false });
   }
 
-  function isOpenedMenu() {
+  /**
+   * グローバルナビゲーションメニューが開かれているかどうか
+   * @returns {boolean}
+   */
+  function isOpenedGnavMenu() {
     if (hamburgerButton.classList.contains("js-opened")) {
       return true;
     } else {
@@ -1601,8 +1612,11 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
+  /**
+   * グローバルナビゲーションメニューを開く
+   */
   function openGnavMenu() {
-    if (!isOpenedMenu()) {
+    if (!isOpenedGnavMenu()) {
       hamburgerButton.classList.add("js-opened");
       gnavMenu.classList.add("js-opened");
       main.classList.add("js-blur");
@@ -1613,8 +1627,11 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
+  /**
+   * グローバルナビゲーションメニューを閉じる
+   */
   function closeGnavMenu() {
-    if (isOpenedMenu()) {
+    if (isOpenedGnavMenu()) {
       hamburgerButton.classList.remove("js-opened");
       gnavMenu.classList.remove("js-opened");
       main.classList.remove("js-blur");
@@ -1625,7 +1642,10 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
-  function checkSectionArea() {
+  /**
+   * 各セクションスクロール時に画面下部メニュー表示切り替え
+   */
+  function checkScrollInSectionArea() {
     const adjustmentValue = window.innerWidth * 0.5;
     const currentScroll = window.scrollY + adjustmentValue;
     let targetPointList = [];
@@ -1660,7 +1680,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
   }
 
-  function checkIndexArea() {
+  /**
+   * Indexセクションにスクロールされている有無でスクロール促し円表示切り替え
+   */
+  function checkScrollInIndexArea() {
     const adjustmentValue = window.innerWidth * 0.5;
     const startPoint = indexSection.getBoundingClientRect().left + window.scrollY;
     const currentScroll = window.scrollY;
@@ -1674,7 +1697,10 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
-  function checkServiceArea() {
+  /**
+   * Serviceセクションにスクロールされている有無で画面上部メニュー表示切り替え
+   */
+  function checkScrollInServiceArea() {
     const startPoint = serviceWrapper.getBoundingClientRect().left + window.scrollY;
     const endPoint = serviceWrapper.getBoundingClientRect().right + window.scrollY;
     const currentScroll = window.scrollY;
@@ -1686,6 +1712,9 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
+  /**
+   * Whoセクションのテキスト表示
+   */
   function showValueTextBox() {
     //既に表示されている場合は何もしない
     if (isShowedValueTextBox) return;
@@ -1727,6 +1756,12 @@ document.addEventListener('DOMContentLoaded', function () {
     isShowedValueTextBox = true;
   }
 
+  /**
+   * 要素のクラスを削除
+   * @param {HTMLElement} targetElement 削除対象の要素
+   * @param {string} regExpString 正規表現文字列
+   * @param {string} option 正規表現検索オプション
+   */
   function removeClass(targetElement, regExpString, option) {
     const targetClassName = targetElement.className;
     const regExp = new RegExp(regExpString, option);
@@ -1736,6 +1771,11 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
+  /**
+   * Newsデータ読み込み、作成
+   * @param {string} category Newsカテゴリー
+   * @param {boolean} isInitialLoading 初期の読み込みであるかどうか
+   */
   function getNewsData(category, isInitialLoading = false) {
     //----------------------------------
     //実際はapi呼び出しでjsonデータ取得想定
@@ -1856,6 +1896,8 @@ document.addEventListener('DOMContentLoaded', function () {
             onComplete: () => {
               //スクロール禁止を解除
               allowWindowScroll();
+
+              //FV表示
               showFirstView();
             }
           });
@@ -1867,6 +1909,11 @@ document.addEventListener('DOMContentLoaded', function () {
       });
   }
 
+  /**
+   * 対象のpath要素のstrokeDasharray,strokeDashoffsetの初期化
+   * @param {HTMLElement} pathElement 対象のpath要素
+   * @param {boolean} reverse pathを描く方向
+   */
   function resetPathStorke(pathElement, reverse = false) {
     const totalLength = Math.ceil(pathElement.getTotalLength());
     pathElement.style.strokeDasharray = totalLength;
@@ -1875,9 +1922,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
   /**
    * videoにsourceを設定
-   *
-   * @param {*} video video要素
-   * @param {*} baseSource 基準パス
+   * @param {HTMLElement} video video要素
+   * @param {string} baseSource 基準パス
    */
   function setVideoSource(video, baseSource) {
     //ウィンドウ幅に対応したpath作成
@@ -1911,10 +1957,12 @@ document.addEventListener('DOMContentLoaded', function () {
       ease: gsapScrollEasing,
       duration: 0.6,
       opacity: 1
-    },"<");
+    }, "<");
   }
 
-  //初期実行処理
+  /**
+   * 初期実行処理
+   */
   function init() {
     //スクロール禁止
     disallowWindowScroll();
