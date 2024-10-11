@@ -299,7 +299,7 @@
     opacity: 1;
 
     @media screen and (min-width: 1024px) {
-      rotate: -90deg;
+      transform: rotate(-90deg);
     }
   }
 

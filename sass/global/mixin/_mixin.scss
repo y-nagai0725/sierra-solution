@@ -41,7 +41,7 @@
   margin-bottom: 6rem;
 
   &.js-showed .title {
-    transform: translateY(0);
+    transform: translate3d(0, 0, 0);
   }
 
   &.js-showed .number {
@@ -67,7 +67,7 @@
   font-family: $montserrat;
   font-weight: 700;
   font-size: clamp(48px, 4.8rem, 80px);
-  transform: translateY(2em);
+  transform: translate3d(0, 2em, 0);
   transition: transform 0.6s ease-out;
 
   @media screen and (min-width: 1024px) {
@@ -80,7 +80,7 @@
   overflow: hidden;
 
   &.js-showed .title {
-    transform: translateY(0);
+    transform: translate3d(0, 0, 0);
   }
 }
 
@@ -155,7 +155,7 @@
     width: 60rem;
     height: 60rem;
     clip-path: circle(50% at top);
-    border-radius: 9999px;
+    border-radius: 100vmax;
     box-shadow: $bg-drop-shadow;
   }
 
@@ -186,18 +186,19 @@
   }
 
   span {
+    display: block;
     font-family: $montserrat;
     font-size: clamp(13px, 1.3rem, 22px);
     letter-spacing: -0.04em;
     color: $text-color;
     position: relative;
     top: 0;
-    transition: top 0.4s ease-out;
+    transition: transform 0.4s ease-out;
 
     &::before {
       content: $hovered-text;
       position: absolute;
-      top: 15px;
+      top: clamp(16px, 1.8rem, 18px);
       left: 0;
       color: $hovered-text-color;
       opacity: 0;
@@ -210,7 +211,7 @@
       background-color: $hovered-bg-color;
 
       span {
-        top: calc(clamp(16px, 1.8rem, 18px) * -1);
+        transform: translate3d(0, calc(clamp(16px, 1.8rem, 18px) * -1), 0);
 
         &::before {
           opacity: 1;
@@ -227,7 +228,7 @@
     right: 0;
     width: 0.5rem;
     height: 0.5rem;
-    border-radius: 9999px;
+    border-radius: 100vmax;
   }
 
   &::before {
