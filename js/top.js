@@ -1792,8 +1792,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
         //リスト作成
         for (let i = 0; i < data.length; i++) {
-          //上限5件
-          if (i === 5) break;
+          //上限4件
+          if (i === 4) break;
 
           const date = data[i].date;
           const text = data[i].text;
@@ -1812,7 +1812,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
           //ローディングのプログレスバー更新
           if (isInitialLoading) {
-            const value = ((i + 1) / data.length);
+            const total = data.length > 4 ? 4 : data.length;
+            const value = ((i + 1) / total);
             openingProgressLine.forEach(line => {
               line.style.setProperty("scale", value + " 1");
             })
