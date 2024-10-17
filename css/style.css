@@ -1169,16 +1169,18 @@ a {
   -webkit-animation: opening-logo-show 0.4s 0.4s ease-out forwards;
           animation: opening-logo-show 0.4s 0.4s ease-out forwards;
 }
+@media screen and (min-width: 1024px) {
+  #top .opening__logo-wrapper {
+    gap: 4rem;
+    margin-bottom: 7.5rem;
+  }
+}
 #top .opening__company-logo {
   width: 8rem;
-  height: 10rem;
-  -o-object-fit: contain;
-     object-fit: contain;
 }
 @media screen and (min-width: 1024px) {
   #top .opening__company-logo {
     width: 10rem;
-    height: 13rem;
   }
 }
 #top .opening__name-logo {

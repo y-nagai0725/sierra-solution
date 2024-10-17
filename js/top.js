@@ -1831,7 +1831,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
           gsap.timeline({
             scrollTrigger: {
-              pinnedContainer: contents,
+              pinnedContainer: contentsWrapper,
               trigger: newsContents,
               start: () => newsContents.getBoundingClientRect().left + window.scrollY - window.innerWidth * 0.6,
               invalidateOnRefresh: true,

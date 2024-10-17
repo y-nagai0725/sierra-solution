@@ -75,16 +75,18 @@
       margin-bottom: 7rem;
       opacity: 0;
       animation: opening-logo-show 0.4s 0.4s ease-out forwards;
+
+      @media screen and (min-width: 1024px) {
+        gap: 4rem;
+        margin-bottom: 7.5rem;
+      }
     }
 
     &__company-logo {
       width: 8rem;
-      height: 10rem;
-      object-fit: contain;
 
       @media screen and (min-width: 1024px) {
         width: 10rem;
-        height: 13rem;
       }
     }
 
